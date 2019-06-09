@@ -14,7 +14,7 @@ namespace ofDarkandBelow.Items.Armor
 
 		public override void SetDefaults() {
 			item.width = 26;
-			item.height = 29;
+			item.height = 24;
 			item.value = 10000;
 			item.rare = 2;
 			item.defense = 6;
