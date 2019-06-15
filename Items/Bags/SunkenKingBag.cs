@@ -37,6 +37,12 @@ namespace ofDarkandBelow.Items.Bags
 			if (Main.rand.NextBool(2)) {
 				player.QuickSpawnItem(mod.ItemType("KingsHarvest"));
 			}
+			if (Main.rand.NextBool(6)) {
+				player.QuickSpawnItem(mod.ItemType("SunkenKingTrophy"));
+			}
+			if (Main.rand.NextBool(6)) {
+				player.QuickSpawnItem(mod.ItemType("SunkenKingMask"));
+			}
 		}
 	}
 }

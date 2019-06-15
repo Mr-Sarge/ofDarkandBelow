@@ -161,6 +161,7 @@ namespace ofDarkandBelow.NPCs.SunkenKing
             Vector2 center = Main.player[npc.target].Center;
             float num4 = 1E+08f;
             Vector2 position2 = center;
+            MyWorld.downedSunkenKing = true;
             if (Main.expertMode)
             {
                 npc.DropBossBags();

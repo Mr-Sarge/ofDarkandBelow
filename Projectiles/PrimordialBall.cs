@@ -14,7 +14,6 @@ namespace ofDarkandBelow.Projectiles
 		}
         public override void SetDefaults()
         {
-		    projectile.CloneDefaults(ProjectileID.ThornBall);
             projectile.width = 40;
             projectile.height = 40;
 			projectile.scale = 1.5f;
@@ -26,6 +25,7 @@ namespace ofDarkandBelow.Projectiles
             projectile.penetrate = 5;
             projectile.timeLeft = 400;
             projectile.light = 0.60f;
+			projectile.aiStyle = ProjectileID.ThornBall;
         }
         public override void AI()
         {

@@ -14,12 +14,12 @@ namespace ofDarkandBelow.NPCs.Null
         }
         public override void SetDefaults()
         {
-            npc.width = 40;
-            npc.height = 70;
+            npc.width = 32;
+            npc.height = 58;
             npc.friendly = false;
             npc.damage = 40;
             npc.defense = 4;
-            npc.lifeMax = 200;
+            npc.lifeMax = 150;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
             npc.value = 20f;

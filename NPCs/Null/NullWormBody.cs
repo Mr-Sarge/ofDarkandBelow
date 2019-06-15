@@ -34,6 +34,7 @@ namespace ofDarkandBelow.NPCs.Null
             if (npc.life <= 0)          //this make so when the npc has 0 life(dead) he will spawn this
             {
                 Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/NullWormBodyGore"), 1f);
+				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/NullWormBodyGore"), 1f);
             }
         }
 

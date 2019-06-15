@@ -110,7 +110,6 @@ namespace ofDarkandBelow.NPCs.EndlessMaw
                 talkdeath = true;
             }
             spawnTimer++;
-            ballTimer++;
             if (spawnTimer >= 360 && NPC.CountNPCS(mod.NPCType("CosmicDiggerHead")) <= 3) //every 2 seconds
             {
                 NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("CosmicDiggerHead"));
@@ -386,10 +385,11 @@ namespace ofDarkandBelow.NPCs.EndlessMaw
     }
     public override void ModifyHitPlayer(Player target, ref int damage, ref bool crit)
     {
-            target.AddBuff(mod.BuffType("CosmicFlame"), 400);
+            target.AddBuff(mod.BuffType("CosmicFlame"), 200);
 	}
         public override void NPCLoot()
         {
+            MyWorld.downedPrimordialMaw = true;
             Vector2 position = npc.position;
             Vector2 center = Main.player[npc.target].Center;
             float num4 = 1E+08f;

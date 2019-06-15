@@ -36,7 +36,6 @@ namespace ofDarkandBelow.Projectiles
         {
 
             target.AddBuff(mod.BuffType("CosmicFlame"), 200);    //this adds a buff to the npc hit. 210 it the time of the buff
-
         }
 			public override void Kill(int timeLeft) {
 			Main.PlaySound(0, (int)projectile.position.X, (int)projectile.position.Y); // Play a death sound

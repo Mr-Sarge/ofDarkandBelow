@@ -15,14 +15,14 @@ namespace ofDarkandBelow.Items
 		}
 		public override void SetDefaults()
 		{
-			item.damage = 200;
+			item.damage = 235;
 			item.melee = true;
 			item.shoot = (mod.ProjectileType("ScalibaarProj"));
-			item.shootSpeed = 70f;
+			item.shootSpeed = 60f;
 			item.width = 80;
 			item.height = 80;
-			item.useTime = 20;
-			item.useAnimation = 20;
+			item.useTime = 26;
+			item.useAnimation = 26;
 			item.useStyle = 1;
 			item.knockBack = 8;
 			item.value = 1000000;

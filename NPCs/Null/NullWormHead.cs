@@ -20,7 +20,7 @@ namespace ofDarkandBelow.NPCs.Null
         }
         public override void SetDefaults()
         {
-            npc.lifeMax = 300;        //this is the npc health
+            npc.lifeMax = 200;        //this is the npc health
             npc.damage = 15;    //this is the npc damage
             npc.defense = 0;         //this is the npc defense
             npc.knockBackResist = 0f;

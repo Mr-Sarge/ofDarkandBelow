@@ -9,7 +9,9 @@ namespace ofDarkandBelow.Items.Armor
 	{
 		public override void SetStaticDefaults() {
 		    DisplayName.SetDefault("Cosmic Horned Helm");
-			Tooltip.SetDefault("You are a horned beast.");
+			Tooltip.SetDefault("You are a cosmic interloper."
+				+ "\n+1 Max Minions"
+				+ "\n+15 Max Mana");
 		}
 
 		public override void SetDefaults() {
@@ -17,11 +19,17 @@ namespace ofDarkandBelow.Items.Armor
 			item.height = 29;
 			item.value = 10000;
 			item.rare = 2;
-			item.defense = 10;
+			item.defense = 6;
 		}
 
 		public override bool IsArmorSet(Item head, Item body, Item legs) {
 			return body.type == mod.ItemType("CosmicBreastplate") && legs.type == mod.ItemType("CosmicLeggings");
+		}
+
+		public override void UpdateEquip(Player player) {
+			player.buffImmune[mod.BuffType("CosmicFlame")] = true;
+			player.statManaMax2 += 15;
+			player.maxMinions++;
 		}
 
 		public override void UpdateArmorSet(Player player) {

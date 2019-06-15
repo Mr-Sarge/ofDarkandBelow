@@ -18,7 +18,7 @@ namespace ofDarkandBelow.Items.Armor
 			item.height = 18;
 			item.value = 10000;
 			item.rare = 2;
-			item.defense = 9;
+			item.defense = 7;
 		}
 		public override void AddRecipes() {
 			ModRecipe recipe = new ModRecipe(mod);
