@@ -7,6 +7,9 @@ namespace ofDarkandBelow.Projectiles.Minions
     //ported from my tAPI mod because I'm lazy
     public class RiftSpirit : ModProjectile
     {
+        private int _frameCounter;
+        private int _frame;
+
         public override void SetStaticDefaults()
         {
             Main.projFrames[projectile.type] = 5;
@@ -18,6 +21,8 @@ namespace ofDarkandBelow.Projectiles.Minions
 
         public override void SetDefaults()
         {
+            projectile.CloneDefaults(388);
+            aiType = 388;
             projectile.netImportant = true;
             projectile.width = 24;
             projectile.height = 28;
@@ -29,8 +34,16 @@ namespace ofDarkandBelow.Projectiles.Minions
             projectile.tileCollide = false;
             projectile.ignoreWater = true;
             projectile.aiStyle = 66;
-            //inertia = 20f;
+            _frame = 0;
+            _frameCounter = 0;
+            
         }
+
+        public override bool MinionContactDamage()
+        {
+            return true;
+        }
+
 
         public void CheckActive()
         {
@@ -49,18 +62,26 @@ namespace ofDarkandBelow.Projectiles.Minions
         public override bool PreAI()
         {
             CheckActive();
-            int dust = Dust.NewDust(projectile.position, projectile.width, projectile.height / 2, 17, Alpha: 100);
+            int dust = Dust.NewDust(projectile.position, projectile.width, projectile.height / 2, 17, Alpha: 50);
             Main.dust[dust].velocity.Y -= 1.2f;
             Lighting.AddLight((int)(projectile.Center.X / 16f), (int)(projectile.Center.Y / 16f), 0.6f, 0.9f, 0.3f);
-            if (++projectile.frameCounter >= 8)
-            {
-                if (++projectile.frame >= 5)
-                {
-                    projectile.frame = 0;
-                }
-                projectile.frameCounter = 0;
-            }
             return true;
         }
-}
+
+        public override void PostAI()
+        {
+            if (++_frameCounter >= 8)
+            {
+                if (++_frame >= 5)
+                {
+                    _frame = 0;
+                }
+                _frameCounter = 0;
+            }
+
+            projectile.frameCounter = _frameCounter;
+            projectile.frame = _frame;
+            projectile.tileCollide = false;
+        }
+    }
 }
