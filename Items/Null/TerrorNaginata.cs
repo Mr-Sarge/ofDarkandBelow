@@ -16,10 +16,10 @@ namespace ofDarkandBelow.Items.Null
 		public override void SetDefaults() {
 			item.damage = 25;
 			item.useStyle = 5;
-			item.useAnimation = 27;
-			item.useTime = 27;
+			item.useAnimation = 42;
+			item.useTime = 14;
 			item.shootSpeed = 2f;
-			item.knockBack = 7f;
+			item.knockBack = 2.5f;
 			item.width = 62;
 			item.height = 68;
 			item.scale = 1f;
@@ -27,16 +27,15 @@ namespace ofDarkandBelow.Items.Null
 			item.value = Item.sellPrice(silver: 80);
 
 			item.magic = true;
-			item.noMelee = true; // Important because the spear is actually a projectile instead of an item. This prevents the melee hitbox of this item.
-			item.noUseGraphic = true; // Important, it's kind of wired if people see two spears at one time. This prevents the melee animation of this item.
-			item.autoReuse = false; // Most spears don't autoReuse, but it's possible when used in conjunction with CanUseItem()
+			item.noMelee = true; 
+			item.noUseGraphic = true; 
+			item.autoReuse = false;
 
 			item.UseSound = SoundID.Item1;
 			item.shoot = mod.ProjectileType("TerrorNaginataProj");
 		}
 
 		public override bool CanUseItem(Player player) {
-			// Ensures no more than one spear can be thrown out, use this when using autoReuse
 			return player.ownedProjectileCounts[item.shoot] < 1;
 		}
 		public override void AddRecipes()
