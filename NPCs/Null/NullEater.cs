@@ -26,8 +26,8 @@ namespace ofDarkandBelow.NPCs.Null
             npc.height = 36;
             npc.friendly = false;
             npc.damage = 20;
-            npc.defense = 2;
-            npc.lifeMax = 100;
+            npc.defense = 0;
+            npc.lifeMax = 50;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
             npc.value = 20f;

@@ -10,13 +10,16 @@ namespace ofDarkandBelow.Items.Wings
 	{
 		public override void SetStaticDefaults() {
 		    DisplayName.SetDefault("Draconic Hate Wings");
-			Tooltip.SetDefault("'Torn from a Dragon...'");
-		}
+			Tooltip.SetDefault("'Torn from a Dragon...'"
+            + "\nFlight Time: 100"
+            + "\nGood Acceleration"
+            + "\nGood Horizontal Mobility");
+        }
 		public override void SetDefaults() {
 			item.width = 30;
 			item.height = 28;
-			item.value = 10000;
-			item.rare = 2;
+            item.value = Item.sellPrice(gold: 5);
+            item.rare = 6;
 			item.accessory = true;
 		}
 		//these wings use the same values as the solar wings

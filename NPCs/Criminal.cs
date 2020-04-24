@@ -18,7 +18,7 @@ namespace ofDarkandBelow.NPCs
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Crim-Inal");
-            Main.npcFrameCount[npc.type] = 3;
+            Main.npcFrameCount[npc.type] = 2;
         }
         public override void SetDefaults()
         {

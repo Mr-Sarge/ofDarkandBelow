@@ -10,7 +10,7 @@ namespace ofDarkandBelow.Items.Armor
 		public override void SetStaticDefaults() {
 			base.SetStaticDefaults();
 			DisplayName.SetDefault("Zero-Ghost Cloak");
-			Tooltip.SetDefault("The cloth is imubed with Neiroplasm,"
+			Tooltip.SetDefault("The cloth is imubed with the power of Neiroplasm,"
 				+ "\n+30 max mana and +2 max minions");
 		}
 
@@ -31,6 +31,7 @@ namespace ofDarkandBelow.Items.Armor
 		public override void AddRecipes() {
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(mod.ItemType("Neiroplasm"), 20);
+			recipe.AddIngredient(mod.ItemType("ZeroSpirit"), 1);
 			recipe.AddIngredient(ItemID.Silk, 15);
 			recipe.AddTile(TileID.Anvils);
 			recipe.SetResult(this);

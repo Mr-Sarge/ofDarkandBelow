@@ -20,7 +20,6 @@ namespace ofDarkandBelow.Items.BossDrops.PrimordialMaw
 			+ "\nEvery 30 Seconds you get the Shadow Dodge buff."
 			+ "\nDefense LOWERED by 5"
 			+ "\n10% DECREASED Movement Speed");
-			Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(11, 12));
 		}
 
 		public override void SetDefaults() {

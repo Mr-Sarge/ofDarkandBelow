@@ -9,7 +9,7 @@ namespace ofDarkandBelow.Items.Armor
 	{
 		public override void SetStaticDefaults() {
 		    DisplayName.SetDefault("Zero-Ghost Hood");
-			Tooltip.SetDefault("Your mind eye is open.");
+			Tooltip.SetDefault("'Your mind eye has opened to all of reality'");
 		}
 
 		public override void SetDefaults() {
@@ -35,6 +35,7 @@ namespace ofDarkandBelow.Items.Armor
 		public override void AddRecipes() {
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(mod.ItemType("Neiroplasm"), 20);
+			recipe.AddIngredient(mod.ItemType("ZeroSpirit"), 1);
 			recipe.AddIngredient(ItemID.Silk, 15);
 			recipe.AddTile(TileID.Anvils);
 			recipe.SetResult(this);

@@ -17,7 +17,7 @@ namespace ofDarkandBelow.Items.Armor
 			item.height = 29;
 			item.value = 10000;
 			item.rare = 2;
-			item.defense = 8;
+			item.defense = 6;
 		}
 
 		public override bool IsArmorSet(Item head, Item body, Item legs) {

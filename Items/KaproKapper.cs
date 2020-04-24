@@ -13,7 +13,7 @@ namespace ofDarkandBelow.Items
 	    public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Kapro-Kapper");
-			Tooltip.SetDefault("The crocodilian boar."
+			Tooltip.SetDefault("'The crocodilian boar that roars!.'"
 			+ "\nFires a special bullet that inflicts cursed inferno and ichor.");
 		}
         public override void SetDefaults()
@@ -30,7 +30,7 @@ namespace ofDarkandBelow.Items
             item.shoot = 10;
             item.useAmmo = AmmoID.Bullet;
             item.knockBack = 5;
-            item.value = 1000000;
+            item.value = Item.sellPrice(gold: 6);
             item.rare = 2;
             item.UseSound = SoundID.Item11;
             item.autoReuse = true;
@@ -48,16 +48,16 @@ namespace ofDarkandBelow.Items
 		public override void AddRecipes() {
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(ItemID.Musket);
-			recipe.AddIngredient(ItemID.HellstoneBar, 15);
-			recipe.AddIngredient(ItemID.ShadowScale, 20);
+			recipe.AddIngredient(ItemID.HellstoneBar, 10);
+			recipe.AddIngredient(ItemID.ShadowScale, 10);
 			recipe.AddTile(TileID.Anvils);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 
 			ModRecipe recipe2 = new ModRecipe(mod);
 			recipe2.AddIngredient(ItemID.TheUndertaker);
-			recipe2.AddIngredient(ItemID.HellstoneBar, 15);
-			recipe2.AddIngredient(ItemID.TissueSample, 20);
+			recipe2.AddIngredient(ItemID.HellstoneBar, 10);
+			recipe2.AddIngredient(ItemID.TissueSample, 10);
 			recipe2.AddTile(TileID.Anvils);
 			recipe2.SetResult(this);
 			recipe2.AddRecipe();

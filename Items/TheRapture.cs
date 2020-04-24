@@ -25,17 +25,16 @@ namespace ofDarkandBelow.Items
 			item.useAnimation = 20;
 			item.useStyle = 1;
 			item.knockBack = 6;
-			item.value = 1000000;
-			item.rare = 11;
-			item.UseSound = SoundID.Item1;
+            item.value = Item.sellPrice(gold: 50);
+            item.rare = 11;
+			item.UseSound = SoundID.Item100;
 			item.autoReuse = true;
 		}
 		public override void AddRecipes() {
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(ItemID.BrokenHeroSword);
 			recipe.AddIngredient(ItemID.StarWrath);
-			recipe.AddIngredient(ItemID.Meowmere);
-			recipe.AddIngredient((ItemID.LunarBar), 20);
+			recipe.AddIngredient((ItemID.LunarBar), 10);
 			recipe.AddIngredient(mod.ItemType("EdgeofTheUniverse"));
 			recipe.AddTile(TileID.Anvils);
 			recipe.SetResult(this);
@@ -54,7 +53,8 @@ namespace ofDarkandBelow.Items
         Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
 		Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, 503, damage, knockBack, player.whoAmI);
 		Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, 424, damage, knockBack, player.whoAmI);
-    }
+                Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X * 1.6f, perturbedSpeed.Y * 1.6f, mod.ProjectileType("StarDeath"), damage, knockBack, player.whoAmI);
+            }
     return false;
 	}
 }}

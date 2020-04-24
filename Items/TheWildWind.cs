@@ -46,10 +46,10 @@ namespace ofDarkandBelow.Items
 		public override void AddRecipes() {
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(ItemID.TheEyeOfCthulhu, 1);
-			recipe.AddIngredient(ItemID.SoulofSight, 25);
-			recipe.AddIngredient(ItemID.SoulofMight, 25);
-			recipe.AddIngredient(ItemID.SoulofFright, 25);
-			recipe.AddIngredient(ItemID.LunarBar, 15);
+			recipe.AddIngredient(ItemID.SoulofSight, 20);
+			recipe.AddIngredient(ItemID.SoulofMight, 20);
+			recipe.AddIngredient(ItemID.SoulofFright, 20);
+			recipe.AddIngredient(ItemID.LunarBar, 10);
 			recipe.AddIngredient(3458, 15);
 			recipe.SetResult(this);
 			recipe.AddRecipe();

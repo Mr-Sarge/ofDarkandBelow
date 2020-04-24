@@ -5,11 +5,16 @@ namespace ofDarkandBelow.Items
 {
 	public class BrokenIronSword : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Broken Iron Sword");
-			Tooltip.SetDefault("A broken and useless sword.");
-		}
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Broken Iron Sword");
+            Tooltip.SetDefault("A broken and useless sword."
+               + "\nAnd it was so that sarge asked himself,"
+               + "\n'why is this thing in the mod'"
+               + "\nto which god replied"
+               + "\n'yes'.");
+
+        }
 		public override void SetDefaults()
 		{
 			item.damage = 1;

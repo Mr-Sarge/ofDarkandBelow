@@ -16,18 +16,18 @@ namespace ofDarkandBelow.Items
 		}
         public override void SetDefaults()
         {
-            item.damage = 50;
+            item.damage = 39;
             item.noMelee = true;
             item.ranged = true;
             item.width = 74;
             item.height = 40;
-            item.useTime = 16;
-            item.useAnimation = 16;
+            item.useTime = 21;
+            item.useAnimation = 21;
             item.useStyle = 5;
             item.shoot = 10;
             item.useAmmo = AmmoID.Bullet;
             item.knockBack = 7;
-            item.value = 1000000;
+            item.value = Item.sellPrice(gold: 5);
             item.rare = 8;
             item.UseSound = mod.GetLegacySoundSlot(SoundType.Item, "Sounds/Item/DeinoItem");
             item.autoReuse = true;
@@ -38,7 +38,7 @@ namespace ofDarkandBelow.Items
 			int numberProjectiles = 10 + Main.rand.Next(2); // 4 or 5 shots
 			for (int i = 0; i < numberProjectiles; i++)
 			{
-				Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(15)); // 30 degree spread.
+				Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(9)); // 30 degree spread.
 				// If you want to randomize the speed to stagger the projectiles
 				// float scale = 1f - (Main.rand.NextFloat() * .3f);
 				// perturbedSpeed = perturbedSpeed * scale; 

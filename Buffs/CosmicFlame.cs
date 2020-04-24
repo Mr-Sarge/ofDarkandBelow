@@ -22,12 +22,12 @@ namespace ofDarkandBelow.Buffs
 		{
             player.lifeRegen = -20;
 	
-	      	int DustID2 = Dust.NewDust(player.position, player.width, player.height, 21, player.velocity.X * 0.2f, player.velocity.Y * 0.2f, 20, default(Color), 1.5f);
+	      	int DustID2 = Dust.NewDust(player.position, player.width, player.height, mod.DustType("CosmicDust"), player.velocity.X * 0.2f, player.velocity.Y * 0.2f, 20, default(Color), 1.5f);
             Main.dust[DustID2].noGravity = true;
 		}
 		        public override void Update(NPC npc, ref int buffIndex)
         {
-            npc.GetGlobalNPC<SGlobalNPC>(mod).cosmicFlame = true;
+            npc.GetGlobalNPC<SGlobalNPC>().cosmicFlame = true;
         }
 	}
 }

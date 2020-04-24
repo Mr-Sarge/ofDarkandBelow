@@ -22,8 +22,8 @@ namespace ofDarkandBelow.Items.BossDrops.SunkenKing
 		public override void SetDefaults() {
 			item.width = 32;
 			item.height = 40;
-			item.value = 100000;
-			item.rare = 12;
+            item.value = Item.sellPrice(gold: 1);
+            item.rare = 12;
 			item.expert = true;
 			item.accessory = true;
 		}

@@ -23,12 +23,12 @@ namespace ofDarkandBelow.Items
 			item.height = 73;
 			item.scale = 1f;
 			item.rare = 2;
-			item.value = Item.sellPrice(silver: 10);
+			item.value = Item.sellPrice(silver: 60);
 
 			item.melee = true;
-			item.noMelee = true; // Important because the spear is actually a projectile instead of an item. This prevents the melee hitbox of this item.
-			item.noUseGraphic = true; // Important, it's kind of wired if people see two spears at one time. This prevents the melee animation of this item.
-			item.autoReuse = true; // Most spears don't autoReuse, but it's possible when used in conjunction with CanUseItem()
+			item.noMelee = true;
+			item.noUseGraphic = true;
+			item.autoReuse = true;
 
 			item.UseSound = SoundID.Item1;
 			item.shoot = mod.ProjectileType("DoriProjectile");

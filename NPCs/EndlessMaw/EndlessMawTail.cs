@@ -27,7 +27,7 @@ namespace ofDarkandBelow.NPCs.EndlessMaw
             npc.netAlways = true;
             npc.noGravity = true;
             npc.dontCountMe = true;
-            npc.HitSound = SoundID.NPCHit3;
+            npc.HitSound = SoundID.NPCHit13;
         }
         public override void HitEffect(int hitDirection, double damage)
         {
@@ -39,7 +39,8 @@ namespace ofDarkandBelow.NPCs.EndlessMaw
 
         public override bool PreAI()
         {
-            int DustID2 = Dust.NewDust(npc.position, npc.width, npc.height, 21, npc.velocity.X * 0.2f, npc.velocity.Y * 0.2f, 20, default(Color), 1.5f);
+            bool collision = false;
+            int DustID2 = Dust.NewDust(npc.position, npc.width, npc.height, mod.DustType("CosmicDust"), npc.velocity.X * 0.2f, npc.velocity.Y * 0.2f, 20, default(Color), 1.5f);
             Main.dust[DustID2].noGravity = true;
 			{
             if (Main.player[npc.target].dead)
@@ -63,8 +64,21 @@ namespace ofDarkandBelow.NPCs.EndlessMaw
                     NetMessage.SendData(28, -1, -1, null, npc.whoAmI, -1f, 0.0f, 0.0f, 0, 0, 0);
                 }
             }
-
-            if (npc.ai[1] < (double)Main.npc.Length)
+                if (collision)
+                {
+                    if (npc.localAI[0] != 1)
+                        npc.netUpdate = true;
+                    npc.localAI[0] = 1f;
+                }
+                else
+                {
+                    if (npc.localAI[0] != 0.0)
+                        npc.netUpdate = true;
+                    npc.localAI[0] = 0.0f;
+                }
+                if ((npc.velocity.X > 0.0 && npc.oldVelocity.X < 0.0 || npc.velocity.X < 0.0 && npc.oldVelocity.X > 0.0 || (npc.velocity.Y > 0.0 && npc.oldVelocity.Y < 0.0 || npc.velocity.Y < 0.0 && npc.oldVelocity.Y > 0.0)) && !npc.justHit)
+                    npc.netUpdate = true;
+                if (npc.ai[1] < (double)Main.npc.Length)
             {
                 // We're getting the center of this NPC.
                 Vector2 npcCenter = new Vector2(npc.position.X + (float)npc.width * 0.5f, npc.position.Y + (float)npc.height * 0.5f);

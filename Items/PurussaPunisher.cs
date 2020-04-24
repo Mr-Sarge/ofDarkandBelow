@@ -16,18 +16,18 @@ namespace ofDarkandBelow.Items
 		}
         public override void SetDefaults()
         {
-            item.damage = 70;
+            item.damage = 58;
             item.noMelee = true;
             item.ranged = true;
             item.width = 90;
             item.height = 40;
-            item.useTime = 12;
-            item.useAnimation = 12;
+            item.useTime = 13;
+            item.useAnimation = 13;
             item.useStyle = 5;
             item.shoot = 10;
             item.useAmmo = AmmoID.Bullet;
             item.knockBack = 7;
-            item.value = 1000000;
+            item.value = Item.sellPrice(gold: 30);
             item.rare = 10;
             item.UseSound = mod.GetLegacySoundSlot(SoundType.Item, "Sounds/Item/PurussaItem");
             item.autoReuse = true;
@@ -38,7 +38,7 @@ namespace ofDarkandBelow.Items
 			int numberProjectiles = 12 + Main.rand.Next(2); // 4 or 5 shots
 			for (int i = 0; i < numberProjectiles; i++)
 			{
-				Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(8)); // 30 degree spread.
+				Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(5)); // 30 degree spread.
 				// If you want to randomize the speed to stagger the projectiles
 				// float scale = 1f - (Main.rand.NextFloat() * .3f);
 				// perturbedSpeed = perturbedSpeed * scale; 
@@ -56,8 +56,8 @@ namespace ofDarkandBelow.Items
 			recipe.AddIngredient(ItemID.SDMG);
 			recipe.AddIngredient(ItemID.VortexBeater);
 			recipe.AddIngredient(mod.ItemType("DeinoDevastator"));
-			recipe.AddIngredient(ItemID.LunarBar, 20);
-			recipe.AddIngredient(3456, 20);
+			recipe.AddIngredient(ItemID.LunarBar, 15);
+			recipe.AddIngredient(3456, 10);
 			recipe.AddTile(TileID.Anvils);
 			recipe.SetResult(this);
 			recipe.AddRecipe();

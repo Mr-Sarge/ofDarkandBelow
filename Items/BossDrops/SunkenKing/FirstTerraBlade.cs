@@ -1,3 +1,6 @@
+using Microsoft.Xna.Framework;
+using ofDarkandBelow.Projectiles;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -13,17 +16,18 @@ namespace ofDarkandBelow.Items.BossDrops.SunkenKing
 		public override void SetDefaults()
 		{
             item.CloneDefaults(ItemID.TerraBlade);
-			item.damage = 26;
+			item.damage = 22;
 			item.shoot = (mod.ProjectileType("SunkenBeam"));
 			item.melee = true;
-			item.width = 46;
-			item.height = 54;
-			item.useTime = 20;
-			item.useAnimation = 20;
+            item.UseSound = mod.GetLegacySoundSlot(SoundType.Item, "Sounds/Item/OldTerraSwing");
+            item.width = 46;
+			item.height = 50;
+			item.useTime = 25;
+			item.useAnimation = 25;
 			item.useStyle = 1;
 			item.knockBack = 3;
-			item.value = 1000;
-			item.rare = 2;
+            item.value = Item.sellPrice(silver: 50);
+            item.rare = 2;
 			item.autoReuse = true;
 		}
 	}

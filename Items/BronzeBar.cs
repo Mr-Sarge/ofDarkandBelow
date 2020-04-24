@@ -1,3 +1,4 @@
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -14,8 +15,8 @@ namespace ofDarkandBelow.Items
 		{
 			item.width = 30;
 			item.height = 24;
-			item.value = 10000;
-			item.rare = 2;
+            item.value = Item.sellPrice(silver: 30);
+            item.rare = 2;
 			item.maxStack = 999;
 			item.material = true;
 		}

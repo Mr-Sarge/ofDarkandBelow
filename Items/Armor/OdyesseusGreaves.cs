@@ -11,18 +11,22 @@ namespace ofDarkandBelow.Items.Armor
 	{
 		public override void SetStaticDefaults() {
 		    DisplayName.SetDefault("Odysseus' Greaves");
-			Tooltip.SetDefault("Run as quick as Odyesseus!");
-		}
+			Tooltip.SetDefault("Run as quick as Odyesseus!"
+            +"\n+15% Movement Speed!");
+        }
 
 		public override void SetDefaults() {
 			item.width = 22;
 			item.height = 18;
 			item.value = 10000;
 			item.rare = 5;
-			item.defense = 10;
-		}
-
-		public override void AddRecipes() {
+			item.defense = 14;
+        }
+        public override void UpdateEquip(Player player)
+        {
+            player.moveSpeed += 0.15f;
+        }
+        public override void AddRecipes() {
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(mod.ItemType("OdyesseusBar"), 10);
 			recipe.AddTile(TileID.Anvils);

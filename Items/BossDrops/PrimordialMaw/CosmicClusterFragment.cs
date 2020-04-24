@@ -1,5 +1,6 @@
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria;
 
 namespace ofDarkandBelow.Items.BossDrops.PrimordialMaw
 {
@@ -14,8 +15,8 @@ namespace ofDarkandBelow.Items.BossDrops.PrimordialMaw
 		{
 			item.width = 34;
 			item.height = 34;
-			item.value = 10000;
-			item.rare = 2;
+            item.value = Item.sellPrice(silver: 45);
+            item.rare = 2;
 			item.maxStack = 999;
 			item.material = true;
 		}

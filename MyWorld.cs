@@ -15,7 +15,10 @@ namespace ofDarkandBelow
 {
     public class MyWorld : ModWorld
     {
-        public static bool skeletronBronzeMessage = false;
+        public static bool skeletronBronzeMessage;
+        public static bool downedSunkenKing;
+        public static bool downedAmalgamation;
+        public static bool downedPrimordialMaw;
         public override void PostUpdate()
         {
             if (NPC.downedBoss3 && !skeletronBronzeMessage)
@@ -41,13 +44,24 @@ namespace ofDarkandBelow
         public override void Initialize()
         {
             skeletronBronzeMessage = false;
+			downedSunkenKing = false;
+			downedAmalgamation = false;
+			downedPrimordialMaw = false;
         }
         public override TagCompound Save()
         {
             var downed = new List<string>();
             bool skebronze = false;
             if (skeletronBronzeMessage) skebronze = true;
-
+			if (downedSunkenKing) {
+				downed.Add("sunkenking");
+			}
+			if (downedAmalgamation) {
+				downed.Add("amalgamation");
+			}
+			if (downedPrimordialMaw) {
+				downed.Add("primordialmaw");
+			}
             return new TagCompound {
                 {"downed", downed},
                 {"skeleM", skebronze },
@@ -57,6 +71,26 @@ namespace ofDarkandBelow
         {
             var downed = tag.GetList<string>("downed");
             skeletronBronzeMessage = tag.GetBool("skeleM");
+			downedSunkenKing = downed.Contains("sunkenking");
+			downedAmalgamation = downed.Contains("amalgamation");
+			downedPrimordialMaw = downed.Contains("primordialmaw");
         }
+		public override void LoadLegacy(BinaryReader reader) {
+			int loadVersion = reader.ReadInt32();
+			if (loadVersion == 0) {
+				BitsByte flags = reader.ReadByte();
+				downedSunkenKing = flags[0];
+				downedAmalgamation = flags[1];
+				downedPrimordialMaw = flags[2];
+			}
+		}
+
+		public override void NetSend(BinaryWriter writer) {
+			BitsByte flags = new BitsByte();
+			flags[0] = downedSunkenKing;
+			flags[1] = downedAmalgamation;
+			flags[2] = downedPrimordialMaw;
+			writer.Write(flags);
+		}
     }
 }

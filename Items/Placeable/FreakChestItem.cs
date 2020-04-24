@@ -26,7 +26,8 @@ namespace ofDarkandBelow.Items.Placeable
 		public override void AddRecipes() {
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(ItemID.Chest);
-			recipe.AddIngredient(mod.ItemType("FreakWood"), 10);
+			recipe.AddIngredient(mod.ItemType("FreakWoodItem"), 10);
+			recipe.AddTile(TileID.WorkBenches);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}

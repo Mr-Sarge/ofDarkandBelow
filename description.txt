@@ -1,6 +1,6 @@
-Darkess Falls Across the Land.
-Hell on earth has been unleashed in some form or another.
-2 Bosses, a good deal of new items, and all the more to slaughter.
+"Darkness Falls Across the Land."
+The 'Terraria: of Dark and Below' Mod is a mod aimed to add content and simple fun to your playthrough. It comes with 3 Bosses, a good deal of new items, and all the more to slaughter. This mod is ran by nothing more than passion and fun, and yet contains  a darker theme with inspiration from Dark Souls.
+Current Update: Return of The King (Sunken King Rework)
 
 Special thanks to Al0n37 and ExampleMod for being helpful in making this mod.
 
@@ -8,14 +8,21 @@ Credits:
 Mr. Sarge (Coding)
 DarkPuppey (Spriting)
 Hallam (Coding)
-Theodore F. Sharpe (Spriting)
+Theodore F. Sharpe (Moderation + Editing + cool dude iguess)
 The Kirill Greathly (Spriting)
 BoRKman (Lotsa Spriting)
 MelonDragon (Spriting)
 Gibb50 (Spriting)
 Cturix Kemilon (Sounds)
+Skeletony (Spriting)
+Jsoull (Spriting, Ideas, Support)
+SentryTurbo (Music)
+Lyrebird (Ideas, Lore)
+MoonlitWyvern (Spriting)
+GamingWithZack (Spriting)
+Maskano (Spriting)
 
 Prepare yourself.
-V1.2.3
+V0.3.3
 
 https://forums.terraria.org/index.php?threads/terraria-of-dark-and-below-mod.79548/

@@ -23,8 +23,8 @@ namespace ofDarkandBelow.Items
 
 		public override void SetDefaults() {
 			item.useStyle = 5;
-			item.width = 30;
-			item.height = 26;
+			item.width = 50;
+			item.height = 40;
 			item.useAnimation = 25;
 			item.useTime = 25;
 			item.shootSpeed = 16f;

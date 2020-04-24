@@ -46,13 +46,13 @@ namespace ofDarkandBelow.Projectiles
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
 
-            target.AddBuff(BuffID.OnFire, 180);
-			target.AddBuff(BuffID.CursedInferno, 180);
-			target.AddBuff(BuffID.Bleeding, 220);
-			target.AddBuff(BuffID.Poisoned, 180);
-			target.AddBuff(BuffID.Venom, 180);
-			target.AddBuff(BuffID.ShadowFlame, 120);
-			target.AddBuff(BuffID.Ichor, 220);
+            target.AddBuff(BuffID.OnFire, 360);
+			target.AddBuff(BuffID.CursedInferno, 360);
+			target.AddBuff(BuffID.Bleeding, 440);
+			target.AddBuff(BuffID.Venom, 360);
+			target.AddBuff(153, 290);  //ShadowFlame
+			target.AddBuff(BuffID.Ichor, 440);
+            target.AddBuff(BuffID.BetsysCurse, 250);
             Vector2 position = projectile.Center;
             Main.PlaySound(SoundID.Item14, (int)position.X, (int)position.Y);
             int radius = 5;

@@ -13,28 +13,31 @@ namespace ofDarkandBelow.Items.BossDrops.PrimordialMaw
 		{
 			DisplayName.SetDefault("Celestra");
 			Tooltip.SetDefault("Bring down Deathly Rain"
-			+ "\nThis Item has a very high Crit Chance.");
+			+ "\nCelestra fires 3 arrows rapidly on use.");
 		}
         public override void SetDefaults()
         {
-            item.damage = 28;
-			item.crit = 36;
+            item.damage = 36;
+			item.crit = 6;
             item.noMelee = true;
             item.ranged = true;
-            item.width = 16;
-            item.height = 34;
-            item.useTime = 30;
-            item.useAnimation = 30;
+            item.width = 32;
+            item.height = 62;
+            item.useTime = 13;
+            item.useAnimation = 39;
             item.useStyle = 5;
             item.shoot = 3;
             item.useAmmo = AmmoID.Arrow;
             item.knockBack = 1;
-            item.value = 1000;
-            item.rare = 2;
-            item.UseSound = SoundID.Item5;
-            item.autoReuse = true;
-            item.shootSpeed = 20f;
-			item.scale = 0.8f;
+            item.value = Item.sellPrice(gold: 3);
+            item.rare = 3;
+            item.UseSound = mod.GetLegacySoundSlot(SoundType.Item, "Sounds/Item/Celestra");
+            item.autoReuse = false;
+            item.shootSpeed = 40f;
+        }
+        public override Vector2? HoldoutOffset()
+        {
+            return new Vector2(-12, 0);
         }
     }
 }
