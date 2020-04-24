@@ -10,7 +10,11 @@ namespace ofDarkandBelow.Items.Null
 	{
 		public override void SetStaticDefaults() {
 		    DisplayName.SetDefault("Terror Naginata");
+<<<<<<< HEAD
 			Tooltip.SetDefault("This spear deals Magic Damage and Regens Mana on hit.");
+=======
+			Tooltip.SetDefault("This item deals magic damage and regens mana upon hit.");
+>>>>>>> 3f912c970132cabd93a0330c60ceb9c98094fb73
 		}
 
 		public override void SetDefaults() {
@@ -24,7 +28,11 @@ namespace ofDarkandBelow.Items.Null
 			item.height = 68;
 			item.scale = 1f;
 			item.rare = 2;
+<<<<<<< HEAD
 			item.value = Item.sellPrice(silver: 120);
+=======
+			item.value = Item.sellPrice(silver: 80);
+>>>>>>> 3f912c970132cabd93a0330c60ceb9c98094fb73
 
 			item.magic = true;
 			item.noMelee = true; 
@@ -38,11 +46,19 @@ namespace ofDarkandBelow.Items.Null
 		public override bool CanUseItem(Player player) {
 			return player.ownedProjectileCounts[item.shoot] < 1;
 		}
+<<<<<<< HEAD
 		public override void AddRecipes() {
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(ItemID.Spear, 1);
 			recipe.AddIngredient(mod.ItemType("Neiroplasm"), 30);
 			recipe.AddIngredient(mod.ItemType("ZeroSpirit"), 1);
+=======
+		public override void AddRecipes()
+		{
+			ModRecipe recipe = new ModRecipe(mod);
+			recipe.AddIngredient(mod.ItemType("Neiroplasm"), 15);
+			recipe.AddIngredient((ItemID.Spear), 1);
+>>>>>>> 3f912c970132cabd93a0330c60ceb9c98094fb73
 			recipe.AddTile(TileID.Anvils);
 			recipe.SetResult(this);
 			recipe.AddRecipe();

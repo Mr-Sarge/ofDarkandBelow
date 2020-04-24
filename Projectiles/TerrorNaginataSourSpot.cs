@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Microsoft.Xna.Framework;
+=======
+﻿using Microsoft.Xna.Framework;
+>>>>>>> 3f912c970132cabd93a0330c60ceb9c98094fb73
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -52,4 +56,8 @@ namespace ofDarkandBelow.Projectiles
             projectile.ai[0]++;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 3f912c970132cabd93a0330c60ceb9c98094fb73
