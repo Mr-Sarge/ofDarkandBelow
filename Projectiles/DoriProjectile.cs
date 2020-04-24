@@ -17,8 +17,8 @@ namespace ofDarkandBelow.Projectiles
 		}
 
 		public override void SetDefaults() {
-			projectile.width = 73;
-			projectile.height = 73;
+			projectile.width = 78;
+			projectile.height = 78;
 			projectile.aiStyle = 19;
 			projectile.penetrate = -1;
 			projectile.scale = 1.3f;

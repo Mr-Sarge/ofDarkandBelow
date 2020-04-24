@@ -24,10 +24,10 @@ namespace ofDarkandBelow.Items
 		}
         public override void SetDefaults()
         {
-            item.width = 29;
-            item.height = 31;
+            item.width = 24;
+            item.height = 28;
             item.maxStack = 1;
-            item.value = 100;
+            item.value = Item.sellPrice(copper: 0);
             item.rare = 1;
             item.useAnimation = 30;
             item.useTime = 30;
@@ -40,28 +40,30 @@ namespace ofDarkandBelow.Items
         }
         public override bool UseItem(Player player)
         {
-        int num = NPC.NewNPC((int)(player.position.X + (float)(Main.rand.Next(200, 300))), (int)(player.position.Y - 0f), mod.NPCType("SunkenKing"), 0, 0f, 0f, 0f, 0f, 255);
+        int num = NPC.NewNPC((int)(player.position.X + (float)(Main.rand.Next(200, 300))), (int)(player.position.Y + 40f), mod.NPCType("SunkenKing"), 0, 0f, 0f, 0f, 0f, 255);
         if (Main.netMode == 2 && num < 200)
         {
             NetMessage.SendData(23, -1, -1, null, num, 0f, 0f, 0f, 0, 0, 0);
         }
         Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
-        Main.NewText("The Sunken King has Awoken!", Color.MediumPurple.R, Color.MediumPurple.G, Color.MediumPurple.B);
+        Main.NewText("The Sunken King has Awoken from His Slumber!", Color.MediumPurple.R, Color.MediumPurple.G, Color.MediumPurple.B);
 
          return true;
         }
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.Silk, 7);
-            recipe.AddIngredient(ItemID.DemoniteBar, 2);
-			recipe.AddIngredient(ItemID.GlowingMushroom, 20);
+            recipe.AddIngredient(ItemID.Silk, 5);
+            recipe.AddIngredient(ItemID.ShadowScale, 1);
+            recipe.AddIngredient(ItemID.GlowingMushroom, 15);
+            recipe.AddIngredient(ItemID.Wood, 5);
             recipe.SetResult(this);
             recipe.AddRecipe();
             ModRecipe recipe2 = new ModRecipe(mod);
-            recipe2.AddIngredient(ItemID.Silk, 7);
-            recipe2.AddIngredient(ItemID.CrimtaneBar, 2);
-			recipe2.AddIngredient(ItemID.GlowingMushroom, 20);
+            recipe2.AddIngredient(ItemID.Silk, 5);
+            recipe2.AddIngredient(ItemID.TissueSample, 1);
+            recipe2.AddIngredient(ItemID.GlowingMushroom, 15);
+            recipe2.AddIngredient(ItemID.Wood, 5);
             recipe2.SetResult(this);
             recipe2.AddRecipe();
         }

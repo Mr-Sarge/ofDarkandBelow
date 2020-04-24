@@ -22,8 +22,8 @@ namespace ofDarkandBelow.Items
 			item.useAnimation = 20;
 			item.useStyle = 1;
 			item.knockBack = 6;
-			item.value = 10000;
-			item.rare = 8;
+            item.value = Item.sellPrice(gold: 17);
+            item.rare = 8;
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
 			item.shoot = mod.ProjectileType("SoulShred");

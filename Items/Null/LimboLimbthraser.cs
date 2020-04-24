@@ -16,8 +16,8 @@ namespace ofDarkandBelow.Items.Null
 		}
         public override void SetDefaults()
         {
-            item.width = 30;
-            item.height = 34;
+            item.width = 34;
+            item.height = 48;
             item.value = Item.sellPrice(0, 1, 20, 0);
             item.rare = 3;
             item.noMelee = true;
@@ -28,7 +28,7 @@ namespace ofDarkandBelow.Items.Null
             item.damage = 29;
             item.noUseGraphic = true; // Do not use the item graphic when using the item (we just want the ball to spawn).
             item.shoot = mod.ProjectileType("LimbthrasherProj");
-            item.shootSpeed = 34F;
+            item.shootSpeed = 24F;
             item.UseSound = SoundID.Item1;
             item.melee = true; // Deals melee damage.
             item.channel = true;
@@ -37,6 +37,7 @@ namespace ofDarkandBelow.Items.Null
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(ItemID.DemoniteBar, 10);
 			recipe.AddIngredient(mod.ItemType("Neiroplasm"), 30);
+			recipe.AddIngredient(mod.ItemType("ZeroSpirit"), 1);
 			recipe.AddTile(TileID.Anvils);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
@@ -44,6 +45,7 @@ namespace ofDarkandBelow.Items.Null
 			ModRecipe recipe2 = new ModRecipe(mod);
 			recipe2.AddIngredient(ItemID.CrimtaneBar, 10);
 			recipe2.AddIngredient(mod.ItemType("Neiroplasm"), 30);
+			recipe2.AddIngredient(mod.ItemType("ZeroSpirit"), 1);
 			recipe2.AddTile(TileID.Anvils);
 			recipe2.SetResult(this);
 			recipe2.AddRecipe();

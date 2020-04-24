@@ -17,8 +17,8 @@ namespace ofDarkandBelow.Projectiles
         public override void SetDefaults()
         {
             projectile.CloneDefaults(318);
-			projectile.width = 20;
-			projectile.height = 40;
+			projectile.width = 12;
+			projectile.height = 42;
 		}
 	}
 }

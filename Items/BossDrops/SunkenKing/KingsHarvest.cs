@@ -1,3 +1,4 @@
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -12,19 +13,19 @@ namespace ofDarkandBelow.Items.BossDrops.SunkenKing
 		}
 		public override void SetDefaults()
 		{
-			item.damage = 30;
+			item.damage = 27;
 			item.crit = 10;
 			item.melee = true;
 			item.shoot = 131;
 			item.shootSpeed = 60f;
 			item.width = 52;
 			item.height = 44;
-			item.useTime = 20;
-			item.useAnimation = 20;
+			item.useTime = 24;
+			item.useAnimation = 24;
 			item.useStyle = 1;
 			item.knockBack = 6;
-			item.value = 10000;
-			item.rare = 2;
+            item.value = Item.sellPrice(silver: 25);
+            item.rare = 2;
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
 		}

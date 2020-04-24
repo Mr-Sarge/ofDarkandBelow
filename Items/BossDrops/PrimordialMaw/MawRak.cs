@@ -13,27 +13,31 @@ namespace ofDarkandBelow.Items.BossDrops.PrimordialMaw
 		{
 			DisplayName.SetDefault("Maw-Rak");
 			Tooltip.SetDefault("Bring Cosmic Retribution!"
-			+ "\nInflicts Cosmic Flame'");
+			+ "\nThrows out up to 4 boomerang-like swords.");
 		}
 		public override void SetDefaults()
 		{
 			item.damage = 42;
 			item.melee = true;
-			item.width = 80;
-			item.height = 86;
-			item.useTime = 20;
-			item.useAnimation = 20;
+			item.width = 40;
+			item.height = 44;
+            item.useTime = 15;
+			item.useAnimation = 15;
 			item.useStyle = 1;
 			item.knockBack = 10;
-			item.value = 10000;
-			item.rare = 2;
+            item.value = Item.sellPrice(gold: 2);
+            item.rare = 3;
 			item.UseSound = SoundID.Item1;
-			item.autoReuse = true;
-		}
-
-		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)  
-		{
-			target.AddBuff(mod.BuffType("CosmicFlame"), 200);
-		}
+            item.melee = true;
+            item.noMelee = true;
+            item.noUseGraphic = true;
+            item.autoReuse = true;
+            item.shoot = mod.ProjectileType("MawRakProj");
+            item.shootSpeed = 20f;
+        }
+        public override bool CanUseItem(Player player)
+        {
+            return player.ownedProjectileCounts[item.shoot] < 4;
+        }
 	}
 }

@@ -12,11 +12,11 @@ namespace ofDarkandBelow.Projectiles
 		}
 
 		public override void SetDefaults() {
-			projectile.width = 20;
+			projectile.width = 10;
 			projectile.height = 49;
-			projectile.alpha = 60;
+			projectile.alpha = 120;
 			projectile.friendly = true;
-			projectile.tileCollide = false;
+			projectile.tileCollide = true;
 			projectile.ignoreWater = true;
 			projectile.melee = true;
 			projectile.timeLeft = 400;

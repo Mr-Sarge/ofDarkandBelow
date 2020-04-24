@@ -18,7 +18,6 @@ namespace ofDarkandBelow.Items.Bags
 			item.height = 24;
 			item.rare = 9;
 			item.expert = true;
-			bossBagNPC = mod.NPCType("SunkenKingPhase2");
 		}
 
 		public override bool CanRightClick() {
@@ -44,5 +43,6 @@ namespace ofDarkandBelow.Items.Bags
 				player.QuickSpawnItem(mod.ItemType("SunkenKingMask"));
 			}
 		}
-	}
+        public override int BossBagNPC => mod.NPCType("SunkenKingPhase2New");
+    }
 }

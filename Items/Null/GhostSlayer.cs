@@ -26,8 +26,8 @@ namespace ofDarkandBelow.Items.Null
 			item.useAnimation = 12;
 			item.useStyle = 1;
 			item.knockBack = 5;
-			item.value = 10000;
-			item.rare = 2;
+            item.value = Item.sellPrice(gold: 1);
+            item.rare = 2;
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
 		}

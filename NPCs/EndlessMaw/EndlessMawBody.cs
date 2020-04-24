@@ -16,9 +16,9 @@ namespace ofDarkandBelow.NPCs.EndlessMaw
         public override void SetDefaults()
         {
             npc.width = 46;               //this is where you put the npc sprite width.     important
-            npc.height = 44;              //this is where you put the npc sprite height.   important
+            npc.height = 46;              //this is where you put the npc sprite height.   important
             npc.damage = 30;
-            npc.defense = 15;
+            npc.defense = 40;
             npc.lifeMax = 1;
             npc.friendly = false;
             npc.knockBackResist = 0.0f;
@@ -27,7 +27,12 @@ namespace ofDarkandBelow.NPCs.EndlessMaw
             npc.netAlways = true;
             npc.noGravity = true;
             npc.dontCountMe = true;
-            npc.HitSound = SoundID.NPCHit3;
+            npc.HitSound = SoundID.NPCHit4;
+			npc.buffImmune[mod.BuffType("CosmicFlame")] = true;
+			npc.buffImmune[mod.BuffType("BelowZero")] = true;
+			npc.buffImmune[BuffID.OnFire] = true;
+			npc.buffImmune[BuffID.Frostburn] = true;
+			npc.buffImmune[BuffID.CursedInferno] = true;
         }
         public override void HitEffect(int hitDirection, double damage)
         {
@@ -39,8 +44,23 @@ namespace ofDarkandBelow.NPCs.EndlessMaw
 		private int chaosBall;
         public override bool PreAI()
         {
-		    chaosBall++;
-            int DustID2 = Dust.NewDust(npc.position, npc.width, npc.height, 21, npc.velocity.X * 0.2f, npc.velocity.Y * 0.2f, 20, default(Color), 1f);
+            bool collision = false;
+            if (collision)
+            {
+                if (npc.localAI[0] != 1)
+                    npc.netUpdate = true;
+                npc.localAI[0] = 1f;
+            }
+            else
+            {
+                if (npc.localAI[0] != 0.0)
+                    npc.netUpdate = true;
+                npc.localAI[0] = 0.0f;
+            }
+            if ((npc.velocity.X > 0.0 && npc.oldVelocity.X < 0.0 || npc.velocity.X < 0.0 && npc.oldVelocity.X > 0.0 || (npc.velocity.Y > 0.0 && npc.oldVelocity.Y < 0.0 || npc.velocity.Y < 0.0 && npc.oldVelocity.Y > 0.0)) && !npc.justHit)
+                npc.netUpdate = true;
+            chaosBall++;
+            int DustID2 = Dust.NewDust(npc.position, npc.width, npc.height, mod.DustType("CosmicDust"), npc.velocity.X * 0.2f, npc.velocity.Y * 0.2f, 20, default(Color), 1f);
             Main.dust[DustID2].noGravity = true;
 			{
             if (Main.player[npc.target].dead)

@@ -19,8 +19,8 @@ namespace ofDarkandBelow.Items.BossDrops.PrimordialMaw
 		{
 			item.damage = 30;
 			item.melee = true;
-			item.width = 24;
-			item.height = 22;
+			item.width = 26;
+			item.height = 16;
 			item.useTime = 7;
 			item.useAnimation = 7;
 			item.useStyle = 1;

@@ -9,25 +9,30 @@ namespace ofDarkandBelow.Items.Armor
 	{
 		public override void SetStaticDefaults() {
 		    DisplayName.SetDefault("Odysseus' Helmet");
-			Tooltip.SetDefault("'A man who has been through bitter experiences and travelled far enjoys even his sufferings after a time'");
-		}
+			Tooltip.SetDefault("'A man who has been through bitter experiences and travelled far enjoys even his sufferings after a time'"
+            +"\n+9% Throwing Damage");
+        }
 
 		public override void SetDefaults() {
 			item.width = 26;
 			item.height = 29;
 			item.value = 1000000;
 			item.rare = 5;
-			item.defense = 15;
-		}
-
-		public override bool IsArmorSet(Item head, Item body, Item legs) {
+			item.defense = 13;
+        }
+        public override void UpdateEquip(Player player)
+        {
+            player.thrownDamage += 0.09f;
+        }
+        public override bool IsArmorSet(Item head, Item body, Item legs) {
 			return body.type == mod.ItemType("OdyesseusChestArmor") && legs.type == mod.ItemType("OdyesseusGreaves");
 		}
 
 		public override void UpdateArmorSet(Player player) {
-			player.setBonus = "25% Increase to Throwing Damage and 25% increased movement speed. You are Odyesseus.";
-			player.thrownDamage += 0.25f;
-			player.moveSpeed += 0.25f;
+			player.setBonus = "20% Increase to Throwing Damage, 12% Increased Throwing Crit Chance and 45% increased movement speed. You are Odysseus.";
+			player.thrownDamage += 0.20f;
+            player.thrownCrit += 12;
+            player.moveSpeed += 0.45f;
 		}
 
 		public override void AddRecipes() {

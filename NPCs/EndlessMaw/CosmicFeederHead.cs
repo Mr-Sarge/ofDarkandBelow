@@ -20,7 +20,7 @@ namespace ofDarkandBelow.NPCs.EndlessMaw
         }
         public override void SetDefaults()
         {
-            npc.lifeMax = 500;        //this is the npc health
+            npc.lifeMax = 1000;        //this is the npc health
             npc.damage = 35;    //this is the npc damage
             npc.defense = 4;         //this is the npc defense
             npc.knockBackResist = 0f;
@@ -45,9 +45,31 @@ namespace ofDarkandBelow.NPCs.EndlessMaw
                 Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/CosmicFeederHeadGore"), 1f);
             }
         }
-
+        private int fireTimer;
         public override bool PreAI()
         {
+            fireTimer++;
+            if (fireTimer == 500 || fireTimer == 505 || fireTimer == 510 || fireTimer == 515 || fireTimer == 520 || fireTimer == 525 || fireTimer == 530)
+            {
+                Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Item, "Sounds/Item/PrimordialSpewMinion"), (int)npc.position.X, (int)npc.position.Y);
+                float Speed = 4f;  //projectile speed
+                Vector2 vector8 = new Vector2(npc.Center.X, npc.Center.Y);
+                int damage = 20;  //projectile damage REMEBER THE ACTUAL DAMAGE IS DOUBLE WHAT IT SAYS IN THE CODE
+                int type = mod.ProjectileType("PrimordialBreathMinion");  //put your projectile
+                float rotation = (float)Math.Atan2(vector8.Y, vector8.X);
+                int num54 = Projectile.NewProjectile(vector8.X, vector8.Y, npc.velocity.X, npc.velocity.Y, type, damage, 0f, 0);
+            }
+            if (fireTimer == 650)
+            {
+                if (npc.life <= npc.lifeMax * 0.25)
+                {
+                    fireTimer = 300;
+                }
+                else
+                {
+                    fireTimer = 0;
+                }
+            }
             if (Main.player[npc.target].dead)
             {
                 npc.timeLeft = 0;
@@ -147,7 +169,7 @@ namespace ofDarkandBelow.NPCs.EndlessMaw
 
             // speed determines the max speed at which this NPC can move.
             // Higher value = faster speed.
-            float speed = 10f;
+            float speed = 12f;
             // acceleration is exactly what it sounds like. The speed at which this NPC accelerates.
             float acceleration = 0.3f;
 

@@ -32,6 +32,7 @@ namespace ofDarkandBelow.Items.Armor
 		public override void AddRecipes() {
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(mod.ItemType("Neiroplasm"), 5);
+			recipe.AddIngredient(mod.ItemType("ZeroSpirit"), 1);
 			recipe.AddIngredient(ItemID.Silk, 10);
 			recipe.AddTile(TileID.Anvils);
 			recipe.SetResult(this);

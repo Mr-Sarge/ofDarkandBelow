@@ -1,3 +1,4 @@
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -21,8 +22,8 @@ namespace ofDarkandBelow.Items
 			item.pick = 43;
 			item.useStyle = 1;
 			item.knockBack = 5;
-			item.value = 10000;
-			item.rare = 1;
+            item.value = Item.sellPrice(copper: 60);
+            item.rare = 1;
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
 		}

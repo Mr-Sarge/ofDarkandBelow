@@ -13,35 +13,50 @@ namespace ofDarkandBelow.Projectiles
 		}
 
 		public override void SetDefaults() {
-			projectile.width = 18;
-			projectile.height = 88;
+			projectile.width = 8;
+			projectile.height = 8;
 			projectile.alpha = 20;
-            projectile.CloneDefaults(132);
-		}
+            projectile.friendly = true;
+            projectile.tileCollide = true;
+            projectile.aiStyle = 0;
+            projectile.penetrate = 1;
+            drawOffsetX = -62;
+            drawOriginOffsetY = -20;
+            drawOriginOffsetX = 31;
+            projectile.timeLeft = 50;
+        }
 
 		public override void AI() {
-                                 
-           projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
-           int dust = Dust.NewDust(projectile.position, projectile.width, projectile.height, 21, projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.2f, 17, default(Color), 1f);
-           Main.dust[dust].velocity /= 30f;  //this modify the velocity of the first dust
-           Main.dust[dust].scale = 1f;  //this modify the scale of the first dust
+            Lighting.AddLight(projectile.position, 0.678f, 0.847f, 0.902f);
+            projectile.spriteDirection = projectile.direction = (projectile.velocity.X > 0).ToDirectionInt();
+            // Adding Pi to rotation if facing left corrects the drawing
+            projectile.rotation = projectile.velocity.ToRotation() + (projectile.spriteDirection == 1 ? 0f : MathHelper.Pi);
+            if (projectile.spriteDirection == 1) // facing right
+            {
+                drawOffsetX = -62;
+                drawOriginOffsetY = -2;
+                drawOriginOffsetX = 31;
+            }
+            else
+            {
+                drawOffsetX = 0;
+                drawOriginOffsetY = -2; // doesn't change
+                drawOriginOffsetX = -31;
+            }
+            int dust = Dust.NewDust(projectile.position, projectile.width, projectile.height, 21, projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.2f, 17, default(Color), 1f);
+            Main.dust[dust].velocity /= 30f;  //this modify the velocity of the first dust
+            Main.dust[dust].scale = 1f;  //this modify the scale of the first dust
         }
 		public override void Kill(int timeLeft) {
-			Main.PlaySound(0, (int)projectile.position.X, (int)projectile.position.Y); // Play a death sound
-			Vector2 usePos = projectile.position; // Position to use for dusts
-												  // Please note the usage of MathHelper, please use this! We subtract 90 degrees as radians to the rotation vector to offset the sprite as its default rotation in the sprite isn't aligned properly.
-			Vector2 rotVector =
-				(projectile.rotation - MathHelper.ToRadians(90f)).ToRotationVector2(); // rotation vector to use for dust velocity
-			usePos += rotVector * 16f;
-
-			// Spawn some dusts upon javelin death
-			for (int i = 0; i < 20; i++) {
-				// Create a new dust
-				Dust dust = Dust.NewDustDirect(usePos, projectile.width, projectile.height, 17);
-				dust.position = (dust.position + projectile.Center) / 2f;
-				dust.velocity += rotVector * 2f;
-				dust.velocity *= 0.5f;
-				dust.noGravity = true;
-	    }   }
+            Gore.NewGore(projectile.position, projectile.velocity, mod.GetGoreSlot("Gores/ScalibaarProjBroken1"), 1f);
+            Gore.NewGore(projectile.position, projectile.velocity, mod.GetGoreSlot("Gores/ScalibaarProjBroken2"), 1f);
+            Main.PlaySound(SoundID.Item27, (int)projectile.position.X, (int)projectile.position.Y);
+            for (int i = 0; i < 5; i++)
+            {
+                int a = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y - 16f, Main.rand.Next(-10, 11) * .25f, Main.rand.Next(-10, -5) * .25f, mod.ProjectileType("ScalibaarHome"), (int)(projectile.damage * .25f), 0, projectile.owner);
+                Main.projectile[a].aiStyle = 1;
+                Main.projectile[a].tileCollide = true;
+            }
+        }
     }
 }

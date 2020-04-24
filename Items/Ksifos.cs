@@ -14,20 +14,20 @@ namespace ofDarkandBelow.Items
 		}
 		public override void SetDefaults()
 		{
-			item.damage = 24;
+			item.damage = 20;
 			item.melee = true;
-			item.width = 48;
-			item.height = 48;
+			item.width = 58;
+			item.height = 56;
 			item.useTime = 20;
 			item.useAnimation = 20;
 			item.useStyle = 1;
 			item.knockBack = 6;
-			item.value = 10000;
-			item.rare = 3;
+            item.value = Item.sellPrice(silver: 25);
+            item.rare = 3;
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
 			item.shoot = mod.ProjectileType("KsifosProjectile");
-			item.shootSpeed = 20f;
+			item.shootSpeed = 15f;
 		}
 
 		public override void AddRecipes()

@@ -80,8 +80,13 @@ namespace ofDarkandBelow.Projectiles
             int dust = Dust.NewDust(projectile.position, projectile.width, projectile.height, 16);   //this adds a vanilla terraria dust to the projectile
             Main.dust[dust].velocity /= 30f;  //this modify the velocity of the first dust
             Main.dust[dust].scale = 1f;
-            projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;  
-		}
+            projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
+            projectile.velocity.Y = projectile.velocity.Y + 0.08f; // 0.1f for arrow gravity, 0.4f for knife gravity
+            if (projectile.velocity.Y > 16f) // This check implements "terminal velocity". We don't want the projectile to keep getting faster and faster. Past 16f this projectile will travel through blocks, so this check is useful.
+            {
+                projectile.velocity.Y = 16f;
+            }
+        }
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) //When you hit an NPC
         {
             target.AddBuff(BuffID.Ichor, 260);    //this adds a buff to the npc hit. 210 it the time of the buff

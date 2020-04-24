@@ -18,6 +18,9 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.UI;
+using ofDarkandBelow;
+
+using static ofDarkandBelow.MNet;
 
 namespace ofDarkandBelow
 {
@@ -42,6 +45,40 @@ namespace ofDarkandBelow
             ModTranslation text = CreateTranslation("SkeletronBronzeMessage");
             text.SetDefault("The enemies in the underground hold Bronze!");
             AddTranslation(text);
+
+            Mod yabhb = ModLoader.GetMod("FKBossHealthBar");
+            if (yabhb != null)
+            {
+                yabhb.Call("hbStart");
+                yabhb.Call("hbSetTexture",
+                    GetTexture("UI/PrimordialBarStart"),
+                    GetTexture("UI/PrimordialBarMiddle"),
+                    GetTexture("UI/PrimordialBarEnd"),
+                    GetTexture("UI/oDaBBarFill"));
+                yabhb.Call("hbSetBossHeadCentre", 79, 34);
+                yabhb.Call("hbSetFillDecoOffset", 5);
+                yabhb.Call("hbSetColours",
+                        new Color(0.5f, 0f, 0.5f), // 100%
+                        new Color(0.75f, 0f, 0.25f), // 50%
+                        new Color(1f, 0f, 0f));// 0%
+                yabhb.Call("hbFinishSingle", NPCType("EndlessMawHead"));
+
+                yabhb.Call("hbStart");
+                yabhb.Call("hbSetTexture",
+                    GetTexture("UI/SunkenBarStart"),
+                    GetTexture("UI/SunkenBarMiddle"),
+                    GetTexture("UI/SunkenBarEnd"),
+                    GetTexture("UI/oDaBBarFill"));
+                yabhb.Call("hbSetBossHeadCentre", 79, 34);
+                yabhb.Call("hbSetFillDecoOffset", 5);
+                yabhb.Call("hbSetColours",
+                        new Color(0f, 0.45f, 0.55f), // 100%
+                        new Color(0.25f, 0.3f, 0.45f), // 50%
+                        new Color(1f, 0f, 0f));// 0%
+                yabhb.Call("hbFinishPhases",
+                   NPCType("SunkenKing"),
+                   NPCType("SunkenKingPhase2New"));
+            }
         }
         public override void Unload()
         {
@@ -50,10 +87,10 @@ namespace ofDarkandBelow
         public override void PostSetupContent()
         {
             Mod bossChecklist = ModLoader.GetMod("BossChecklist");
-            if(bossChecklist != null)
+            if (bossChecklist != null)
             {
                 bossChecklist.Call("AddBossWithInfo", "The Sunken King", 4.1451f, (Func<bool>)(() => MyWorld.downedSunkenKing), "Use a [i:" + ItemType("SunkenScroll") + "] in the Glowing Mushroom Biome, and face off against the King!");
-                bossChecklist.Call("AddBossWithInfo", "The Amalgamation", 5.1451f, (Func<bool>)(() => MyWorld.downedAmalgamation), "Spawns randomly in the Dungeon... Prepare for Horror.");
+                bossChecklist.Call("AddBossWithInfo", "The Amalgamation", 5.1451f, (Func<bool>)(() => MyWorld.downedAmalgamation), "Use a [i:" + ItemType("NeiroplasmicCore") + "] at night or spawns randomly in the Dungeon. Prepare for horror.");
                 bossChecklist.Call("AddBossWithInfo", "The Primordial Maw", 5.7f, (Func<bool>)(() => MyWorld.downedAmalgamation), "Use a [i:" + ItemType("PrimordialFragment") + "] anywhere. Fear the Maw.");
             }
         }

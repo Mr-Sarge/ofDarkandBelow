@@ -14,13 +14,13 @@ namespace ofDarkandBelow.Projectiles
 {
     public class AstralArrowProj : ModProjectile
     {
-		float speedX;
-		float speedY;
-		Vector2 position;
+        float speedX;
+        float speedY;
+        Vector2 position;
         public override void SetDefaults()
         {
-            projectile.width = 8;  //Set the hitbox width
-            projectile.height = 8;  //Set the hitbox height
+            projectile.width = 10;  //Set the hitbox width
+            projectile.height = 18;  //Set the hitbox height
             projectile.aiStyle = 1; //How the projectile works
             projectile.friendly = true;  //Tells the game whether it is friendly to players/friendly npcs or not
             projectile.hostile = false; //Tells the game whether it is hostile to players or not
@@ -32,35 +32,85 @@ namespace ofDarkandBelow.Projectiles
             projectile.light = 0.60f; //This defines the projectile light
             aiType = 1; // this is the projectile ai style . 1 is for arrows style
         }
+        public int bounceAmount;
         public override void AI()
         {
+            if (projectile.ai[1] == 0)
+            {
+                bounceAmount = 3;
+                projectile.ai[1] = 1;
+            }
+
             //red | green| blue
             Lighting.AddLight(projectile.Center, 0.4f, 0.0f, 0.4f);  //this defines the projectile light color
-            int dust = Dust.NewDust(projectile.position, projectile.width, projectile.height, 21, projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.2f, 20, default(Color), 1f);
+            int dust = Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType("CosmicDust"), projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.2f, 20, default(Color), 1f);
             Main.dust[dust].velocity /= 30f;  //this modify the velocity of the first dust
             Main.dust[dust].scale = 1f;  //this modify the scale of the first dust
         }
 
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) //When you hit an NPC
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-            target.AddBuff(mod.BuffType("CosmicFlame"), 160);    //this adds a buff to the npc hit. 210 it the time of the buff
+            target.AddBuff(mod.BuffType("CosmicFlame"), 160);
             Vector2 position = projectile.Center;
             Main.PlaySound(SoundID.Item14, (int)position.X, (int)position.Y);
             int radius = 5;
- 
+
             for (int x = -radius; x <= radius; x++)
             {
                 for (int y = -radius; y <= radius; y++)
                 {
                     int xPosition = (int)(x + position.X / 16.0f);
                     int yPosition = (int)(y + position.Y / 16.0f);
- 
+
                     if (Math.Sqrt(x * x + y * y) <= radius + 0.2)
                     {
-                        Dust.NewDust(projectile.position, projectile.width, projectile.height, 21, projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.2f, 20, default(Color), 1f);
-					}
-				}
-			}
-		}
+                        Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType("CosmicDust"), projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.2f, 20, default(Color), 1f);
+                    }
+                }
+            }
+        }
+
+        public override void Kill(int timeLeft)
+        {
+            Vector2 position = projectile.Center;
+            int radius = 5;
+
+            for (int x = -radius; x <= radius; x++)
+            {
+                for (int y = -radius; y <= radius; y++)
+                {
+                    int xPosition = (int)(x + position.X / 16.0f);
+                    int yPosition = (int)(y + position.Y / 16.0f);
+
+                    if (Math.Sqrt(x * x + y * y) <= radius + 0.2)
+                    {
+                        Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType("CosmicDust"), projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.2f, 20, default(Color), 1f);
+                    }
+                }
+            }
+        }
+        public override bool OnTileCollide(Vector2 oldVelocity)
+        {
+            bounceAmount--;
+            if (bounceAmount <= 0)
+            {
+                projectile.Kill();
+            }
+            else
+            {
+                Collision.HitTiles(projectile.position + projectile.velocity, projectile.velocity, projectile.width, projectile.height);
+                Main.PlaySound(SoundID.Item10, projectile.position);
+                Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType("CosmicDust"), projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.2f, 20, default(Color), 0.5f);
+                if (projectile.velocity.X != oldVelocity.X)
+                {
+                    projectile.velocity.X = -oldVelocity.X;
+                }
+                if (projectile.velocity.Y != oldVelocity.Y)
+                {
+                    projectile.velocity.Y = -oldVelocity.Y;
+                }
+            }
+        return false;
+        }
     }
 }

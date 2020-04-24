@@ -22,18 +22,22 @@ namespace ofDarkandBelow.NPCs
                 return true;
             }
         }
-		public bool cosmicFlame = false;
+        public bool horrorHemorrhage = false;
+        public bool cosmicFlame = false;
 		public bool tainted = false;
+		public bool belowZero = false;
         public override void ResetEffects(NPC npc)
         {
             cosmicFlame = false;
 			tainted = false;
-        }
+            belowZero = false;
+            horrorHemorrhage = false;
+    }
         public override void UpdateLifeRegen(NPC npc, ref int damage)
         {
             if (cosmicFlame)
             {
-				int DustID2 = Dust.NewDust(npc.position, npc.width, npc.height, 21, npc.velocity.X * 0.2f, npc.velocity.Y * 0.2f, 20, default(Color), 2f);
+				int DustID2 = Dust.NewDust(npc.position, npc.width, npc.height, mod.DustType("CosmicDust"), npc.velocity.X * 0.2f, npc.velocity.Y * 0.2f, 20, default(Color), 2f);
                 Main.dust[DustID2].noGravity = true;
                 if (npc.lifeRegen > 0)
                 {
@@ -42,8 +46,9 @@ namespace ofDarkandBelow.NPCs
                 npc.lifeRegen -= 25;
                 if (damage < 1)
                 {
-                    damage = 1;
+                    damage = 3;
                 }
+			}
             if (tainted)
 			{
  				int DustID3 = Dust.NewDust(npc.position, npc.width, npc.height, mod.DustType("TaintedDust"), npc.velocity.X * 0.2f, npc.velocity.Y * 0.2f, 100, default(Color), 2f);
@@ -58,6 +63,35 @@ namespace ofDarkandBelow.NPCs
                     damage = 5;
                 }
             }
+            if (belowZero)
+            {
+                int DustID3 = Dust.NewDust(npc.position, npc.width, npc.height, mod.DustType("NullFire"), npc.velocity.X * 0.2f, npc.velocity.Y * 0.2f, 100, default(Color), 2f);
+                Main.dust[DustID3].noGravity = true;
+                if (npc.lifeRegen > 0)
+                {
+                    npc.lifeRegen = 0;
+                }
+                npc.lifeRegen -= 18;
+                if (damage < 1)
+                {
+                    damage = 1;
+                }
+            }
+            if (horrorHemorrhage)
+            {
+            int DustID4 = Dust.NewDust(npc.position, npc.width, npc.height, mod.DustType("HorrorHemorrhageDust"), npc.velocity.X * 0.6f, npc.velocity.Y * 0.2f, 20, default(Color), 2f);
+            Main.dust[DustID4].noGravity = true;
+            npc.defense -= 35;
+            if (npc.lifeRegen > 0)
+            {
+                npc.lifeRegen = 0;
+            }
+                npc.lifeRegen -= 50;
+                if (damage < 1)
+            {
+                damage = 6;
+                }
+            }
         }
     }
-}}
+}

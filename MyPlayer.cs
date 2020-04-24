@@ -21,7 +21,7 @@ namespace ofDarkandBelow
 		public override void ResetEffects() {
 			cosmicFlame = false;
 			tainted = false;
-			riftspiritMinion = false;
+            riftspiritMinion = false;
 			babyNull = false;
 
 		}

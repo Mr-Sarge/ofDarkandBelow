@@ -18,7 +18,7 @@ namespace ofDarkandBelow.NPCs.EndlessMaw
             npc.width = 32;               //this is where you put the npc sprite width.     important
             npc.height = 40;              //this is where you put the npc sprite height.   important
             npc.damage = 10;
-            npc.defense = 10;
+            npc.defense = 25;
             npc.lifeMax = 1;
             npc.friendly = false;
             npc.knockBackResist = 0.0f;
@@ -27,7 +27,7 @@ namespace ofDarkandBelow.NPCs.EndlessMaw
             npc.netAlways = true;
             npc.noGravity = true;
             npc.dontCountMe = true;
-            npc.HitSound = SoundID.NPCHit1;
+            npc.HitSound = SoundID.NPCHit4;
         }
         public override void HitEffect(int hitDirection, double damage)
         {

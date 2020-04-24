@@ -1,3 +1,4 @@
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -7,13 +8,13 @@ namespace ofDarkandBelow.Items.BossDrops.SunkenKing
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Kingly Knife");
+			DisplayName.SetDefault("Royal Knife");
 			Tooltip.SetDefault("'A king's deathly blade.'");
 		}
 		public override void SetDefaults()
 		{
             item.CloneDefaults(1809);
-			item.damage = 24;
+			item.damage = 17;
 			item.shoot = mod.ProjectileType("KinglyKnifeProj");
 		    item.shootSpeed = 25f;
 			item.maxStack = 1;
@@ -23,8 +24,8 @@ namespace ofDarkandBelow.Items.BossDrops.SunkenKing
 			item.useAnimation = 10;
 			item.useStyle = 1;
 			item.knockBack = 2;
-			item.value = 50;
-			item.rare = 2;
+            item.value = Item.sellPrice(silver: 25);
+            item.rare = 2;
 			item.UseSound = SoundID.Item1;
 			item.consumable = false;
 			item.autoReuse = true;

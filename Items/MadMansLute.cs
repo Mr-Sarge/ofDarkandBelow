@@ -27,7 +27,7 @@ namespace ofDarkandBelow.Items
             item.shoot = 278;
             item.useAmmo = AmmoID.Arrow;
             item.knockBack = 1;
-            item.value = 1000000;
+            item.value = Item.sellPrice(gold: 25);
             item.rare = 10;
             item.UseSound = SoundID.Item5;
             item.autoReuse = true;

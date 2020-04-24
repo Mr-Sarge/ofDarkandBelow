@@ -83,14 +83,23 @@ namespace ofDarkandBelow.NPCs.Friendly
 			chat.Add("You Build? Me have wood! Me have stone!");
 			chat.Add("Me get dark wood from icy land! Is cold there.");
 			chat.Add("What coin? Me no need coin.");
-			chat.Add("Me sell weird thing! M-me not know how get it. Human get this if Human give me a copper!", 0.4);
+            chat.Add("Psst. Hey human. Human want some mysterious drink?");
+            chat.Add("Me sell weird thing! M-me not know how get it. Human get this if Human give me a copper!", 0.4);
 			chat.Add("Me get have things thrown at me. Wanna see what me got?");
 			chat.Add("Me find Seed! Me give to you in case.");
 			chat.Add("I get copper, you get item!", 2.0);
 			chat.Add("Me heard Vegemite crystals be infecting people! Or is me remembering wrong...", 0.1961751);
 			chat.Add("Me not can live with humans. Humans kick always me out!", 0.5);
 			chat.Add("Me saw broken fly snake with horns once!", 0.01);
-			return chat;
+            if (MyWorld.downedSunkenKing)
+            {
+                chat.Add("Me eat shrooms. Me feels dizzy now! Me sell shrooms to human!");
+            }
+            if (NPC.downedBoss1)
+            {
+                chat.Add("Me find remains of giant eye and monster, so me have been harvest meat!");
+            }
+            return chat;
 		}
 
         public override void SetChatButtons(ref string button, ref string button2) 
@@ -105,27 +114,40 @@ namespace ofDarkandBelow.NPCs.Friendly
                 openShop = true;
             }
         }
- 
-		public override void SetupShop(Chest shop, ref int nextSlot) {
-			shop.item[nextSlot].SetDefaults(ItemID.Wood);
-			nextSlot++;
-			shop.item[nextSlot].SetDefaults(ItemID.BorealWood);
-			nextSlot++;
-			shop.item[nextSlot].SetDefaults(ItemID.Seed);
-			nextSlot++;
-			shop.item[nextSlot].SetDefaults(ItemID.BlinkrootSeeds);
-			nextSlot++;
-			shop.item[nextSlot].SetDefaults(ItemID.StoneBlock);
-			nextSlot++;
-			shop.item[nextSlot].SetDefaults(ItemID.StrangeBrew);
-			nextSlot++;
-			shop.item[nextSlot].SetDefaults(mod.ItemType("MysteriousDrink"));
-			nextSlot++;
-			shop.item[nextSlot].SetDefaults(mod.ItemType("FreakKnifePlayer"));
-			nextSlot++;
-			shop.item[nextSlot].SetDefaults(mod.ItemType("FreakMaterial"));
-			nextSlot++;
-		}
+
+        public override void SetupShop(Chest shop, ref int nextSlot)
+        {
+            shop.item[nextSlot].SetDefaults(ItemID.Wood);
+            nextSlot++;
+            shop.item[nextSlot].SetDefaults(ItemID.BorealWood);
+            nextSlot++;
+            shop.item[nextSlot].SetDefaults(ItemID.Seed);
+            nextSlot++;
+            shop.item[nextSlot].SetDefaults(ItemID.BlinkrootSeeds);
+            nextSlot++;
+            shop.item[nextSlot].SetDefaults(ItemID.StoneBlock);
+            nextSlot++;
+            shop.item[nextSlot].SetDefaults(ItemID.StrangeBrew);
+            nextSlot++;
+            shop.item[nextSlot].SetDefaults(mod.ItemType("MysteriousDrink"));
+            nextSlot++;
+            shop.item[nextSlot].SetDefaults(mod.ItemType("FreakKnifePlayer"));
+            nextSlot++;
+            shop.item[nextSlot].SetDefaults(mod.ItemType("FreakMaterial"));
+            nextSlot++;
+            if (NPC.downedBoss1)
+            {
+                shop.item[nextSlot].SetDefaults(mod.ItemType("RawMeat"));
+                nextSlot++;
+            }
+            if (MyWorld.downedSunkenKing)
+            {
+                shop.item[nextSlot].SetDefaults(ItemID.GlowingMushroom);
+                nextSlot++;
+                shop.item[nextSlot].SetDefaults(ItemID.MushroomGrassSeeds);
+                nextSlot++;
+            }
+        }
 
 		public override void TownNPCAttackStrength(ref int damage, ref float knockback) {
 			damage = 25;
@@ -133,8 +155,8 @@ namespace ofDarkandBelow.NPCs.Friendly
 		}
 
 		public override void TownNPCAttackCooldown(ref int cooldown, ref int randExtraCooldown) {
-			cooldown = 30;
-			randExtraCooldown = 30;
+			cooldown = 20;
+			randExtraCooldown = 10;
 		}
 
 		public override void TownNPCAttackProj(ref int projType, ref int attackDelay) {
@@ -146,18 +168,13 @@ namespace ofDarkandBelow.NPCs.Friendly
 			multiplier = 12f;
 			randomOffset = 2f;
         }
-        public override float SpawnChance(NPCSpawnInfo spawnInfo)
+        public override bool CanTownNPCSpawn(int numTownNPCs, int money) //Whether or not the conditions have been met for this town NPC to be able to move into town.
         {
-            if (Main.hardMode)
-            {
-                return SpawnCondition.Dungeon.Chance * 0.017f;
-				return SpawnCondition.Cavern.Chance * 0.017f;
-            }
-            else
-            {
-                return SpawnCondition.Dungeon.Chance * 0.01f;
-				return SpawnCondition.Cavern.Chance * 0.01f;
-			}
+            return true;
         }
+        public override bool CheckConditions(int left, int right, int top, int bottom)    //Allows you to define special conditions required for this town NPC's house
+        {
+            return true;  //so when a house is available the npc will  spawn
+		}
 	}
 }

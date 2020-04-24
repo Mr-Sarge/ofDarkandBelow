@@ -14,18 +14,18 @@ namespace ofDarkandBelow.Items.Null
 		}
 
 		public override void SetDefaults() {
-			item.damage = 30;
+			item.damage = 23;
 			item.magic = true;
-			item.mana = 14;
-			item.width = 76;
-			item.height = 76;
-			item.useTime = 21;
-			item.useAnimation = 21;
+			item.mana = 10;
+			item.width = 46;
+			item.height = 46;
+			item.useTime = 29;
+			item.useAnimation = 29;
 			item.useStyle = 5;
 			item.noMelee = true;
 			item.knockBack = 2;
-			item.value = 10000;
-			item.rare = 3;
+            item.value = Item.sellPrice(gold: 2);
+            item.rare = 3;
             item.UseSound = mod.GetLegacySoundSlot(SoundType.Item, "Sounds/Item/woofamalg");
 			item.autoReuse = true;
 			item.shoot = mod.ProjectileType("NullBolt");
@@ -47,7 +47,7 @@ namespace ofDarkandBelow.Items.Null
 	}
 		public override Vector2? HoldoutOffset()
 		{
-			return new Vector2(-5, 0);
+			return new Vector2(-10, 0);
 		}
 	}
 }

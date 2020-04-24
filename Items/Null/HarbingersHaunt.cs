@@ -11,20 +11,20 @@ namespace ofDarkandBelow.Items.Null
 		public override void SetStaticDefaults() {
 		    DisplayName.SetDefault("Harbinger's Haunt");
 			Tooltip.SetDefault("'Burn away their essence.'"
-			+ "\nUses Gel as Ammo and Spits Cursed Flames");
+			+ "\nUses Gel as Ammo and Spits Null Fire");
 		}
 
 		public override void SetDefaults() {
 		    item.CloneDefaults(ItemID.Flamethrower);
-			item.damage = 20;
+			item.damage = 18;
 			item.ranged = true;
-			item.width = 40;
-			item.height = 34;
+			item.width = 62;
+			item.height = 26;
 			item.noMelee = true;
 			item.knockBack = 2;
 			item.shoot = mod.ProjectileType("HarbingersBreath");
-			item.value = 10000;
-			item.rare = 3;
+            item.value = Item.sellPrice(gold: 1);
+            item.rare = 3;
 			item.crit = 12;
 		}
         public override bool ConsumeAmmo(Player player)
@@ -33,7 +33,7 @@ namespace ofDarkandBelow.Items.Null
 		}
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
-			int numberProjectiles = 3 + Main.rand.Next(5);
+			int numberProjectiles = 1 + Main.rand.Next(2);
 			for (int i = 0; i < numberProjectiles; i++)
 			{
 				Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(20));
@@ -45,7 +45,16 @@ namespace ofDarkandBelow.Items.Null
 		}
 		public override Vector2? HoldoutOffset()
 		{
-			return new Vector2(+2, +2);
+			return new Vector2(-5, -2);
+		}
+		public override void AddRecipes() {
+			ModRecipe recipe = new ModRecipe(mod);
+			recipe.AddIngredient(mod.ItemType("Neiroplasm"), 50);
+			recipe.AddIngredient(mod.ItemType("ZeroSpirit"), 1);
+			recipe.AddIngredient(ItemID.Gel, 50);
+			recipe.AddTile(TileID.Anvils);
+			recipe.SetResult(this);
+			recipe.AddRecipe();
 		}
 	}
 }

@@ -37,7 +37,6 @@ namespace ofDarkandBelow.NPCs.EndlessMaw
             npc.value = Item.buyPrice(0, 0, 0, 0);
             npc.npcSlots = 1f;
             npc.netAlways = true;
-            banner = npc.type;
         }
         public override void HitEffect(int hitDirection, double damage)
         {

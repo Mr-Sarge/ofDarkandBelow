@@ -15,18 +15,18 @@ namespace ofDarkandBelow.Items
 		}
 		public override void SetDefaults()
 		{
-			item.damage = 40;
+			item.damage = 20;
 			item.shoot = 9;
 			item.shootSpeed = 60f;
 			item.melee = true;
 			item.width = 44;
 			item.height = 48;
-			item.useTime = 40;
-			item.useAnimation = 40;
+			item.useTime = 25;
+			item.useAnimation = 25;
 			item.useStyle = 1;
 			item.knockBack = 6;
-			item.value = 1000000;
-			item.rare = 3;
+            item.value = Item.sellPrice(gold: 1);
+            item.rare = 3;
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
 		}

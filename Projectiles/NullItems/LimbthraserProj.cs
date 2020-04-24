@@ -11,10 +11,10 @@ namespace ofDarkandBelow.Projectiles.NullItems
     {
         public override void SetDefaults()
         {
-            projectile.width = 20;
-            projectile.height = 20;
+            projectile.width = 30;
+            projectile.height = 38;
             projectile.friendly = true;
-			projectile.scale = 1.2f;
+			projectile.scale = 0.85f;
             projectile.penetrate = -1; // Penetrates NPCs infinitely.
             projectile.melee = true; // Deals melee dmg.
 
@@ -27,7 +27,7 @@ namespace ofDarkandBelow.Projectiles.NullItems
         {
             // So set the correct path here to load the chain texture. 'YourModName' is of course the name of your mod.
             // Then into the Projectiles folder and take the texture that is called 'CustomFlailBall_Chain'.
-            Texture2D texture = ModLoader.GetTexture("ofDarkandBelow/Projectiles/NullItems/Limbthrasher_Chain");
+            Texture2D texture = ModContent.GetTexture("ofDarkandBelow/Projectiles/NullItems/Limbthrasher_Chain");
 
             Vector2 position = projectile.Center;
             Vector2 mountedCenter = Main.player[projectile.owner].MountedCenter;
@@ -60,14 +60,15 @@ namespace ofDarkandBelow.Projectiles.NullItems
             }
 
             return true;
+		}
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        {
+            target.AddBuff(mod.BuffType("BelowZero"), 160);   //this make so when the projectile/flame hit a npc, gives it the buff  onfire , 80 = 3 seconds
         }
-		private int shootTimer;
         public override void AI()
-		{
-            shootTimer++;
-            if (shootTimer >= 40)
-                Projectile.NewProjectile(projectile.position.X, projectile.position.Y, 4, 4, mod.ProjectileType("NullBolt"), 20, 2, projectile.whoAmI);
-                shootTimer = 0;
+        {
+            int dust = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, mod.DustType("NullFire"), projectile.velocity.X * 1.2f, projectile.velocity.Y * 1.2f, 60, default(Color), 1f);   //this defines the flames dust and color, change DustID to wat dust you want from Terraria, or add mod.DustType("CustomDustName") for your custom dust
+            Main.dust[dust].noGravity = true; //this make so the dust has no gravity
 		}
 	}
 }

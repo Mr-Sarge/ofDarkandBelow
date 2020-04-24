@@ -28,7 +28,7 @@ namespace ofDarkandBelow.Projectiles
         }
         public override void AI()
         {
-            int DustID2 = Dust.NewDust(projectile.position, projectile.width, projectile.height, 21, projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.2f, 20, default(Color), 1.5f);
+            int DustID2 = Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType("CosmicDust"), projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.2f, 20, default(Color), 1.5f);
             Main.dust[DustID2].noGravity = true;
         }
 
@@ -37,9 +37,12 @@ namespace ofDarkandBelow.Projectiles
 
             target.AddBuff(mod.BuffType("CosmicFlame"), 200);    //this adds a buff to the npc hit. 210 it the time of the buff
         }
-			public override void Kill(int timeLeft) {
-			Main.PlaySound(0, (int)projectile.position.X, (int)projectile.position.Y); // Play a death sound
-			Vector2 usePos = projectile.position; // Position to use for dusts
+			public override void Kill(int timeLeft)
+            {
+			Main.PlaySound(SoundID.Item14, (int)projectile.position.X, (int)projectile.position.Y); // Play a death sound
+            Gore.NewGore(projectile.position, projectile.velocity, mod.GetGoreSlot("Gores/EndlessBallBroke1"), 1f);
+            Gore.NewGore(projectile.position, -projectile.velocity, mod.GetGoreSlot("Gores/EndlessBallBroke2"), 1f);
+            Vector2 usePos = projectile.position; // Position to use for dusts
 												  // Please note the usage of MathHelper, please use this! We subtract 90 degrees as radians to the rotation vector to offset the sprite as its default rotation in the sprite isn't aligned properly.
 			Vector2 rotVector =
 				(projectile.rotation - MathHelper.ToRadians(90f)).ToRotationVector2(); // rotation vector to use for dust velocity

@@ -11,7 +11,7 @@ namespace ofDarkandBelow.Projectiles
     {
         public override void SetDefaults()
         {
-            projectile.CloneDefaults(ProjectileID.GemHookDiamond);
+            projectile.CloneDefaults(ProjectileID.BatHook);
         }
  
         // Use this hook for hooks that can have multiple hooks midflight: Dual Hook, Web Slinger, Fish Hook, Static Hook, Lunar Hook
@@ -66,7 +66,7 @@ namespace ofDarkandBelow.Projectiles
         // Amethyst Hook is 300, Static Hook is 600
         public override float GrappleRange()
         {
-            return 485f;       //this is the grappling hook range
+            return 370f;       //this is the grappling hook range
         }
  
         public override void NumGrappleHooks(Player player, ref int numHooks)
@@ -77,12 +77,12 @@ namespace ofDarkandBelow.Projectiles
         // default is 11, Lunar is 24
         public override void GrappleRetreatSpeed(Player player, ref float speed)
         {
-            speed = 16f;   //this is the grappling hook retire speed
+            speed = 19f;   //this is the grappling hook retire speed
         }
  
         public override void PostDraw(Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch, Color lightColor)
         {
-            Texture2D texture = ModLoader.GetTexture("ofDarkandBelow/Projectiles/CosmicGrappleProj_Chain");    //this where the chain of grappling hook is drawn
+            Texture2D texture = ModContent.GetTexture("ofDarkandBelow/Projectiles/CosmicGrappleProj_Chain");    //this where the chain of grappling hook is drawn
                                                       //change YourModName with ur mod name/ and CustomHookPr_Chain with the name of ur one
             Vector2 position = projectile.Center;
             Vector2 mountedCenter = Main.player[projectile.owner].MountedCenter;
