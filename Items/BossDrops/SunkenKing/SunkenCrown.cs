@@ -13,11 +13,12 @@ namespace ofDarkandBelow.Items.BossDrops.SunkenKing
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Sunken Crown");
-			Tooltip.SetDefault("'The Crown of a Dead King.'"
-			+ "\n7% Decreased Movement Speed"
-			+ "\n+7 Defense"
-			+ "\n4% Increased Melee Damage");
-		}
+			Tooltip.SetDefault("'The Crown of a Deceased Surface-Sovereign...'"
+			+ "\n+8 Defense"
+			+ "\nWhen Below 50% life, you gain 5 more defense and"
+            + "\na miniature Sunken Wyvern shall protect you."
+            + "\nHer damage is scaled off of your max life.");
+        }
 
 		public override void SetDefaults() {
 			item.width = 32;
@@ -28,9 +29,9 @@ namespace ofDarkandBelow.Items.BossDrops.SunkenKing
 			item.accessory = true;
 		}
 		public override void UpdateAccessory(Player player, bool hideVisual) {
-			player.meleeDamage += .04f;
-			player.statDefense += 7;
-			player.moveSpeed -= 0.07f;
-		}
+			player.statDefense += 8;
+            SModPlayer modPlayer = (SModPlayer)player.GetModPlayer(mod, "SModPlayer");
+            modPlayer.sunkenCrownEffect = true;
+        }
 	}
 }

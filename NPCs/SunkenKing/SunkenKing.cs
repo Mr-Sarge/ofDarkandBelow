@@ -13,6 +13,7 @@ using ofDarkandBelow.Projectiles;
 
 namespace ofDarkandBelow.NPCs.SunkenKing
 {
+    [AutoloadBossHead]
     public class SunkenKing : ModNPC
     {
         public override void SetStaticDefaults()
@@ -41,7 +42,7 @@ namespace ofDarkandBelow.NPCs.SunkenKing
         }
         public override bool CheckDead()
         {
-            Main.PlaySound(SoundLoader.customSoundType, (int)npc.position.X, (int)npc.position.Y, mod.GetSoundSlot(SoundType.Custom, "Sounds/Bosses/OldTerraSeq"));
+            Main.PlaySound(SoundLoader.customSoundType, (int)npc.position.X, (int)npc.position.Y, mod.GetSoundSlot(SoundType.Custom, "Sounds/Bosses/OldTerraSeq2"));
             npc.SetDefaults(mod.NPCType("SunkenKingTransition"));
             return false;
         }
@@ -58,6 +59,15 @@ namespace ofDarkandBelow.NPCs.SunkenKing
             int frame = (int)(npc.frameCounter / 2.0);
             if (frame >= Main.npcFrameCount[npc.type]) frame = 0;
             npc.frame.Y = frame * frameHeight;
+        }
+        public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
+        {
+            Texture2D texture = Main.npcTexture[npc.type];
+            Texture2D glowMask = mod.GetTexture("NPCs/SunkenKing/SunkenKing_glowmask");
+            var effects = npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
+            spriteBatch.Draw(texture, npc.Center - Main.screenPosition, npc.frame, drawColor, npc.rotation, npc.frame.Size() / 2, npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
+            spriteBatch.Draw(glowMask, npc.Center - Main.screenPosition, npc.frame, npc.GetAlpha(Color.White), npc.rotation, npc.frame.Size() / 2, npc.scale, effects, 0);
+            return false;
         }
         public override void AI()
         {
@@ -88,7 +98,20 @@ namespace ofDarkandBelow.NPCs.SunkenKing
                     }
                 }
             }
-        return;
+            if (!player.active || player.dead)
+            {
+                npc.TargetClosest(false);
+                player = Main.player[npc.target];
+                if (!player.active || player.dead)
+                {
+                    npc.velocity = new Vector2(0f, -10f);
+                    if (npc.timeLeft > 10)
+                    {
+                        npc.timeLeft = 10;
+                    }
+                }
+            }
+            return;
         }
         private int attack1;
         private int attack2;

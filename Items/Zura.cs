@@ -50,8 +50,11 @@ namespace ofDarkandBelow.Items
 		}
 		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)  
 		{
-			player.statLife += 60;
-			player.HealEffect(60, true);
+            if (target.immortal == false)
+            {
+                player.statLife += 60;
+                player.HealEffect(60, true);
+            }
         }
 		public override void ModifyTooltips(List<TooltipLine> tooltips) {
             foreach (TooltipLine line2 in tooltips)

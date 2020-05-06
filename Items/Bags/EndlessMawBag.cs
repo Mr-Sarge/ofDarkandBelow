@@ -27,7 +27,8 @@ namespace ofDarkandBelow.Items.Bags
 		public override void OpenBossBag(Player player) {
 			player.TryGettingDevArmor();
             player.QuickSpawnItem(mod.ItemType("CosmicClusterFragment"), 45);
-			if (Main.rand.NextBool(3)) {
+            player.QuickSpawnItem(mod.ItemType("HeartofTheVoid"));
+            if (Main.rand.NextBool(3)) {
           	   player.QuickSpawnItem(mod.ItemType("Celestra"));
 			}
 			if (Main.rand.NextBool(3)) {

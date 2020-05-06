@@ -21,8 +21,8 @@ namespace ofDarkandBelow.Items
             item.ranged = true;
             item.width = 74;
             item.height = 40;
-            item.useTime = 21;
-            item.useAnimation = 21;
+            item.useTime = 22;
+            item.useAnimation = 22;
             item.useStyle = 5;
             item.shoot = 10;
             item.useAmmo = AmmoID.Bullet;
@@ -38,11 +38,11 @@ namespace ofDarkandBelow.Items
 			int numberProjectiles = 10 + Main.rand.Next(2); // 4 or 5 shots
 			for (int i = 0; i < numberProjectiles; i++)
 			{
-				Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(9)); // 30 degree spread.
-				// If you want to randomize the speed to stagger the projectiles
-				// float scale = 1f - (Main.rand.NextFloat() * .3f);
-				// perturbedSpeed = perturbedSpeed * scale; 
-				Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
+				Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(8));
+                Vector2 perturbedSpeedno2 = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(4));
+                speedX = perturbedSpeedno2.X;
+                speedY = perturbedSpeedno2.Y;
+                Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
 			}
 			return true;
 		}
@@ -52,10 +52,9 @@ namespace ofDarkandBelow.Items
 		}
 		public override void AddRecipes() {
 			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.SniperRifle);
 			recipe.AddIngredient(ItemID.TacticalShotgun);
 			recipe.AddIngredient(mod.ItemType("SarcoSpitfire"));
-			recipe.AddIngredient(ItemID.ShroomiteBar, 20);
+			recipe.AddIngredient(ItemID.ShroomiteBar, 15);
 			recipe.AddTile(TileID.Anvils);
 			recipe.SetResult(this);
 			recipe.AddRecipe();

@@ -69,7 +69,7 @@ namespace ofDarkandBelow
                     GetTexture("UI/SunkenBarMiddle"),
                     GetTexture("UI/SunkenBarEnd"),
                     GetTexture("UI/oDaBBarFill"));
-                yabhb.Call("hbSetBossHeadCentre", 79, 34);
+                yabhb.Call("hbSetBossHeadCentre", 3, 34);
                 yabhb.Call("hbSetFillDecoOffset", 5);
                 yabhb.Call("hbSetColours",
                         new Color(0f, 0.45f, 0.55f), // 100%
@@ -77,7 +77,7 @@ namespace ofDarkandBelow
                         new Color(1f, 0f, 0f));// 0%
                 yabhb.Call("hbFinishPhases",
                    NPCType("SunkenKing"),
-                   NPCType("SunkenKingPhase2New"));
+                   NPCType("SunkenKingPhase2"));
             }
         }
         public override void Unload()

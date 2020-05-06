@@ -12,7 +12,7 @@ namespace ofDarkandBelow.Items.Armor
 		public override void SetStaticDefaults() {
 		    DisplayName.SetDefault("Theseus' Shoes");
 			Tooltip.SetDefault("Let the maze guide you"
-				+ "\n35% increased movement speed");
+				+ "\n25% increased movement speed");
 		}
 
 		public override void SetDefaults() {
@@ -24,7 +24,7 @@ namespace ofDarkandBelow.Items.Armor
 		}
 
 		public override void UpdateEquip(Player player) {
-			player.moveSpeed += 0.35f;
+			player.moveSpeed += 0.25f;
 		}
 		public override void AddRecipes() {
 			ModRecipe recipe = new ModRecipe(mod);

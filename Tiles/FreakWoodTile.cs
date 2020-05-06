@@ -10,7 +10,9 @@ namespace ofDarkandBelow.Tiles
 		public override void SetDefaults() {
 			Main.tileSolid[Type] = true;
 			Main.tileMergeDirt[Type] = true;
-			Main.tileBlockLight[Type] = true;
+            Main.tileMerge[Type][33] = true; //Merges with Wood
+            Main.tileMerge[Type][1] = true; //Merges with Stone
+            Main.tileBlockLight[Type] = true;
 			Main.tileLighted[Type] = true;
 			drop = mod.ItemType("FreakWoodItem");
 			AddMapEntry(new Color(Color.Green.R, Color.Green.G, Color.Green.B));

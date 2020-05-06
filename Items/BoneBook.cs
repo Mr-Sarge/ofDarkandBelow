@@ -29,7 +29,7 @@ namespace ofDarkandBelow.Items
             item.autoReuse = true;
             item.useTurn = true;
 			item.shoot = 270;
-			item.shootSpeed = 35f;
+			item.shootSpeed = 50f;
 			item.useStyle = 5;
         }
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)

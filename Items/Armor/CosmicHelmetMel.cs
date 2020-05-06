@@ -18,7 +18,7 @@ namespace ofDarkandBelow.Items.Armor
 			item.height = 22;
             item.value = Item.sellPrice(gold: 2);
 			item.rare = 3;
-			item.defense = 10;
+			item.defense = 9;
 		}
 
 		public override bool IsArmorSet(Item head, Item body, Item legs) {
@@ -30,10 +30,10 @@ namespace ofDarkandBelow.Items.Armor
 		}
 
 		public override void UpdateArmorSet(Player player) {
-			player.setBonus = "12% Increased Melee Damage"
-                + "\n20% Increase Melee Speed";
-			player.meleeDamage += 0.12f;
-            player.meleeSpeed += 0.20f;
+			player.setBonus = "6% Increased Melee Damage"
+                + "\n25% Increase Melee Speed";
+			player.meleeDamage += 0.06f;
+            player.meleeSpeed += 0.25f;
 		}
 
 		public override void AddRecipes() {

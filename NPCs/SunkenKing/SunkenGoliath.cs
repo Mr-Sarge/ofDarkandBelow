@@ -26,7 +26,7 @@ namespace ofDarkandBelow.NPCs.SunkenKing
             npc.friendly = false;
             npc.damage = 25;
             npc.defense = 45;
-            npc.lifeMax = 1000;
+            npc.lifeMax = 250;
             npc.HitSound = SoundID.NPCHit41;
             npc.DeathSound = SoundID.NPCDeath41;
             npc.value = 0f;
@@ -62,12 +62,14 @@ namespace ofDarkandBelow.NPCs.SunkenKing
             }
         }
         public bool charge1;
+        public bool rest;
         public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
         {
             Texture2D texture = Main.npcTexture[npc.type];
             Texture2D chargeAni = mod.GetTexture("NPCs/SunkenKing/SunkenGoliath_charge");
+            Texture2D restAni = mod.GetTexture("NPCs/SunkenKing/SunkenGoliath_rest");
             var effects = npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
-            if (!charge1)
+            if (!charge1 && !rest)
             {
                 spriteBatch.Draw(texture, npc.Center - Main.screenPosition, npc.frame, drawColor, npc.rotation, npc.frame.Size() / 2, npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
             }
@@ -77,6 +79,13 @@ namespace ofDarkandBelow.NPCs.SunkenKing
                 int num214 = chargeAni.Height / 4;
                 int y6 = num214 * chargeFrame;
                 Main.spriteBatch.Draw(chargeAni, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Microsoft.Xna.Framework.Rectangle(0, y6, chargeAni.Width, num214)), drawColor, npc.rotation, new Vector2((float)chargeAni.Width / 2f, (float)num214 / 2f), npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
+            }
+            if (rest)
+            {
+                Vector2 drawCenter = new Vector2(npc.Center.X, npc.Center.Y);
+                int num214 = restAni.Height / 9;
+                int y6 = num214 * restFrame;
+                Main.spriteBatch.Draw(restAni, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Microsoft.Xna.Framework.Rectangle(0, y6, restAni.Width, num214)), drawColor, npc.rotation, new Vector2((float)restAni.Width / 2f, (float)num214 / 2f), npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
             }
             return false;
         }
@@ -90,7 +99,10 @@ namespace ofDarkandBelow.NPCs.SunkenKing
         }
         public int chargeFrame;
         public int chargeCounter;
+        public int restFrame;
+        public int restCounter;
         private int chargeTimer;
+        private int shroomTimer;
         public override void AI()
         {
             if (Main.player[npc.target].dead)
@@ -110,6 +122,20 @@ namespace ofDarkandBelow.NPCs.SunkenKing
                     chargeFrame = 0;
                 }
             }
+            if (rest == true)
+            {
+                restCounter++;
+                if (restCounter > 6)
+                {
+                    restFrame++;
+                    restCounter = 0;
+                }
+                if (restFrame >= 9)
+                {
+                    restFrame = 0;
+                }
+            }
+            return;
         }
         public override bool PreAI()
         {
@@ -123,6 +149,12 @@ namespace ofDarkandBelow.NPCs.SunkenKing
                 npc.spriteDirection = -1;
             }
             chargeTimer++;
+            shroomTimer++;
+            if (shroomTimer == 120)
+            {
+                Projectile.NewProjectile((int)npc.Center.X, (int)npc.Center.Y, 0f, 0f, mod.ProjectileType("tinyshroom"), 10, 0f, 0);
+                shroomTimer = 0;
+            }
             if (chargeTimer >= 340)
             {
                 charge1 = true;
@@ -145,9 +177,11 @@ namespace ofDarkandBelow.NPCs.SunkenKing
                 npc.velocity.X *= 0;
                 npc.defense = 0;
                 npc.damage = 12;
+                rest = true;
             }
             if (chargeTimer == 570)
             {
+                rest = false;
                 if (npc.life >= npc.lifeMax * 0.50)
                 {
                     chargeTimer = 100;

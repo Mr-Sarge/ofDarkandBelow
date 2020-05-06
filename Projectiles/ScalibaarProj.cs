@@ -20,6 +20,7 @@ namespace ofDarkandBelow.Projectiles
             projectile.tileCollide = true;
             projectile.aiStyle = 0;
             projectile.penetrate = 1;
+            projectile.scale = 1.15f;
             drawOffsetX = -62;
             drawOriginOffsetY = -20;
             drawOriginOffsetX = 31;
@@ -48,9 +49,24 @@ namespace ofDarkandBelow.Projectiles
             Main.dust[dust].scale = 1f;  //this modify the scale of the first dust
         }
 		public override void Kill(int timeLeft) {
-            Gore.NewGore(projectile.position, projectile.velocity, mod.GetGoreSlot("Gores/ScalibaarProjBroken1"), 1f);
-            Gore.NewGore(projectile.position, projectile.velocity, mod.GetGoreSlot("Gores/ScalibaarProjBroken2"), 1f);
-            Main.PlaySound(SoundID.Item27, (int)projectile.position.X, (int)projectile.position.Y);
+
+            Vector2 position = projectile.Center;
+            int radius = 5;
+
+            for (int x = -radius; x <= radius; x++)
+            {
+                for (int y = -radius; y <= radius; y++)
+                {
+                    int xPosition = (int)(x + position.X / 16.0f);
+                    int yPosition = (int)(y + position.Y / 16.0f);
+
+                    if (Math.Sqrt(x * x + y * y) <= radius + 0.2)
+                    {
+                        Dust.NewDust(projectile.position, projectile.width, projectile.height, 21, projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.2f, 20, default(Color), 1f);
+                    }
+                }
+            }
+        Main.PlaySound(SoundID.Item27, (int)projectile.position.X, (int)projectile.position.Y);
             for (int i = 0; i < 5; i++)
             {
                 int a = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y - 16f, Main.rand.Next(-10, 11) * .25f, Main.rand.Next(-10, -5) * .25f, mod.ProjectileType("ScalibaarHome"), (int)(projectile.damage * .25f), 0, projectile.owner);

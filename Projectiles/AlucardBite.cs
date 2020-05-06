@@ -68,13 +68,16 @@ namespace ofDarkandBelow.Projectiles
         }
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) //When you hit an NPC
         {
-            Player owner = Main.player[projectile.owner];
-            int lifeSteal = damage / 15;
-            owner.statLife += lifeSteal;
-            owner.HealEffect(lifeSteal);
             target.AddBuff(BuffID.ShadowFlame, 180);
             target.AddBuff(BuffID.Venom, 180);
             target.AddBuff(BuffID.Bleeding, 180);
+            if (target.immortal == false)
+            {
+                Player owner = Main.player[projectile.owner];
+                int lifeSteal = damage / 15;
+                owner.statLife += lifeSteal;
+                owner.HealEffect(lifeSteal);
+            }
         }
     }
 }

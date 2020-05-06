@@ -301,13 +301,13 @@ namespace ofDarkandBelow.NPCs.EndlessMaw
                 if (npc.life <= npc.lifeMax * 0.22 && !speedUp3)
                 {
                     speed = 23f;
-                    acceleration = 0.85f;
+                    acceleration = 0.6f;
                     speedUp3 = true;
                 }
                 if (npc.life <= npc.lifeMax * 0.10 && !speedUpFinal)
                 {
                     speed = 29f;
-                    acceleration = 0.90f;
+                    acceleration = 0.70f;
                     speedUp3 = true;
                 }
 

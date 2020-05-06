@@ -10,7 +10,7 @@ namespace ofDarkandBelow.Items.Armor
 		public override void SetStaticDefaults() {
 		    DisplayName.SetDefault("Cosmic Bandana");
 			Tooltip.SetDefault("A fine piece of facewear."
-				+ "\n+1 Max Minions"
+				+ "\n+2 Max Minions"
 				+ "\n+15 Max Mana");
 		}
 
@@ -30,14 +30,18 @@ namespace ofDarkandBelow.Items.Armor
 			player.statManaMax2 += 15;
 			player.maxMinions++;
             player.maxMinions++;
-            player.maxMinions++;
         }
 
-		public override void UpdateArmorSet(Player player) {
-			player.setBonus = "15% Increase to Summon Damage,"
+        public override void UpdateArmorSet(Player player) {
+            player.setBonus = "15% Increase to Summon Damage,"
+                + "\n+2 Max Minions,"
                 + "\nYou will gain the 'Cosmic Escapee' buff when you are struck.";
 			player.minionDamage += 0.15f;
-		}
+            player.maxMinions++;
+            player.maxMinions++;
+            SModPlayer modPlayer = (SModPlayer)player.GetModPlayer(mod, "SModPlayer");
+            player.GetModPlayer<SModPlayer>().cosmicEscapeeEffect = true;
+        }
 
 		public override void AddRecipes() {
 			ModRecipe recipe = new ModRecipe(mod);

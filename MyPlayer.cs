@@ -17,12 +17,14 @@ namespace ofDarkandBelow
 	   public bool cosmicFlame;
 	   public bool tainted;
 	   public bool riftspiritMinion;
-	   public bool babyNull;
+        public bool lilSunkMinion;
+        public bool babyNull;
 		public override void ResetEffects() {
 			cosmicFlame = false;
 			tainted = false;
             riftspiritMinion = false;
-			babyNull = false;
+            lilSunkMinion = false;
+            babyNull = false;
 
 		}
 	public override void DrawEffects(PlayerDrawInfo drawInfo, ref float r, ref float g, ref float b, ref float a, ref bool fullBright) {

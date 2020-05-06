@@ -23,8 +23,8 @@ namespace ofDarkandBelow.NPCs.SunkenKing
         public override void SetDefaults()
         {
             npc.lifeMax = 4200;
-            npc.width = 250;
-            npc.height = 434;
+            npc.width = 218;
+            npc.height = 404;
             npc.friendly = false;
             npc.damage = 0;
             npc.defense = 999;
@@ -35,6 +35,7 @@ namespace ofDarkandBelow.NPCs.SunkenKing
             aiType = 0;
             npc.noTileCollide = true;
             npc.noGravity = true;
+            npc.dontTakeDamage = true;
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/SunkenBelowMadness");
         }
         public bool transition2B;
@@ -43,14 +44,19 @@ namespace ofDarkandBelow.NPCs.SunkenKing
         public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
         {
             Texture2D texture = Main.npcTexture[npc.type];
+            Texture2D textureglow = mod.GetTexture("NPCs/SunkenKing/SunkenKingTransition_glow");
             Texture2D transition2 = mod.GetTexture("NPCs/SunkenKing/SunkenKingTransition2");
+            Texture2D transition2glow = mod.GetTexture("NPCs/SunkenKing/SunkenKingTransition2_glow");
             Texture2D transition3 = mod.GetTexture("NPCs/SunkenKing/SunkenKingTransition3");
+            Texture2D transition3glow = mod.GetTexture("NPCs/SunkenKing/SunkenKingTransition3_glow");
             Texture2D transition5 = mod.GetTexture("NPCs/SunkenKing/SunkenKingTransition5");
+            Texture2D transition5glow = mod.GetTexture("NPCs/SunkenKing/SunkenKingTransition5_glow");
 
             var effects = npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
             if (!transition2B && !transition3B && !transition5B)
             {
                 spriteBatch.Draw(texture, npc.Center - Main.screenPosition, npc.frame, drawColor, npc.rotation, npc.frame.Size() / 2, npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
+                spriteBatch.Draw(textureglow, npc.Center - Main.screenPosition, npc.frame, npc.GetAlpha(Color.White), npc.rotation, npc.frame.Size() / 2, npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
             }
             if (transition2B)
             {
@@ -58,6 +64,7 @@ namespace ofDarkandBelow.NPCs.SunkenKing
                 int num214 = transition2.Height / 11; // 6 is number of frames
                 int y6 = num214 * transition2Frame;
                 Main.spriteBatch.Draw(transition2, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Microsoft.Xna.Framework.Rectangle(0, y6, transition2.Width, num214)), drawColor, npc.rotation, new Vector2((float)transition2.Width / 2f, (float)num214 / 2f), npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
+                Main.spriteBatch.Draw(transition2glow, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Microsoft.Xna.Framework.Rectangle(0, y6, transition2glow.Width, num214)), npc.GetAlpha(Color.White), npc.rotation, new Vector2((float)transition2glow.Width / 2f, (float)num214 / 2f), npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
             }
             if (transition3B)
             {
@@ -65,6 +72,7 @@ namespace ofDarkandBelow.NPCs.SunkenKing
                 int num214 = transition3.Height / 12; // 6 is number of frames
                 int y6 = num214 * transition3Frame;
                 Main.spriteBatch.Draw(transition3, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Microsoft.Xna.Framework.Rectangle(0, y6, transition3.Width, num214)), drawColor, npc.rotation, new Vector2((float)transition3.Width / 2f, (float)num214 / 2f), npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
+                Main.spriteBatch.Draw(transition3glow, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Microsoft.Xna.Framework.Rectangle(0, y6, transition3glow.Width, num214)), npc.GetAlpha(Color.White), npc.rotation, new Vector2((float)transition3glow.Width / 2f, (float)num214 / 2f), npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
             }
             if (transition5B)
             {
@@ -72,6 +80,7 @@ namespace ofDarkandBelow.NPCs.SunkenKing
                 int num214 = transition5.Height / 12; // 6 is number of frames
                 int y6 = num214 * transition5Frame;
                 Main.spriteBatch.Draw(transition5, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Microsoft.Xna.Framework.Rectangle(0, y6, transition5.Width, num214)), drawColor, npc.rotation, new Vector2((float)transition5.Width / 2f, (float)num214 / 2f), npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
+                Main.spriteBatch.Draw(transition5glow, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Microsoft.Xna.Framework.Rectangle(0, y6, transition5glow.Width, num214)), npc.GetAlpha(Color.White), npc.rotation, new Vector2((float)transition5glow.Width / 2f, (float)num214 / 2f), npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
             }
             return false;
         }
@@ -180,17 +189,25 @@ namespace ofDarkandBelow.NPCs.SunkenKing
                     dust3.noGravity = true;
                     dust3.scale *= 1.2f;
                     dust3.velocity *= 1f;
-                    Main.PlaySound(SoundID.NPCDeath1, (int)npc.position.X, (int)npc.position.Y);
-                    Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/SKTransition/SKGore1"), 1f);
-                    Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/SKTransition/SKGore2"), 1f);
-                    Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/SKTransition/SKGore3"), 1f);
-                    Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/SKTransition/SKGore4"), 1f);
-                    Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/SKTransition/SKGore5"), 1f);
-                    Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/SKTransition/SKGore6"), 1f);
-                    Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/SKTransition/SKGore7"), 1f);
-                    Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/SKTransition/SKGore8"), 1f);
-                    Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/SKTransition/SKGore9"), 1f);
-                    npc.SetDefaults(mod.NPCType("SunkenKingPhase2New"));
+                    Main.PlaySound(SoundID.NPCDeath58, (int)npc.position.X, (int)npc.position.Y);
+                    Gore.NewGore(new Vector2(npc.Center.X + Main.rand.Next(-100, 100), npc.Center.Y + Main.rand.Next(0, 200)), npc.velocity, mod.GetGoreSlot("Gores/SKTransition/SKGore1"), 1f);
+                    Gore.NewGore(new Vector2(npc.Center.X + Main.rand.Next(-100, 100), npc.Center.Y + Main.rand.Next(0, 200)), npc.velocity, mod.GetGoreSlot("Gores/SKTransition/SKGore2"), 1f);
+                    Gore.NewGore(new Vector2(npc.Center.X + Main.rand.Next(-100, 100), npc.Center.Y + Main.rand.Next(0, 300)), npc.velocity, mod.GetGoreSlot("Gores/SKTransition/SKGore3"), 1f);
+                    Gore.NewGore(new Vector2(npc.Center.X + Main.rand.Next(-100, 100), npc.Center.Y + Main.rand.Next(0, 200)), npc.velocity, mod.GetGoreSlot("Gores/SKTransition/SKGore4"), 1f);
+                    Gore.NewGore(new Vector2(npc.Center.X + Main.rand.Next(-100, 100), npc.Center.Y + Main.rand.Next(0, 400)), npc.velocity, mod.GetGoreSlot("Gores/SKTransition/SKGore5"), 1f);
+                    Gore.NewGore(new Vector2(npc.Center.X + Main.rand.Next(-100, 100), npc.Center.Y + Main.rand.Next(0, 200)), npc.velocity, mod.GetGoreSlot("Gores/SKTransition/SKGore6"), 1f);
+                    Gore.NewGore(new Vector2(npc.Center.X + Main.rand.Next(-100, 100), npc.Center.Y + Main.rand.Next(0, 200)), npc.velocity, mod.GetGoreSlot("Gores/SKTransition/SKGore7"), 1f);
+                    Gore.NewGore(new Vector2(npc.Center.X + Main.rand.Next(-100, 100), npc.Center.Y + Main.rand.Next(0, 300)), npc.velocity, mod.GetGoreSlot("Gores/SKTransition/SKGore8"), 1f);
+                    Gore.NewGore(new Vector2(npc.Center.X + Main.rand.Next(-100, 100), npc.Center.Y + Main.rand.Next(0, 200)), npc.velocity, mod.GetGoreSlot("Gores/SKTransition/SKGore9"), 1f);
+                    Gore.NewGore(new Vector2(npc.Center.X + Main.rand.Next(-100, 100), npc.Center.Y + Main.rand.Next(0, 200)), npc.velocity, mod.GetGoreSlot("Gores/SKTransition/SKGore4"), 1f);
+                    Gore.NewGore(new Vector2(npc.Center.X + Main.rand.Next(-100, 100), npc.Center.Y + Main.rand.Next(0, 300)), npc.velocity, mod.GetGoreSlot("Gores/SKTransition/SKGore1"), 1f);
+                    Gore.NewGore(new Vector2(npc.Center.X + Main.rand.Next(-100, 100), npc.Center.Y + Main.rand.Next(0, 200)), npc.velocity, mod.GetGoreSlot("Gores/SKTransition/SKGore2"), 1f);
+                    Gore.NewGore(new Vector2(npc.Center.X + Main.rand.Next(-100, 100), npc.Center.Y + Main.rand.Next(0, 200)), npc.velocity, mod.GetGoreSlot("Gores/SKTransition/SKGore3"), 1f);
+                    Gore.NewGore(new Vector2(npc.Center.X + Main.rand.Next(-100, 100), npc.Center.Y + Main.rand.Next(0, 300)), npc.velocity, mod.GetGoreSlot("Gores/SKTransition/SKGore5"), 1f);
+                    Gore.NewGore(new Vector2(npc.Center.X + Main.rand.Next(-100, 100), npc.Center.Y + Main.rand.Next(0, 200)), npc.velocity, mod.GetGoreSlot("Gores/SKTransition/SKGore6"), 1f);
+                    Gore.NewGore(new Vector2(npc.Center.X + Main.rand.Next(-100, 100), npc.Center.Y + Main.rand.Next(0, 300)), npc.velocity, mod.GetGoreSlot("Gores/SKTransition/SKGore7"), 1f);
+
+                    npc.SetDefaults(mod.NPCType("SunkenKingPhase2"));
                 }
                 return;
             }

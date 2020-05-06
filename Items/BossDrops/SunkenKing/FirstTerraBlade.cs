@@ -16,18 +16,18 @@ namespace ofDarkandBelow.Items.BossDrops.SunkenKing
 		public override void SetDefaults()
 		{
             item.CloneDefaults(ItemID.TerraBlade);
-			item.damage = 22;
+			item.damage = 26;
 			item.shoot = (mod.ProjectileType("SunkenBeam"));
 			item.melee = true;
             item.UseSound = mod.GetLegacySoundSlot(SoundType.Item, "Sounds/Item/OldTerraSwing");
             item.width = 46;
 			item.height = 50;
-			item.useTime = 25;
-			item.useAnimation = 25;
+			item.useTime = 22;
+			item.useAnimation = 22;
 			item.useStyle = 1;
-			item.knockBack = 3;
+			item.knockBack = 4;
             item.value = Item.sellPrice(silver: 50);
-            item.rare = 2;
+            item.rare = 3;
 			item.autoReuse = true;
 		}
 	}

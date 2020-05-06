@@ -17,13 +17,13 @@ namespace ofDarkandBelow.Items
 		}
         public override void SetDefaults()
         {
-            item.damage = 21;
+            item.damage = 26;
             item.noMelee = true;
             item.ranged = true;
             item.width = 66;
             item.height = 30;
-            item.useTime = 17;
-            item.useAnimation = 17;
+            item.useTime = 26;
+            item.useAnimation = 26;
             item.useStyle = 5;
             item.shoot = 10;
             item.useAmmo = AmmoID.Bullet;
@@ -39,11 +39,13 @@ namespace ofDarkandBelow.Items
 			int numberProjectiles = 8 + Main.rand.Next(2); // 4 or 5 shots
 			for (int i = 0; i < numberProjectiles; i++)
 			{
-				Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(12));
-				// If you want to randomize the speed to stagger the projectiles
-				// float scale = 1f - (Main.rand.NextFloat() * .3f);
-				// perturbedSpeed = perturbedSpeed * scale; 
-				Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
+				Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(9));
+                speedX = perturbedSpeed.X;
+                speedY = perturbedSpeed.Y;
+                // If you want to randomize the speed to stagger the projectiles
+                // float scale = 1f - (Main.rand.NextFloat() * .3f);
+                // perturbedSpeed = perturbedSpeed * scale; 
+                Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
 			}
 			return true;
 		}
@@ -55,7 +57,7 @@ namespace ofDarkandBelow.Items
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(ItemID.Gatligator);
 			recipe.AddIngredient(ItemID.Shotgun);
-			recipe.AddIngredient(ItemID.SoulofFright, 20);
+			recipe.AddIngredient(ItemID.SoulofFright, 15);
 			recipe.AddTile(TileID.Anvils);
 			recipe.SetResult(this);
 			recipe.AddRecipe();

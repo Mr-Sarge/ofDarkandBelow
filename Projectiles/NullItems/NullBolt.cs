@@ -45,11 +45,11 @@ namespace ofDarkandBelow.Projectiles.NullItems
                 projectile.localAI[0] = 1f;
             }
             Vector2 move = Vector2.Zero;
-            float distance = 800f;
+            float distance = 200f;
             bool target = false;
             for (int k = 0; k < 200; k++)
             {
-                if (Main.npc[k].active && !Main.npc[k].dontTakeDamage && !Main.npc[k].friendly && Main.npc[k].lifeMax > 5)
+                if (Main.npc[k].active && !Main.npc[k].dontTakeDamage && Main.npc[k].friendly == false && Main.npc[k].lifeMax > 5 && !Main.npc[k].immortal)
                 {
                     Vector2 newMove = Main.npc[k].Center - projectile.Center;
                     float distanceTo = (float)Math.Sqrt(newMove.X * newMove.X + newMove.Y * newMove.Y);

@@ -21,7 +21,7 @@ namespace ofDarkandBelow.Tiles
 			AddMapEntry(new Color(120, 85, 60), name);
 		}
 
-        public override void KillMultiTile(int i, int j, int frameX, int frameY) //this make that when you break the Trophy it will give you the TrophyItem
+        public override void KillMultiTile(int i, int j, int frameX, int frameY)
         {
             Item.NewItem(i * 16, j * 16, 32, 16, mod.ItemType("EndlessMawTrophy"));
 		}

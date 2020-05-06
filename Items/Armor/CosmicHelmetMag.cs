@@ -35,7 +35,9 @@ namespace ofDarkandBelow.Items.Armor
                  + "\nYou will gain Mana when you are struck.";
 			player.magicDamage += 0.12f;
             player.magicCrit += 7;
-		}
+            SModPlayer modPlayer = (SModPlayer)player.GetModPlayer(mod, "SModPlayer");
+            player.GetModPlayer<SModPlayer>().cosmicManaRegen = true;
+        }
 
 		public override void AddRecipes() {
 			ModRecipe recipe = new ModRecipe(mod);
