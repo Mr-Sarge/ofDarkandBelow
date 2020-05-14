@@ -1,4 +1,4 @@
 author = Mr. Sarge and his Developers
-version = 0.4.3
+version = 0.4.3.2
 displayName = Terraria: of Dark and Below
 homepage = https://forums.terraria.org/index.php?threads/terraria-of-dark-and-below-mod.79548/

@@ -2,7 +2,7 @@
 The 'Terraria: of Dark and Below' Mod is a mod aimed to add content and simple fun to your playthrough. It comes with 3 Bosses, a good deal of new items, and all the more to slaughter. This mod is ran by nothing more than passion and fun, and yet contains  a darker theme with inspiration from Dark Souls.
 Current Update: Return of The King (Sunken King Rework)
 
-Special thanks to Al0n37 and ExampleMod for being helpful in making this mod.
+Special thanks to Hallam and ExampleMod for being crucial in making this mod.
 
 Credits:
 Mr. Sarge (Coding - Lead Developer, aka me.)
@@ -23,6 +23,7 @@ Pyxis, Pacnysam, GamingWithZack, MoonlitWyvern, Gibb50, MelonDragon, Cherry, Ger
 
 
 Prepare yourself.
-V0.4.3
+V0.4.3.2
+(Reuploaded due to publishing error.)
 
 https://forums.terraria.org/index.php?threads/terraria-of-dark-and-below-mod.79548/
