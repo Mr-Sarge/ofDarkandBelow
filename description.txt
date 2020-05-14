@@ -5,24 +5,24 @@ Current Update: Return of The King (Sunken King Rework)
 Special thanks to Al0n37 and ExampleMod for being helpful in making this mod.
 
 Credits:
-Mr. Sarge (Coding)
-DarkPuppey (Spriting)
-Hallam (Coding)
-Theodore F. Sharpe (Moderation + Editing + cool dude iguess)
+Mr. Sarge (Coding - Lead Developer, aka me.)
+DarkPuppey (Spriting - Developer)
+Hallam (Coding - Developer)
+Theodore F. Sharpe (Moderation + Editing + cool dude iguess - Developer)
+BoRKman (Lotsa Spriting - Developer)
+Cturix Kemilon (Sounds - Developer)
+Skeletony (Spriting - Developer)
+Jsoull (Spriting, Ideas, Support - Developer)
+SentryTurbo (Lead Musician - Developer)
+Lyrebird (Ideas, Lore - Developer)
+TheMadderHatter (Ideas, Lore - Developer)
+MoonBurn (Spriting - Developer)
+Maskano (Spriting - Developer)
 The Kirill Greathly (Spriting)
-BoRKman (Lotsa Spriting)
-MelonDragon (Spriting)
-Gibb50 (Spriting)
-Cturix Kemilon (Sounds)
-Skeletony (Spriting)
-Jsoull (Spriting, Ideas, Support)
-SentryTurbo (Music)
-Lyrebird (Ideas, Lore)
-MoonlitWyvern (Spriting)
-GamingWithZack (Spriting)
-Maskano (Spriting)
+Pyxis, Pacnysam, GamingWithZack, MoonlitWyvern, Gibb50, MelonDragon, Cherry, Gerno/Kerbol (Spriting)
+
 
 Prepare yourself.
-V0.3.3
+V0.4.3
 
 https://forums.terraria.org/index.php?threads/terraria-of-dark-and-below-mod.79548/

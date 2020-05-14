@@ -38,7 +38,11 @@ namespace ofDarkandBelow.Items.Bags
 			if (Main.rand.NextBool(6)) {
          	   player.QuickSpawnItem(mod.ItemType("NullEaterEgg"));
 			}
-		}
+            if (Main.rand.NextBool(130))
+            {
+                player.QuickSpawnItem(mod.ItemType("ReganoxClaymore"));
+            }
+        }
         public override int BossBagNPC => mod.NPCType("AmalgamationAngry");
     }
 }

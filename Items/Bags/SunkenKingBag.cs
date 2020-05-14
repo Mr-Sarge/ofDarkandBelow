@@ -14,8 +14,8 @@ namespace ofDarkandBelow.Items.Bags
 		public override void SetDefaults() {
 			item.maxStack = 999;
 			item.consumable = true;
-			item.width = 24;
-			item.height = 24;
+			item.width = 32;
+			item.height = 32;
 			item.rare = 9;
 			item.expert = true;
 		}
@@ -26,7 +26,8 @@ namespace ofDarkandBelow.Items.Bags
 
 		public override void OpenBossBag(Player player) {
 			player.QuickSpawnItem(mod.ItemType("SunkenCrown"));
-			player.TryGettingDevArmor();
+            player.QuickSpawnItem(mod.ItemType("FallenFragment"), 35);
+            player.TryGettingDevArmor();
 			if (Main.rand.NextBool(2)) {
 				player.QuickSpawnItem(mod.ItemType("FirstTerraBlade"));
 			}
@@ -36,13 +37,17 @@ namespace ofDarkandBelow.Items.Bags
 			if (Main.rand.NextBool(2)) {
 				player.QuickSpawnItem(mod.ItemType("KingsHarvest"));
 			}
-			if (Main.rand.NextBool(6)) {
+            if (Main.rand.NextBool(2))
+            {
+                player.QuickSpawnItem(mod.ItemType("FallenRoyaltyWings"));
+            }
+            if (Main.rand.NextBool(6)) {
 				player.QuickSpawnItem(mod.ItemType("SunkenKingTrophy"));
 			}
 			if (Main.rand.NextBool(6)) {
 				player.QuickSpawnItem(mod.ItemType("SunkenKingMask"));
 			}
 		}
-        public override int BossBagNPC => mod.NPCType("SunkenKingPhase2New");
+        public override int BossBagNPC => mod.NPCType("SunkenKingPhase2");
     }
 }

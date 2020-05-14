@@ -10,8 +10,20 @@ namespace ofDarkandBelow.Projectiles
 {
     public class KingReap : ModProjectile
     {
+        public static short customGlowMask = 0;
         public override void SetStaticDefaults()
         {
+            if (Main.netMode != 2)
+            {
+                Texture2D[] glowMasks = new Texture2D[Main.glowMaskTexture.Length + 1];
+                for (int i = 0; i < Main.glowMaskTexture.Length; i++)
+                {
+                    glowMasks[i] = Main.glowMaskTexture[i];
+                }
+                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Projectiles/" + GetType().Name + "_glowmask");
+                customGlowMask = (short)(glowMasks.Length - 1);
+                Main.glowMaskTexture = glowMasks;
+            }
             Main.projFrames[projectile.type] = 3;
             DisplayName.SetDefault("Kingly Reap");
         }
@@ -28,7 +40,9 @@ namespace ofDarkandBelow.Projectiles
             projectile.hide = false;
             projectile.magic = true;
             projectile.alpha = 150;
+            projectile.light = 0.2f;
             projectile.timeLeft = 15;
+            projectile.glowMask = customGlowMask;
         }
 
         public override void AI()

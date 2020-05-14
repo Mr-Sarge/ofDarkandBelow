@@ -14,7 +14,7 @@ namespace ofDarkandBelow.Items.BossDrops.SunkenKing
 		public override void SetDefaults()
 		{
             item.CloneDefaults(1809);
-			item.damage = 17;
+			item.damage = 19;
 			item.shoot = mod.ProjectileType("KinglyKnifeProj");
 		    item.shootSpeed = 25f;
 			item.maxStack = 1;
@@ -30,5 +30,13 @@ namespace ofDarkandBelow.Items.BossDrops.SunkenKing
 			item.consumable = false;
 			item.autoReuse = true;
 		}
-	}
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(mod.ItemType("FallenFragment"), 12);
+            recipe.AddTile(TileID.Anvils);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
+    }
 }

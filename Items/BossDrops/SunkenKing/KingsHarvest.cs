@@ -39,5 +39,13 @@ namespace ofDarkandBelow.Items.BossDrops.SunkenKing
             Projectile.NewProjectile(vectorCursor.X, vectorCursor.Y, speedX, speedY, mod.ProjectileType("KingReap"), damage, knockBack, player.whoAmI);
             return false;
         }
-	}
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(mod.ItemType("FallenFragment"), 12);
+            recipe.AddTile(TileID.Anvils);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
+    }
 }

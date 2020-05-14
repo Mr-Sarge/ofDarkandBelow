@@ -23,6 +23,8 @@ namespace ofDarkandBelow
         public bool cosmicEscapeeEffect = false;
         public bool harasserHeal = false;
         public bool sunkenCrownEffect = false;
+        public bool kingPowerCooldown = false;
+        public bool fallenRoyaltySetBonus = false;
         public bool behemothEffect = false;
         public override void ResetEffects()
         {
@@ -33,16 +35,24 @@ namespace ofDarkandBelow
             cosmicManaRegen = false;
             cosmicEscapeeEffect = false;
             sunkenCrownEffect = false;
+            kingPowerCooldown = false;
+            fallenRoyaltySetBonus = false;
         }
         public override void UpdateDead()
         {
             cosmicRevivalCooldown = false;
+            kingPowerCooldown = false;
         }
         public override void OnHitNPC(Item item, NPC target, int damage, float knockback, bool crit)
         {
             if (behemothEffect)
             {
                 target.AddBuff(mod.BuffType("HorrorHemorrhage"), 240);
+            }
+            if (fallenRoyaltySetBonus == true && kingPowerCooldown == false)
+            {
+                player.AddBuff(mod.BuffType("KingPower"), 480);
+                player.AddBuff(mod.BuffType("KingPowerCooldown"), 1800);
             }
         }
         public override bool PreKill(double damage, int hitDirection, bool pvp, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource)
@@ -106,6 +116,11 @@ namespace ofDarkandBelow
         }
         public override void OnHitNPCWithProj(Projectile proj, NPC target, int damage, float knockback, bool crit)
         {
+            if (fallenRoyaltySetBonus == true && kingPowerCooldown == false)
+            {
+                player.AddBuff(mod.BuffType("KingPower"), 480);
+                player.AddBuff(mod.BuffType("KingPowerCooldown"), 1800);
+            }
             if (behemothEffect)
             {
                 target.AddBuff(mod.BuffType("HorrorHemorrhage"), 240);

@@ -75,15 +75,6 @@ namespace ofDarkandBelow
 			downedAmalgamation = downed.Contains("amalgamation");
 			downedPrimordialMaw = downed.Contains("primordialmaw");
         }
-		public override void LoadLegacy(BinaryReader reader) {
-			int loadVersion = reader.ReadInt32();
-			if (loadVersion == 0) {
-				BitsByte flags = reader.ReadByte();
-				downedSunkenKing = flags[0];
-				downedAmalgamation = flags[1];
-				downedPrimordialMaw = flags[2];
-			}
-		}
 
 		public override void NetSend(BinaryWriter writer) {
 			BitsByte flags = new BitsByte();

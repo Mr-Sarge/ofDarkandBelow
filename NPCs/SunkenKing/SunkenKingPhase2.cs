@@ -23,12 +23,12 @@ namespace ofDarkandBelow.NPCs.SunkenKing
         }
         public override void SetDefaults()
         {
-            npc.lifeMax = 3200;
+            npc.lifeMax = 3600;
             npc.width = 90;
             npc.height = 250;
             npc.friendly = false;
             npc.boss = true;
-            npc.damage = 45;
+            npc.damage = 35;
             npc.defense = 12;
             npc.HitSound = mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Bosses/OldTerraHit");
             npc.DeathSound = SoundID.NPCDeath58;
@@ -55,11 +55,11 @@ namespace ofDarkandBelow.NPCs.SunkenKing
                 Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/SunkenKingPart3"), 1f);
                 Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/SunkenKingPart3"), 1f);
                 Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/SunkenKingPart4"), 1f);
-                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/SunkenKingPart4"), 1f);
-                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/SunkenKingPart4"), 1f);
-                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/SunkenKingPart4"), 1f);
-                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/SunkenKingPart4"), 1f);
-                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/SunkenKingPart1"), 1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/SunkenKingPart5"), 1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/SunkenKingPart6"), 1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/SunkenKingPart7"), 1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/SunkenKingPart6"), 1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/SunkenKingPart7"), 1f);
                 Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/SunkenKingPart1"), 1f);
             }
         }
@@ -80,6 +80,7 @@ namespace ofDarkandBelow.NPCs.SunkenKing
         }
         public bool attack1;
         public bool attack2;
+        public bool raiseUp;
         public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
         {
             Texture2D texture = Main.npcTexture[npc.type];
@@ -88,8 +89,10 @@ namespace ofDarkandBelow.NPCs.SunkenKing
             Texture2D slashAniGlow = mod.GetTexture("NPCs/SunkenKing/SunkenKingPhase2_Attack1_glowmask");
             Texture2D slashAni2Downward = mod.GetTexture("NPCs/SunkenKing/SunkenKingPhase2_Attack2");
             Texture2D slashAni2DownwardGlow = mod.GetTexture("NPCs/SunkenKing/SunkenKingPhase2_Attack2_glowmask");
+            Texture2D raiseUpAni = mod.GetTexture("NPCs/SunkenKing/SunkenKingPhase2_RaiseUp");
+            Texture2D raiseUpAniGlow = mod.GetTexture("NPCs/SunkenKing/SunkenKingPhase2_RaiseUp_glowmask");
             var effects = npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
-            if (!attack1 && !attack2)
+            if (!attack1 && !attack2 && !raiseUp)
             {
                 spriteBatch.Draw(texture, npc.Center - Main.screenPosition, npc.frame, drawColor, npc.rotation, npc.frame.Size() / 2, npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
                 spriteBatch.Draw(textureGlow, npc.Center - Main.screenPosition, npc.frame, npc.GetAlpha(Color.White), npc.rotation, npc.frame.Size() / 2, npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
@@ -111,12 +114,22 @@ namespace ofDarkandBelow.NPCs.SunkenKing
                 Main.spriteBatch.Draw(slashAni2Downward, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Microsoft.Xna.Framework.Rectangle(0, y6, slashAni2Downward.Width, num214)), drawColor, npc.rotation, new Vector2((float)slashAni2Downward.Width / 2f, (float)num214 / 2f), npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
                 Main.spriteBatch.Draw(slashAni2DownwardGlow, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Microsoft.Xna.Framework.Rectangle(0, y6, slashAni2DownwardGlow.Width, num214)), npc.GetAlpha(Color.White), npc.rotation, new Vector2((float)slashAni2DownwardGlow.Width / 2f, (float)num214 / 2f), npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
             }
+            if (raiseUp)
+            {
+                Vector2 drawCenter = new Vector2(npc.Center.X, npc.Center.Y);
+                int num214 = raiseUpAni.Height / 10; // 6 is number of frames
+                int y6 = num214 * raiseUpFrame;
+                Main.spriteBatch.Draw(raiseUpAni, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Microsoft.Xna.Framework.Rectangle(0, y6, raiseUpAni.Width, num214)), drawColor, npc.rotation, new Vector2((float)raiseUpAni.Width / 2f, (float)num214 / 2f), npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
+                Main.spriteBatch.Draw(raiseUpAniGlow, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Microsoft.Xna.Framework.Rectangle(0, y6, raiseUpAniGlow.Width, num214)), npc.GetAlpha(Color.White), npc.rotation, new Vector2((float)raiseUpAniGlow.Width / 2f, (float)num214 / 2f), npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
+            }
             return false;
         }
         public int attack1Frame;
         public int attack1Counter;
         public int attack2Frame;
         public int attack2Counter;
+        public int raiseUpFrame;
+        public int raiseUpCounter;
         private bool wyvernSpawn;
         private bool talkAngry;
         private bool talkAngry2;
@@ -124,6 +137,7 @@ namespace ofDarkandBelow.NPCs.SunkenKing
         private int pattern1;
         private int pattern2;
         private int pattern3;
+        private int pattern4;
 
         public override void AI()
         {
@@ -154,6 +168,20 @@ namespace ofDarkandBelow.NPCs.SunkenKing
                 {
                     attack2Frame = 0;
                     attack2 = false;
+                }
+            }
+            if (raiseUp == true)
+            {
+                raiseUpCounter++;
+                if (raiseUpCounter > 4)
+                {
+                    raiseUpFrame++;
+                    raiseUpCounter = 0;
+                }
+                if (raiseUpFrame >= 10)
+                {
+                    raiseUpFrame = 0;
+                    raiseUp = false;
                 }
             }
             Player player = Main.player[npc.target];
@@ -194,7 +222,7 @@ namespace ofDarkandBelow.NPCs.SunkenKing
             else
             {
                 npc.dontTakeDamage = true;
-                npc.velocity *= 0.45f;
+                npc.velocity *= 0.65f;
             }
             if (pattern1 == 10)
             {
@@ -343,6 +371,7 @@ namespace ofDarkandBelow.NPCs.SunkenKing
             }
             if (pattern2 == 350)
             {
+                attack2 = true;
                 Main.PlaySound(SoundLoader.customSoundType, (int)npc.position.X, (int)npc.position.Y, mod.GetSoundSlot(SoundType.Custom, "Sounds/Bosses/OldTerraSwingBoss"));
                 float Speed = 14f;  //projectile speed
                 Vector2 vector8 = new Vector2(npc.position.X + (npc.width / 2), npc.position.Y + (npc.height / 2));
@@ -362,20 +391,22 @@ namespace ofDarkandBelow.NPCs.SunkenKing
                 Main.projectile[num58].netUpdate = true;
                 Main.projectile[num59].netUpdate = true;
             }
-            if (pattern2 == 350)
+            if (pattern2 <= 350 && pattern2 >= 410)
             {
-                attack2 = true;
-                Vector2 vector8 = new Vector2(npc.position.X + (npc.width * 0.5f), npc.position.Y + (npc.height * 0.5f));
-                {
-                    float rotation = (float)Math.Atan2((vector8.Y) - (Main.player[npc.target].position.Y + (Main.player[npc.target].height * 0.5f)), (vector8.X) - (Main.player[npc.target].position.X + (Main.player[npc.target].width * 0.5f)));
-                    npc.velocity.X = (float)(Math.Cos(rotation) * 10) * -1;
-                    npc.velocity.Y = (float)(Math.Sin(rotation) * 10) * -1;
-                }
-                npc.ai[0] %= (float)Math.PI * 2f;
-                Vector2 offset = new Vector2((float)Math.Cos(npc.ai[0]), (float)Math.Sin(npc.ai[0]));
-                Main.PlaySound(2, (int)npc.position.X, (int)npc.position.Y, 20);
-                Color color = new Color();
-                Rectangle rectangle = new Rectangle((int)npc.position.X, (int)(npc.position.Y + ((npc.height - npc.width) / 2)), npc.width, npc.width);
+                npc.velocity *= 0.35f;
+            }
+            if (pattern2 == 410)
+            {
+                Main.PlaySound(SoundLoader.customSoundType, (int)npc.position.X, (int)npc.position.Y, mod.GetSoundSlot(SoundType.Custom, "Sounds/Bosses/OldTerraSwingBoss"));
+                float Speed = 12f;  //projectile speed
+                Vector2 vector8 = new Vector2(npc.position.X + (npc.width / 2), npc.position.Y + (npc.height / 2));
+                int damage = 20;  //projectile damage
+                int type = mod.ProjectileType("KingusBeamBig");  //put your projectile
+                float rotation = (float)Math.Atan2((vector8.Y) - (Main.player[npc.target].position.Y + (Main.player[npc.target].height * 0.5f)), (vector8.X) - (Main.player[npc.target].position.X + (Main.player[npc.target].width * 0.5f)));
+                int num54 = Projectile.NewProjectile(vector8.X, vector8.Y - 150, (float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1), type, damage, 0f, 0);
+                int num55 = Projectile.NewProjectile(vector8.X, vector8.Y + 50, (float)((Math.Cos(rotation) * Speed) * -1) + -1, (float)((Math.Sin(rotation) * Speed) * -1) + -1, type, damage, 0f, 0);
+                Main.projectile[num54].netUpdate = true;
+                Main.projectile[num55].netUpdate = true;
             }
             if (pattern2 == 500)
             {
@@ -411,11 +442,341 @@ namespace ofDarkandBelow.NPCs.SunkenKing
             {
                 pattern2 = 0;
             }
-            if (npc.life < npc.lifeMax * 0.40)
+            if (npc.life < npc.lifeMax * 0.30)
             {
                 pattern1 = 0;
                 pattern2 = 0;
                 pattern3++;
+            }
+            if (pattern3 == 120)
+            {
+                Main.PlaySound(SoundLoader.customSoundType, (int)npc.position.X, (int)npc.position.Y, mod.GetSoundSlot(SoundType.Custom, "Sounds/Bosses/OldTerraSwingBoss"));
+                attack1 = true;
+                float Speed = 8f;  //projectile speed
+                Vector2 vector8 = new Vector2(npc.position.X + (npc.width / 2), npc.position.Y + (npc.height / 2));
+                int damage = 18;  //projectile damage
+                int type = mod.ProjectileType("KingBeam");  //put your projectile
+                float rotation = (float)Math.Atan2((vector8.Y) - (Main.player[npc.target].position.Y + (Main.player[npc.target].height * 0.5f)), (vector8.X) - (Main.player[npc.target].position.X + (Main.player[npc.target].width * 0.5f)));
+                int num54 = Projectile.NewProjectile(vector8.X, vector8.Y - 100, (float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1), type, damage, 0f, 0);
+                int num55 = Projectile.NewProjectile(vector8.X, vector8.Y - 100, (float)((Math.Cos(rotation) * Speed) * -1) + -1, (float)((Math.Sin(rotation) * Speed) * -1) + -1, type, damage, 0f, 0);
+                int num56 = Projectile.NewProjectile(vector8.X, vector8.Y - 100, (float)((Math.Cos(rotation) * Speed) * -1) + 1, (float)((Math.Sin(rotation) * Speed) * -1) + 1, type, damage, 0f, 0);
+                Main.projectile[num54].netUpdate = true;
+                Main.projectile[num55].netUpdate = true;
+                Main.projectile[num56].netUpdate = true;
+            }
+            if (pattern3 == 160)
+            {
+                Main.PlaySound(SoundLoader.customSoundType, (int)npc.position.X, (int)npc.position.Y, mod.GetSoundSlot(SoundType.Custom, "Sounds/Bosses/OldTerraSwingBoss"));
+                attack1 = true;
+                float Speed = 8f;  //projectile speed
+                Vector2 vector8 = new Vector2(npc.position.X + (npc.width / 2), npc.position.Y + (npc.height / 2));
+                int damage = 18;  //projectile damage
+                int type = mod.ProjectileType("KingBeam");  //put your projectile
+                float rotation = (float)Math.Atan2((vector8.Y) - (Main.player[npc.target].position.Y + (Main.player[npc.target].height * 0.5f)), (vector8.X) - (Main.player[npc.target].position.X + (Main.player[npc.target].width * 0.5f)));
+                int num54 = Projectile.NewProjectile(vector8.X, vector8.Y - 100, (float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1), type, damage, 0f, 0);
+                int num55 = Projectile.NewProjectile(vector8.X, vector8.Y - 100, (float)((Math.Cos(rotation) * Speed) * -1) + -1, (float)((Math.Sin(rotation) * Speed) * -1) + -1, type, damage, 0f, 0);
+                int num56 = Projectile.NewProjectile(vector8.X, vector8.Y - 100, (float)((Math.Cos(rotation) * Speed) * -1) + 1, (float)((Math.Sin(rotation) * Speed) * -1) + 1, type, damage, 0f, 0);
+                Main.projectile[num54].netUpdate = true;
+                Main.projectile[num55].netUpdate = true;
+                Main.projectile[num56].netUpdate = true;
+            }
+            if (pattern3 == 200)
+            {
+                Main.PlaySound(SoundLoader.customSoundType, (int)npc.position.X, (int)npc.position.Y, mod.GetSoundSlot(SoundType.Custom, "Sounds/Bosses/OldTerraSwingBoss"));
+                attack1 = true;
+                float Speed = 8f;  //projectile speed
+                Vector2 vector8 = new Vector2(npc.position.X + (npc.width / 2), npc.position.Y + (npc.height / 2));
+                int damage = 18;  //projectile damage
+                int type = mod.ProjectileType("KingBeam");  //put your projectile
+                float rotation = (float)Math.Atan2((vector8.Y) - (Main.player[npc.target].position.Y + (Main.player[npc.target].height * 0.5f)), (vector8.X) - (Main.player[npc.target].position.X + (Main.player[npc.target].width * 0.5f)));
+                int num54 = Projectile.NewProjectile(vector8.X, vector8.Y - 100, (float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1), type, damage, 0f, 0);
+                int num55 = Projectile.NewProjectile(vector8.X, vector8.Y - 100, (float)((Math.Cos(rotation) * Speed) * -1) + -1, (float)((Math.Sin(rotation) * Speed) * -1) + -1, type, damage, 0f, 0);
+                int num56 = Projectile.NewProjectile(vector8.X, vector8.Y - 100, (float)((Math.Cos(rotation) * Speed) * -1) + 1, (float)((Math.Sin(rotation) * Speed) * -1) + 1, type, damage, 0f, 0);
+                Main.projectile[num54].netUpdate = true;
+                Main.projectile[num55].netUpdate = true;
+                Main.projectile[num56].netUpdate = true;
+            }
+            if (pattern3 == 320)
+            {
+                attack1 = true;
+                Vector2 vector8 = new Vector2(npc.position.X + (npc.width * 0.5f), npc.position.Y + (npc.height * 0.5f));
+                {
+                    float rotation = (float)Math.Atan2((vector8.Y) - (Main.player[npc.target].position.Y + (Main.player[npc.target].height * 0.5f)), (vector8.X) - (Main.player[npc.target].position.X + (Main.player[npc.target].width * 0.5f)));
+                    npc.velocity.X = (float)(Math.Cos(rotation) * 10) * -1;
+                    npc.velocity.Y = (float)(Math.Sin(rotation) * 10) * -1;
+                }
+                npc.ai[0] %= (float)Math.PI * 2f;
+                Vector2 offset = new Vector2((float)Math.Cos(npc.ai[0]), (float)Math.Sin(npc.ai[0]));
+                Main.PlaySound(2, (int)npc.position.X, (int)npc.position.Y, 20);
+                Color color = new Color();
+                Rectangle rectangle = new Rectangle((int)npc.position.X, (int)(npc.position.Y + ((npc.height - npc.width) / 2)), npc.width, npc.width);
+            }
+            if (pattern3 == 420)
+            {
+                attack1 = true;
+                Vector2 vector8 = new Vector2(npc.position.X + (npc.width * 0.5f), npc.position.Y + (npc.height * 0.5f));
+                {
+                    float rotation = (float)Math.Atan2((vector8.Y) - (Main.player[npc.target].position.Y + (Main.player[npc.target].height * 0.5f)), (vector8.X) - (Main.player[npc.target].position.X + (Main.player[npc.target].width * 0.5f)));
+                    npc.velocity.X = (float)(Math.Cos(rotation) * 10) * -1;
+                    npc.velocity.Y = (float)(Math.Sin(rotation) * 10) * -1;
+                }
+                npc.ai[0] %= (float)Math.PI * 2f;
+                Vector2 offset = new Vector2((float)Math.Cos(npc.ai[0]), (float)Math.Sin(npc.ai[0]));
+                Main.PlaySound(2, (int)npc.position.X, (int)npc.position.Y, 20);
+                Color color = new Color();
+                Rectangle rectangle = new Rectangle((int)npc.position.X, (int)(npc.position.Y + ((npc.height - npc.width) / 2)), npc.width, npc.width);
+            }
+            if (pattern3 == 500)
+            {
+                Main.PlaySound(SoundLoader.customSoundType, (int)npc.position.X, (int)npc.position.Y, mod.GetSoundSlot(SoundType.Custom, "Sounds/Bosses/OldTerraSwingBoss"));
+                float Speed = 12f;  //projectile speed
+                Vector2 vector8 = new Vector2(npc.position.X + (npc.width / 2), npc.position.Y + (npc.height / 2));
+                int damage = 20;  //projectile damage
+                int type = mod.ProjectileType("KingusBeamBig");  //put your projectile
+                float rotation = (float)Math.Atan2((vector8.Y) - (Main.player[npc.target].position.Y + (Main.player[npc.target].height * 0.5f)), (vector8.X) - (Main.player[npc.target].position.X + (Main.player[npc.target].width * 0.5f)));
+                int num54 = Projectile.NewProjectile(vector8.X, vector8.Y - 150, (float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1), type, damage, 0f, 0);
+                int num55 = Projectile.NewProjectile(vector8.X, vector8.Y + 50, (float)((Math.Cos(rotation) * Speed) * -1) + -1, (float)((Math.Sin(rotation) * Speed) * -1) + -1, type, damage, 0f, 0);
+                Main.projectile[num54].netUpdate = true;
+                Main.projectile[num55].netUpdate = true;
+            }
+            if (pattern3 == 515)
+            {
+                float Speed = 14f;  //projectile speed
+                Vector2 vector8 = new Vector2(npc.position.X + (npc.width / 2), npc.position.Y + (npc.height / 2));
+                int damage = 14;  //projectile damage
+                int type = mod.ProjectileType("Sharproom");  //put your projectile
+                float rotation = (float)Math.Atan2((vector8.Y) - (Main.player[npc.target].position.Y + (Main.player[npc.target].height * 0.5f)), (vector8.X) - (Main.player[npc.target].position.X + (Main.player[npc.target].width * 0.5f)));
+                int num54 = Projectile.NewProjectile(vector8.X, vector8.Y - 100, (float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1), type, damage, 0f, 0);
+                int num55 = Projectile.NewProjectile(vector8.X, vector8.Y - 100, (float)((Math.Cos(rotation) * Speed) * -1) + -1, (float)((Math.Sin(rotation) * Speed) * -1) + -1, type, damage, 0f, 0);
+                int num56 = Projectile.NewProjectile(vector8.X, vector8.Y - 100, (float)((Math.Cos(rotation) * Speed) * -1) + 1, (float)((Math.Sin(rotation) * Speed) * -1) + 1, type, damage, 0f, 0);
+                int num57 = Projectile.NewProjectile(vector8.X, vector8.Y - 100, (float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1), type, damage, 0f, 0);
+                int num58 = Projectile.NewProjectile(vector8.X, vector8.Y - 100, (float)((Math.Cos(rotation) * Speed) * -1) + -1, (float)((Math.Sin(rotation) * Speed) * -1) + -1, type, damage, 0f, 0);
+                int num59 = Projectile.NewProjectile(vector8.X, vector8.Y - 100, (float)((Math.Cos(rotation) * Speed) * -1) + 1, (float)((Math.Sin(rotation) * Speed) * -1) + 1, type, damage, 0f, 0);
+                Main.projectile[num54].netUpdate = true;
+                Main.projectile[num55].netUpdate = true;
+                Main.projectile[num56].netUpdate = true;
+                Main.projectile[num57].netUpdate = true;
+                Main.projectile[num58].netUpdate = true;
+                Main.projectile[num59].netUpdate = true;
+            }
+            if (pattern3 == 580)
+            {
+                Main.PlaySound(SoundLoader.customSoundType, (int)npc.position.X, (int)npc.position.Y, mod.GetSoundSlot(SoundType.Custom, "Sounds/Bosses/OldTerraSwingBoss"));
+                attack1 = true;
+                float Speed = 8f;  //projectile speed
+                Vector2 vector8 = new Vector2(npc.position.X + (npc.width / 2), npc.position.Y + (npc.height / 2));
+                int damage = 18;  //projectile damage
+                int type = mod.ProjectileType("KingBeam");  //put your projectile
+                float rotation = (float)Math.Atan2((vector8.Y) - (Main.player[npc.target].position.Y + (Main.player[npc.target].height * 0.5f)), (vector8.X) - (Main.player[npc.target].position.X + (Main.player[npc.target].width * 0.5f)));
+                int num54 = Projectile.NewProjectile(vector8.X, vector8.Y - 100, (float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1), type, damage, 0f, 0);
+                int num55 = Projectile.NewProjectile(vector8.X, vector8.Y - 100, (float)((Math.Cos(rotation) * Speed) * -1) + -1, (float)((Math.Sin(rotation) * Speed) * -1) + -1, type, damage, 0f, 0);
+                int num56 = Projectile.NewProjectile(vector8.X, vector8.Y - 100, (float)((Math.Cos(rotation) * Speed) * -1) + 1, (float)((Math.Sin(rotation) * Speed) * -1) + 1, type, damage, 0f, 0);
+                Main.projectile[num54].netUpdate = true;
+                Main.projectile[num55].netUpdate = true;
+                Main.projectile[num56].netUpdate = true;
+            }
+            if (pattern3 == 625)
+            {
+                attack1 = true;
+                Vector2 vector8 = new Vector2(npc.position.X + (npc.width * 0.5f), npc.position.Y + (npc.height * 0.5f));
+                {
+                    float rotation = (float)Math.Atan2((vector8.Y) - (Main.player[npc.target].position.Y + (Main.player[npc.target].height * 0.5f)), (vector8.X) - (Main.player[npc.target].position.X + (Main.player[npc.target].width * 0.5f)));
+                    npc.velocity.X = (float)(Math.Cos(rotation) * 10) * -1;
+                    npc.velocity.Y = (float)(Math.Sin(rotation) * 10) * -1;
+                }
+                npc.ai[0] %= (float)Math.PI * 2f;
+                Vector2 offset = new Vector2((float)Math.Cos(npc.ai[0]), (float)Math.Sin(npc.ai[0]));
+                Main.PlaySound(2, (int)npc.position.X, (int)npc.position.Y, 20);
+                Color color = new Color();
+                Rectangle rectangle = new Rectangle((int)npc.position.X, (int)(npc.position.Y + ((npc.height - npc.width) / 2)), npc.width, npc.width);
+            }
+            if (pattern3 == 730)
+            {
+                pattern3 = 0;
+            }
+            if (npc.life < npc.lifeMax * 0.18)
+            {
+                pattern1 = 0;
+                pattern2 = 0;
+                pattern3 = 0;
+                pattern4++;
+            }
+            if (pattern4 == 20)
+            {
+                Main.NewText("...I HAVE HAD ENOUGH OF YOUR FOOLISHNESS.", Color.Blue.R, Color.Blue.G, Color.Blue.B);
+            }
+            if (pattern4 == 120)
+            {
+                Main.NewText("I SHALL SEE IT THAT A TARTARUS AWAITS YOU!", Color.Blue.R, Color.Blue.G, Color.Blue.B);
+            }
+            if (pattern4 == 240)
+            {
+                attack2 = true;
+                Vector2 vector8 = new Vector2(npc.position.X + (npc.width * 0.5f), npc.position.Y + (npc.height * 0.5f));
+                {
+                    float rotation = (float)Math.Atan2((vector8.Y) - (Main.player[npc.target].position.Y + (Main.player[npc.target].height * 0.5f)), (vector8.X) - (Main.player[npc.target].position.X + (Main.player[npc.target].width * 0.5f)));
+                    npc.velocity.X = (float)(Math.Cos(rotation) * 12) * -1;
+                    npc.velocity.Y = (float)(Math.Sin(rotation) * 12) * -1;
+                }
+                npc.ai[0] %= (float)Math.PI * 2f;
+                Vector2 offset = new Vector2((float)Math.Cos(npc.ai[0]), (float)Math.Sin(npc.ai[0]));
+                Main.PlaySound(2, (int)npc.position.X, (int)npc.position.Y, 20);
+                Color color = new Color();
+                Rectangle rectangle = new Rectangle((int)npc.position.X, (int)(npc.position.Y + ((npc.height - npc.width) / 2)), npc.width, npc.width);
+            }
+            if (pattern4 == 290)
+            {
+                attack1 = true;
+                Vector2 vector8 = new Vector2(npc.position.X + (npc.width * 0.5f), npc.position.Y + (npc.height * 0.5f));
+                {
+                    float rotation = (float)Math.Atan2((vector8.Y) - (Main.player[npc.target].position.Y + (Main.player[npc.target].height * 0.5f)), (vector8.X) - (Main.player[npc.target].position.X + (Main.player[npc.target].width * 0.5f)));
+                    npc.velocity.X = (float)(Math.Cos(rotation) * 10) * -1;
+                    npc.velocity.Y = (float)(Math.Sin(rotation) * 10) * -1;
+                }
+                npc.ai[0] %= (float)Math.PI * 2f;
+                Vector2 offset = new Vector2((float)Math.Cos(npc.ai[0]), (float)Math.Sin(npc.ai[0]));
+                Main.PlaySound(2, (int)npc.position.X, (int)npc.position.Y, 20);
+                Color color = new Color();
+                Rectangle rectangle = new Rectangle((int)npc.position.X, (int)(npc.position.Y + ((npc.height - npc.width) / 2)), npc.width, npc.width);
+            }
+            if (pattern4 == 340)
+            {
+                attack2 = true;
+                Vector2 vector8 = new Vector2(npc.position.X + (npc.width * 0.5f), npc.position.Y + (npc.height * 0.5f));
+                {
+                    float rotation = (float)Math.Atan2((vector8.Y) - (Main.player[npc.target].position.Y + (Main.player[npc.target].height * 0.5f)), (vector8.X) - (Main.player[npc.target].position.X + (Main.player[npc.target].width * 0.5f)));
+                    npc.velocity.X = (float)(Math.Cos(rotation) * 10) * -1;
+                    npc.velocity.Y = (float)(Math.Sin(rotation) * 10) * -1;
+                }
+                npc.ai[0] %= (float)Math.PI * 2f;
+                Vector2 offset = new Vector2((float)Math.Cos(npc.ai[0]), (float)Math.Sin(npc.ai[0]));
+                Main.PlaySound(2, (int)npc.position.X, (int)npc.position.Y, 20);
+                Color color = new Color();
+                Rectangle rectangle = new Rectangle((int)npc.position.X, (int)(npc.position.Y + ((npc.height - npc.width) / 2)), npc.width, npc.width);
+            }
+            if (pattern4 == 390)
+            {
+                attack1 = true;
+                Vector2 vector8 = new Vector2(npc.position.X + (npc.width * 0.5f), npc.position.Y + (npc.height * 0.5f));
+                {
+                    float rotation = (float)Math.Atan2((vector8.Y) - (Main.player[npc.target].position.Y + (Main.player[npc.target].height * 0.5f)), (vector8.X) - (Main.player[npc.target].position.X + (Main.player[npc.target].width * 0.5f)));
+                    npc.velocity.X = (float)(Math.Cos(rotation) * 8) * -1;
+                    npc.velocity.Y = (float)(Math.Sin(rotation) * 8) * -1;
+                }
+                npc.ai[0] %= (float)Math.PI * 2f;
+                Vector2 offset = new Vector2((float)Math.Cos(npc.ai[0]), (float)Math.Sin(npc.ai[0]));
+                Main.PlaySound(2, (int)npc.position.X, (int)npc.position.Y, 20);
+                Color color = new Color();
+                Rectangle rectangle = new Rectangle((int)npc.position.X, (int)(npc.position.Y + ((npc.height - npc.width) / 2)), npc.width, npc.width);
+            }
+            if (pattern4 == 430)
+            {
+                Main.PlaySound(SoundLoader.customSoundType, (int)npc.position.X, (int)npc.position.Y, mod.GetSoundSlot(SoundType.Custom, "Sounds/Bosses/OldTerraSwingBoss"));
+                attack1 = true;
+                float Speed = 10f;  //projectile speed
+                Vector2 vector8 = new Vector2(npc.position.X + (npc.width / 2), npc.position.Y + (npc.height / 2));
+                int damage = 18;  //projectile damage
+                int type = mod.ProjectileType("KingBeam");  //put your projectile
+                float rotation = (float)Math.Atan2((vector8.Y) - (Main.player[npc.target].position.Y + (Main.player[npc.target].height * 0.5f)), (vector8.X) - (Main.player[npc.target].position.X + (Main.player[npc.target].width * 0.5f)));
+                int num54 = Projectile.NewProjectile(vector8.X, vector8.Y - 100, (float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1), type, damage, 0f, 0);
+                int num55 = Projectile.NewProjectile(vector8.X, vector8.Y - 100, (float)((Math.Cos(rotation) * Speed) * -1) + -1, (float)((Math.Sin(rotation) * Speed) * -1) + -1, type, damage, 0f, 0);
+                int num56 = Projectile.NewProjectile(vector8.X, vector8.Y - 100, (float)((Math.Cos(rotation) * Speed) * -1) + 1, (float)((Math.Sin(rotation) * Speed) * -1) + 1, type, damage, 0f, 0);
+                Main.projectile[num54].netUpdate = true;
+                Main.projectile[num55].netUpdate = true;
+                Main.projectile[num56].netUpdate = true;
+            }
+            if (pattern4 == 460)
+            {
+                Main.PlaySound(SoundLoader.customSoundType, (int)npc.position.X, (int)npc.position.Y, mod.GetSoundSlot(SoundType.Custom, "Sounds/Bosses/OldTerraSwingBoss"));
+                attack1 = true;
+                float Speed = 10f;  //projectile speed
+                Vector2 vector8 = new Vector2(npc.position.X + (npc.width / 2), npc.position.Y + (npc.height / 2));
+                int damage = 18;  //projectile damage
+                int type = mod.ProjectileType("KingBeam");  //put your projectile
+                float rotation = (float)Math.Atan2((vector8.Y) - (Main.player[npc.target].position.Y + (Main.player[npc.target].height * 0.5f)), (vector8.X) - (Main.player[npc.target].position.X + (Main.player[npc.target].width * 0.5f)));
+                int num54 = Projectile.NewProjectile(vector8.X, vector8.Y - 100, (float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1), type, damage, 0f, 0);
+                int num55 = Projectile.NewProjectile(vector8.X, vector8.Y - 100, (float)((Math.Cos(rotation) * Speed) * -1) + -1, (float)((Math.Sin(rotation) * Speed) * -1) + -1, type, damage, 0f, 0);
+                int num56 = Projectile.NewProjectile(vector8.X, vector8.Y - 100, (float)((Math.Cos(rotation) * Speed) * -1) + 1, (float)((Math.Sin(rotation) * Speed) * -1) + 1, type, damage, 0f, 0);
+                Main.projectile[num54].netUpdate = true;
+                Main.projectile[num55].netUpdate = true;
+                Main.projectile[num56].netUpdate = true;
+            }
+            if (pattern4 == 500)
+            {
+                Main.PlaySound(SoundLoader.customSoundType, (int)npc.position.X, (int)npc.position.Y, mod.GetSoundSlot(SoundType.Custom, "Sounds/Bosses/OldTerraSwingBoss"));
+                attack1 = true;
+                float Speed = 11f;  //projectile speed
+                Vector2 vector8 = new Vector2(npc.position.X + (npc.width / 2), npc.position.Y + (npc.height / 2));
+                int damage = 18;  //projectile damage
+                int type = mod.ProjectileType("KingBeam");  //put your projectile
+                float rotation = (float)Math.Atan2((vector8.Y) - (Main.player[npc.target].position.Y + (Main.player[npc.target].height * 0.5f)), (vector8.X) - (Main.player[npc.target].position.X + (Main.player[npc.target].width * 0.5f)));
+                int num54 = Projectile.NewProjectile(vector8.X, vector8.Y - 100, (float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1), type, damage, 0f, 0);
+                int num55 = Projectile.NewProjectile(vector8.X, vector8.Y - 100, (float)((Math.Cos(rotation) * Speed) * -1) + -1, (float)((Math.Sin(rotation) * Speed) * -1) + -1, type, damage, 0f, 0);
+                int num56 = Projectile.NewProjectile(vector8.X, vector8.Y - 100, (float)((Math.Cos(rotation) * Speed) * -1) + 1, (float)((Math.Sin(rotation) * Speed) * -1) + 1, type, damage, 0f, 0);
+                Main.projectile[num54].netUpdate = true;
+                Main.projectile[num55].netUpdate = true;
+                Main.projectile[num56].netUpdate = true;
+            }
+            if (pattern4 == 570)
+            {
+                Main.PlaySound(SoundLoader.customSoundType, (int)npc.position.X, (int)npc.position.Y, mod.GetSoundSlot(SoundType.Custom, "Sounds/Bosses/OldTerraSwingBoss"));
+                attack2 = true;
+                float Speed = 11f;  //projectile speed
+                Vector2 vector8 = new Vector2(npc.position.X + (npc.width / 2), npc.position.Y + (npc.height / 2));
+                int damage = 18;  //projectile damage
+                int type = mod.ProjectileType("KingBeam");  //put your projectile
+                float rotation = (float)Math.Atan2((vector8.Y) - (Main.player[npc.target].position.Y + (Main.player[npc.target].height * 0.5f)), (vector8.X) - (Main.player[npc.target].position.X + (Main.player[npc.target].width * 0.5f)));
+                int num54 = Projectile.NewProjectile(vector8.X, vector8.Y - 100, (float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1), type, damage, 0f, 0);
+                int num55 = Projectile.NewProjectile(vector8.X, vector8.Y - 100, (float)((Math.Cos(rotation) * Speed) * -1) + -1, (float)((Math.Sin(rotation) * Speed) * -1) + -1, type, damage, 0f, 0);
+                int num56 = Projectile.NewProjectile(vector8.X, vector8.Y - 100, (float)((Math.Cos(rotation) * Speed) * -1) + 1, (float)((Math.Sin(rotation) * Speed) * -1) + 1, type, damage, 0f, 0);
+                Main.projectile[num54].netUpdate = true;
+                Main.projectile[num55].netUpdate = true;
+                Main.projectile[num56].netUpdate = true;
+            }
+            if (pattern4 == 573)
+            {
+                float Speed = 10f;  //projectile speed
+                Vector2 vector8 = new Vector2(npc.position.X + (npc.width / 2), npc.position.Y + (npc.height / 2));
+                int damage = 18;  //projectile damage
+                int type = mod.ProjectileType("KingBeam");  //put your projectile
+                float rotation = (float)Math.Atan2((vector8.Y) - (Main.player[npc.target].position.Y + (Main.player[npc.target].height * 0.5f)), (vector8.X) - (Main.player[npc.target].position.X + (Main.player[npc.target].width * 0.5f)));
+                int num54 = Projectile.NewProjectile(vector8.X, vector8.Y - 100, (float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1), type, damage, 0f, 0);
+                int num55 = Projectile.NewProjectile(vector8.X, vector8.Y - 100, (float)((Math.Cos(rotation) * Speed) * -1) + -1, (float)((Math.Sin(rotation) * Speed) * -1) + -1, type, damage, 0f, 0);
+                int num56 = Projectile.NewProjectile(vector8.X, vector8.Y - 100, (float)((Math.Cos(rotation) * Speed) * -1) + 1, (float)((Math.Sin(rotation) * Speed) * -1) + 1, type, damage, 0f, 0);
+                Main.projectile[num54].netUpdate = true;
+                Main.projectile[num55].netUpdate = true;
+                Main.projectile[num56].netUpdate = true;
+            }
+            if (pattern4 == 574)
+            {
+                Main.PlaySound(SoundLoader.customSoundType, (int)npc.position.X, (int)npc.position.Y, mod.GetSoundSlot(SoundType.Custom, "Sounds/Bosses/OldTerraSwingBoss"));
+                float Speed = 16f;  //projectile speed
+                Vector2 vector8 = new Vector2(npc.position.X + (npc.width / 2), npc.position.Y + (npc.height / 2));
+                int damage = 20;  //projectile damage
+                int type = mod.ProjectileType("KingusBeamBig");  //put your projectile
+                float rotation = (float)Math.Atan2((vector8.Y) - (Main.player[npc.target].position.Y + (Main.player[npc.target].height * 0.5f)), (vector8.X) - (Main.player[npc.target].position.X + (Main.player[npc.target].width * 0.5f)));
+                int num54 = Projectile.NewProjectile(vector8.X, vector8.Y - 150, (float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1), type, damage, 0f, 0);
+                int num55 = Projectile.NewProjectile(vector8.X, vector8.Y + 50, (float)((Math.Cos(rotation) * Speed) * -1) + -1, (float)((Math.Sin(rotation) * Speed) * -1) + -1, type, damage, 0f, 0);
+                Main.projectile[num54].netUpdate = true;
+                Main.projectile[num55].netUpdate = true;
+            }
+            if (pattern4 == 576)
+            {
+                float Speed = 7f;  //projectile speed
+                Vector2 vector8 = new Vector2(npc.position.X + (npc.width / 2), npc.position.Y + (npc.height / 2));
+                int damage = 18;  //projectile damage
+                int type = mod.ProjectileType("KingBeam");  //put your projectile
+                float rotation = (float)Math.Atan2((vector8.Y) - (Main.player[npc.target].position.Y + (Main.player[npc.target].height * 0.5f)), (vector8.X) - (Main.player[npc.target].position.X + (Main.player[npc.target].width * 0.5f)));
+                int num54 = Projectile.NewProjectile(vector8.X, vector8.Y - 100, (float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1), type, damage, 0f, 0);
+                int num55 = Projectile.NewProjectile(vector8.X, vector8.Y - 100, (float)((Math.Cos(rotation) * Speed) * -1) + -1, (float)((Math.Sin(rotation) * Speed) * -1) + -1, type, damage, 0f, 0);
+                int num56 = Projectile.NewProjectile(vector8.X, vector8.Y - 100, (float)((Math.Cos(rotation) * Speed) * -1) + 1, (float)((Math.Sin(rotation) * Speed) * -1) + 1, type, damage, 0f, 0);
+                Main.projectile[num54].netUpdate = true;
+                Main.projectile[num55].netUpdate = true;
+                Main.projectile[num56].netUpdate = true;
+            }
+            if (pattern4 == 600)
+            {
+                pattern4 = 125;
             }
             return;
         }
@@ -459,6 +820,7 @@ namespace ofDarkandBelow.NPCs.SunkenKing
             }
             else
             {
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("FallenFragment"), 25);
                 if (Main.rand.NextBool(3))
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("FirstTerraBlade"));
@@ -470,6 +832,10 @@ namespace ofDarkandBelow.NPCs.SunkenKing
                 if (Main.rand.NextBool(3))
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("KingsHarvest"));
+                }
+                if (Main.rand.NextBool(3))
+                {
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("FallenRoyaltyWings"));
                 }
                 npc.position = position;
             }

@@ -32,5 +32,13 @@ namespace ofDarkandBelow.Items.BossDrops.SunkenKing
             item.rare = 3;
 			item.defense = 6;
 		}
-	}
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(mod.ItemType("FallenFragment"), 7);
+            recipe.AddTile(TileID.Anvils);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
+    }
 }
