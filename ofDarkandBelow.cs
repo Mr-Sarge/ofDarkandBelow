@@ -19,7 +19,7 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.UI;
 using ofDarkandBelow;
-
+using static ofDarkandBelow.MyPlayer;
 using static ofDarkandBelow.MNet;
 
 namespace ofDarkandBelow
@@ -27,7 +27,7 @@ namespace ofDarkandBelow
     class ofDarkandBelow : Mod
     {
         public static ofDarkandBelow instance = null;
-
+        public static ofDarkandBelow inst = null;
         public ofDarkandBelow()
         {
             Properties = new ModProperties()
@@ -38,9 +38,26 @@ namespace ofDarkandBelow
                 AutoloadBackgrounds = true
             };
         }
+        public override void UpdateMusic(ref int music, ref MusicPriority priority)
+        {
+            if (Main.gameMenu)
+                return;
+            if (priority > MusicPriority.Environment)
+                return;
+            Player player = Main.LocalPlayer;
+            if (!player.active)
+                return;
+            if (Main.player[Main.myPlayer].GetModPlayer<MyPlayer>().ZoneShrine == true)
+            {
+                music = GetSoundSlot(SoundType.Music, "Sounds/Music/OnceWas");
+
+                priority = MusicPriority.Environment;
+            }
+        }
         public override void Load()
         {
             instance = this;
+            inst = this;
 
             ModTranslation text = CreateTranslation("SkeletronBronzeMessage");
             text.SetDefault("The enemies in the underground hold Bronze!");

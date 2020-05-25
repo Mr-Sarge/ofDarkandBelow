@@ -19,6 +19,7 @@ namespace ofDarkandBelow
         public static bool downedSunkenKing;
         public static bool downedAmalgamation;
         public static bool downedPrimordialMaw;
+        public static int shrineBiome = 0;
         public override void PostUpdate()
         {
             if (NPC.downedBoss3 && !skeletronBronzeMessage)
@@ -83,5 +84,13 @@ namespace ofDarkandBelow
 			flags[2] = downedPrimordialMaw;
 			writer.Write(flags);
 		}
+        public override void TileCountsAvailable(int[] tileCounts)
+        {
+            shrineBiome = tileCounts[mod.TileType("DragonStoneATile")];
+        }
+        public override void ResetNearbyTileEffects()
+        {
+            shrineBiome = 0;
+        }
     }
 }

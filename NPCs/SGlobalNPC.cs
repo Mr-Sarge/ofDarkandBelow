@@ -23,11 +23,13 @@ namespace ofDarkandBelow.NPCs
             }
         }
         public bool horrorHemorrhage = false;
+        public bool dracarniumFlames = false;
         public bool cosmicFlame = false;
 		public bool tainted = false;
 		public bool belowZero = false;
         public override void ResetEffects(NPC npc)
         {
+            dracarniumFlames = false;
             cosmicFlame = false;
 			tainted = false;
             belowZero = false;
@@ -81,15 +83,30 @@ namespace ofDarkandBelow.NPCs
             {
             int DustID4 = Dust.NewDust(npc.position, npc.width, npc.height, mod.DustType("HorrorHemorrhageDust"), npc.velocity.X * 0.6f, npc.velocity.Y * 0.2f, 20, default(Color), 2f);
             Main.dust[DustID4].noGravity = true;
-            npc.defense -= 35;
+            npc.defense -= 45;
             if (npc.lifeRegen > 0)
             {
                 npc.lifeRegen = 0;
             }
-                npc.lifeRegen -= 50;
+                npc.lifeRegen -= 48;
                 if (damage < 1)
             {
-                damage = 6;
+                damage = 8;
+                }
+            }
+            if (dracarniumFlames)
+            {
+                npc.defense -= 8;
+                int DustID2 = Dust.NewDust(npc.position, npc.width, npc.height, mod.DustType("DracarniumFlamesDust"), npc.velocity.X * 0.2f, npc.velocity.Y * 0.2f, 20, default(Color), 1f);
+                Main.dust[DustID2].noGravity = true;
+                if (npc.lifeRegen > 0)
+                {
+                    npc.lifeRegen = 0;
+                }
+                npc.lifeRegen -= 16;
+                if (damage < 1)
+                {
+                    damage = 2;
                 }
             }
         }
