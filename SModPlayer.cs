@@ -26,6 +26,7 @@ namespace ofDarkandBelow
         public bool kingPowerCooldown = false;
         public bool fallenRoyaltySetBonus = false;
         public bool behemothEffect = false;
+        public bool dracarniumInfusion = false;
         public override void ResetEffects()
         {
             cosmicRevival = false;
@@ -37,6 +38,7 @@ namespace ofDarkandBelow
             sunkenCrownEffect = false;
             kingPowerCooldown = false;
             fallenRoyaltySetBonus = false;
+            dracarniumInfusion = false;
         }
         public override void UpdateDead()
         {
@@ -53,6 +55,10 @@ namespace ofDarkandBelow
             {
                 player.AddBuff(mod.BuffType("KingPower"), 480);
                 player.AddBuff(mod.BuffType("KingPowerCooldown"), 1800);
+            }
+            if (dracarniumInfusion)
+            {
+                target.AddBuff(mod.BuffType("DracarniumFlames"), 240);
             }
         }
         public override bool PreKill(double damage, int hitDirection, bool pvp, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource)
@@ -116,6 +122,10 @@ namespace ofDarkandBelow
         }
         public override void OnHitNPCWithProj(Projectile proj, NPC target, int damage, float knockback, bool crit)
         {
+            if (dracarniumInfusion)
+            {
+                target.AddBuff(mod.BuffType("DracarniumFlames"), 240);
+            }
             if (fallenRoyaltySetBonus == true && kingPowerCooldown == false)
             {
                 player.AddBuff(mod.BuffType("KingPower"), 480);
