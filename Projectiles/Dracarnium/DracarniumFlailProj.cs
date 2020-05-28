@@ -9,20 +9,8 @@ namespace ofDarkandBelow.Projectiles.Dracarnium
 {
     public class DracarniumFlailProj : ModProjectile
     {
-        public static short customGlowMask = 0;
         public override void SetStaticDefaults()
         {
-            if (Main.netMode != 2)
-            {
-                Texture2D[] glowMasks = new Texture2D[Main.glowMaskTexture.Length + 1];
-                for (int i = 0; i < Main.glowMaskTexture.Length; i++)
-                {
-                    glowMasks[i] = Main.glowMaskTexture[i];
-                }
-                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Projectiles/Dracarnium/" + GetType().Name + "_Glow");
-                customGlowMask = (short)(glowMasks.Length - 1);
-                Main.glowMaskTexture = glowMasks;
-            }
             DisplayName.SetDefault("Dracarnium Flail");
         }
         public override void SetDefaults()
@@ -32,7 +20,7 @@ namespace ofDarkandBelow.Projectiles.Dracarnium
             projectile.friendly = true;
             projectile.penetrate = -1; // Penetrates NPCs infinitely.
             projectile.melee = true; // Deals melee dmg.
-            projectile.glowMask = customGlowMask;
+            projectile.light = 0.22f;
             projectile.aiStyle = 15; // Set the aiStyle to that of a flail.
         }
 

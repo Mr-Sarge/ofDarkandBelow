@@ -65,5 +65,25 @@ namespace ofDarkandBelow
             flags[0] = ZoneShrine;
             writer.Write(flags);
         }
+        public override void CatchFish(Item fishingRod, Item bait, int power, int liquidType, int poolSize, int worldLayer, int questFish, ref int caughtType, ref bool junk)
+        {
+            if (ZoneShrine && Main.rand.Next(16) == 0)
+            {
+                caughtType = mod.ItemType("DragonShrineCrate");
+            }
+            if (ZoneShrine && Main.rand.Next(7) == 0)
+            {
+                caughtType = mod.ItemType("DracianSpikeFish");
+            }
+            if (ZoneShrine && Main.rand.Next(40) == 0 && power >= 40)
+            {
+                caughtType = mod.ItemType("DracianSwordTongue");
+            }
+            if (ZoneShrine && Main.rand.Next(40) == 0 && power >= 40)
+            {
+                caughtType = mod.ItemType("SpikeEel");
+            }
+        }
+
     }
 }

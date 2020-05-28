@@ -1,3 +1,4 @@
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -22,6 +23,7 @@ namespace ofDarkandBelow.Items.Placeable.DragonShrine
             item.useStyle = 1;
             item.consumable = true;        
             item.rare = 3;
+            item.value = Item.sellPrice(0, 0, 20, 0);
             item.createTile = mod.TileType("DragonTableTile");
             item.placeStyle = 0;
 		}

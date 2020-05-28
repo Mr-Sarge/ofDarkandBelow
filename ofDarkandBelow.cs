@@ -49,7 +49,7 @@ namespace ofDarkandBelow
                 return;
             if (Main.player[Main.myPlayer].GetModPlayer<MyPlayer>().ZoneShrine == true)
             {
-                music = GetSoundSlot(SoundType.Music, "Sounds/Music/OnceWas");
+                music = GetSoundSlot(SoundType.Music, "Sounds/Music/ForgottenFate");
 
                 priority = MusicPriority.Environment;
             }

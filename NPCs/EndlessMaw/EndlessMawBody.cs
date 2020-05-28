@@ -30,7 +30,8 @@ namespace ofDarkandBelow.NPCs.EndlessMaw
             npc.HitSound = SoundID.NPCHit4;
 			npc.buffImmune[mod.BuffType("CosmicFlame")] = true;
 			npc.buffImmune[mod.BuffType("BelowZero")] = true;
-			npc.buffImmune[BuffID.OnFire] = true;
+            npc.buffImmune[mod.BuffType("DracarniumFlames")] = true;
+            npc.buffImmune[BuffID.OnFire] = true;
 			npc.buffImmune[BuffID.Frostburn] = true;
 			npc.buffImmune[BuffID.CursedInferno] = true;
         }

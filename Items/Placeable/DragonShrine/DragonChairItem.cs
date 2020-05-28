@@ -1,3 +1,4 @@
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -19,6 +20,7 @@ namespace ofDarkandBelow.Items.Placeable.DragonShrine
             item.autoReuse = true;
             item.useAnimation = 15;
             item.useTime = 10;
+            item.value = Item.sellPrice(0, 0, 15, 0);
             item.useStyle = 1;
             item.consumable = true;        
             item.rare = 3;

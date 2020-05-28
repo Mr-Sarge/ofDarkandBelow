@@ -24,12 +24,14 @@ namespace ofDarkandBelow.NPCs
         }
         public bool horrorHemorrhage = false;
         public bool dracarniumFlames = false;
+        public bool eelSpiked = false;
         public bool cosmicFlame = false;
 		public bool tainted = false;
 		public bool belowZero = false;
         public override void ResetEffects(NPC npc)
         {
             dracarniumFlames = false;
+            eelSpiked = false;
             cosmicFlame = false;
 			tainted = false;
             belowZero = false;
@@ -107,6 +109,21 @@ namespace ofDarkandBelow.NPCs
                 if (damage < 1)
                 {
                     damage = 2;
+                }
+            }
+            if (eelSpiked)
+            {
+                npc.defense -= 6;
+                int DustID2 = Dust.NewDust(npc.position, npc.width, npc.height, mod.DustType("DracarniumFlamesDust"), npc.velocity.X * 0.45f, npc.velocity.Y * 0.3f, 20, default(Color), 0.7f);
+                Main.dust[DustID2].noGravity = true;
+                if (npc.lifeRegen > 0)
+                {
+                    npc.lifeRegen = 0;
+                }
+                npc.lifeRegen -= 46;
+                if (damage < 1)
+                {
+                    damage = 4;
                 }
             }
         }

@@ -15,13 +15,13 @@ namespace ofDarkandBelow.Items.DragonShrine
 		}
 
 		public override void SetDefaults() {
-			item.damage = 19;
+			item.damage = 20;
 			item.magic = true;
 			item.mana = 8;
 			item.width = 76;
 			item.height = 76;
-			item.useTime = 14;
-			item.useAnimation = 14;
+			item.useTime = 18;
+			item.useAnimation = 18;
 			item.useStyle = 5;
 			item.noMelee = true;
 			item.knockBack = 5;
@@ -39,7 +39,7 @@ namespace ofDarkandBelow.Items.DragonShrine
             {
                 position += muzzleOffset;
             }
-            int numberProjectiles = 1 + Main.rand.Next(3);
+            int numberProjectiles = 1 + Main.rand.Next(2);
             for (int i = 0; i < numberProjectiles; i++)
             {
                 Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(12));

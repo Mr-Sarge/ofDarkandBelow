@@ -27,7 +27,7 @@ namespace ofDarkandBelow.Tiles.DragonShrine
 			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsChair);
 			ModTranslation name = CreateMapEntryName();
 			name.SetDefault("Dragon Shrine Chair");
-            AddMapEntry(new Color(63, 56, 48));
+            AddMapEntry(new Color(121, 110, 107));
             dustType = mod.DustType("DragonBlockDust");
             disableSmartCursor = true;
 			adjTiles = new int[]{ TileID.Chairs };

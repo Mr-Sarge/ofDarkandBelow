@@ -38,7 +38,7 @@ namespace ofDarkandBelow.Projectiles.Dracarnium
 			projectile.melee = true;
             projectile.alpha = 125;
             projectile.penetrate = 3; //Tells the game how many enemies it can hit before being destroyed
-            projectile.timeLeft = 420; //The amount of time the projectile is alive for
+            projectile.timeLeft = 300; //The amount of time the projectile is alive for
             projectile.light = 0.60f; //This defines the projectile light
             projectile.glowMask = customGlowMask;
         }
@@ -51,7 +51,8 @@ namespace ofDarkandBelow.Projectiles.Dracarnium
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) //When you hit an NPC
         {
 
-            target.AddBuff(mod.BuffType("DracarniumFlames"), 240);    //this adds a buff to the npc hit. 210 it the time of the buff
+            target.AddBuff(mod.BuffType("DracarniumFlames"), 240);
+            target.immune[projectile.owner] = 4;
         }
     }
 }

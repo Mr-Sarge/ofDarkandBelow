@@ -26,7 +26,7 @@ namespace ofDarkandBelow.Tiles
             TileObjectData.newTile.LavaPlacement = LiquidPlacement.NotAllowed;
             TileObjectData.addTile(Type);
 
-            AddMapEntry(new Color(253, 221, 3), Language.GetText("MapObject.Candelabra"));
+            AddMapEntry(new Color(253, 221, 3), Language.GetText("Freak Candelabra"));
             dustType = DustID.t_LivingWood;
             disableSmartCursor = true;
             adjTiles = new int[] { TileID.Candelabras };

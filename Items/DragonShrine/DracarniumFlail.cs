@@ -17,8 +17,8 @@ namespace ofDarkandBelow.Items.DragonShrine
 		}
         public override void SetDefaults()
         {
-            item.width = 46;
-            item.height = 40;
+            item.width = 26;
+            item.height = 32;
             item.value = Item.sellPrice(0, 1, 20, 0);
             item.rare = 3;
             item.noMelee = true;

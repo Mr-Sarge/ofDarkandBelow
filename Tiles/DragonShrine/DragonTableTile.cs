@@ -29,7 +29,7 @@ namespace ofDarkandBelow.Tiles.DragonShrine
 			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTable);
 			ModTranslation name = CreateMapEntryName();
 			name.SetDefault("Dragon Shrine Table");
-            AddMapEntry(new Color(66, 59, 51));
+            AddMapEntry(new Color(73, 64, 70), name);
             dustType = mod.DustType("DragonBlockDust");
             disableSmartCursor = true;
 			adjTiles = new int[] { TileID.Tables };

@@ -19,12 +19,12 @@ namespace ofDarkandBelow.Items.DragonShrine
         }
         public override void SetDefaults()
 		{
-			item.damage = 20;
+			item.damage = 21;
 			item.ranged = true;
 			item.width = 36;
 			item.height = 66;
-			item.useTime = 29;
-			item.useAnimation = 29;
+			item.useTime = 28;
+			item.useAnimation = 28;
 			item.useStyle = 5;
 			item.noMelee = true; //so the item's animation doesn't do damage
 			item.knockBack = 5;
@@ -48,7 +48,7 @@ namespace ofDarkandBelow.Items.DragonShrine
            }
             Vector2 vector2 = player.RotatedRelativePoint(player.MountedCenter, true);
             float num117 = 0.314159274f;
-            int num118 = 2 + Main.rand.Next(2);
+            int num118 = 2;
             Vector2 vector7 = new Vector2(speedX, speedY);
             vector7.Normalize();
             vector7 *= 40f;

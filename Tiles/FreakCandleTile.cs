@@ -27,7 +27,7 @@ namespace ofDarkandBelow.Tiles
             TileObjectData.addTile(Type);
             drop = mod.ItemType("FreakCandleItem");
 
-            AddMapEntry(new Color(253, 221, 3), Language.GetText("MapObject.Candle"));
+            AddMapEntry(new Color(253, 221, 3), Language.GetText("Freak Candle"));
             dustType = DustID.t_LivingWood;
             disableSmartCursor = true;
             adjTiles = new int[] { TileID.Candles };

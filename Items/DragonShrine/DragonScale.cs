@@ -28,7 +28,7 @@ namespace ofDarkandBelow.Items.DragonShrine
 		public override void UpdateAccessory(Player player, bool hideVisual) {
             int dragscalereduction = player.statLifeMax / 600;
             player.endurance += dragscalereduction;
-            int dragscaledefense = player.statLifeMax / 30;
+            int dragscaledefense = player.statLifeMax / 40;
             player.statDefense += dragscaledefense;
 
         }

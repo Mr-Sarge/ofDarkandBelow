@@ -13,7 +13,7 @@ namespace ofDarkandBelow.Items
 		}
 
 		public override void SetDefaults() {
-			item.damage = 28;
+			item.damage = 35;
 			item.useStyle = 5;
 			item.useAnimation = 35;
 			item.useTime = 35;

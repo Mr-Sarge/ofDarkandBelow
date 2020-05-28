@@ -1,4 +1,6 @@
+using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -15,12 +17,12 @@ namespace ofDarkandBelow.Items.DragonShrine
         }
 		public override void SetDefaults()
 		{
-			item.damage = 32;
+			item.damage = 28;
 			item.melee = true;
 			item.width = 38;
 			item.height = 44;
-			item.useTime = 15;
-			item.useAnimation = 15;
+			item.useTime = 23;
+			item.useAnimation = 23;
 			item.useStyle = 1;
 			item.knockBack = 7;
             item.value = Item.sellPrice(0, 3, 10, 0);
@@ -28,7 +30,19 @@ namespace ofDarkandBelow.Items.DragonShrine
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
             item.shoot = mod.ProjectileType("DracarniumSpark");
-            item.shootSpeed = 9f;
+            item.shootSpeed = 10.2f;
+        }
+        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+        {
+            int numberProjectiles = 1 + Main.rand.Next(1);
+            for (int i = 0; i < numberProjectiles; i++)
+            {
+                Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(14 + Main.rand.Next(6)));
+                float scale = 1f - (Main.rand.NextFloat() * .3f);
+                perturbedSpeed = perturbedSpeed * scale;
+                Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage / 2, knockBack / 3, player.whoAmI);
+            }
+            return false;
         }
         public override void AddRecipes()
         {
