@@ -36,19 +36,40 @@ namespace ofDarkandBelow.Items.Fishing
 
         public override void RightClick(Player player)
         {
-            int choice = Main.rand.Next(4);
+            int choice = Main.rand.Next(9);
             if (choice == 0)
             {
                 player.QuickSpawnItem(mod.ItemType("DragonScale"));
             }
+            if (choice == 1)
             {
                 player.QuickSpawnItem(mod.ItemType("ShrineGuardShield"));
             }
             if (choice == 2)
             {
-                player.QuickSpawnItem(mod.ItemType("DracarneKey"));
+                player.QuickSpawnItem(mod.ItemType("AncientGreatSword"));
             }
             if (choice == 3)
+            {
+                player.QuickSpawnItem(mod.ItemType("AncientAle"));
+            }
+            if (choice == 4)
+            {
+                player.QuickSpawnItem(mod.ItemType("ArchaicMusket"));
+            }
+            if (choice == 5)
+            {
+                player.QuickSpawnItem(mod.ItemType("DracarneKey"));
+            }
+            if (choice == 6)
+            {
+                player.QuickSpawnItem(mod.ItemType("DracarneKey"));
+            }
+            if (choice == 7)
+            {
+                player.QuickSpawnItem(mod.ItemType("DracarneKey"));
+            }
+            if (choice == 8)
             {
                 player.QuickSpawnItem(mod.ItemType("DracarneKey"));
             }
@@ -56,7 +77,7 @@ namespace ofDarkandBelow.Items.Fishing
             int choice2 = Main.rand.Next(6);
             if (choice2 == 0)
             {
-                player.QuickSpawnItem(mod.ItemType("DracarniumIngot"), Main.rand.Next(1, 3));
+                player.QuickSpawnItem(mod.ItemType("DracarniumIngot"), Main.rand.Next(2, 4));
             }
             if (choice2 == 1)
             {
@@ -64,11 +85,11 @@ namespace ofDarkandBelow.Items.Fishing
             }
             if (choice2 == 2)
             {
-                player.QuickSpawnItem(mod.ItemType("DracarniumIngot"), Main.rand.Next(2, 4));
+                player.QuickSpawnItem(mod.ItemType("DracarniumIngot"), Main.rand.Next(3, 4));
             }
             if (choice2 == 3)
             {
-                player.QuickSpawnItem(mod.ItemType("DracarniumIngot"), Main.rand.Next(3, 4));
+                player.QuickSpawnItem(mod.ItemType("DracarniumIngot"), Main.rand.Next(4, 5));
             }
             if (choice2 == 4)
             {
@@ -76,7 +97,7 @@ namespace ofDarkandBelow.Items.Fishing
             }
             if (choice2 == 5)
             {
-                player.QuickSpawnItem(mod.ItemType("DracarniumIngot"), Main.rand.Next(4, 5));
+                player.QuickSpawnItem(mod.ItemType("DracarniumIngot"), Main.rand.Next(5, 6));
             }
             if (choice2 == 6)
             {
@@ -84,7 +105,7 @@ namespace ofDarkandBelow.Items.Fishing
             }
             if (choice2 == 7)
             {
-                player.QuickSpawnItem(mod.ItemType("DracarniumIngot"), Main.rand.Next(1, 5));
+                player.QuickSpawnItem(mod.ItemType("DracarniumIngot"), Main.rand.Next(2, 6));
             }
             if (choice2 == 8)
             {

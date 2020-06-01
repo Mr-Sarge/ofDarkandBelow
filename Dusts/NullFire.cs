@@ -25,7 +25,7 @@ namespace ofDarkandBelow.Dusts
 			if (strength > 1f) {
 				strength = 1f;
 			}
-			Lighting.AddLight(dust.position, 0.4f * strength, 1.2f * strength, 1.1f * strength);
+			Lighting.AddLight(dust.position, 0.2f * strength, 0.8f * strength, 0.6f * strength);
 			return false;
 		}
 	}

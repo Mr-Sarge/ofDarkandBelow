@@ -16,8 +16,8 @@ namespace ofDarkandBelow.Tiles.DragonShrine.Pillars
 			Main.tileTable[Type] = true;
 			Main.tileSolidTop[Type] = true;
 			Main.tileFrameImportant[Type] = true;
-			Main.tileNoAttach[Type] = true;
-			Main.tileLavaDeath[Type] = false;
+            Main.tileNoAttach[Type] = false;
+            Main.tileLavaDeath[Type] = false;
             dustType = mod.DustType("DragonBlockDust");
             minPick = 75;
             mineResist = 1.4f;

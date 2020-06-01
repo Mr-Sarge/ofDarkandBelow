@@ -28,6 +28,8 @@ namespace ofDarkandBelow
         public bool behemothEffect = false;
         public bool dracarniumInfusion = false;
         public bool ire = false;
+        public bool ancientAleBuff = false;
+        public bool ancientAleBuffCoolDown = false;
         public override void ResetEffects()
         {
             cosmicRevival = false;
@@ -41,11 +43,14 @@ namespace ofDarkandBelow
             fallenRoyaltySetBonus = false;
             dracarniumInfusion = false;
             ire = false;
+            ancientAleBuff = false;
+            ancientAleBuffCoolDown = false;
         }
         public override void UpdateDead()
         {
             cosmicRevivalCooldown = false;
             kingPowerCooldown = false;
+            ancientAleBuffCoolDown = false;
         }
         public override void OnHitNPC(Item item, NPC target, int damage, float knockback, bool crit)
         {

@@ -14,7 +14,7 @@ namespace ofDarkandBelow.NPCs.DragonShrineNPCs
         }
         public override void SetDefaults()
         {
-            npc.width = 54;
+            npc.width = 28;
             npc.height = 54;
             npc.friendly = false;
             npc.damage = 30;

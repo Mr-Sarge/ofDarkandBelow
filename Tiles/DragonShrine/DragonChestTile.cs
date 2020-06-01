@@ -7,6 +7,8 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
+using static Terraria.ModLoader.ModContent;
+using ofDarkandBelow.Items.DragonShrine;
 
 namespace ofDarkandBelow.Tiles.DragonShrine
 {
@@ -21,6 +23,9 @@ namespace ofDarkandBelow.Tiles.DragonShrine
             Main.tileFrameImportant[Type] = true;
             Main.tileNoAttach[Type] = true;
             Main.tileValue[Type] = 500;
+            minPick = 300;
+            dustType = mod.DustType("DragonBlockDust");
+            disableSmartCursor = true;
             TileObjectData.newTile.CopyFrom(TileObjectData.Style2x2);
             TileObjectData.newTile.Origin = new Point16(0, 1);
             TileObjectData.newTile.CoordinateHeights = new int[] { 16, 18 };
@@ -33,8 +38,10 @@ namespace ofDarkandBelow.Tiles.DragonShrine
             TileObjectData.addTile(Type);
             ModTranslation name = CreateMapEntryName();
             name.SetDefault("Dragon Shrine Chest");
-            AddMapEntry(new Color(45, 35, 0), name);
-            dustType = mod.DustType("DragonBlockDust");
+            AddMapEntry(new Color(92, 36, 36), name, MapChestName);
+            name = CreateMapEntryName(Name + "_Locked"); // With multiple map entries, you need unique translation keys.
+            name.SetDefault("Locked Dragon Shrine Chest");
+            AddMapEntry(new Color(0, 141, 63), name, MapChestName);
             disableSmartCursor = true;
             adjTiles = new int[] { TileID.Containers };
             chest = "Dragon Shrine Chest";
@@ -93,77 +100,86 @@ namespace ofDarkandBelow.Tiles.DragonShrine
 
         public override bool NewRightClick(int i, int j)
         {
-            Player player = Main.player[Main.myPlayer];
-            foreach (Item k in player.inventory)
+            Player player = Main.LocalPlayer;
+            Tile tile = Main.tile[i, j];
+            Main.mouseRightRelease = false;
+            int left = i;
+            int top = j;
+            if (tile.frameX % 36 != 0)
             {
-                if (k.type == mod.ItemType("DracarneKey"))
+                left--;
+            }
+            if (tile.frameY != 0)
+            {
+                top--;
+            }
+            if (player.sign >= 0)
+            {
+                Main.PlaySound(SoundID.MenuClose);
+                player.sign = -1;
+                Main.editSign = false;
+                Main.npcChatText = "";
+            }
+            if (Main.editChest)
+            {
+                Main.PlaySound(SoundID.MenuTick);
+                Main.editChest = false;
+                Main.npcChatText = "";
+            }
+            if (player.editedChestName)
+            {
+                NetMessage.SendData(MessageID.SyncPlayerChest, -1, -1, NetworkText.FromLiteral(Main.chest[player.chest].name), player.chest, 1f, 0f, 0f, 0, 0, 0);
+                player.editedChestName = false;
+            }
+            bool isLocked = IsLockedChest(left, top);
+            if (Main.netMode == NetmodeID.MultiplayerClient && !isLocked)
+            {
+                if (left == player.chestX && top == player.chestY && player.chest >= 0)
                 {
-                    Tile tile = Main.tile[i, j];
-                    Main.mouseRightRelease = false;
-                    int left = i;
-                    int top = j;
-                    if (tile.frameX % 36 != 0)
+                    player.chest = -1;
+                    Recipe.FindRecipes();
+                    Main.PlaySound(SoundID.MenuClose);
+                }
+                else
+                {
+                    NetMessage.SendData(MessageID.RequestChestOpen, -1, -1, null, left, (float)top, 0f, 0f, 0, 0, 0);
+                    Main.stackSplit = 600;
+                }
+            }
+            else
+            {
+                if (isLocked)
+                {
+                    int key = ItemType<Items.DragonShrine.DracarneKey>();
+                    if (player.ConsumeItem(key) && Chest.Unlock(left, top))
                     {
-                        left--;
+                        if (Main.netMode == NetmodeID.MultiplayerClient)
+                        {
+                            NetMessage.SendData(MessageID.Unlock, -1, -1, null, player.whoAmI, 1f, (float)left, (float)top);
+                        }
                     }
-                    if (tile.frameY != 0)
+                }
+                else
+                {
+                    int chest = Chest.FindChest(left, top);
+                    if (chest >= 0)
                     {
-                        top--;
-                    }
-                    if (player.sign >= 0)
-                    {
-                        Main.PlaySound(11, -1, -1, 1);
-                        player.sign = -1;
-                        Main.editSign = false;
-                        Main.npcChatText = "";
-                    }
-                    if (Main.editChest)
-                    {
-                        Main.PlaySound(12, -1, -1, 1);
-                        Main.editChest = false;
-                        Main.npcChatText = "";
-                    }
-                    if (player.editedChestName)
-                    {
-                        NetMessage.SendData(33, -1, -1, null, player.chest, 1f, 0f, 0f, 0, 0, 0);
-                        player.editedChestName = false;
-                    }
-                    if (Main.netMode == 1)
-                    {
-                        if (left == player.chestX && top == player.chestY && player.chest >= 0)
+                        Main.stackSplit = 600;
+                        if (chest == player.chest)
                         {
                             player.chest = -1;
-                            Recipe.FindRecipes();
-                            Main.PlaySound(11, -1, -1, 1);
+                            Main.PlaySound(SoundID.MenuClose);
                         }
                         else
                         {
-                            NetMessage.SendData(31, -1, -1, null, left, (float)top, 0f, 0f, 0, 0, 0);
-                            Main.stackSplit = 600;
+                            player.chest = chest;
+                            Main.playerInventory = true;
+                            Main.recBigList = false;
+                            player.chestX = left;
+                            player.chestY = top;
+                            Main.PlaySound(player.chest < 0 ? SoundID.MenuOpen : SoundID.MenuTick);
                         }
-                    }
-                    else
-                    {
-                        int chest = Chest.FindChest(left, top);
-                        if (chest >= 0)
-                        {
-                            Main.stackSplit = 600;
-                            if (chest == player.chest)
-                            {
-                                player.chest = -1;
-                                Main.PlaySound(11, -1, -1, 1);
-                            }
-                            else
-                            {
-                                player.chest = chest;
-                                Main.playerInventory = true;
-                                Main.recBigList = false;
-                                player.chestX = left;
-                                player.chestY = top;
-                                Main.PlaySound(player.chest < 0 ? 10 : 12, -1, -1, 1);
-                            }
-                            Recipe.FindRecipes();
-                        }
+                        Recipe.FindRecipes();
                     }
                 }
             }

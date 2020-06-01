@@ -1,8 +1,11 @@
-using Microsoft.Xna.Framework;
 using ofDarkandBelow.Items.Placeable.DragonShrine;
+using System;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.DataStructures;
+using Terraria.Enums;
 using Terraria.ObjectData;
 
 namespace ofDarkandBelow.Tiles.DragonShrine
@@ -14,14 +17,17 @@ namespace ofDarkandBelow.Tiles.DragonShrine
 			Main.tileFrameImportant[Type] = true;
 			Main.tileNoAttach[Type] = true;
 			Main.tileLavaDeath[Type] = true;
-			TileObjectData.newTile.CopyFrom(TileObjectData.Style2xX);
 			ModTranslation name = CreateMapEntryName();
 			name.SetDefault("Dragon Shrine Grandfather Clock");
             AddMapEntry(new Color(43, 39, 48), name);
             dustType = mod.DustType("DragonBlockDust");
-			adjTiles = new int[] { TileID.GrandfatherClocks };
+            TileObjectData.newTile.Width = 2;
             TileObjectData.newTile.Height = 5;
             TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 16, 16, 16 };
+            TileObjectData.newTile.UsesCustomCanPlace = true;
+            TileObjectData.newTile.CoordinateWidth = 16;
+            TileObjectData.newTile.CoordinatePadding = 2;
+            TileObjectData.newTile.Origin = new Point16(0, 0);
             TileObjectData.addTile(Type);
         }
 

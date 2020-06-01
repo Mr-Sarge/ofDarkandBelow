@@ -196,10 +196,9 @@ namespace ofDarkandBelow.Projectiles.Dracarnium
 
         private void NormalAI()
         {
+            projectile.rotation = projectile.velocity.ToRotation() + MathHelper.ToRadians(90f);
+
             TargetWhoAmI++;
-
-            projectile.rotation = projectile.velocity.ToRotation() + MathHelper.ToRadians(90f); 
-
 
             int DustID4 = Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType("DracarniumFlamesDust"), projectile.velocity.X * 0.75f, projectile.velocity.Y * 0.3f, 20, default(Color), 0.8f);
             Main.dust[DustID4].noGravity = true;

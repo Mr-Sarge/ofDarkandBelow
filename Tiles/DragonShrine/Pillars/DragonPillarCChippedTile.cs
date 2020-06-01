@@ -9,7 +9,7 @@ using Terraria.ObjectData;
 
 namespace ofDarkandBelow.Tiles.DragonShrine.Pillars
 {
-	public class DragonPillarBTile : ModTile
+	public class DragonPillarCChippedTile : ModTile
 	{
 		public override void SetDefaults()
 		{
@@ -22,8 +22,8 @@ namespace ofDarkandBelow.Tiles.DragonShrine.Pillars
             minPick = 75;
             mineResist = 1.4f;
             TileObjectData.newTile.Width = 2;
-            TileObjectData.newTile.Height = 4;
-            TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 16, 16 };
+            TileObjectData.newTile.Height = 5;
+            TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 16, 16, 16 };
             TileObjectData.newTile.UsesCustomCanPlace = true;
             TileObjectData.newTile.CoordinateWidth = 16;
             TileObjectData.newTile.CoordinatePadding = 2;
@@ -33,7 +33,7 @@ namespace ofDarkandBelow.Tiles.DragonShrine.Pillars
         }
         public override void KillMultiTile(int i, int j, int frameX, int frameY)
         {
-            Terraria.Item.NewItem(i * 16, j * 16, 64, 32, mod.ItemType("DragonPillarBItem"));
+            Terraria.Item.NewItem(i * 16, j * 16, 64, 32, mod.ItemType("DragonPillarCChippedItem"));
         }
     }
 }
