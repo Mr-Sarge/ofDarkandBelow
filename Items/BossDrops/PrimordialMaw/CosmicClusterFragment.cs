@@ -9,7 +9,7 @@ namespace ofDarkandBelow.Items.BossDrops.PrimordialMaw
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Cosmic Cluster Fragment");
-			Tooltip.SetDefault("A shard that's less than a thousandth of Endless Maw's original power");
+			Tooltip.SetDefault("'A shard that's less than a thousandth of the Endless Maw's original power.'");
 		}
 		public override void SetDefaults()
 		{

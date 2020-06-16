@@ -13,9 +13,9 @@ namespace ofDarkandBelow.Items.DragonShrine
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Archaic Musket");
-            Tooltip.SetDefault("'This thing is an unreliable mess!'"
-                + "\nFiring speed randomizes each shot."
-                + "\nReplaces Musket Balls with Archaic Bullets.");
+            Tooltip.SetDefault("Firing speed randomizes with each shot.'"
+                + "\nConverts Musket Balls to Archaic Bullets."
+                + "\n'This thing is an unreliable mess!'");
         }
         private int randTime;
         private int shootTimeRand;

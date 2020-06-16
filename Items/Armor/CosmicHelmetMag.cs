@@ -9,8 +9,8 @@ namespace ofDarkandBelow.Items.Armor
 	{
 		public override void SetStaticDefaults() {
 		    DisplayName.SetDefault("Cosmic Headwear");
-			Tooltip.SetDefault("A spiky piece of primordial head-wear."
-				+ "\n+45 Max Mana");
+			Tooltip.SetDefault("Increases maximum mana by 45"
+					  + "\n'A spiky piece of primordial head-wear.'");
 		}
 
 		public override void SetDefaults() {
@@ -30,9 +30,9 @@ namespace ofDarkandBelow.Items.Armor
 		}
 
 		public override void UpdateArmorSet(Player player) {
-			player.setBonus = "12% Increase to Magic Damage,"
-                + "\n7% Increase to Magic Crit Chance"
-                 + "\nYou will gain Mana when you are struck.";
+			player.setBonus = "12% increased magic damage"
+				+ "\n7% increased magic crit chance"
+				 + "\nYou will gain Mana when you are struck.";
 			player.magicDamage += 0.12f;
             player.magicCrit += 7;
             SModPlayer modPlayer = (SModPlayer)player.GetModPlayer(mod, "SModPlayer");

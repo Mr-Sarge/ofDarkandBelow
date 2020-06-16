@@ -9,8 +9,7 @@ namespace ofDarkandBelow.Items.DragonShrine
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Dracarnium Ingot");
-            Tooltip.SetDefault("'Made with the blood and rotted flesh of slain dragons...'"
-                + "\nUsed to craft Dracarnium Gear");
+			Tooltip.SetDefault("'Made with the blood and rotted flesh of slain dragons...'");
 		}
 		public override void SetDefaults()
 		{

@@ -10,9 +10,9 @@ namespace ofDarkandBelow.Items.Armor
 	public class ZeroGhostRobe : ModItem
 	{
 		public override void SetStaticDefaults() {
-		    DisplayName.SetDefault("Zero-Ghost Robe Bottom");
-			Tooltip.SetDefault("'A perfect bottom for a ghastly individual like yourself.'"
-				+ "\n+15 max mana, +1 max minions, and +15% movement speed.");
+		    DisplayName.SetDefault("Zero Ghost Robe Bottom");
+			Tooltip.SetDefault("Movement speed is increased by 15%"
+				+"\n'A perfect bottom for a ghastly individual like yourself.'");
 		}
 
 		public override void SetDefaults() {
@@ -24,9 +24,7 @@ namespace ofDarkandBelow.Items.Armor
 		}
 
 		public override void UpdateEquip(Player player) {
-			player.statManaMax2 += 15;
 			player.moveSpeed += 0.15f;
-			player.maxMinions++;
 		}
 
 		public override void AddRecipes() {

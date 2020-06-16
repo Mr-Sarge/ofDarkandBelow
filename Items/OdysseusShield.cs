@@ -12,8 +12,10 @@ namespace ofDarkandBelow.Items     //We need this to basically indicate the fold
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Odysseus' Shield");
-			Tooltip.SetDefault("The Shield that allows one to scare a cyclops."
-			+ "\n10% increased Melee Damage, 15% Increased Thrown Damage and 4 Defense");
+			Tooltip.SetDefault("4 defense"
+            + "\n10% increased melee damage"
+            + "\n15% increased thrown damage"
+            + "\n'The shield that allows one to scare a cyclops.'");
         }
         public override void SetDefaults()
         {

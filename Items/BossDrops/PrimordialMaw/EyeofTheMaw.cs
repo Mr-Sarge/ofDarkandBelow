@@ -8,7 +8,7 @@ namespace ofDarkandBelow.Items.BossDrops.PrimordialMaw
 	{
 		public override void SetStaticDefaults() {
 		    DisplayName.SetDefault("Eye of The Maw");
-			Tooltip.SetDefault("Fires a cosmic-flaming spike ball from Maw's power.");
+			Tooltip.SetDefault("Fires a cosmic-flaming spike ball.");
 			Item.staff[item.type] = true; //this makes the useStyle animate as a staff instead of as a gun
 		}
 

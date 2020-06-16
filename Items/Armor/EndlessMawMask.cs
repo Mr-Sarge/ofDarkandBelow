@@ -9,7 +9,7 @@ namespace ofDarkandBelow.Items.Armor
 	{
 		public override void SetStaticDefaults() {
 		    DisplayName.SetDefault("Endless Maw Mask");
-			Tooltip.SetDefault("Embrace the Cosmic Wrath");
+			Tooltip.SetDefault("'Embrace the Cosmic Wrath!'");
 		}
 
 		public override void SetDefaults() {

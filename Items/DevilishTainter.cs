@@ -8,7 +8,7 @@ namespace ofDarkandBelow.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Devilish Tainter");
-			Tooltip.SetDefault("A sword of a demon.");
+			Tooltip.SetDefault("'A sword of a demon...'");
 		}
 		public override void SetDefaults()
 		{

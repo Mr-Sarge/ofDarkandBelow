@@ -11,9 +11,9 @@ namespace ofDarkandBelow.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Catastrophic Redemption");
-			Tooltip.SetDefault("'Blessed with the Randomness of the Noob King Himself...'"
-            + "\nEach swing throws out a random cluster of projectiles."
+			Tooltip.SetDefault("Each swing throws out a random cluster of projectiles."
             + "\nc  h  a  o  s"
+            + "\n'Blessed with the randomness of the Noob King himself...'"
             + "\nDeveloper Item: Hallam");
 		}
 		public override void SetDefaults()

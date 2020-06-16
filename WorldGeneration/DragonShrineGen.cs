@@ -373,8 +373,8 @@ namespace ofDarkandBelow.WorldGeneration
                 chest.item[1].SetDefaults(Utils.Next(WorldGen.genRand, DragonChestLoot4));
                 chest.item[1].stack = WorldGen.genRand.Next(5, 10);
 
-                chest.item[2].SetDefaults(Utils.Next(WorldGen.genRand, DragonChestLoot5));
-                chest.item[2].stack = WorldGen.genRand.Next(5, 10);
+                chest.item[1].SetDefaults(Utils.Next(WorldGen.genRand, DragonChestLoot5));
+                chest.item[1].stack = WorldGen.genRand.Next(5, 10);
 
                 //Fish and Ire Potions
                 chest.item[2].SetDefaults(Utils.Next(WorldGen.genRand, DragonChestLoot));

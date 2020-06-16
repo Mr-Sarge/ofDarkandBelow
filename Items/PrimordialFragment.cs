@@ -9,8 +9,8 @@ namespace ofDarkandBelow.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Primordial Fragment");
-			Tooltip.SetDefault("'A shard from the primordial heavens...'"
-			+ "\nSummons the Primordial Maw");
+			Tooltip.SetDefault("Summons the Primordial Maw."
+			+ "\n'A shard from the primordial heavens...'");
 		}
         public override void SetDefaults()
         {

@@ -6,7 +6,7 @@ namespace ofDarkandBelow.Buffs
 	public class LilSunk : ModBuff
 	{
 		public override void SetDefaults() {
-			DisplayName.SetDefault("Lil Sunk");
+			DisplayName.SetDefault("Lil' Sunk");
 			Description.SetDefault("She has come in your time of need!");
 			Main.buffNoSave[Type] = true;
 			Main.buffNoTimeDisplay[Type] = true;

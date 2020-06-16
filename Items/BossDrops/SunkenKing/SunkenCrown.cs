@@ -13,12 +13,13 @@ namespace ofDarkandBelow.Items.BossDrops.SunkenKing
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Sunken Crown");
-			Tooltip.SetDefault("'The Crown of a Deceased Surface-Sovereign...'"
-			+ "\n+8 Defense"
+			Tooltip.SetDefault("8 defense"
 			+ "\nWhen Below 50% life, you gain 5 more defense and"
             + "\na miniature Sunken Wyvern shall protect you."
-            + "\nHer damage is scaled off of your max life.");
-        }
+            + "\nHer damage is scaled off of your max life."
+			+ "\n'The crown of a deceased surface-sovereign...'");
+
+		}
 
 		public override void SetDefaults() {
 			item.width = 32;

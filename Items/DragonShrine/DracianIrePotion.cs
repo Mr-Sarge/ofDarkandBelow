@@ -15,7 +15,7 @@ namespace ofDarkandBelow.Items.DragonShrine
 		public override void SetStaticDefaults()
 		{
             DisplayName.SetDefault("Dracian Ire Potion");
-            Tooltip.SetDefault("5% Increase to Damage and Critical Strike Chance,"
+            Tooltip.SetDefault("5% increased damage and critical strike chance"
                 + "\nAttackers take damage and are set ablaze with Dracarnium Flames.");
         }
 

@@ -12,7 +12,7 @@ namespace ofDarkandBelow.Items.Null
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Limbo-LimbThrasher");
-			Tooltip.SetDefault("'You're on the Ramp to Purgatory.'");
+			Tooltip.SetDefault("'You're on the ramp to purgatory.'");
 		}
         public override void SetDefaults()
         {

@@ -11,7 +11,7 @@ namespace ofDarkandBelow.Items.Materials.Behemoth
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Berserker Crystal");
-            Tooltip.SetDefault("The energy of this crystal is unnerving.");
+            Tooltip.SetDefault("'The energy of this crystal is unnerving.'");
         }
         public override void SetDefaults()
         {

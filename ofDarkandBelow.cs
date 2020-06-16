@@ -51,7 +51,7 @@ namespace ofDarkandBelow
             {
                 music = GetSoundSlot(SoundType.Music, "Sounds/Music/ForgottenFate");
 
-                priority = MusicPriority.Environment;
+                priority = MusicPriority.Event;
             }
         }
         public override void Load()

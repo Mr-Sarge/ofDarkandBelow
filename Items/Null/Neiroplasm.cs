@@ -8,7 +8,7 @@ namespace ofDarkandBelow.Items.Null
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Neiroplasm");
-			Tooltip.SetDefault("You feel uncomfortable holding this.");
+			Tooltip.SetDefault("'You feel uncomfortable holding this...'");
 			ItemID.Sets.ItemIconPulse[item.type] = true;
 			ItemID.Sets.ItemNoGravity[item.type] = true;
 		}

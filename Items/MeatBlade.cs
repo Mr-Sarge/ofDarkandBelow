@@ -8,8 +8,8 @@ namespace ofDarkandBelow.Items
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Meat-Blade");
-			Tooltip.SetDefault("Slash your enemies with sharpened meat");
+			DisplayName.SetDefault("Meat Blade");
+			Tooltip.SetDefault("'Slash your enemies with sharpened meat...?'");
 		}
 		public override void SetDefaults()
 		{

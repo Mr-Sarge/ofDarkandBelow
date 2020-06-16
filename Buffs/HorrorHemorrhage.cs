@@ -18,7 +18,7 @@ namespace ofDarkandBelow.Buffs
 		public override void SetDefaults()
 		{
 			DisplayName.SetDefault("Horror Hemorrhage");
-			Description.SetDefault("The Blood Flows!");
+			Description.SetDefault("The blood flows!");
 			Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = true;
             longerExpertDebuff = true;

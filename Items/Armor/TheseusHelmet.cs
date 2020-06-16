@@ -9,7 +9,7 @@ namespace ofDarkandBelow.Items.Armor
 	{
 		public override void SetStaticDefaults() {
 		    DisplayName.SetDefault("Theseus' Helm");
-			Tooltip.SetDefault("'You must decide what is false and what is true'");
+			Tooltip.SetDefault("'You must decide what is false and what is true.'");
 		}
 
 		public override void SetDefaults() {
@@ -25,7 +25,7 @@ namespace ofDarkandBelow.Items.Armor
 		}
 
 		public override void UpdateArmorSet(Player player) {
-			player.setBonus = "20% Increase to melee Damage";
+			player.setBonus = "20% increased melee damage";
 			player.meleeDamage += 0.2f;
 		}
 		public override void AddRecipes() {

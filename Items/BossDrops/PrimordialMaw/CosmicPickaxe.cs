@@ -9,7 +9,7 @@ namespace ofDarkandBelow.Items.BossDrops.PrimordialMaw
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Cosmic Pickaxe");
-			Tooltip.SetDefault("'Consume Soil, Stone, Ore and Blood alike.'");
+			Tooltip.SetDefault("'Consume soil, stone, ore and blood alike!'");
 		}
 		public override void SetDefaults()
 		{
@@ -19,7 +19,7 @@ namespace ofDarkandBelow.Items.BossDrops.PrimordialMaw
 			item.height = 48;
 			item.useTime = 17;
 			item.useAnimation = 17;
-			item.pick = 120;
+			item.pick = 110;
 			item.useStyle = 1;
 			item.knockBack = 5;
             item.value = Item.sellPrice(gold: 2);

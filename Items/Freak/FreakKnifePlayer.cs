@@ -8,7 +8,7 @@ namespace ofDarkandBelow.Items.Freak
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Freak Knife");
-			Tooltip.SetDefault("'Perfect for Stabbing TownsFolk'");
+			Tooltip.SetDefault("'Perfect for stabbing townsfolk... Not saying you should.'");
 		}
 		public override void SetDefaults()
 		{

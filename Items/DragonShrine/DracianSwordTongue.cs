@@ -11,8 +11,8 @@ namespace ofDarkandBelow.Items.DragonShrine
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Dracian Sword-Tongue");
-            Tooltip.SetDefault("'An aggressive terror to those who wade in the shrine's waters.'"
-               + "\nSpits Burning Tongue teeth.");
+            Tooltip.SetDefault("Spits burning tongue teeth."
+               + "\n'An aggressive terror to those who wade in the shrine's waters.'");
 
         }
 		public override void SetDefaults()

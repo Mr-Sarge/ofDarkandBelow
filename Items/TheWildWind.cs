@@ -12,9 +12,9 @@ namespace ofDarkandBelow.Items
 	{
 		public override void SetStaticDefaults() {
 		    DisplayName.SetDefault("The Wild Wind");
-			Tooltip.SetDefault("'There will be a catastrophe, the like we've never seen.'"
-			+"\nInflicts a myriad of damaging debuffs on hit."
-			+"\nExplodes on enemy hits.");
+			Tooltip.SetDefault("Inflicts a myriad of damaging debuffs on hit."
+			+"\nExplodes on enemy hits."
+			+"\n'There will be a catastrophe, the like we've never seen.'");
 
 			// These are all related to gamepad controls and don't seem to affect anything else
 			ItemID.Sets.Yoyo[item.type] = true;

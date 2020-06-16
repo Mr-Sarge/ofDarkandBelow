@@ -11,8 +11,8 @@ namespace ofDarkandBelow.Items.Armor
 	{
 		public override void SetStaticDefaults() {
 		    DisplayName.SetDefault("Theseus' Shoes");
-			Tooltip.SetDefault("Let the maze guide you"
-				+ "\n25% increased movement speed");
+			Tooltip.SetDefault("Movement speed increased by 25%"
+				+ "\n'Let the maze guide you.'");
 		}
 
 		public override void SetDefaults() {

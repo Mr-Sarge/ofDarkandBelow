@@ -12,8 +12,8 @@ namespace ofDarkandBelow.Items.BossDrops.PrimordialMaw
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Maw-Rak");
-			Tooltip.SetDefault("Bring Cosmic Retribution!"
-			+ "\nThrows out up to 4 boomerang-like swords.");
+			Tooltip.SetDefault("Throws out up to 4 boomerang-like swords."
+			+ "\n'Bring cosmic retribution!'");
 		}
 		public override void SetDefaults()
 		{

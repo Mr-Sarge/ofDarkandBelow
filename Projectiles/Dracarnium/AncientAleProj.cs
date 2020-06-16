@@ -31,12 +31,10 @@ namespace ofDarkandBelow.Projectiles.Dracarnium
             Vector2 position = projectile.Center;
             Main.PlaySound(SoundID.Item14, (int)position.X, (int)position.Y);
             int radius = 5;
-            int pieCut = 2 + Main.rand.Next(2);
-            for (int m = 0; m < pieCut; m++)
-            {
-                int projID = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, 0, 0, mod.ProjectileType("DracarniumSparkRanged"), projectile.damage / 2, 3, Main.myPlayer);
-                Main.projectile[projID].velocity = BaseUtility.RotateVector(default, new Vector2(12f, 0f), m / (float)pieCut * 6.28f);
-            }
+            Projectile.NewProjectile((new Vector2(projectile.Center.X, projectile.Center.Y)), (new Vector2(-projectile.velocity.X + Main.rand.Next(-2, 3) * 4, -projectile.velocity.Y + Main.rand.Next(1, 2) * 4)), mod.ProjectileType("DracarniumSparkRanged"), projectile.damage / 2, projectile.knockBack, projectile.owner, 0, 1);
+            Projectile.NewProjectile((new Vector2(projectile.Center.X, projectile.Center.Y)), (new Vector2(-projectile.velocity.X + Main.rand.Next(-2, 2) * 4, -projectile.velocity.Y + Main.rand.Next(2, 3) * 4)), mod.ProjectileType("DracarniumSparkRanged"), projectile.damage / 2, projectile.knockBack, projectile.owner, 0, 1);
+            Projectile.NewProjectile((new Vector2(projectile.Center.X, projectile.Center.Y)), (new Vector2(-projectile.velocity.X + Main.rand.Next(-2, 4) * 4, -projectile.velocity.Y + Main.rand.Next(1, 4) * 4)), mod.ProjectileType("DracarniumSparkRanged"), projectile.damage / 2, projectile.knockBack, projectile.owner, 0, 1);
+            Projectile.NewProjectile((new Vector2(projectile.Center.X, projectile.Center.Y)), (new Vector2(-projectile.velocity.X + Main.rand.Next(-3, 2) * 4, -projectile.velocity.Y + Main.rand.Next(2, 4) * 4)), mod.ProjectileType("DracarniumSparkRanged"), projectile.damage / 2, projectile.knockBack, projectile.owner, 0, 1);
             for (int x = -radius; x <= radius; x++)
             {
                 for (int y = -radius; y <= radius; y++)

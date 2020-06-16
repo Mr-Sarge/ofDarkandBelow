@@ -10,7 +10,7 @@ namespace ofDarkandBelow.Items.DragonShrine
 	{
 		public override void SetStaticDefaults() {
 		    DisplayName.SetDefault("Dracarnium Staff");
-			Tooltip.SetDefault("Rapidly Fires an innacurate Dracarnium Flame Blast");
+			Tooltip.SetDefault("Rapidly fires an innacurate dracarnium flame blast.");
 			Item.staff[item.type] = true; //this makes the useStyle animate as a staff instead of as a gun
 		}
 

@@ -12,8 +12,8 @@ namespace ofDarkandBelow.Items.BossDrops.PrimordialMaw
 	    public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Celestra");
-			Tooltip.SetDefault("Bring down Deathly Rain"
-			+ "\nCelestra fires 3 arrows rapidly on use.");
+			Tooltip.SetDefault("Fires 3 arrows rapidly."
+			+ "\n'Bring down deathly rain!'");
 		}
         public override void SetDefaults()
         {

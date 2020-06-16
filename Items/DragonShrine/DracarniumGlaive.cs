@@ -13,9 +13,9 @@ namespace ofDarkandBelow.Items.DragonShrine
 	{
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Dracarnium Great-Glaive");
-            Tooltip.SetDefault("'Tear opponents asunder!'"
-                + "\nSwings a glaive that inflicts Dracarnium Flames.");
+            DisplayName.SetDefault("Dracarnium Greatglaive");
+            Tooltip.SetDefault("Swings a glaive that inflicts Dracarnium Flames."
+                + "\n'Tear opponents asunder!'");
 		}
 		
         public override void SetDefaults()

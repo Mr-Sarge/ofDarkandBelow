@@ -7,7 +7,7 @@ namespace ofDarkandBelow.Buffs
 	{
         public override void SetDefaults() {
 			DisplayName.SetDefault("Baby Null");
-            Description.SetDefault("PRAISE THE BAB");
+            Description.SetDefault("PRAISE, PRAISE, PRAISE THE BAB!");
 			Main.buffNoTimeDisplay[Type] = true;
 			Main.vanityPet[Type] = true;
 		}

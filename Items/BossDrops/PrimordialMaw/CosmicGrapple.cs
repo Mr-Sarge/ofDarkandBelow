@@ -12,7 +12,7 @@ namespace ofDarkandBelow.Items.BossDrops.PrimordialMaw
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Cosmic Grapple");
-			Tooltip.SetDefault("'Grapple the Stars'");
+			Tooltip.SetDefault("'Grapple the stars.'");
 		}
         public override void SetDefaults()
         {

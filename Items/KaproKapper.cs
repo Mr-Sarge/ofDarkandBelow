@@ -13,8 +13,8 @@ namespace ofDarkandBelow.Items
 	    public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Kapro-Kapper");
-			Tooltip.SetDefault("'The crocodilian boar that roars!.'"
-			+ "\nFires a special bullet that inflicts cursed inferno and ichor.");
+			Tooltip.SetDefault("Fires a special bullet that inflicts cursed inferno and ichor."
+			+ "\n'The crocodilian boar that roars!.'");
 		}
         public override void SetDefaults()
         {

@@ -12,8 +12,9 @@ namespace ofDarkandBelow.Items.BossDrops.JungleProtector
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Jungle Flintlock");
-			Tooltip.SetDefault("'Fastest Seeder in the World'"
-			+  "\n40% chance to NOT Consume Ammo");
+			Tooltip.SetDefault("40% chance to not consume ammo"
+			+ "\n'Fastest seeder in the world.'"
+			+ "\n...wait a minute, you're not supposed to have this!");
 		}
 		public override void SetDefaults()
 		{

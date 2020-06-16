@@ -14,11 +14,11 @@ namespace ofDarkandBelow.Items.DragonShrine
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Shrine Sentinel Shield");
-			Tooltip.SetDefault("'Tank mighty blows like a dragon once could.'"
-                + "\n+6 Defense"
+			Tooltip.SetDefault("6 defense"
+                + "\nGrants immunity to knockback."
                 + "\nYou gain defense and damage reduction scaled off of your max life."
-                + "\nKnockBack Immunity."
-                + "\nUpon reaching 40% Life you gain 12 more Defense and 7% Damage Reduction.");
+                + "\nUpon reaching 40% life, you gain 12 defense and 7% damage reduction."
+                + "\n'Tank mighty blows like a dragon once could.'");
         }
 
 		public override void SetDefaults() {

@@ -12,8 +12,8 @@ namespace ofDarkandBelow.Items.Freak
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Freak-Eater");
-			Tooltip.SetDefault("'You're the real freak.'"
-			+  "\n20% chance to NOT Consume Ammo");
+			Tooltip.SetDefault("20% chance to not consume ammo"
+			+ "\n'You're the real freak, here.'");
 		}
 		public override void SetDefaults()
 		{

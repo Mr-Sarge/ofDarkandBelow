@@ -11,7 +11,7 @@ namespace ofDarkandBelow.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Cosmos' Edge");
-			Tooltip.SetDefault("Linked to the essence of the Cosmos.");
+			Tooltip.SetDefault("'Linked to the essence of the cosmos.'");
 		}
 		public override void SetDefaults()
 		{

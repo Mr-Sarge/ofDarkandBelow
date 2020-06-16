@@ -12,7 +12,8 @@ namespace ofDarkandBelow.Items.Armor.Dev
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Behemoth Plate Greaves");
-            Tooltip.SetDefault("Increases Movement Speed by 45%, Health by 25"
+            Tooltip.SetDefault("Maximum health increased by 25"
+            + "\nMovement speed increased by 45%"
             + "\nDev Leggings: Jsoull");
         }
 

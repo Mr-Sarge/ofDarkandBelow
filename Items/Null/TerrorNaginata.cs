@@ -10,7 +10,7 @@ namespace ofDarkandBelow.Items.Null
 	{
 		public override void SetStaticDefaults() {
 		    DisplayName.SetDefault("Terror Naginata");
-			Tooltip.SetDefault("This spear deals Magic Damage and Regens Mana on hit.");
+			Tooltip.SetDefault("This spear deals magic damage and regens mana on hit.");
 		}
 
 		public override void SetDefaults() {

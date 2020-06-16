@@ -11,9 +11,10 @@ namespace ofDarkandBelow.Items.DragonShrine
 	{
 		public override void SetStaticDefaults() {
 		    DisplayName.SetDefault("Dracarnium Leggings");
-			Tooltip.SetDefault("'Power flows into your leg muscles...'"
-                + "\n+6% Movement Speed and Greatly Increased Jump Speed.");
-		}
+			Tooltip.SetDefault("Movement speed increased by 6%"
+                + "\nGreatly increased jump speed boost"
+                + "\n'Power flows into your leg muscles...'");
+        }
 
 		public override void SetDefaults() {
 			item.width = 22;

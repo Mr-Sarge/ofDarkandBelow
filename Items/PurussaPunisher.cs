@@ -12,7 +12,7 @@ namespace ofDarkandBelow.Items
 	    public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Purussa-Punisher");
-			Tooltip.SetDefault("God of the lake.");
+			Tooltip.SetDefault("'God of the Lake.'");
 		}
         public override void SetDefaults()
         {

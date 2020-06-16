@@ -8,7 +8,7 @@ namespace ofDarkandBelow.Items.Placeable
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Freak Candelabra");
-			Tooltip.SetDefault("'Now with 3x the Putrid Scent!'");
+			Tooltip.SetDefault("'Now with 3x the putrid scent!'");
 		}
 		public override void SetDefaults()
 		{

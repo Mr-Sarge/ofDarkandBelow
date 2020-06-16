@@ -10,8 +10,8 @@ namespace ofDarkandBelow.Items.Null
 	{
 		public override void SetStaticDefaults() {
 		    DisplayName.SetDefault("Harbinger's Haunt");
-			Tooltip.SetDefault("'Burn away their essence.'"
-			+ "\nUses Gel as Ammo and Spits Null Fire");
+			Tooltip.SetDefault("Uses gel as ammo and spits null fire."
+			+ "\n'Burn away their essence.'");
 		}
 
 		public override void SetDefaults() {

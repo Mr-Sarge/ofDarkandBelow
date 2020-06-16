@@ -10,11 +10,12 @@ namespace ofDarkandBelow.Items.Wings
 	{
 		public override void SetStaticDefaults() {
 		    DisplayName.SetDefault("Draconic Hate Wings");
-			Tooltip.SetDefault("'Torn from a Dragon...'"
-            + "\nFlight Time: 100"
+			Tooltip.SetDefault("\nFlight Time: 100"
             + "\nGood Acceleration"
-            + "\nGood Horizontal Mobility");
-        }
+            + "\nGood Horizontal Mobility"
+			+ "\n'Torn from a dragon...'");
+
+		}
 		public override void SetDefaults() {
 			item.width = 30;
 			item.height = 28;

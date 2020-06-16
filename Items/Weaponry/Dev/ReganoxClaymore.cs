@@ -10,8 +10,8 @@ namespace ofDarkandBelow.Items.Weaponry.Dev
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Reganox Claymore");
-            Tooltip.SetDefault("'Wear your mask well, and it shall serve you well.'"
-                + "\nFires a projectile that bounces thrice before exploding into shards."
+            Tooltip.SetDefault("Fires a projectile that bounces thrice, before exploding into shards."
+                + "\n'Wear your mask well, and it shall serve you well.'"
                 + "\nDeveloper Item: Maskano");
 		}
 		public override void SetDefaults()

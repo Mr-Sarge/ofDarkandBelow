@@ -8,7 +8,7 @@ namespace ofDarkandBelow.Items.DragonShrine
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Dracarne Key");
-            Tooltip.SetDefault("Opens one Dragon Shrine Chest");
+            Tooltip.SetDefault("Opens one locked Dragon Shrine Chest.");
         }
         public override void SetDefaults()
         {

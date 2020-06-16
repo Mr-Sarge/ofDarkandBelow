@@ -8,7 +8,8 @@ namespace ofDarkandBelow.Items.BossDrops.JungleProtector
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("The Jungle's Finger");
-			Tooltip.SetDefault("'A blade forged from the very flora of the Jungle.'");
+            Tooltip.SetDefault("'A blade forged from the very flora of the jungle.'"
+			+"\n...wait a minute, you're not supposed to have this!");
 		}
 		public override void SetDefaults()
 		{

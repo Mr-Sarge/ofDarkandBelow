@@ -12,8 +12,8 @@ using Terraria.ModLoader;
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Ancient Ale");
-            Tooltip.SetDefault("Throws an ancient bottle of Ale that explodes into sparks."
-            + "\nNot Consumable");
+            Tooltip.SetDefault("Throws an ancient bottle of ale that explodes into sparks."
+                + "\n'Smells worse than Strange Brew and the Mysterious Drink combined!'");
         }
         public override void SetDefaults()
         {

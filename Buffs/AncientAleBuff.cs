@@ -12,7 +12,7 @@ namespace ofDarkandBelow.Buffs
 		public override void SetDefaults()
 		{
 			DisplayName.SetDefault("Ancient Ale Buff");
-			Description.SetDefault("15% Reduced Damage, Throw Ancient Ale Faster");
+			Description.SetDefault("15% reduced damage, throw Ancient Ale faster");
 			Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = false;
             longerExpertDebuff = false;

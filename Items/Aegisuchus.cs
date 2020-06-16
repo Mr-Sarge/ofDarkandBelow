@@ -12,7 +12,7 @@ namespace ofDarkandBelow.Items
 	    public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Aegisuchus");
-			Tooltip.SetDefault("Bully of the Pond.");
+			Tooltip.SetDefault("'Bully of the Pond.'");
 		}
         public override void SetDefaults()
         {

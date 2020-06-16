@@ -10,9 +10,9 @@ namespace ofDarkandBelow.Items.DragonShrine
         public override void SetStaticDefaults() {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Dracarnium Chestplate");
-            Tooltip.SetDefault("'A chestpiece of pure Dracarnium...'"
-                + "\n+5 Melee Crit Chance"
-                + "\nImmunity to Dracarnium Flames.");
+            Tooltip.SetDefault("5% increased melee critical strike chance"
+                + "\nImmunity to Dracarnium Flames."
+                + "\n'A chestpiece of pure Dracarnium...'");
 		}
 
 		public override void SetDefaults() {

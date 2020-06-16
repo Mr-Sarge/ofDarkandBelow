@@ -9,7 +9,7 @@ namespace ofDarkandBelow.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Bronze Shards");
-            Tooltip.SetDefault("Small shards of a forgotten metal...");
+            Tooltip.SetDefault("'Small shards of a forgotten metal...'");
         }
         public override void SetDefaults()
         {

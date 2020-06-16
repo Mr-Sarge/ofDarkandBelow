@@ -9,7 +9,7 @@ namespace ofDarkandBelow.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Child of Scalibaar");
-			Tooltip.SetDefault("A forgotten blade...");
+			Tooltip.SetDefault("'A forgotten blade...'");
 		}
 		public override void SetDefaults()
 		{

@@ -12,7 +12,7 @@ namespace ofDarkandBelow.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Edge of The Universe");
-            Tooltip.SetDefault("Linked to the Essence of the Universe.");
+            Tooltip.SetDefault("'Linked to the essence of the universe.'");
         }
         public override void SetDefaults()
         {

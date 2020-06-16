@@ -10,10 +10,10 @@ namespace ofDarkandBelow.Items.Wings
 	{
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Neiroplasmic Wings");
-            Tooltip.SetDefault("'Dance with the Ghosts'"
-            +  "\nFlight Time: 18"
+            Tooltip.SetDefault("\nFlight Time: 18"
             + "\nDecent Acceleration"
-            + "\nGood Horizontal Mobility");
+            + "\nGood Horizontal Mobility"
+			+ "\n'Dance with the ghosts.'");
         }
 		public override void SetDefaults() {
 			item.width = 26;

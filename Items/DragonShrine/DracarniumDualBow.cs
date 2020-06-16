@@ -12,10 +12,10 @@ namespace ofDarkandBelow.Items.DragonShrine
 	{
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Dracarnium Great Dual-Bow");
-            Tooltip.SetDefault("'The world shall know a dastardly pain.'"
-                + "\nQuickly Fires 2 arrows at once."
-                + "\nReplaces Wooden Arrows with Dracarnium Arrows.");
+            DisplayName.SetDefault("Dracarnium Great Dual Bow");
+            Tooltip.SetDefault("Quickly fires 2 arrows with each shot."
+                + "\nReplaces Wooden Arrows with Dracarnium Arrows."
+                + "\n'The world shall know a dastardly pain.'");
         }
         public override void SetDefaults()
 		{

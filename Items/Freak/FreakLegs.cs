@@ -12,9 +12,9 @@ namespace ofDarkandBelow.Items.Freak
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Freaky Legs");
-            Tooltip.SetDefault("Legs made of squishy freak."
-                + "\n20% increased movement speed"
-                + "\n4% increased Crit Chance");
+            Tooltip.SetDefault("4% increased ranged critical strike chance"
+                + "\nMovement speed increased by 20%"
+                + "\n'Legs made of squishy freak.'");
         }
 
         public override void SetDefaults()

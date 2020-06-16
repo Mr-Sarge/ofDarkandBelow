@@ -14,9 +14,9 @@ namespace ofDarkandBelow.Items.DragonShrine
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Shrine Guard's Shield");
-			Tooltip.SetDefault("'This ancient shield of Dracarnium will serve you until death.'"
-                + "\n+5 Defense" 
-                + "\nUpon reaching 35% Life you gain 10 more Defense and 7% Damage Reduction.");
+			Tooltip.SetDefault("5 defense"
+                + "\nUpon reaching 35% life, you gain 10 defense and 7% damage reduction." 
+                + "\n'This ancient shield of Dracarnium will serve you until death.'");
         }
 
 		public override void SetDefaults() {

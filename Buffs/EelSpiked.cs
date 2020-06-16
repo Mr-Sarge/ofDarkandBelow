@@ -8,7 +8,8 @@ namespace ofDarkandBelow.Buffs
     {
         public override bool Autoload(ref string name, ref string texture)
         {
-            // NPC only buff so we'll just assign it a useless buff icon.
+            // NPC only buff so we'll just assign it a useless buff icon. 
+            // haha fish nae nae'd here
             texture = "ofDarkandBelow/Buffs/BuffTemplate";
             return base.Autoload(ref name, ref texture);
         }

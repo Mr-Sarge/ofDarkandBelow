@@ -8,7 +8,7 @@ namespace ofDarkandBelow.Items.BossDrops.SunkenKing
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Ford's Shot");
-            Tooltip.SetDefault("For use with the Wet Derringer");
+            Tooltip.SetDefault("For use with the Wet Derringer.");
         }
         public override void SetDefaults()
         {

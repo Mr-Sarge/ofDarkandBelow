@@ -9,8 +9,8 @@ namespace ofDarkandBelow.Items
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Bone-Brand");
-			Tooltip.SetDefault("An eerie sword made of living bone.");
+			DisplayName.SetDefault("Bonebrand");
+			Tooltip.SetDefault("'An eerie sword made of living bone.'");
 		}
 		public override void SetDefaults()
 		{

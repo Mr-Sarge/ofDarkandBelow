@@ -10,7 +10,7 @@ namespace ofDarkandBelow.Items
 	{
 		public override void SetStaticDefaults() {
 		    DisplayName.SetDefault("Bone Bite");
-			Tooltip.SetDefault("Walk the path of death");
+			Tooltip.SetDefault("'Walk the path of death.'");
 			Item.staff[item.type] = true; //this makes the useStyle animate as a staff instead of as a gun
 		}
 

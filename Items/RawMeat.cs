@@ -9,7 +9,7 @@ namespace ofDarkandBelow.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Raw Meat");
-            Tooltip.SetDefault("Eugh! It's awful!");
+            Tooltip.SetDefault("'Eugh! It's awful! It's all freakin' awful!'");
         }
         public override void SetDefaults()
         {

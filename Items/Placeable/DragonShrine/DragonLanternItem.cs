@@ -9,7 +9,7 @@ namespace ofDarkandBelow.Items.Placeable.DragonShrine
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Dragon Lantern");
-			Tooltip.SetDefault("'This Lantern houses trapped dragon fire.'");
+			Tooltip.SetDefault("'This lantern houses trapped dragon fire.'");
 		}
 		public override void SetDefaults()
 		{

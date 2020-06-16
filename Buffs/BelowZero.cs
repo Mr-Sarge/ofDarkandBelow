@@ -12,7 +12,7 @@ namespace ofDarkandBelow.Buffs
 		public override void SetDefaults()
 		{
 			DisplayName.SetDefault("Below Zero");
-			Description.SetDefault("\"Your existence is fading\"");
+			Description.SetDefault("\"Your existence is fading...\"");
 			Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = true;
             longerExpertDebuff = true;

@@ -12,7 +12,7 @@ namespace ofDarkandBelow.Items.Null
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Zero Spirit");
-			Tooltip.SetDefault("A powerless, potential-ridden spirit.");
+			Tooltip.SetDefault("'A powerless, potential-ridden spirit.'");
 			ItemID.Sets.ItemIconPulse[item.type] = true;
 			ItemID.Sets.ItemNoGravity[item.type] = true;
 		}

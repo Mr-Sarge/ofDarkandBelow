@@ -11,16 +11,16 @@ namespace ofDarkandBelow.Items.Armor
 	{
 		public override void SetStaticDefaults() {
 		    DisplayName.SetDefault("Cosmic Leggings");
-			Tooltip.SetDefault("Leggings made of the Maw's small Power."
-				+ "\n15% increased movement speed."
-                + "\nIncreased jump height.");
+			Tooltip.SetDefault("Movement speed increased by 15%"
+				+ "\nIncreased jump height."
+                + "\n'Leggings made of the Maw's small Power.'");
         }
 
 		public override void SetDefaults() {
 			item.width = 22;
 			item.height = 18;
 			item.value = Item.sellPrice(gold: 2);
-            item.rare = 2;
+            item.rare = 3;
 			item.defense = 5;
 		}
 

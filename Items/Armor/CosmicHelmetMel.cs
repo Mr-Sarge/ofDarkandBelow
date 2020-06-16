@@ -9,8 +9,8 @@ namespace ofDarkandBelow.Items.Armor
 	{
 		public override void SetStaticDefaults() {
 		    DisplayName.SetDefault("Cosmic Mask");
-			Tooltip.SetDefault("Terrify enemies with the hint of Maw's Presence."
-				+ "\n+10% Melee Speed.");
+			Tooltip.SetDefault("10% increased melee speed"
+				+ "\n'Terrify enemies with the hint of Maw's presence.'");
 		}
 
 		public override void SetDefaults() {
@@ -30,8 +30,8 @@ namespace ofDarkandBelow.Items.Armor
 		}
 
 		public override void UpdateArmorSet(Player player) {
-			player.setBonus = "6% Increased Melee Damage"
-                + "\n25% Increase Melee Speed";
+			player.setBonus = "6% increased melee damage"
+                + "\n25% increased melee speed";
 			player.meleeDamage += 0.06f;
             player.meleeSpeed += 0.25f;
 		}

@@ -11,9 +11,9 @@ namespace ofDarkandBelow.Items.Weaponry.Dev
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Alucard's Blades");
-            Tooltip.SetDefault("Fires a spread of Life-Stealing Blades,"
+            Tooltip.SetDefault("Fires a spread of life-stealing blades."
             +"\nBlades inflict Venom and Shadowflame."
-            + "\n'Drink the Blood of God!'"
+            + "\n'Drink the blood of god!'"
             + "\nDev Weapon: Jsoull");
         }
 

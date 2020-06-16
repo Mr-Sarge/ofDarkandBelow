@@ -8,7 +8,7 @@ namespace ofDarkandBelow.Items.BossDrops.PrimordialMaw
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Cosmic Ham-Axe");
+			DisplayName.SetDefault("Cosmic Hamaxe");
 			Tooltip.SetDefault("'Devour wood and wall alike!'");
 		}
 		public override void SetDefaults()
@@ -19,8 +19,8 @@ namespace ofDarkandBelow.Items.BossDrops.PrimordialMaw
 			item.height = 56;
 			item.useTime = 15;
 			item.useAnimation = 15;
-			item.axe = 24;
-			item.hammer = 120;
+			item.axe = 32;
+			item.hammer = 75;
 			item.useStyle = 1;
 			item.knockBack = 5;
             item.value = Item.sellPrice(gold: 1);

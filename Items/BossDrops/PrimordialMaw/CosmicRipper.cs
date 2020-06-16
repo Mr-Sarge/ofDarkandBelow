@@ -12,8 +12,8 @@ namespace ofDarkandBelow.Items.BossDrops.PrimordialMaw
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Cosmic Ripper");
-			Tooltip.SetDefault("Tear with the Essence of the Stars"
-			+ "\nInflicts Cosmic Flame");
+			Tooltip.SetDefault("Attacks inflict Cosmic Flame"
+			+ "\n'Rip and tear with the essence of the stars!'");
 		}
 		public override void SetDefaults()
 		{

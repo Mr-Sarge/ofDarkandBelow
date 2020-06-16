@@ -10,9 +10,9 @@ namespace ofDarkandBelow.Items.Freak
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Freak Head");
-            Tooltip.SetDefault("Your head feels malformed."
-                + "\n+4% increased crit chance"
-                + "\n+2% increased ranged damage");
+            Tooltip.SetDefault("2% increased ranged damage"
+                + "\n4% increased ranged critical strike chance"
+                + "\n'Your head feels a tad malformed.'");
         }
 
         public override void SetDefaults()
@@ -38,7 +38,7 @@ namespace ofDarkandBelow.Items.Freak
         public override void UpdateArmorSet(Player player)
         {
             player.setBonus = "Periodically gain the 'Freaky Critical' buff."
-			+ "\nThis buff grants +40 ranged crit chance and increased ranged damage.";
+			+ "\nThis buff grants increased ranged crit chance and increased ranged damage.";
             critTimer++;
             if (critTimer >= 1200)
             {

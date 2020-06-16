@@ -12,8 +12,8 @@ namespace ofDarkandBelow.Items
 	{
 		public override void SetStaticDefaults() {
 		    DisplayName.SetDefault("Theseus' Throw");
-			Tooltip.SetDefault("'You can feel the rage of the bronze age.'"
-			+"\nFires a main yoyo and 2 temporary yoyos at once");
+			Tooltip.SetDefault("Fires a main yoyo and 2 temporary yoyos."
+			+ "\n'You can feel the rage of the bronze age.'");
 
 			// These are all related to gamepad controls and don't seem to affect anything else
 			ItemID.Sets.Yoyo[item.type] = true;

@@ -9,8 +9,7 @@ namespace ofDarkandBelow.Items.Fishing
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Dracian Spike-Fish");
-            Tooltip.SetDefault("'It gives a putrid scent of age.'"
-                + "\nUsed to craft Potions.");
+            Tooltip.SetDefault("'It gives a putrid scent of age.'");
 		}
 		public override void SetDefaults()
 		{

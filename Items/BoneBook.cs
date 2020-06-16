@@ -11,7 +11,8 @@ namespace ofDarkandBelow.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Grim Reaper's Tome");
-			Tooltip.SetDefault("Left click to fire 3 skulls, right click to fire 3 spinning bone blades.");
+			Tooltip.SetDefault("Left click to fire 3 skulls." 
+                +"\nRight click to fire 3 spinning bone blades.");
 		}
         public override void SetDefaults()
         {

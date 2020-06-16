@@ -11,7 +11,7 @@ namespace ofDarkandBelow.Buffs
         {
             Main.buffNoTimeDisplay[Type] = false;
 			DisplayName.SetDefault("Freaky Critical");
-			Description.SetDefault("+45% Critical Chance with Ranged Weapons. +20% ranged damage.");
+			Description.SetDefault("45% increased ranged critical hit chance, 20% increased ranged damage");
         }
         public override void Update(Player player, ref int buffIndex)
         {

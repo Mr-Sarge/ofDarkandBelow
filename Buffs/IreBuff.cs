@@ -10,7 +10,7 @@ namespace ofDarkandBelow.Buffs
         public override void SetDefaults()
         {
             Main.buffNoTimeDisplay[Type] = false;
-			DisplayName.SetDefault("Ire");
+			DisplayName.SetDefault("Dragon's Ire");
 			Description.SetDefault("'Enemies shall know fear.'");
         }
         public override void Update(Player player, ref int buffIndex)

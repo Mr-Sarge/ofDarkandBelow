@@ -11,8 +11,8 @@ namespace ofDarkandBelow.Items
     {
 	    public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Meat-Bow");
-			Tooltip.SetDefault("Good for when you're hunting and out of food!");
+			DisplayName.SetDefault("Meat Bow");
+			Tooltip.SetDefault("'Good for when you're hunting and out of food! ...wait.'");
 		}
         public override void SetDefaults()
         {

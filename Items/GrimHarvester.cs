@@ -10,7 +10,7 @@ namespace ofDarkandBelow.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Grim-Harvester");
-			Tooltip.SetDefault("'Consume the Soul.'");
+			Tooltip.SetDefault("'Consume the soul...'");
 		}
 		public override void SetDefaults()
 		{

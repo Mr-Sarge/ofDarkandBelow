@@ -11,11 +11,11 @@ namespace ofDarkandBelow.Items.BossDrops.SunkenKing
 	{
 		public override void SetStaticDefaults() {
 		    DisplayName.SetDefault("Fallen Royalty's Greaves");
-			Tooltip.SetDefault("'It feels as if your skin grows into these greaves...'"
-                + "\n3% Increased Melee Speed."
-                + "\n+10 Max Mana."
-                + "\n15% Increased Movement Speed."
-                + "\nIncreased Jump Speed.");
+			Tooltip.SetDefault("3% increased melee speed"
+                + "\nIncreases maximum mana by 10"
+                + "\nMovement speed increased by 15%"
+                + "\nIncreased jump speed."
+                + "\n'It feels as if your skin grows into these greaves…'");
         }
         public override void UpdateEquip(Player player)
         {

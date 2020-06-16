@@ -13,10 +13,10 @@ namespace ofDarkandBelow.Items.Null
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Ghost Slayer's Skull");
-			Tooltip.SetDefault("'The Skull of a Forgotten Hero.'"
-			+ "\n7% Increased Crit Chance"
-			+ "\n+5 Defense"
-			+ "\n7% Increased Damage");
+			Tooltip.SetDefault("5 Defense"
+			+ "\n7% increased critical strike chance"
+			+ "\n7% increased damage"
+			+ "\n'The skull of a forgotten hero.'");
 		}
 
 		public override void SetDefaults() {

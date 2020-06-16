@@ -13,8 +13,8 @@ namespace ofDarkandBelow.Items.DragonShrine
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Dracian Spike Eel");
-            Tooltip.SetDefault("'A creature known for launching high-velocity spikes of bone.'"
-                + "\nFires a bone spike that sticks to enemies with no ammo cost.");
+            Tooltip.SetDefault("Fires a bone spike that sticks to enemies."
+                + "\n'A creature known for launching high-velocity spikes of bone.'");
         }
         public override void SetDefaults()
 		{

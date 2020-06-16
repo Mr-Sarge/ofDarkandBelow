@@ -12,7 +12,7 @@ namespace ofDarkandBelow.Buffs
 		public override void SetDefaults()
 		{
 			DisplayName.SetDefault("Dracarnium Flames");
-			Description.SetDefault("\"Dragon Fury HURTS!\"");
+			Description.SetDefault("\"A dragon's fury HURTS! ...and burns.\"");
 			Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = true;
             longerExpertDebuff = true;

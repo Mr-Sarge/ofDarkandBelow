@@ -9,14 +9,14 @@ namespace ofDarkandBelow.Items.Armor
 	{
 		public override void SetStaticDefaults() {
 		    DisplayName.SetDefault("Meat Helmet");
-			Tooltip.SetDefault("You are a barbarian of meat.");
+			Tooltip.SetDefault("'You are a barbarian of meat.'");
 		}
 
 		public override void SetDefaults() {
 			item.width = 26;
 			item.height = 29;
 			item.value = 1000;
-			item.rare = 2;
+			item.rare = 1;
 			item.defense = 2;
 		}
 
@@ -25,7 +25,8 @@ namespace ofDarkandBelow.Items.Armor
 		}
 
 		public override void UpdateArmorSet(Player player) {
-			player.setBonus = "15% Increase to Minion Damage and you smell Disgusting.";
+			player.setBonus = "Increases minion damage by 15%"
+					+ "\n'You smell disgusting.'";
 			player.minionDamage += 0.2f;
 		}
 

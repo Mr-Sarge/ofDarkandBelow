@@ -11,8 +11,7 @@ namespace ofDarkandBelow.Items.BossDrops.SunkenKing
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Fallen Fragment");
-            Tooltip.SetDefault("'A fragment of the Sunken King's ancient power...'"
-                + "\nUsed to create Sunken King's Drops or the Fallen Royalty Armor.");
+            Tooltip.SetDefault("'A fragment of the Sunken King's ancient power...'");
         }
         public override void SetDefaults()
         {

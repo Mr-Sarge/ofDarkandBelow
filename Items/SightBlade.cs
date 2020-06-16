@@ -9,9 +9,8 @@ namespace ofDarkandBelow.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Sight Blade");
-			Tooltip.SetDefault("'Eye See All.'"
-			+ "\nFires out a burst of eyes on swing."
-			+ "\nFires 3 Bursts in a swing.");
+			Tooltip.SetDefault("Fires out three bursts of eyes."
+			+ "\n'Eye see all.'");
 		}
 		public override void SetDefaults()
 		{

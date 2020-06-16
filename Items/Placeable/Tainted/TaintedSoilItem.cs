@@ -8,7 +8,7 @@ namespace ofDarkandBelow.Items.Placeable.Tainted
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Tainted Soil");
-			Tooltip.SetDefault("'A foul, dry crumbling substance that wriggles in your hand'");
+			Tooltip.SetDefault("'A foul, dry crumbling substance that wriggles in your hand.'");
 		}
 		public override void SetDefaults()
 		{

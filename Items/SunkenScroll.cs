@@ -18,9 +18,9 @@ namespace ofDarkandBelow.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Sunken Scroll");
-			Tooltip.SetDefault("'Saying the words on this gives you a sense of dread...'"
-			+ "\nOnly Usuable in the Glowing Mushroom Biome"
-			+ "\nSummons the Sunken King");
+			Tooltip.SetDefault("Summons the Sunken King."
+			+ "\nOnly usable in the Glowing Mushroom Biome."
+			+ "\n'Saying the words on this gives you a sense of dread...'");
 		}
         public override void SetDefaults()
         {

@@ -8,7 +8,7 @@ namespace ofDarkandBelow.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Mysterious Drink");
-			Tooltip.SetDefault("'It smells worse than Strange Brew!'");
+			Tooltip.SetDefault("'It smells worse than Strange Brew...'");
 		}
         public override void SetDefaults()
         {

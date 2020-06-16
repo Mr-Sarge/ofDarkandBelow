@@ -10,9 +10,9 @@ namespace ofDarkandBelow.Items.DragonShrine
 	{
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Ancient Great-Sword");
-            Tooltip.SetDefault("'An easily forgotten sword of a once great era...'"
-               + "\nThrows a burning, bouncing ball.");
+            DisplayName.SetDefault("Ancient Greatsword");
+            Tooltip.SetDefault("Throws a burning, scythe-slashing ball."
+               + "\n'An easily forgotten sword of a once great era...'");
 
         }
 		public override void SetDefaults()
@@ -27,14 +27,14 @@ namespace ofDarkandBelow.Items.DragonShrine
 			item.knockBack = 9;
             item.value = Item.sellPrice(0, 5, 10, 0);
             item.rare = 3;
-			item.UseSound = SoundID.Item1;
+			item.UseSound = SoundID.Item68;
 			item.autoReuse = true;
             item.shoot = mod.ProjectileType("DracarniumOrb");
             item.shootSpeed = 17f;
         }
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-            int numberProjectiles = 1 + Main.rand.Next(2);
+            int numberProjectiles = 1;
             for (int i = 0; i < numberProjectiles; i++)
             {
                 Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(8 + Main.rand.Next(8)));

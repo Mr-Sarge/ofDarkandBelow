@@ -9,9 +9,10 @@ namespace ofDarkandBelow.Items.Armor
 	{
 		public override void SetStaticDefaults() {
 			base.SetStaticDefaults();
-			DisplayName.SetDefault("Zero-Ghost Cloak");
-			Tooltip.SetDefault("The cloth is imubed with the power of Neiroplasm,"
-				+ "\n+30 max mana and +2 max minions");
+			DisplayName.SetDefault("Zero Ghost Cloak");
+			Tooltip.SetDefault("Increases your maximum minions by 2"
+				+"\nIncreases maximum mana by 30"
+				+"\n'The cloth is imbued with the power of neiroplasm.'");
 		}
 
 		public override void SetDefaults() {

@@ -11,8 +11,8 @@ namespace ofDarkandBelow.Items.DragonShrine
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Dracarnium Cleaver");
-            Tooltip.SetDefault("'Cleave a Dragon in half!'"
-               + "\nThrows Dracarnium Sparks");
+            Tooltip.SetDefault("Throws out Dracarnium Sparks."
+               + "\n'Cleave a dragon in half!'");
 
         }
 		public override void SetDefaults()

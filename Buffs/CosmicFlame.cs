@@ -12,7 +12,7 @@ namespace ofDarkandBelow.Buffs
 		public override void SetDefaults()
 		{
 			DisplayName.SetDefault("Cosmic Flame");
-			Description.SetDefault("\"The Cosmic Fury Burns!\"");
+			Description.SetDefault("\"The cosmic fury burns!\"");
 			Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = true;
             longerExpertDebuff = true;

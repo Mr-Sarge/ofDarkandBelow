@@ -8,7 +8,7 @@ namespace ofDarkandBelow.Items.Placeable
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Endless Maw Trophy");
-			Tooltip.SetDefault("You are the killer of Maw.");
+			Tooltip.SetDefault("'You are the killer of Maw.'");
 		}
 		public override void SetDefaults()
 		{

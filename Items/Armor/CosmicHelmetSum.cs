@@ -9,9 +9,9 @@ namespace ofDarkandBelow.Items.Armor
 	{
 		public override void SetStaticDefaults() {
 		    DisplayName.SetDefault("Cosmic Bandana");
-			Tooltip.SetDefault("A fine piece of facewear."
-				+ "\n+2 Max Minions"
-				+ "\n+15 Max Mana");
+			Tooltip.SetDefault("Increases your max number of minions by 2"
+				+ "\nIncreases maximum mana by 15"
+				+ "\n'A fine piece of facewear.'");
 		}
 
 		public override void SetDefaults() {
@@ -33,8 +33,8 @@ namespace ofDarkandBelow.Items.Armor
         }
 
         public override void UpdateArmorSet(Player player) {
-            player.setBonus = "15% Increase to Summon Damage,"
-                + "\n+2 Max Minions,"
+            player.setBonus = "Increases minion damage by 15%"
+                + "\nIncreases your max number of minions by 2"
                 + "\nYou will gain the 'Cosmic Escapee' buff when you are struck.";
 			player.minionDamage += 0.15f;
             player.maxMinions++;

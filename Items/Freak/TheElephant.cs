@@ -12,7 +12,7 @@ namespace ofDarkandBelow.Items.Freak
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("The Elephant");
-			Tooltip.SetDefault("'You're supposed to kill abominations. Not use them'");
+			Tooltip.SetDefault("'You're supposed to kill abominations. Not use them...'");
 		}
         public override void SetDefaults()
         {

@@ -9,8 +9,8 @@ namespace ofDarkandBelow.Items.Armor
 	{
 		public override void SetStaticDefaults() {
 		    DisplayName.SetDefault("Cosmic Helmet");
-			Tooltip.SetDefault("Allows you to breathe while amongst the stars."
-				+ "\n+3% Ranged Crit Chance");
+			Tooltip.SetDefault("3% increased ranged critical strike chance"
+				+ "\n'Allows you to breathe while amongst the stars.'");
 		}
 
 		public override void SetDefaults() {
@@ -30,10 +30,10 @@ namespace ofDarkandBelow.Items.Armor
 		}
 
 		public override void UpdateArmorSet(Player player) {
-			player.setBonus = "10% Increased Ranged Damage"
-                + "\n7% Increase to Ranged Crit Chance"
-                + "\nYou gain an improved rocket boots effect."
-                +"\nImmunity to Fall Damage.";
+			player.setBonus = "10% increased ranged damage"
+                + "\n7% increased ranged critical strike chance"
+                + "\nImproved rocket boots effect."
+                +"\nGrants immunity to fall damage.";
             player.rangedDamage += 0.1f;
             player.rangedCrit += 7;
             player.noFallDmg = true;

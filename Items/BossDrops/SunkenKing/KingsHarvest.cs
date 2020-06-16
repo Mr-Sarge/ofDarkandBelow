@@ -11,8 +11,8 @@ namespace ofDarkandBelow.Items.BossDrops.SunkenKing
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("King's Harvest");
-			Tooltip.SetDefault("'Reap the Benefits of Royalty'"
-                + "\nBrings a slash down wherever the cursor is.");
+			Tooltip.SetDefault("Brings down slashes at the cursor."
+                + "\n'Reap in the benefits of royalty!'");
         }
 		public override void SetDefaults()
 		{

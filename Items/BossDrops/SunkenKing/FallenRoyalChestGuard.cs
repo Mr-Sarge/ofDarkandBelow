@@ -9,10 +9,10 @@ namespace ofDarkandBelow.Items.BossDrops.SunkenKing
 	{
 		public override void SetStaticDefaults() {
 			base.SetStaticDefaults();
-			DisplayName.SetDefault("Fallen Royalty's Chest-Guard");
-			Tooltip.SetDefault("'Bare scraps of powerless metal barely clinging to existence.'"
-                + "\n5% Increased Melee Damage."
-                + "\n5% Increased Magic Damage.");
+			DisplayName.SetDefault("Fallen Royalty's Chestguard");
+			Tooltip.SetDefault("5% increased melee damage"
+                + "\n5% increased ranged damage"
+                + "\n'Bare scraps of powerless metal barely clinging to existence.'");
         }
         public override void UpdateEquip(Player player)
         {

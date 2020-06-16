@@ -12,9 +12,9 @@ namespace ofDarkandBelow.Items.BossDrops.PrimordialMaw
 			public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Astral Arrow");
-            Tooltip.SetDefault("'Make them Burn!'"
-                + "\nArrows Inflict Cosmic Fire and"
-                + "\nBounce twice upon hitting a tile.");
+            Tooltip.SetDefault("Arrows inflict Cosmic Flame."
+                + "\nBounces up to twice upon hitting tiles."
+                + "\n'Make them burn!'");
 
         }
         public override void SetDefaults()

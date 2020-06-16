@@ -9,9 +9,9 @@ namespace ofDarkandBelow.Items.Null
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Neiroplasmic Core");
-			Tooltip.SetDefault("'An amalgamated mess of Neiroplasm.'"
-			+ "\nSummons the Amalgamation."
-			+ "\nOnly Usable at Night.");
+			Tooltip.SetDefault("Summons the Amalgamation."
+            + "\nOnly usable at night.."
+            + "\n'An amalgamted mess of neiroplasm.'");
 		}
         public override void SetDefaults()
         {

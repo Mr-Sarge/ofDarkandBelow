@@ -10,7 +10,7 @@ namespace ofDarkandBelow.Items.Armor.Dev
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Behemoth Plate Helmet");
-            Tooltip.SetDefault("Increases Health by 50"
+            Tooltip.SetDefault("Increases maximum health by 50"
             + "\nDev Helmet: Jsoull");
         }
 

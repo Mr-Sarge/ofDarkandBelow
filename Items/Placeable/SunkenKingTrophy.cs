@@ -8,7 +8,7 @@ namespace ofDarkandBelow.Items.Placeable
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Sunken King Trophy");
-			Tooltip.SetDefault("'And thus, always to Tyrants'");
+			Tooltip.SetDefault("'And thus, always to tyrants...'");
 		}
 		public override void SetDefaults()
 		{

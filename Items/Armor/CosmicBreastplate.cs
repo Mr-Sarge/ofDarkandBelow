@@ -10,8 +10,8 @@ namespace ofDarkandBelow.Items.Armor
 		public override void SetStaticDefaults() {
 			base.SetStaticDefaults();
 			DisplayName.SetDefault("Cosmic Breastplate");
-            Tooltip.SetDefault("Your heart burns with the power of diminished stars."
-                + "\nImmunity to 'Cosmic Flame'");
+            Tooltip.SetDefault("Immunity to 'Cosmic Flame' debuff."
+                + "\n'Your heart burns with the power of diminished stars.'");
 		}
 
 		public override void SetDefaults() {

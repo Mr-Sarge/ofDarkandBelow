@@ -9,7 +9,7 @@ namespace ofDarkandBelow.Items.Armor
 	{
 		public override void SetStaticDefaults() {
 		    DisplayName.SetDefault("Happy Mask");
-			Tooltip.SetDefault("Embrace the Happiness."
+			Tooltip.SetDefault("'Embrace the happiness.'"
 			+ "\nDeveloper Item: BoRKman");
 		}
 

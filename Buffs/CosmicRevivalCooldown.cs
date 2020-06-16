@@ -12,7 +12,7 @@ namespace ofDarkandBelow.Buffs
 		public override void SetDefaults()
 		{
 			DisplayName.SetDefault("Cosmic Revival Cooldown");
-			Description.SetDefault("\"Primordial revival rechrging...\"");
+			Description.SetDefault("\"Primordial revival recharging...\"");
 			Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = true;
             longerExpertDebuff = false;

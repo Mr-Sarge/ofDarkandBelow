@@ -8,8 +8,8 @@ namespace ofDarkandBelow.Items
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Meat-Axe");
-			Tooltip.SetDefault("But like, why");
+			DisplayName.SetDefault("Meat Axe");
+			Tooltip.SetDefault("'But like, why? Why would you do that?'");
 		}
 		public override void SetDefaults()
 		{

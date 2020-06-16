@@ -12,9 +12,9 @@ using Terraria.ModLoader;
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Deceiving Truth");
-			Tooltip.SetDefault("'Forged from the souls of countless creatures...'"
-			+ "\nFires a spread of homing 'Deceitful Pellets'."
-            + "\nDeveloper Item: Darkpuppey");
+			Tooltip.SetDefault("Fires a spread of homing 'Deceitful Pellets'."
+			+ "\n'Forged from the souls of countless creatures...'"
+			+ "\nDeveloper Item: Darkpuppey");
         }
 		public override void SetDefaults() {
 			item.damage = 28;

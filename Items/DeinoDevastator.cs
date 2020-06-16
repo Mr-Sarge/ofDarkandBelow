@@ -12,7 +12,7 @@ namespace ofDarkandBelow.Items
 	    public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Deino-Devastator");
-			Tooltip.SetDefault("Horror of the lake.");
+			Tooltip.SetDefault("'Horror of the Lake.'");
 		}
         public override void SetDefaults()
         {

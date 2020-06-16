@@ -8,7 +8,7 @@ namespace ofDarkandBelow.Items.Null
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Null Eater's Egg");
-			Tooltip.SetDefault("Summons a lil' baby Null Eater");
+			Tooltip.SetDefault("Summons a lil' baby Null Eater.");
 		}
 
 		public override void SetDefaults() {

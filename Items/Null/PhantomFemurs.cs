@@ -12,8 +12,8 @@ using Terraria.ModLoader;
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Phantom Femurs");
-			Tooltip.SetDefault("'It may be ghostly, but being hit with a bone hurts!'"
-			+ "\nBones Inflict 'Below Zero'");
+			Tooltip.SetDefault("Inflicts 'Below Zero' on contact."
+			+ "\n'It may be ghostly, but being hit with a bone hurts!'");
 		}
 		public override void SetDefaults() {
 			item.shootSpeed = 15f;

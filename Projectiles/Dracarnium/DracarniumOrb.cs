@@ -1,93 +1,86 @@
-using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using Terraria;
 using Terraria.ID;
+using Terraria.DataStructures;
 using Terraria.ModLoader;
+using ofDarkandBelow.Projectiles.Dracarnium;
 
 namespace ofDarkandBelow.Projectiles.Dracarnium
 {
     public class DracarniumOrb : ModProjectile
     {
-        public static short customGlowMask = 0;
         public override void SetStaticDefaults()
         {
-            if (Main.netMode != 2)
-            {
-                Texture2D[] glowMasks = new Texture2D[Main.glowMaskTexture.Length + 1];
-                for (int i = 0; i < Main.glowMaskTexture.Length; i++)
-                {
-                    glowMasks[i] = Main.glowMaskTexture[i];
-                }
-                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Projectiles/Dracarnium/" + GetType().Name + "_Glow");
-                customGlowMask = (short)(glowMasks.Length - 1);
-                Main.glowMaskTexture = glowMasks;
-            }
             DisplayName.SetDefault("Dracarnium Orb");
-		}
+        }
         public override void SetDefaults()
         {
-            projectile.width = 12;
-            projectile.height = 14;
+            projectile.width = 28;
+            projectile.height = 28;
             projectile.friendly = true;
             projectile.hostile = false;
             projectile.ignoreWater = true;
             projectile.ranged = false;
-			projectile.magic = false;
-			projectile.melee = true;
-            projectile.alpha = 125;
-            projectile.penetrate = 6; //Tells the game how many enemies it can hit before being destroyed
-            projectile.timeLeft = 300; //The amount of time the projectile is alive for
+            projectile.magic = true;
+            projectile.melee = false;
+            projectile.penetrate = 1; //Tells the game how many enemies it can hit before being destroyed
+            projectile.timeLeft = 400; //The amount of time the projectile is alive for
             projectile.light = 0.60f; //This defines the projectile light
-            projectile.glowMask = customGlowMask;
-            projectile.scale = 1.5f;
-            aiType = 1;
+            aiType = ProjectileID.Bullet;
+            projectile.hide = true;
         }
-        public int bounceAmount;
         public override void AI()
         {
-            if (projectile.ai[1] == 0)
-            {
-                bounceAmount = 4;
-                projectile.ai[1] = 1;
-            }
-            int DustID2 = Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType("DracarniumFlamesDust"), projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.2f, 100, default(Color), 1.5f);
+            int DustID2 = Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType("DracarniumFlamesDust"), projectile.velocity.X * 0.8f, projectile.velocity.Y * 0.2f, 100, default(Color), 2f);
             Main.dust[DustID2].noGravity = true;
-            projectile.velocity.Y = projectile.velocity.Y + 0.22f; // 0.1f for arrow gravity, 0.4f for knife gravity
-            projectile.rotation += 6f;
-            if (projectile.velocity.Y > 16f) // This check implements "terminal velocity". We don't want the projectile to keep getting faster and faster. Past 16f this projectile will travel through blocks, so this check is useful.
+            int DustID3 = Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType("DracarniumFlamesDust"), projectile.velocity.X * 0.6f, projectile.velocity.Y * 0.05f, 100, default(Color), 1.5f);
+            Main.dust[DustID3].noGravity = true;
+            int DustID4 = Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType("DracarniumFlamesDust"), projectile.velocity.X * 0.4f, projectile.velocity.Y * 0.02f, 100, default(Color), 1.2f);
+            Main.dust[DustID4].noGravity = true;
+            if (Main.rand.NextBool(9))
             {
-                projectile.velocity.Y = 16f;
+                float Speed = 2f;
+                Vector2 vector8 = new Vector2(projectile.position.X + Main.rand.Next(-20, 20), projectile.position.Y + Main.rand.Next(-20, 20));
+                int damage = projectile.damage / 3;
+                int type = mod.ProjectileType("DracarniumReap");  //put your projectile
+                float rotation = Main.rand.Next(-180, 180);
+                int num54 = Projectile.NewProjectile(vector8.X, vector8.Y, (float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1), type, damage, 0f, 0);
             }
         }
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) //When you hit an NPC
         {
 
-            target.AddBuff(mod.BuffType("DracarniumFlames"), 240);
-            target.immune[projectile.owner] = 4;
+            target.AddBuff(mod.BuffType("DracarniumFlames"), 360);    //this adds a buff to the npc hit. 210 it the time of the buff
+
         }
-        public override bool OnTileCollide(Vector2 oldVelocity)
+        public override void Kill(int timeLeft)
         {
-            bounceAmount--;
-            if (bounceAmount <= 0)
+            Projectile.NewProjectile((new Vector2(projectile.Center.X, projectile.Center.Y)), (new Vector2(-projectile.velocity.X + Main.rand.Next(-3, 4) * 2, -projectile.velocity.Y + Main.rand.Next(-3, 3) * 2)), mod.ProjectileType("DracarniumSpark"), projectile.damage / 2, projectile.knockBack, projectile.owner, 0, 1);
+            Projectile.NewProjectile((new Vector2(projectile.Center.X, projectile.Center.Y)), (new Vector2(-projectile.velocity.X + Main.rand.Next(-3, 3) * 2, -projectile.velocity.Y + Main.rand.Next(-3, 3) * 2)), mod.ProjectileType("DracarniumSpark"), projectile.damage / 2, projectile.knockBack, projectile.owner, 0, 1);
+            Projectile.NewProjectile((new Vector2(projectile.Center.X, projectile.Center.Y)), (new Vector2(-projectile.velocity.X + Main.rand.Next(-3, 5) * 2, -projectile.velocity.Y + Main.rand.Next(-3, 3) * 2)), mod.ProjectileType("DracarniumSpark"), projectile.damage / 2, projectile.knockBack, projectile.owner, 0, 1);
+            int radius = 10;
+            Vector2 position = projectile.Center;
+            Main.PlaySound(SoundID.Item14, (int)position.X, (int)position.Y);
+            for (int x = -radius; x <= radius; x++)
             {
-                projectile.Kill();
-            }
-            else
-            {
-                Collision.HitTiles(projectile.position + projectile.velocity, projectile.velocity, projectile.width, projectile.height);
-                Main.PlaySound(SoundID.Item10, projectile.position);
-                if (projectile.velocity.X != oldVelocity.X)
+                for (int y = -radius; y <= radius; y++)
                 {
-                    projectile.velocity.X = -oldVelocity.X;
-                }
-                if (projectile.velocity.Y != oldVelocity.Y)
-                {
-                    projectile.velocity.Y = -oldVelocity.Y;
+                    int xPosition = (int)(x + position.X / 16.0f);
+                    int yPosition = (int)(y + position.Y / 16.0f);
+
+                    if (Math.Sqrt(x * x + y * y) <= radius + 0.5)
+                    {
+                        Dust.NewDust(position, 54, 54, mod.DustType("DracarniumFlamesDust"), projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.2f, 100, default(Color), 1.5f);
+                    }
                 }
             }
-            return false;
         }
     }
 }

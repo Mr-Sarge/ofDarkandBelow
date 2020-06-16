@@ -11,8 +11,8 @@ namespace ofDarkandBelow.Items.Armor
 	{
 		public override void SetStaticDefaults() {
 		    DisplayName.SetDefault("Odysseus' Greaves");
-			Tooltip.SetDefault("Run as quick as Odyesseus!"
-            +"\n+15% Movement Speed!");
+			Tooltip.SetDefault("Movement speed increased by 15%"
+            + "\n'Run as quick as Odysseus!'");
         }
 
 		public override void SetDefaults() {

@@ -10,8 +10,8 @@ namespace ofDarkandBelow.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Scalibaar");
-            Tooltip.SetDefault("'An ancient and powerful sword.'"
-                + "\nRight Click for an Alternate Attack.");
+            Tooltip.SetDefault("Right-Click for an alternate attack."
+                + "\n'An ancient and powerful sword.'");
         }
         public override void SetDefaults()
         {

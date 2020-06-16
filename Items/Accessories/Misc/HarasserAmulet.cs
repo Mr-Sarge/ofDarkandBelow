@@ -14,9 +14,9 @@ namespace ofDarkandBelow.Items.Accessories.Misc
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Amulet of The Harasser");
-            Tooltip.SetDefault("'Terrors of the night envy your strength'"
-            + "\nCritical Hits restore life"
-            + "\nDeveloper Item: Jsoull");
+            Tooltip.SetDefault("Critical hits restore life."
+            + "\n'Terrors of the night envy your strength.'"
+            + "\nDeveloper Item: Jsoull"); // more like jloll
 
         }
 

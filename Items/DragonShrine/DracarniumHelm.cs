@@ -9,9 +9,11 @@ namespace ofDarkandBelow.Items.DragonShrine
 	{
 		public override void SetStaticDefaults() {
 		    DisplayName.SetDefault("Dracarnium Horned Helm");
-			Tooltip.SetDefault("'Foes shudder to imagine what lay behind this helm...'"
-                + "\n5% Increased Melee Speed and 7% Increased Movement Speed");
-		}
+			Tooltip.SetDefault("5% increased melee speed"
+                + "\nMovement speed increased by 7%"
+                + "\n'Foes shudder to imagine what lay behind this helm...'");
+
+        }
 
 		public override void SetDefaults() {
 			item.width = 26;
@@ -30,9 +32,9 @@ namespace ofDarkandBelow.Items.DragonShrine
             player.moveSpeed += 0.07f;
         }
         public override void UpdateArmorSet(Player player) {
-			player.setBonus = "15% increased movement speed."
+			player.setBonus = "Movement speed increased by 15%"
                 + "\nUpon reaching 25% Health, you burst into flames with great stat boosts"
-                + "\nand cause all attacks by you to inflict Dracarnium Flames. However you lose 10 Defense.";
+                + "\nand cause all attacks by you to inflict Dracarnium Flames. However you lose 10 defense.";
 			player.moveSpeed += 0.15f;
             if (player.statLife <= player.statLifeMax * 0.25f)
             {

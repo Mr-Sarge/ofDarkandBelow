@@ -11,8 +11,8 @@ namespace ofDarkandBelow.Items.Armor.Dev
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Behemoth Plate Chestplate");
-            Tooltip.SetDefault("Grants Knockback Immunity and a Huge Array of Debuff Immunity."
-            + "\nIncreases Max Life by 75."
+            Tooltip.SetDefault("Grants knockback immunity and immunity to a majority of debuffs"
+            + "\nIncreases maximum life by 75"
             + "\nDev Armor: Jsoull");
         }
 

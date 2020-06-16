@@ -12,8 +12,8 @@ namespace ofDarkandBelow.Items.DragonShrine
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Dracarnium Flail");
-            Tooltip.SetDefault("'Strike them down with fiery essence!'"
-                + "\nThis Flail inflicts Dracarnium Flames!");
+            Tooltip.SetDefault("Inflicts Dracarnium Flames on hit."
+                + "\n'Strike them down with fiery essence!'");
 		}
         public override void SetDefaults()
         {

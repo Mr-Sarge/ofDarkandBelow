@@ -13,8 +13,8 @@ namespace ofDarkandBelow.Items.DragonShrine
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Chipped Dragon Scale");
-			Tooltip.SetDefault("'A scale from an ancient dragon... It's still quite warm.'"
-            + "\nGrants damage reduction and defense based upon your max life.");
+			Tooltip.SetDefault("Grants damage reduction and defense based upon your max life."
+            + "\n'A scale from an ancient dragon... It's still quite warm.'");
         }
 
 		public override void SetDefaults() {

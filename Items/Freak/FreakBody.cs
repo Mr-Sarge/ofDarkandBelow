@@ -10,9 +10,9 @@ namespace ofDarkandBelow.Items.Freak
 		public override void SetStaticDefaults() {
 			base.SetStaticDefaults();
 			DisplayName.SetDefault("Freaky Body");
-			Tooltip.SetDefault("Your back hurts, in fact you have a hunch..."
-				+ "\n7% increased ranged damage"
-				+ "\n5% increased crit chance");
+			Tooltip.SetDefault("7% increased ranged damage"
+				+ "\n5% increased ranged critical strike chance"
+				+ "\n'Your back hurts, in fact you have a hunch...'");
 		}
 
 		public override void SetDefaults() {

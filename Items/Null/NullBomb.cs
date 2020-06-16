@@ -12,8 +12,9 @@ using Terraria.ModLoader;
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Trapped Spirit Bomb");
-			Tooltip.SetDefault("'Explodes with the wrath of the Nullified Spirits'"
-			+ "\nBombs inflict 'Below Zero' and Spawn attacking Null Spirits.");
+			Tooltip.SetDefault("Bombs inflict 'Below Zero'."
+			+ "\nExplosions spawn null spirits to attack enemies."
+			+ "\n'Explodes with the wrath of the nullified spirits within.'");
 		}
 		public override void SetDefaults() {
 			item.shootSpeed = 20f;

@@ -11,7 +11,7 @@ namespace ofDarkandBelow.Buffs
 	{
 		public override void SetDefaults()
 		{
-			DisplayName.SetDefault("Ancient Ale Cool-Down");
+			DisplayName.SetDefault("Ancient Stomach Ache");
 			Description.SetDefault("Too disgusting to drink again...");
 			Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = true;

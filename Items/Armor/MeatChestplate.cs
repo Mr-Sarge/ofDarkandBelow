@@ -10,8 +10,8 @@ namespace ofDarkandBelow.Items.Armor
 		public override void SetStaticDefaults() {
 			base.SetStaticDefaults();
 			DisplayName.SetDefault("Meat Chestplate");
-			Tooltip.SetDefault("What is wrong with you."
-				+ "\n+1 max minions");
+			Tooltip.SetDefault("Increases maximum minions by 1"
+				+ "\n'What is wrong with you?'");
 		}
 
 		public override void SetDefaults() {

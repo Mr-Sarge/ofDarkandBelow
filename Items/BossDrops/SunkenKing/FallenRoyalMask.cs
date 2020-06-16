@@ -9,9 +9,9 @@ namespace ofDarkandBelow.Items.BossDrops.SunkenKing
 	{
 		public override void SetStaticDefaults() {
 		    DisplayName.SetDefault("Fallen Royalty's Mask");
-			Tooltip.SetDefault("'A battered remain of a once great helmet.'"
-                + "\n4% Increased Melee Speed."
-                +"\n+15 Max Mana.");
+			Tooltip.SetDefault("4% increased melee speed"
+                +"\nIncreases maximum mana by 15"
+                +"\n'A battered remain of a once great helmet.'");
         }
 
 		public override void SetDefaults() {
@@ -31,16 +31,11 @@ namespace ofDarkandBelow.Items.BossDrops.SunkenKing
 		}
 
 		public override void UpdateArmorSet(Player player) {
-			player.setBonus = "The power of the Sunken King flows through you... Or at least what's left of it."
-                + "\nUpon striking an enemy, grant the Sovereign's Power buff."
-                + "\nThis buff grants +15 Melee Crit Chance, +25 Magic Crit,"
-                + "\n+20% Melee Damage, +25% Magic Damage, Increased Melee Speed and +8 defense."
-                + "\nThis buff has a cooldown of 30 seconds after being applied."
-                + "\nFall Damage Immunity and More Jump Speed.";
+			player.setBonus = "Upon striking an enemy, you are granted the Sovereign's Power buff."
+                    +"\nThis buff provides a variety of melee, magic and defense bonuses for a short time."
+                    +"\nThis buff has a cooldown of 30 seconds.";
             SModPlayer modPlayer = (SModPlayer)player.GetModPlayer(mod, "SModPlayer");
             player.GetModPlayer<SModPlayer>().fallenRoyaltySetBonus = true;
-            player.jumpSpeedBoost += 1.7f;
-            player.noFallDmg = true;
         }
         public override void AddRecipes()
         {

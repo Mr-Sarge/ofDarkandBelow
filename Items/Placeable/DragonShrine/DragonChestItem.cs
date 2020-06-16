@@ -20,7 +20,7 @@ namespace ofDarkandBelow.Items.Placeable.DragonShrine
 			item.useStyle = 1;
 			item.consumable = true;
 			item.value = 1500;
-			item.createTile = mod.TileType("DragonChestTile");
+			item.createTile = mod.TileType("DragonChestTileUnlock");
 		}
 	}
 }

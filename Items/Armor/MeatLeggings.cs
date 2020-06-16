@@ -11,14 +11,14 @@ namespace ofDarkandBelow.Items.Armor
 	{
 		public override void SetStaticDefaults() {
 		    DisplayName.SetDefault("Meat Leggings");
-			Tooltip.SetDefault("I can't fathom putting these on my legs.");
+			Tooltip.SetDefault("'I can't fathom putting these on my legs.'");
 		}
 
 		public override void SetDefaults() {
 			item.width = 22;
 			item.height = 18;
 			item.value = 1000;
-			item.rare = 2;
+			item.rare = 1;
 			item.defense = 3;
 		}
 

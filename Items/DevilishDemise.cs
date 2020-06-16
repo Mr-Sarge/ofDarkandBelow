@@ -11,7 +11,7 @@ namespace ofDarkandBelow.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Devilish Demise");
-			Tooltip.SetDefault("'Become a Herald of The Underworld'");
+			Tooltip.SetDefault("'Become a Herald of The Underworld!'");
 		}
 		public override void SetDefaults()
 		{

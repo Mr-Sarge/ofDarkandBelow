@@ -23,7 +23,7 @@ namespace ofDarkandBelow.Tiles.DragonShrine
             Main.tileFrameImportant[Type] = true;
             Main.tileNoAttach[Type] = true;
             Main.tileValue[Type] = 500;
-            minPick = 300;
+            minPick = 100;
             dustType = mod.DustType("DragonBlockDust");
             disableSmartCursor = true;
             TileObjectData.newTile.CopyFrom(TileObjectData.Style2x2);
@@ -39,12 +39,21 @@ namespace ofDarkandBelow.Tiles.DragonShrine
             ModTranslation name = CreateMapEntryName();
             name.SetDefault("Dragon Shrine Chest");
             AddMapEntry(new Color(92, 36, 36), name, MapChestName);
-            name = CreateMapEntryName(Name + "_Locked"); // With multiple map entries, you need unique translation keys.
-            name.SetDefault("Locked Dragon Shrine Chest");
-            AddMapEntry(new Color(0, 141, 63), name, MapChestName);
             disableSmartCursor = true;
             adjTiles = new int[] { TileID.Containers };
             chest = "Dragon Shrine Chest";
+            chestDrop = ItemType<Items.Placeable.DragonShrine.DragonChestItem>();
+        }
+
+        public override bool HasSmartInteract() => true;
+
+        public override bool IsLockedChest(int i, int j) => Main.tile[i, j].frameX / 36 == 0;
+
+        public override bool UnlockChest(int i, int j, ref short frameXAdjustment, ref int dustType, ref bool manual)
+        {
+            dustType = this.dustType;
+            frameXAdjustment += 72;
+            return true;
         }
 
         public string MapChestName(string name, int i, int j)
@@ -61,7 +70,11 @@ namespace ofDarkandBelow.Tiles.DragonShrine
                 top--;
             }
             int chest = Chest.FindChest(left, top);
-            if (Main.chest[chest].name == "")
+            if (chest < 0)
+            {
+                return Language.GetTextValue("LegacyChestType.0");
+            }
+            else if (Main.chest[chest].name == "")
             {
                 return name;
             }
@@ -76,25 +89,9 @@ namespace ofDarkandBelow.Tiles.DragonShrine
             num = 1;
         }
 
-        public override bool CanKillTile(int i, int j, ref bool blockDamaged)
-        {
-            Tile tile = Main.tile[i, j];
-            int left = i;
-            int top = j;
-            if (tile.frameX % 36 != 0)
-            {
-                left--;
-            }
-            if (tile.frameY != 0)
-            {
-                top--;
-            }
-            return Chest.CanDestroyChest(left, top);
-        }
-
         public override void KillMultiTile(int i, int j, int frameX, int frameY)
         {
-            Item.NewItem(i * 16, j * 16, 32, 32, mod.ItemType("DragonChestItem"));
+            Item.NewItem(i * 16, j * 16, 32, 32, chestDrop);
             Chest.DestroyChest(i, j);
         }
 
@@ -204,33 +201,32 @@ namespace ofDarkandBelow.Tiles.DragonShrine
             player.showItemIcon2 = -1;
             if (chest < 0)
             {
-                player.showItemIconText = Lang.chestType[0].Value;
+                player.showItemIconText = Language.GetTextValue("LegacyChestType.0");
             }
             else
             {
                 player.showItemIconText = Main.chest[chest].name.Length > 0 ? Main.chest[chest].name : "Dragon Shrine Chest";
                 if (player.showItemIconText == "Dragon Shrine Chest")
                 {
-                    player.showItemIcon2 = mod.ItemType("DracarneKey");
+                    player.showItemIcon2 = ItemType<Items.Placeable.DragonShrine.DragonChestItem>();
+                    if (Main.tile[i, j].frameX / 36 == 0)
+                        player.showItemIcon2 = ItemType<Items.DragonShrine.DracarneKey>();
                     player.showItemIconText = "";
                 }
             }
             player.noThrow = 2;
             player.showItemIcon = true;
         }
+
         public override void MouseOverFar(int i, int j)
         {
             MouseOver(i, j);
-            Player player = Main.player[Main.myPlayer];
+            Player player = Main.LocalPlayer;
             if (player.showItemIconText == "")
             {
                 player.showItemIcon = false;
                 player.showItemIcon2 = 0;
             }
-        }
-        public override bool CanExplode(int i, int j)
-        {
-            return false;
         }
     }
 }

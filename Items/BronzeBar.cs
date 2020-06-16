@@ -9,7 +9,7 @@ namespace ofDarkandBelow.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Bronze Bar");
-			Tooltip.SetDefault("The power of the bronze age resonates within this bar.");
+			Tooltip.SetDefault("'The power of the bronze age resonates within this bar.'");
 		}
 		public override void SetDefaults()
 		{

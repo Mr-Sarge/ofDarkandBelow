@@ -9,12 +9,13 @@ namespace ofDarkandBelow.Items.BossDrops.SunkenKing
 	public class FallenRoyaltyWings : ModItem
 	{
         public override void SetStaticDefaults() {
-            DisplayName.SetDefault("Fallen Royalty Wings");
-            Tooltip.SetDefault("'Who needs a griffin?'"
-            +  "\nFlight Time: 25"
-            + "\nGood Acceleration"
-            + "\nDecent Horizontal Mobility");
-        }
+            DisplayName.SetDefault("Fallen Royalty's Wings");
+            Tooltip.SetDefault("Flight Time: 25"
+            +"\nGood Acceleration"
+            +"\nDecent Horizontal Mobility"
+			+"\n'Who needs a griffin?'");
+
+		}
 		public override void SetDefaults() {
 			item.width = 26;
 			item.height = 26;

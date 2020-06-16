@@ -11,7 +11,7 @@ namespace ofDarkandBelow.Buffs
         {
             Main.buffNoTimeDisplay[Type] = false;
 			DisplayName.SetDefault("Cosmical Escapee");
-			Description.SetDefault("75% increased movement speed, 20% Increased Summon Damage,");
+			Description.SetDefault("Movement speed increased by 75%, 20% increased minion damage");
         }
         public override void Update(Player player, ref int buffIndex)
         {

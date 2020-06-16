@@ -10,8 +10,8 @@ namespace ofDarkandBelow.Items.Armor
 		public override void SetStaticDefaults() {
 			base.SetStaticDefaults();
 			DisplayName.SetDefault("Odysseus' Armor");
-			Tooltip.SetDefault("Nothing may stop you, whether fire or wind."
-            + "\nImmune to On Fire, Cursed Inferno, Ichor, Chilled, and Mighty Wind!");
+			Tooltip.SetDefault("Immune to On Fire, Cursed Inferno, Ichor, Chilled and Mighty Wind!"
+            + "\n'Nothing may stop you, whether fire or wind.'");
         }
 
 		public override void SetDefaults() {

@@ -15,11 +15,11 @@ namespace ofDarkandBelow.Items.BossDrops.PrimordialMaw
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Heart of the Void");
-            Tooltip.SetDefault("'The undying heart of the Maw...'"
-            + "\n8% Increase to All Damage"
+            Tooltip.SetDefault("8% increased damage"
             + "\nUpon death, you revive with 50 HP."
             + "\nYou will also gain a single shadow dodge upon revivng."
-            + "\nThe revival has a cooldown of 2 Minutes.");
+            + "\nThe revival has a cooldown of 2 minutes."
+            + "\n'The undying heart of the Maw...'");
         }
 
         public override void SetDefaults()

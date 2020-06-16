@@ -9,8 +9,8 @@ namespace ofDarkandBelow.Items.Armor
 	{
 		public override void SetStaticDefaults() {
 		    DisplayName.SetDefault("Odysseus' Helmet");
-			Tooltip.SetDefault("'A man who has been through bitter experiences and travelled far enjoys even his sufferings after a time'"
-            +"\n+9% Throwing Damage");
+			Tooltip.SetDefault("9% increased throwing damage"
+            + "\n'A man who has been through bitter experiences and travelled far enjoys even his sufferings after a time.'");
         }
 
 		public override void SetDefaults() {
@@ -29,7 +29,10 @@ namespace ofDarkandBelow.Items.Armor
 		}
 
 		public override void UpdateArmorSet(Player player) {
-			player.setBonus = "20% Increase to Throwing Damage, 12% Increased Throwing Crit Chance and 45% increased movement speed. You are Odysseus.";
+			player.setBonus = "20% increased throwing damage"
+				+ "\n12% increased throwing crit chance"
+				+ "\nMovement speed increased by 45%"
+				+ "\n‘You are Odysseus.’";
 			player.thrownDamage += 0.20f;
             player.thrownCrit += 12;
             player.moveSpeed += 0.45f;

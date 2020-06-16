@@ -13,9 +13,9 @@ namespace ofDarkandBelow.Items.BossDrops.SunkenKing
 	    public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Wet Derringer");
-			Tooltip.SetDefault("You can make elected figures openminded with this."
-                + "\nFires Ford's Shot."
-                + "\nRare Drop");
+			Tooltip.SetDefault("Fires Ford's Shot."
+                + "\n[Rare Drop]"
+                + "\n'You can make elected figures openminded with this.'");
 
         }
         public override void SetDefaults()

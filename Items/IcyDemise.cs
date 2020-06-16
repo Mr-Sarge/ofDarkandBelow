@@ -9,7 +9,7 @@ namespace ofDarkandBelow.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Icy Demise");
-			Tooltip.SetDefault("'Become a Herald of the Ice'");
+			Tooltip.SetDefault("'Become a Herald of the Ice!'");
 		}
 		public override void SetDefaults()
 		{

@@ -14,11 +14,11 @@ namespace ofDarkandBelow.Items
 		{
 			DisplayName.SetDefault("Zura");
             Tooltip.SetDefault("Saps life on hits."
-            + "\nAnd I say,"
+            + "\n'And I say,"
             + "\nAll fall in the end."
             + "\nFor heroes die and villains rise,"
             + "\nYet even the mightiest of the mighty succumb to death. Death of the mind,"
-            + "\nDeath of the Soul, and Death of the Life.");
+            + "\nDeath of the Soul, and Death of the Life.'");
 		}
 		public override void SetDefaults()
 		{

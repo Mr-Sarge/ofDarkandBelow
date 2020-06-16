@@ -12,8 +12,8 @@ using Terraria.ModLoader;
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Odysseus' Spear");
-			Tooltip.SetDefault("Rapid fire Odysseus Spears."
-			+ "\nSpears inflict Ichor");
+			Tooltip.SetDefault("Rapid fire Odysseus spears."
+			+ "\nSpears inflict Ichor.");
 		}
 		public override void SetDefaults() {
 			// Alter any of these values as you see fit, but you should probably keep useStyle on 1, as well as the noUseGraphic and noMelee bools
