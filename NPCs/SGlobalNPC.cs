@@ -28,6 +28,7 @@ namespace ofDarkandBelow.NPCs
         public bool cosmicFlame = false;
 		public bool tainted = false;
 		public bool belowZero = false;
+        public bool hidepierced = false;
         public override void ResetEffects(NPC npc)
         {
             dracarniumFlames = false;
@@ -36,9 +37,14 @@ namespace ofDarkandBelow.NPCs
 			tainted = false;
             belowZero = false;
             horrorHemorrhage = false;
-    }
+            hidepierced = false;
+        }
         public override void UpdateLifeRegen(NPC npc, ref int damage)
         {
+            if (hidepierced)
+            {
+                npc.defense -= 25;
+            }
             if (cosmicFlame)
             {
 				int DustID2 = Dust.NewDust(npc.position, npc.width, npc.height, mod.DustType("CosmicDust"), npc.velocity.X * 0.2f, npc.velocity.Y * 0.2f, 20, default(Color), 2f);
@@ -125,6 +131,21 @@ namespace ofDarkandBelow.NPCs
                 {
                     damage = 4;
                 }
+            }
+        }
+        public override void DrawEffects(NPC npc, ref Color drawColor)
+        {
+            if (hidepierced)
+            {
+                drawColor = Color.Violet;
+                if (Main.rand.Next(4) < 3)
+                {
+                    int dust = Dust.NewDust(npc.position - new Vector2(2f, 2f), npc.width + 4, npc.height + 4, mod.DustType("CosmicDust"), npc.velocity.X * 0.4f, npc.velocity.Y * 0.4f, 100, drawColor, .5f);
+                    Main.dust[dust].noGravity = true;
+                    Main.dust[dust].velocity *= 1.8f;
+                    Main.dust[dust].velocity.Y -= 0.5f;
+                }
+                Lighting.AddLight(npc.position, 0.1f, 0.2f, 0.7f);
             }
         }
     }
