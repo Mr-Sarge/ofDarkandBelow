@@ -12,8 +12,8 @@ namespace ofDarkandBelow.Items.Placeable
 		}
 		public override void SetDefaults()
 		{
-            item.width = 38;
-            item.height = 24;
+            item.width = 48;
+            item.height = 32;
             item.maxStack = 999;
             item.useTurn = true;
             item.autoReuse = true;

@@ -15,7 +15,10 @@ using Terraria.World.Generation;
 using Terraria.Utilities;
 
 using ofDarkandBelow.Items;
+using ofDarkandBelow.Items.Null;
 using ofDarkandBelow.Items.FishStash;
+using ofDarkandBelow.Tiles.NullBlocks;
+using ofDarkandBelow.Tiles;
 using ofDarkandBelow.Items.Thrower;
 
 namespace ofDarkandBelow
@@ -97,7 +100,352 @@ namespace ofDarkandBelow
 
         }
 
-        public override void PostWorldGen() {
+		public class NullBiomeGen : TileRunner
+		{
+			public NullBiomeGen(Vector2 pos, Vector2 speed, Point16 hRange, Point16 vRange, double strength, int steps, ushort type, bool addTile, bool overRide) : base(pos, speed, hRange, vRange, strength, steps, type, addTile, overRide)
+			{
+
+			}
+			public override bool ValidTile(Tile tile)
+			{
+				return tile.type == TileID.GreenDungeonBrick || tile.type == TileID.BlueDungeonBrick || tile.type == TileID.PinkDungeonBrick;
+			}
+		}
+
+		public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
+		{
+			// Because world generation is like layering several images ontop of each other, we need to do some steps between the original world generation steps.
+
+			// The first step is an Ore. Most vanilla ores are generated in a step called "Shinies", so for maximum compatibility, we will also do this.
+			// First, we find out which step "Shinies" is.
+			//int ShiniesIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Shinies"));
+			int ShiniesIndex2 = tasks.FindIndex(genpass => genpass.Name.Equals("Dungeon"));
+			if (ShiniesIndex2 != -1)
+			{
+				// Next, we insert our step directly after the original "Shinies" step. 
+				// ExampleModOres is a method seen below.
+				tasks.Insert(ShiniesIndex2 + 1, new PassLegacy("Generate Null Biome", NullBiomeGeneration));
+			}
+
+			int ShiniesIndex3 = tasks.FindIndex(genpass => genpass.Name.Equals("Dungeon"));
+			if (ShiniesIndex3 != -1)
+			{
+				// Next, we insert our step directly after the original "Shinies" step. 
+				// ExampleModOres is a method seen below.
+				tasks.Insert(ShiniesIndex3 + 2, new PassLegacy("Generate Null Chests", NullChestGeneration));
+			}
+		}
+
+		private void NullBiomeGeneration(GenerationProgress progress)
+		{
+			// progress.Message is the message shown to the user while the following code is running. Try to make your message clear. You can be a little bit clever, but make sure it is descriptive enough for troubleshooting purposes. 
+			progress.Message = "Conjuring the Null";
+
+			// Ores are quite simple, we simply use a for loop and the WorldGen.TileRunner to place splotches of the specified Tile in the world.
+			// "6E-05" is "scientific notation". It simply means 0.00006 but in some ways is easier to read.
+			for (int k = 0; k < (int)((Main.maxTilesX * Main.maxTilesY) * 6E-05); k++)
+			{
+				// The inside of this for loop corresponds to one single splotch of our Ore.
+				// First, we randomly choose any coordinate in the world by choosing a random x and y value.
+				int x = WorldGen.genRand.Next(0, Main.maxTilesX);
+				int y = WorldGen.genRand.Next((int)WorldGen.rockLayer, Main.maxTilesY); // WorldGen.worldSurfaceLow is actually the highest surface tile. In practice you might want to use WorldGen.rockLayer or other WorldGen values.
+
+				// Then, we call WorldGen.TileRunner with random "strength" and random "steps", as well as the Tile we wish to place. Feel free to experiment with strength and step to see the shape they generate.
+				Tile tile = Framing.GetTileSafely(x, y);
+				if (tile.active() && tile.type == TileID.PinkDungeonBrick)
+				{
+						new NullBiomeGen(new Vector2(x, y), Vector2.Zero, new Point16(-12, 12), new Point16(-3, 3), WorldGen.genRand.Next(100, 140), WorldGen.genRand.Next(40, 60), (ushort)ModContent.TileType<NullifiedBrick>(), false, true).Start();
+				}
+				if (tile.active() && tile.type == TileID.GreenDungeonBrick)
+				{	
+						new NullBiomeGen(new Vector2(x, y), Vector2.Zero, new Point16(-12, 12), new Point16(-3, 3), WorldGen.genRand.Next(100, 140), WorldGen.genRand.Next(40, 60), (ushort)ModContent.TileType<NullifiedBrick>(), false, true).Start();
+				}
+
+				if (tile.active() && tile.type == TileID.BlueDungeonBrick)
+				{
+						new NullBiomeGen(new Vector2(x, y), Vector2.Zero, new Point16(-12, 12), new Point16(-3, 3), WorldGen.genRand.Next(100, 140), WorldGen.genRand.Next(40, 60), (ushort)ModContent.TileType<NullifiedBrick>(), false, true).Start();
+				}
+
+
+				// Alternately, we could check the tile already present in the coordinate we are interested. Wrapping WorldGen.TileRunner in the following condition would make the ore only generate in Snow.
+				// Tile tile = Framing.GetTileSafely(x, y);
+				// if (tile.active() && tile.type == TileID.SnowBlock)
+				// {
+				// 	WorldGen.TileRunner(.....);
+				// }
+			}
+		}
+		
+		private void NullChestGeneration(GenerationProgress progress)
+        {
+			for (int k = 0; k < (int)((Main.maxTilesX * Main.maxTilesY) * 2E-03); k++)
+			{
+				progress.Message = "Putting loot in the Null";
+				// The inside of this for loop corresponds to one single splotch of our Ore.
+				// First, we randomly choose any coordinate in the world by choosing a random x and y value.
+				int x = WorldGen.genRand.Next(0, Main.maxTilesX);
+				int y = WorldGen.genRand.Next((int)WorldGen.rockLayer, Main.maxTilesY); // WorldGen.worldSurfaceLow is actually the highest surface tile. In practice you might want to use WorldGen.rockLayer or other WorldGen values.
+
+				// Then, we call WorldGen.TileRunner with random "strength" and random "steps", as well as the Tile we wish to place. Feel free to experiment with strength and step to see the shape they generate.
+				Tile tile = Framing.GetTileSafely(x, y);
+				if (tile.type == ModContent.TileType<NullifiedBrick>() || tile.type == TileID.PinkDungeonBrick || tile.type == TileID.BlueDungeonBrick || tile.type == TileID.GreenDungeonBrick)
+				{
+					for (int upDog = 0; upDog == 20; upDog++)
+                    {
+						tile = Framing.GetTileSafely(x, y);
+						if (!tile.active())
+                        {
+                            break;
+                        }
+                        else
+                        {
+							y += 1;
+                        }
+                    }
+
+					Mod mod = ofDarkandBelow.inst;
+					int PlacementSuccess = WorldGen.PlaceChest(x, y, (ushort)ModContent.TileType<FreakChestTile>(), false);
+
+					// Main Loot
+					int[] NullChestLootMain =
+					{
+						ModContent.ItemType<NeiroplasmicCore>(),
+						ModContent.ItemType<ZeroSpirit>(),
+						ModContent.ItemType<Tanto>(),
+						ItemID.WaterBolt
+					};
+					// Uncommon Loot
+					int[] NullChestLootUncommon =
+					{
+						ItemID.Dynamite,
+						ItemID.GoldCoin,
+						ItemID.GoldBar,
+						ItemID.PlatinumBar,
+						ItemID.GoldenKey,
+						ModContent.ItemType<Neiroplasm>()
+					};
+					// Common Loot
+					int[] NullChestLootCommon =
+					{
+						ItemID.Torch,
+						ItemID.SilverCoin,
+						ItemID.Glowstick,
+						ModContent.ItemType<PhantomFemurs>(),
+						ItemID.JestersArrow,
+						ItemID.Bone,
+						ItemID.Bomb,
+						ItemID.TungstenBar,
+						ItemID.SilverBar
+					};
+					// Potions
+					int[] NullChestPotions =
+					{
+						ItemID.SpelunkerPotion,
+						ItemID.FeatherfallPotion,
+						ItemID.NightOwlPotion,
+						ItemID.WaterWalkingPotion,
+						ItemID.ArcheryPotion,
+						ItemID.GravitationPotion,
+						ItemID.ThornsPotion,
+						ItemID.InvisibilityPotion,
+						ItemID.HunterPotion,
+						ItemID.TrapsightPotion,
+						ItemID.TeleportationPotion,
+						ItemID.RecallPotion,
+						ItemID.SpelunkerPotion,
+						ItemID.HealingPotion
+					};
+					
+					// Chest Loot - Intentional Clusterfuck Below
+
+					if (PlacementSuccess >= 0)
+					{
+						Chest chest = Main.chest[PlacementSuccess];
+
+						// Main Loot
+						chest.item[0].SetDefaults(Main.rand.Next(NullChestLootMain));
+
+
+						// Common Loot
+						for (int inventoryIndex = 0; inventoryIndex < 40; inventoryIndex++)
+						{
+							if (chest.item[inventoryIndex].type == ItemID.None)
+							{
+								if (Main.rand.Next(4) == 2)
+								{
+									chest.item[inventoryIndex].SetDefaults(Main.rand.Next(NullChestLootCommon));
+									if (chest.item[inventoryIndex].type == ItemID.Bomb || chest.item[inventoryIndex].type == ItemID.SilverBar || chest.item[inventoryIndex].type == ItemID.TungstenBar)
+									{
+										chest.item[inventoryIndex].stack = WorldGen.genRand.Next(3, 6);
+										break;
+									}
+									else
+									{
+										chest.item[inventoryIndex].stack = WorldGen.genRand.Next(15, 51);
+										break;
+									}
+								}
+								break;
+							}
+						}
+
+						for (int inventoryIndex = 0; inventoryIndex < 40; inventoryIndex++)
+						{
+							if (chest.item[inventoryIndex].type == ItemID.None)
+							{
+								if (Main.rand.Next(3) == 2)
+								{
+									chest.item[inventoryIndex].SetDefaults(Main.rand.Next(NullChestLootCommon));
+									if (chest.item[inventoryIndex].type == ItemID.Bomb || chest.item[inventoryIndex].type == ItemID.SilverBar || chest.item[inventoryIndex].type == ItemID.TungstenBar)
+									{
+										chest.item[inventoryIndex].stack = WorldGen.genRand.Next(3, 6);
+										break;
+									}
+									else
+									{
+										chest.item[inventoryIndex].stack = WorldGen.genRand.Next(15, 51);
+										break;
+									}
+								}
+								break;
+							}
+						}
+
+						for (int inventoryIndex = 0; inventoryIndex < 40; inventoryIndex++)
+						{
+							if (chest.item[inventoryIndex].type == ItemID.None)
+							{
+								chest.item[inventoryIndex].SetDefaults(Main.rand.Next(NullChestLootCommon));
+								if (chest.item[inventoryIndex].type == ItemID.Bomb)
+								{
+									chest.item[inventoryIndex].stack = WorldGen.genRand.Next(3, 6);
+									break;
+								}
+								else
+								{
+									chest.item[inventoryIndex].stack = WorldGen.genRand.Next(15, 51);
+									break;
+								}
+							}
+						}
+
+						// Potions
+						for (int inventoryIndex = 0; inventoryIndex < 40; inventoryIndex++)
+						{
+							if (chest.item[inventoryIndex].type == ItemID.None)
+							{
+								chest.item[inventoryIndex].SetDefaults(Main.rand.Next(NullChestPotions));
+								if (chest.item[inventoryIndex].type == ItemID.HealingPotion)
+								{
+									chest.item[inventoryIndex].stack = WorldGen.genRand.Next(3, 6);
+									break;
+								}
+								else
+								{
+									chest.item[inventoryIndex].stack = WorldGen.genRand.Next(1, 3);
+									break;
+								}
+							}
+						}
+
+						for (int inventoryIndex = 0; inventoryIndex < 40; inventoryIndex++)
+						{
+							if (chest.item[inventoryIndex].type == ItemID.None)
+							{
+								chest.item[inventoryIndex].SetDefaults(Main.rand.Next(NullChestPotions));
+								if (chest.item[inventoryIndex].type == ItemID.HealingPotion)
+								{
+									chest.item[inventoryIndex].stack = WorldGen.genRand.Next(3, 6);
+									break;
+								}
+								else
+								{
+									chest.item[inventoryIndex].stack = WorldGen.genRand.Next(1, 3);
+									break;
+								}
+							}
+						}
+
+						for (int inventoryIndex = 0; inventoryIndex < 40; inventoryIndex++)
+						{
+							if (chest.item[inventoryIndex].type == ItemID.None)
+							{
+								if (Main.rand.Next(4) == 2)
+								{
+									chest.item[inventoryIndex].SetDefaults(Main.rand.Next(NullChestPotions));
+									if (chest.item[inventoryIndex].type == ItemID.HealingPotion)
+									{
+										chest.item[inventoryIndex].stack = WorldGen.genRand.Next(3, 6);
+										break;
+									}
+									else
+									{
+										chest.item[inventoryIndex].stack = WorldGen.genRand.Next(1, 3);
+										break;
+									}
+								}
+								break;
+							}
+						}
+						
+						// Uncommon Loot
+						for (int inventoryIndex = 0; inventoryIndex < 40; inventoryIndex++)
+						{
+							if (chest.item[inventoryIndex].type == ItemID.None)
+							{
+								chest.item[inventoryIndex].SetDefaults(Main.rand.Next(NullChestLootUncommon));
+								if (chest.item[inventoryIndex].type == ItemID.PlatinumBar || chest.item[inventoryIndex].type == ItemID.GoldBar || chest.item[inventoryIndex].type == ModContent.ItemType<Neiroplasm>())
+								{
+									chest.item[inventoryIndex].stack = WorldGen.genRand.Next(3, 11);
+									break;
+								}
+								else if (chest.item[inventoryIndex].type == ItemID.GoldenKey)
+								{
+									chest.item[inventoryIndex].stack = WorldGen.genRand.Next(1, 3);
+									break;
+								}
+								else
+								{
+									chest.item[inventoryIndex].stack = WorldGen.genRand.Next(1, 5);
+									break;
+								}
+							}
+						}
+
+						for (int inventoryIndex = 0; inventoryIndex < 40; inventoryIndex++)
+						{
+							if (chest.item[inventoryIndex].type == ItemID.None)
+							{
+								if (Main.rand.Next(4) == 2)
+								{
+									chest.item[inventoryIndex].SetDefaults(Main.rand.Next(NullChestLootUncommon));
+									if (chest.item[inventoryIndex].type == ItemID.PlatinumBar || chest.item[inventoryIndex].type == ItemID.GoldBar || chest.item[inventoryIndex].type == ModContent.ItemType<Neiroplasm>())
+									{
+										chest.item[inventoryIndex].stack = WorldGen.genRand.Next(3, 11);
+										break;
+									}
+									else if (chest.item[inventoryIndex].type == ItemID.GoldenKey)
+									{
+										chest.item[inventoryIndex].stack = WorldGen.genRand.Next(1, 3);
+										break;
+									}
+									else
+									{
+										chest.item[inventoryIndex].stack = WorldGen.genRand.Next(1, 5);
+										break;
+									}
+								}
+								break;
+							}
+						}
+
+					}
+				}
+			}
+		}
+
+
+		public override void PostWorldGen() {
 
 			int[] itemsToPlaceInSkywareChests = {ModContent.ItemType<ShootingStar>(), ItemID.None};
 			int itemsToPlaceInSkywareChestsChoice = 0;

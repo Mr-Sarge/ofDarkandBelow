@@ -17,14 +17,14 @@ namespace ofDarkandBelow.Items.Thrower
 		}
 		public override void SetDefaults()
 		{
-			item.damage = 28;
-			item.crit = 5;
+			item.damage = 32;
+			item.crit = 4;
 			item.width = 38;
 			item.height = 38;
-			item.useTime = 47;
-			item.useAnimation = 47;
+			item.useTime = 25;
+			item.useAnimation = 25;
 			item.useStyle = 1;
-			item.knockBack = 10;
+			item.knockBack = 1;
 			item.value = Item.sellPrice(silver: 51);
 			item.rare = 3;
 			item.UseSound = SoundID.Item1;

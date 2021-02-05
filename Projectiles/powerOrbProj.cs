@@ -16,15 +16,15 @@ namespace ofDarkandBelow.Projectiles
     {
         public override void SetStaticDefaults()
         {
-            Main.projFrames[projectile.type] = 85;
-            DisplayName.SetDefault("Power Orb");
+            Main.projFrames[projectile.type] = 4;
+            DisplayName.SetDefault("Tesla Coil");
         }
         public override void SetDefaults()
         {
-            projectile.width = 32;
-            projectile.height = 32;
+            projectile.width = 38;
+            projectile.height = 58;
             projectile.penetrate = -1;
-            projectile.scale = 0.85f;
+            projectile.scale = 1.0f;
             projectile.friendly = true;
             projectile.light = 0.2f;
             projectile.timeLeft = 900;
@@ -34,7 +34,7 @@ namespace ofDarkandBelow.Projectiles
             if (++projectile.frameCounter >= 3)
             {
                 projectile.frameCounter = 0;
-                if (++projectile.frame >= 85)
+                if (++projectile.frame >= 3)
                 {
                     projectile.frame = 0;
                 }
@@ -49,7 +49,7 @@ namespace ofDarkandBelow.Projectiles
             if (++projectile.frameCounter >= 3)
             {
                 projectile.frameCounter = 0;
-                if (++projectile.frame >= 85)
+                if (++projectile.frame >= 3)
                 {
                     projectile.frame = 0;
                 }

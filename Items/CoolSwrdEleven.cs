@@ -21,9 +21,10 @@ namespace ofDarkandBelow.Items
         }
 		public override void SetDefaults()
 		{
-			item.damage = 1337;
+			item.damage = 69420;
 			item.melee = true;
 			item.width = 110;
+            item.crit = 1337;
 			item.height = 110;
 			item.useTime = 5;
 			item.useAnimation = 20;

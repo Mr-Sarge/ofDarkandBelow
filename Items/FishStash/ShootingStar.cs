@@ -17,13 +17,13 @@ namespace ofDarkandBelow.Items.FishStash
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Shooting Star");
-            Tooltip.SetDefault("Turns Wooden Arrows into Jester Arrows."
-            + "\nAlt-Fire: Fire off two Holy Arrows."
+            Tooltip.SetDefault("Turns Wooden Arrows into Holy Arrows."
+            + "\nAlt-Fire: Fire off two Jester Arrows."
             + "\n'When she falls then I'll be waiting...'");
         }
         public override void SetDefaults()
         {
-            item.damage = 28;
+            item.damage = 18;
             item.crit = 5;
             item.noMelee = true;
             item.ranged = true;
@@ -38,7 +38,6 @@ namespace ofDarkandBelow.Items.FishStash
             item.value = Item.sellPrice(gold: 1);
             item.rare = 2;
             item.UseSound = SoundID.Item5;
-            item.autoReuse = true;
             item.useTurn = true;
             item.shootSpeed = 25f;
         }
@@ -56,8 +55,8 @@ namespace ofDarkandBelow.Items.FishStash
         {
                 if (player.altFunctionUse == 2)     //2 is right click
                 {
-                    item.damage = 12;
-                    type = ProjectileID.HolyArrow;
+                    item.damage = 8;
+                    type = ProjectileID.JestersArrow;
                     int numberProjectiles = 2;
                     for (int i = 0; i < numberProjectiles; i++)
                     {
@@ -66,16 +65,16 @@ namespace ofDarkandBelow.Items.FishStash
                         perturbedSpeed = perturbedSpeed * scale;
                         int num121 = Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
                         Main.projectile[num121].noDropItem = true;
-                        item.damage = 12;
+                        item.damage = 8;
                     }
                     return false;
                 }
                 else
                 {
-                    item.damage = 28;
+                    item.damage = 15;
                     if (type == ProjectileID.WoodenArrowFriendly)
                     {
-                        type = ProjectileID.JestersArrow;
+                        type = ProjectileID.HolyArrow;
                     }
                     int numberProjectiles = 1;
                     for (int i = 0; i < numberProjectiles; i++)
@@ -84,7 +83,8 @@ namespace ofDarkandBelow.Items.FishStash
                         float scale = 1f;
                         perturbedSpeed = perturbedSpeed * scale;
                         int num121 = Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
-                        item.damage = 28;
+                        Main.projectile[num121].noDropItem = true;
+                        item.damage = 15;
                     }
                     return false;
                 }

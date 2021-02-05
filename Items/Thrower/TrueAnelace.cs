@@ -53,12 +53,14 @@ namespace ofDarkandBelow.Items.Thrower
 		}
 		public override void AddRecipes()
 		{
+			/*
 			ModRecipe recipe1 = new ModRecipe(mod);
 			recipe1.AddIngredient(mod.ItemType("Anelace"));
 			recipe1.AddIngredient(1570);
 			recipe1.AddTile(TileID.MythrilAnvil);
 			recipe1.SetResult(this);
 			recipe1.AddRecipe();
+			*/
 		}
 	}
 }

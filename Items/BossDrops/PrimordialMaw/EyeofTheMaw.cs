@@ -15,7 +15,7 @@ namespace ofDarkandBelow.Items.BossDrops.PrimordialMaw
 		public override void SetDefaults() {
 			item.damage = 36;
 			item.magic = true;
-			item.mana = 7;
+			item.mana = 15;
             item.width = 62;
 			item.height = 62;
 			item.useTime = 25;

@@ -37,7 +37,7 @@ namespace ofDarkandBelow.Items.Thrower
 		}
 		public override void AddRecipes()
 		{
-			ModRecipe recipe1 = new ModRecipe(mod);
+			/* ModRecipe recipe1 = new ModRecipe(mod);
 			recipe1.AddIngredient(mod.ItemType("RedKris"));
 			recipe1.AddIngredient(mod.ItemType("Tanto"));
 			recipe1.AddIngredient(mod.ItemType("OvergrownMachete"));
@@ -53,9 +53,8 @@ namespace ofDarkandBelow.Items.Thrower
 			recipe2.AddIngredient(mod.ItemType("BurningBowie"));
 			recipe2.AddTile(TileID.DemonAltar);
 			recipe2.SetResult(this);
-			recipe2.AddRecipe();
-
-
+			recipe2.AddRecipe(); */
+			
 		}
 	}
 }

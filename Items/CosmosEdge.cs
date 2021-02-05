@@ -15,7 +15,7 @@ namespace ofDarkandBelow.Items
 		}
 		public override void SetDefaults()
 		{
-			item.damage = 20;
+			item.damage = 22;
 			item.shoot = 9;
 			item.shootSpeed = 60f;
 			item.melee = true;

@@ -17,11 +17,11 @@ namespace ofDarkandBelow.Items.Thrower
 		public override void SetDefaults()
 		{
 			item.damage = 21;
-			item.crit = 7;
+			item.crit = 11;
 			item.width = 22;
 			item.height = 20;
-			item.useTime = 21;
-			item.useAnimation = 21;
+			item.useTime = 14;
+			item.useAnimation = 14;
 			item.useStyle = 1;
 			item.knockBack = 10;
 			item.value = Item.sellPrice(silver: 35);

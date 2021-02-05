@@ -32,7 +32,7 @@ using Terraria.ModLoader;
             item.noUseGraphic = true;
             item.noMelee = true;
             item.autoReuse = true;
-            item.ranged = true;
+            item.thrown = true;
 
             item.UseSound = SoundID.Item1;
             item.value = Item.sellPrice(gold: 5);

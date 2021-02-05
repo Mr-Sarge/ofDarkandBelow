@@ -36,7 +36,7 @@ namespace ofDarkandBelow.Items.Armor.Dev.Cybernet
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType("BatteredCybernetics"), 2);
+            recipe.AddIngredient(mod.ItemType("BatteredCybernetics"), 9);
             recipe.AddIngredient(ItemID.ChlorophyteBar, 20);
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);

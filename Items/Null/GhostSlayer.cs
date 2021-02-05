@@ -20,8 +20,8 @@ namespace ofDarkandBelow.Items.Null
 			item.damage = 29;
 			item.crit = 46;
 			item.melee = true;
-			item.width = 54;
-			item.height = 56;
+			item.width = 66;
+			item.height = 68;
 			item.useTime = 12;
 			item.useAnimation = 12;
 			item.useStyle = 1;

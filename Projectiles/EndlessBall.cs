@@ -22,7 +22,7 @@ namespace ofDarkandBelow.Projectiles
             projectile.ignoreWater = true;
             projectile.ranged = false;
 			projectile.magic = true;
-            projectile.penetrate = 5; //Tells the game how many enemies it can hit before being destroyed
+            projectile.penetrate = -1; //Tells the game how many enemies it can hit before being destroyed
             projectile.timeLeft = 400; //The amount of time the projectile is alive for
             projectile.light = 0.60f; //This defines the projectile light
         }

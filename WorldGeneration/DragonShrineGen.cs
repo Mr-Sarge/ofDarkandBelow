@@ -54,16 +54,7 @@ namespace ofDarkandBelow.WorldGeneration
             TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("WorldGeneration/DragShrine"), colorToTile, mod.GetTexture("WorldGeneration/DragShrineWall"), colorToWall, mod.GetTexture("WorldGeneration/DragShrineLiquids"));
             gen.Generate(origin.X, origin.Y, true, true);
 
-            // Tables
-            WorldGen.PlaceObject(origin.X + 202, origin.Y + 73, (ushort)ModContent.TileType<DragonTableTile>());
-            NetMessage.SendObjectPlacment(-1, origin.X + 202, origin.Y + 73, (ushort)ModContent.TileType<DragonTableTile>(), 0, 0, -1, -1);
-
-            WorldGen.PlaceObject(origin.X + 240, origin.Y + 74, (ushort)ModContent.TileType<DragonTableTile>());
-            NetMessage.SendObjectPlacment(-1, origin.X + 240, origin.Y + 74, (ushort)ModContent.TileType<DragonTableTile>(), 0, 0, -1, -1);
-
-            WorldGen.PlaceObject(origin.X + 252, origin.Y + 74, (ushort)ModContent.TileType<DragonTableTile>());
-            NetMessage.SendObjectPlacment(-1, origin.X + 252, origin.Y + 74, (ushort)ModContent.TileType<DragonTableTile>(), 0, 0, -1, -1);
-
+            // Tables Old
             WorldGen.PlaceObject(origin.X + 237, origin.Y + 18, (ushort)ModContent.TileType<DragonTableTile>());
             NetMessage.SendObjectPlacment(-1, origin.X + 237, origin.Y + 18, (ushort)ModContent.TileType<DragonTableTile>(), 0, 0, -1, -1);
 
@@ -77,95 +68,154 @@ namespace ofDarkandBelow.WorldGeneration
             NetMessage.SendObjectPlacment(-1, origin.X + 36, origin.Y + 162, (ushort)ModContent.TileType<DragonTableTile>(), 0, 0, -1, -1);
 
             // Candles
-            WorldGen.PlaceObject(origin.X + 202, origin.Y + 71, (ushort)ModContent.TileType<DragonCandleTile>());
-            NetMessage.SendObjectPlacment(-1, origin.X + 202, origin.Y + 71, (ushort)ModContent.TileType<DragonCandleTile>(), 0, 0, -1, -1);
 
             WorldGen.PlaceObject(origin.X + 252, origin.Y + 72, (ushort)ModContent.TileType<DragonCandleTile>());
             NetMessage.SendObjectPlacment(-1, origin.X + 252, origin.Y + 72, (ushort)ModContent.TileType<DragonCandleTile>(), 0, 0, -1, -1);
 
-            WorldGen.PlaceObject(origin.X + 156, origin.Y + 168, (ushort)ModContent.TileType<DragonCandleTile>());
-            NetMessage.SendObjectPlacment(-1, origin.X + 156, origin.Y + 168, (ushort)ModContent.TileType<DragonCandleTile>(), 0, 0, -1, -1);
+            WorldGen.PlaceObject(origin.X + 130, origin.Y + 78, (ushort)ModContent.TileType<DragonCandleTile>());
+            NetMessage.SendObjectPlacment(-1, origin.X + 130, origin.Y + 78, (ushort)ModContent.TileType<DragonCandleTile>(), 0, 0, -1, -1);
 
-            // Lamps
+            WorldGen.PlaceObject(origin.X + 261, origin.Y + 50, (ushort)ModContent.TileType<DragonCandleTile>());
+            NetMessage.SendObjectPlacment(-1, origin.X + 261, origin.Y + 50, (ushort)ModContent.TileType<DragonCandleTile>(), 0, 0, -1, -1);
+
+
+
+            // Lanterns New
+            WorldGen.PlaceObject(origin.X + 218, origin.Y + 67, (ushort)ModContent.TileType<DragonLanternTile>());
+            NetMessage.SendObjectPlacment(-1, origin.X + 218, origin.Y + 67, (ushort)ModContent.TileType<DragonLanternTile>(), 0, 0, -1, -1);
+
+            WorldGen.PlaceObject(origin.X + 60, origin.Y + 105, (ushort)ModContent.TileType<DragonLanternTile>());
+            NetMessage.SendObjectPlacment(-1, origin.X + 60, origin.Y + 105, (ushort)ModContent.TileType<DragonLanternTile>(), 0, 0, -1, -1);
+
+            WorldGen.PlaceObject(origin.X + 79, origin.Y + 83, (ushort)ModContent.TileType<DragonLanternTile>());
+            NetMessage.SendObjectPlacment(-1, origin.X + 79, origin.Y + 83, (ushort)ModContent.TileType<DragonLanternTile>(), 0, 0, -1, -1);
+
+            WorldGen.PlaceObject(origin.X + 87, origin.Y + 26, (ushort)ModContent.TileType<DragonLanternTile>());
+            NetMessage.SendObjectPlacment(-1, origin.X + 87, origin.Y + 26, (ushort)ModContent.TileType<DragonLanternTile>(), 0, 0, -1, -1);
+
+            WorldGen.PlaceObject(origin.X + 129, origin.Y + 93, (ushort)ModContent.TileType<DragonLanternTile>());
+            NetMessage.SendObjectPlacment(-1, origin.X + 129, origin.Y + 93, (ushort)ModContent.TileType<DragonLanternTile>(), 0, 0, -1, -1);
+
+            WorldGen.PlaceObject(origin.X + 144, origin.Y + 26, (ushort)ModContent.TileType<DragonLanternTile>());
+            NetMessage.SendObjectPlacment(-1, origin.X + 144, origin.Y + 26, (ushort)ModContent.TileType<DragonLanternTile>(), 0, 0, -1, -1);
+
+            WorldGen.PlaceObject(origin.X + 163, origin.Y + 120, (ushort)ModContent.TileType<DragonLanternTile>());
+            NetMessage.SendObjectPlacment(-1, origin.X + 163, origin.Y + 120, (ushort)ModContent.TileType<DragonLanternTile>(), 0, 0, -1, -1);
+
+            WorldGen.PlaceObject(origin.X + 288, origin.Y + 45, (ushort)ModContent.TileType<DragonLanternTile>());
+            NetMessage.SendObjectPlacment(-1, origin.X + 288, origin.Y + 45, (ushort)ModContent.TileType<DragonLanternTile>(), 0, 0, -1, -1);
+
+
+            // Lamps New
+            WorldGen.PlaceObject(origin.X + 101, origin.Y + 93, (ushort)ModContent.TileType<DragonLampTile>());
+            NetMessage.SendObjectPlacment(-1, origin.X + 101, origin.Y + 93, (ushort)ModContent.TileType<DragonLampTile>(), 0, 0, -1, -1);
+
+            WorldGen.PlaceObject(origin.X + 103, origin.Y + 122, (ushort)ModContent.TileType<DragonLampTile>());
+            NetMessage.SendObjectPlacment(-1, origin.X + 103, origin.Y + 122, (ushort)ModContent.TileType<DragonLampTile>(), 0, 0, -1, -1);
+           
             WorldGen.PlaceObject(origin.X + 112, origin.Y + 49, (ushort)ModContent.TileType<DragonLampTile>());
             NetMessage.SendObjectPlacment(-1, origin.X + 112, origin.Y + 49, (ushort)ModContent.TileType<DragonLampTile>(), 0, 0, -1, -1);
 
-            WorldGen.PlaceObject(origin.X + 119, origin.Y + 50, (ushort)ModContent.TileType<DragonLampTile>());
-            NetMessage.SendObjectPlacment(-1, origin.X + 119, origin.Y + 50, (ushort)ModContent.TileType<DragonLampTile>(), 0, 0, -1, -1);
+            WorldGen.PlaceObject(origin.X + 150, origin.Y + 105, (ushort)ModContent.TileType<DragonLampTile>());
+            NetMessage.SendObjectPlacment(-1, origin.X + 150, origin.Y + 105, (ushort)ModContent.TileType<DragonLampTile>(), 0, 0, -1, -1);
 
-            WorldGen.PlaceObject(origin.X + 100, origin.Y + 51, (ushort)ModContent.TileType<DragonLampTile>());
-            NetMessage.SendObjectPlacment(-1, origin.X + 100, origin.Y + 51, (ushort)ModContent.TileType<DragonLampTile>(), 0, 0, -1, -1);
+            WorldGen.PlaceObject(origin.X + 168, origin.Y + 80, (ushort)ModContent.TileType<DragonLampTile>());
+            NetMessage.SendObjectPlacment(-1, origin.X + 168, origin.Y + 80, (ushort)ModContent.TileType<DragonLampTile>(), 0, 0, -1, -1);
 
-            WorldGen.PlaceObject(origin.X + 136, origin.Y + 52, (ushort)ModContent.TileType<DragonLampTile>());
-            NetMessage.SendObjectPlacment(-1, origin.X + 136, origin.Y + 52, (ushort)ModContent.TileType<DragonLampTile>(), 0, 0, -1, -1);
+            WorldGen.PlaceObject(origin.X + 271, origin.Y + 83, (ushort)ModContent.TileType<DragonLampTile>());
+            NetMessage.SendObjectPlacment(-1, origin.X + 271, origin.Y + 83, (ushort)ModContent.TileType<DragonLampTile>(), 0, 0, -1, -1);
 
-            WorldGen.PlaceObject(origin.X + 147, origin.Y + 55, (ushort)ModContent.TileType<DragonLampTile>());
-            NetMessage.SendObjectPlacment(-1, origin.X + 147, origin.Y + 55, (ushort)ModContent.TileType<DragonLampTile>(), 0, 0, -1, -1);
+            WorldGen.PlaceObject(origin.X + 280, origin.Y + 83, (ushort)ModContent.TileType<DragonLampTile>());
+            NetMessage.SendObjectPlacment(-1, origin.X + 280, origin.Y + 83, (ushort)ModContent.TileType<DragonLampTile>(), 0, 0, -1, -1);
 
-            WorldGen.PlaceObject(origin.X + 86, origin.Y + 54, (ushort)ModContent.TileType<DragonLampTile>());
-            NetMessage.SendObjectPlacment(-1, origin.X + 86, origin.Y + 54, (ushort)ModContent.TileType<DragonLampTile>(), 0, 0, -1, -1);
+            WorldGen.PlaceObject(origin.X + 167, origin.Y + 60, (ushort)ModContent.TileType<DragonLampTile>());
+            NetMessage.SendObjectPlacment(-1, origin.X + 187, origin.Y + 60, (ushort)ModContent.TileType<DragonLampTile>(), 0, 0, -1, -1);
 
-            WorldGen.PlaceObject(origin.X + 157, origin.Y + 108, (ushort)ModContent.TileType<DragonLampTile>());
-            NetMessage.SendObjectPlacment(-1, origin.X + 157, origin.Y + 108, (ushort)ModContent.TileType<DragonLampTile>(), 0, 0, -1, -1);
+            // Pillars New
 
-            WorldGen.PlaceObject(origin.X + 241, origin.Y + 114, (ushort)ModContent.TileType<DragonLampTile>());
-            NetMessage.SendObjectPlacment(-1, origin.X + 241, origin.Y + 114, (ushort)ModContent.TileType<DragonLampTile>(), 0, 0, -1, -1);
+            // Small
+            WorldGen.PlaceObject(origin.X + 257, origin.Y + 73, (ushort)ModContent.TileType<DragonPillarABrokenTile>());
+            NetMessage.SendObjectPlacment(-1, origin.X + 257, origin.Y + 73, (ushort)ModContent.TileType<DragonPillarABrokenTile>(), 0, 0, -1, -1);
 
-            WorldGen.PlaceObject(origin.X + 229, origin.Y + 17, (ushort)ModContent.TileType<DragonLampTile>());
-            NetMessage.SendObjectPlacment(-1, origin.X + 229, origin.Y + 17, (ushort)ModContent.TileType<DragonLampTile>(), 0, 0, -1, -1);
+            WorldGen.PlaceObject(origin.X + 66, origin.Y + 92, (ushort)ModContent.TileType<DragonPillarATile>());
+            NetMessage.SendObjectPlacment(-1, origin.X + 66, origin.Y + 92, (ushort)ModContent.TileType<DragonPillarATile>(), 0, 0, -1, -1);
 
-            WorldGen.PlaceObject(origin.X + 72, origin.Y + 108, (ushort)ModContent.TileType<DragonLampTile>());
-            NetMessage.SendObjectPlacment(-1, origin.X + 72, origin.Y + 108, (ushort)ModContent.TileType<DragonLampTile>(), 0, 0, -1, -1);
+            WorldGen.PlaceObject(origin.X + 199, origin.Y + 74, (ushort)ModContent.TileType<DragonPillarAChippedTile>());
+            NetMessage.SendObjectPlacment(-1, origin.X + 199, origin.Y + 74, (ushort)ModContent.TileType<DragonPillarAChippedTile>(), 0, 0, -1, -1);
 
-            WorldGen.PlaceObject(origin.X + 100, origin.Y + 108, (ushort)ModContent.TileType<DragonLampTile>());
-            NetMessage.SendObjectPlacment(-1, origin.X + 100, origin.Y + 108, (ushort)ModContent.TileType<DragonLampTile>(), 0, 0, -1, -1);
+            WorldGen.PlaceObject(origin.X + 195, origin.Y + 107, (ushort)ModContent.TileType<DragonPillarAChippedTile>());
+            NetMessage.SendObjectPlacment(-1, origin.X + 195, origin.Y + 107, (ushort)ModContent.TileType<DragonPillarAChippedTile>(), 0, 0, -1, -1);
 
-            WorldGen.PlaceObject(origin.X + 270, origin.Y + 168, (ushort)ModContent.TileType<DragonLampTile>());
-            NetMessage.SendObjectPlacment(-1, origin.X + 270, origin.Y + 168, (ushort)ModContent.TileType<DragonLampTile>(), 0, 0, -1, -1);
+            WorldGen.PlaceObject(origin.X + 236, origin.Y + 107, (ushort)ModContent.TileType<DragonPillarABrokenTile>());
+            NetMessage.SendObjectPlacment(-1, origin.X + 236, origin.Y + 107, (ushort)ModContent.TileType<DragonPillarABrokenTile>(), 0, 0, -1, -1);
 
-            WorldGen.PlaceObject(origin.X + 204, origin.Y + 108, (ushort)ModContent.TileType<DragonLampTile>());
-            NetMessage.SendObjectPlacment(-1, origin.X + 204, origin.Y + 108, (ushort)ModContent.TileType<DragonLampTile>(), 0, 0, -1, -1);
+            WorldGen.PlaceObject(origin.X + 207, origin.Y + 50, (ushort)ModContent.TileType<DragonPillarATile>());
+            NetMessage.SendObjectPlacment(-1, origin.X + 207, origin.Y + 50, (ushort)ModContent.TileType<DragonPillarATile>(), 0, 0, -1, -1);
 
-            WorldGen.PlaceObject(origin.X + 207, origin.Y + 108, (ushort)ModContent.TileType<DragonLampTile>());
-            NetMessage.SendObjectPlacment(-1, origin.X + 207, origin.Y + 108, (ushort)ModContent.TileType<DragonLampTile>(), 0, 0, -1, -1);
+            WorldGen.PlaceObject(origin.X + 285, origin.Y + 97, (ushort)ModContent.TileType<DragonPillarATile>());
+            NetMessage.SendObjectPlacment(-1, origin.X + 285, origin.Y + 97, (ushort)ModContent.TileType<DragonPillarATile>(), 0, 0, -1, -1);
 
-            WorldGen.PlaceObject(origin.X + 210, origin.Y + 108, (ushort)ModContent.TileType<DragonLampTile>());
-            NetMessage.SendObjectPlacment(-1, origin.X + 210, origin.Y + 108, (ushort)ModContent.TileType<DragonLampTile>(), 0, 0, -1, -1);
 
-            WorldGen.PlaceObject(origin.X + 219, origin.Y + 108, (ushort)ModContent.TileType<DragonLampTile>());
-            NetMessage.SendObjectPlacment(-1, origin.X + 219, origin.Y + 108, (ushort)ModContent.TileType<DragonLampTile>(), 0, 0, -1, -1);
+            // Medium
+            WorldGen.PlaceObject(origin.X + 76, origin.Y + 90, (ushort)ModContent.TileType<DragonPillarBChippedTile>());
+            NetMessage.SendObjectPlacment(-1, origin.X + 76, origin.Y + 90, (ushort)ModContent.TileType<DragonPillarBChippedTile>(), 0, 0, -1, -1);
 
-            WorldGen.PlaceObject(origin.X + 222, origin.Y + 108, (ushort)ModContent.TileType<DragonLampTile>());
-            NetMessage.SendObjectPlacment(-1, origin.X + 222, origin.Y + 108, (ushort)ModContent.TileType<DragonLampTile>(), 0, 0, -1, -1);
+            WorldGen.PlaceObject(origin.X + 187, origin.Y + 77, (ushort)ModContent.TileType<DragonPillarBBrokenTile>());
+            NetMessage.SendObjectPlacment(-1, origin.X + 187, origin.Y + 77, (ushort)ModContent.TileType<DragonPillarBBrokenTile>(), 0, 0, -1, -1);
 
-            WorldGen.PlaceObject(origin.X + 225, origin.Y + 108, (ushort)ModContent.TileType<DragonLampTile>());
-            NetMessage.SendObjectPlacment(-1, origin.X + 225, origin.Y + 108, (ushort)ModContent.TileType<DragonLampTile>(), 0, 0, -1, -1);
+            WorldGen.PlaceObject(origin.X + 202, origin.Y + 105, (ushort)ModContent.TileType<DragonPillarBTile>());
+            NetMessage.SendObjectPlacment(-1, origin.X + 202, origin.Y + 105, (ushort)ModContent.TileType<DragonPillarBTile>(), 0, 0, -1, -1);
+
+            WorldGen.PlaceObject(origin.X + 223, origin.Y + 105, (ushort)ModContent.TileType<DragonPillarBTile>());
+            NetMessage.SendObjectPlacment(-1, origin.X + 223, origin.Y + 105, (ushort)ModContent.TileType<DragonPillarBTile>(), 0, 0, -1, -1);
+
+            WorldGen.PlaceObject(origin.X + 230, origin.Y + 105, (ushort)ModContent.TileType<DragonPillarBChippedTile>());
+            NetMessage.SendObjectPlacment(-1, origin.X + 230, origin.Y + 105, (ushort)ModContent.TileType<DragonPillarBChippedTile>(), 0, 0, -1, -1);
+
+            WorldGen.PlaceObject(origin.X + 234, origin.Y + 51, (ushort)ModContent.TileType<DragonPillarBBrokenTile>());
+            NetMessage.SendObjectPlacment(-1, origin.X + 234, origin.Y + 51, (ushort)ModContent.TileType<DragonPillarBBrokenTile>(), 0, 0, -1, -1);
+
+            WorldGen.PlaceObject(origin.X + 289, origin.Y + 67, (ushort)ModContent.TileType<DragonPillarBChippedTile>());
+            NetMessage.SendObjectPlacment(-1, origin.X + 289, origin.Y + 67, (ushort)ModContent.TileType<DragonPillarBChippedTile>(), 0, 0, -1, -1);
+
+
+            // Large
+            WorldGen.PlaceObject(origin.X + 261, origin.Y + 101, (ushort)ModContent.TileType<DragonPillarCTile>());
+            NetMessage.SendObjectPlacment(-1, origin.X + 261, origin.Y + 101, (ushort)ModContent.TileType<DragonPillarCTile>(), 0, 0, -1, -1);
+
+            WorldGen.PlaceObject(origin.X + 210, origin.Y + 103, (ushort)ModContent.TileType<DragonPillarCTile>());
+            NetMessage.SendObjectPlacment(-1, origin.X + 210, origin.Y + 103, (ushort)ModContent.TileType<DragonPillarCTile>(), 0, 0, -1, -1);
+
+            WorldGen.PlaceObject(origin.X + 216, origin.Y + 103, (ushort)ModContent.TileType<DragonPillarCBrokenTile>());
+            NetMessage.SendObjectPlacment(-1, origin.X + 216, origin.Y + 103, (ushort)ModContent.TileType<DragonPillarCBrokenTile>(), 0, 0, -1, -1);
+
+            WorldGen.PlaceObject(origin.X + 211, origin.Y + 48, (ushort)ModContent.TileType<DragonPillarCChippedTile>());
+            NetMessage.SendObjectPlacment(-1, origin.X + 211, origin.Y + 48, (ushort)ModContent.TileType<DragonPillarCChippedTile>(), 0, 0, -1, -1);
+
+
+            // Tables New
+            WorldGen.PlaceObject(origin.X + 163, origin.Y + 126, (ushort)ModContent.TileType<DragonTableTile>());
+            NetMessage.SendObjectPlacment(-1, origin.X + 163, origin.Y + 126, (ushort)ModContent.TileType<DragonTableTile>(), 0, 0, -1, -1);
+
+            WorldGen.PlaceObject(origin.X + 130, origin.Y + 80, (ushort)ModContent.TileType<DragonTableTile>());
+            NetMessage.SendObjectPlacment(-1, origin.X + 130, origin.Y + 80, (ushort)ModContent.TileType<DragonTableTile>(), 0, 0, -1, -1);
+
+            WorldGen.PlaceObject(origin.X + 261, origin.Y + 52, (ushort)ModContent.TileType<DragonTableTile>());
+            NetMessage.SendObjectPlacment(-1, origin.X + 261, origin.Y + 52, (ushort)ModContent.TileType<DragonTableTile>(), 0, 0, -1, -1);
+
 
             // Lanterns
-            WorldGen.PlaceObject(origin.X + 118, origin.Y + 86, (ushort)ModContent.TileType<DragonLanternTile>());
-            NetMessage.SendObjectPlacment(-1, origin.X + 118, origin.Y + 86, (ushort)ModContent.TileType<DragonLanternTile>(), 0, 0, -1, -1);
 
-            WorldGen.PlaceObject(origin.X + 206, origin.Y + 92, (ushort)ModContent.TileType<DragonLanternTile>());
-            NetMessage.SendObjectPlacment(-1, origin.X + 206, origin.Y + 92, (ushort)ModContent.TileType<DragonLanternTile>(), 0, 0, -1, -1);
-
-            WorldGen.PlaceObject(origin.X + 35, origin.Y + 155, (ushort)ModContent.TileType<DragonLanternTile>());
+            WorldGen.PlaceObject(origin.X + 35, origin.Y + 155, (ushort)ModContent.TileType<DragonLanternTile>()); // Good.
             NetMessage.SendObjectPlacment(-1, origin.X + 35, origin.Y + 155, (ushort)ModContent.TileType<DragonLanternTile>(), 0, 0, -1, -1);
 
-            WorldGen.PlaceObject(origin.X + 125, origin.Y + 161, (ushort)ModContent.TileType<DragonLanternTile>());
+            WorldGen.PlaceObject(origin.X + 125, origin.Y + 161, (ushort)ModContent.TileType<DragonLanternTile>()); // Good.
             NetMessage.SendObjectPlacment(-1, origin.X + 125, origin.Y + 161, (ushort)ModContent.TileType<DragonLanternTile>(), 0, 0, -1, -1);
 
-            WorldGen.PlaceObject(origin.X + 247, origin.Y + 12, (ushort)ModContent.TileType<DragonLanternTile>());
+            WorldGen.PlaceObject(origin.X + 247, origin.Y + 12, (ushort)ModContent.TileType<DragonLanternTile>()); // Good
             NetMessage.SendObjectPlacment(-1, origin.X + 247, origin.Y + 12, (ushort)ModContent.TileType<DragonLanternTile>(), 0, 0, -1, -1);
 
-            WorldGen.PlaceObject(origin.X + 206, origin.Y + 92, (ushort)ModContent.TileType<DragonLanternTile>());
-            NetMessage.SendObjectPlacment(-1, origin.X + 206, origin.Y + 92, (ushort)ModContent.TileType<DragonLanternTile>(), 0, 0, -1, -1);
-
-            WorldGen.PlaceObject(origin.X + 88, origin.Y + 100, (ushort)ModContent.TileType<DragonLanternTile>());
-            NetMessage.SendObjectPlacment(-1, origin.X + 88, origin.Y + 100, (ushort)ModContent.TileType<DragonLanternTile>(), 0, 0, -1, -1);
-
-            // clocks
-            WorldGen.PlaceObject(origin.X + 272, origin.Y + 69, (ushort)ModContent.TileType<DragonGrandClockTile>());
-            NetMessage.SendObjectPlacment(-1, origin.X + 272, origin.Y + 69, (ushort)ModContent.TileType<DragonGrandClockTile>(), 0, 0, -1, -1);
+            // Clocks
 
             WorldGen.PlaceObject(origin.X + 106, origin.Y + 105, (ushort)ModContent.TileType<DragonGrandClockTile>());
             NetMessage.SendObjectPlacment(-1, origin.X + 106, origin.Y + 105, (ushort)ModContent.TileType<DragonGrandClockTile>(), 0, 0, -1, -1);
@@ -173,7 +223,10 @@ namespace ofDarkandBelow.WorldGeneration
             WorldGen.PlaceObject(origin.X + 243, origin.Y + 164, (ushort)ModContent.TileType<DragonGrandClockTile>());
             NetMessage.SendObjectPlacment(-1, origin.X + 243, origin.Y + 164, (ushort)ModContent.TileType<DragonGrandClockTile>(), 0, 0, -1, -1);
 
-            // Pillars
+            WorldGen.PlaceObject(origin.X + 175, origin.Y + 56, (ushort)ModContent.TileType<DragonGrandClockTile>());
+            NetMessage.SendObjectPlacment(-1, origin.X + 175, origin.Y + 56, (ushort)ModContent.TileType<DragonGrandClockTile>(), 0, 0, -1, -1);
+
+            // Pillars - These are just the old ones. New ones will be above these. I wasn't interested in locating the ID of every single one.
 
             // Small Pillars
             WorldGen.PlaceObject(origin.X + 220, origin.Y + 15, (ushort)ModContent.TileType<DragonPillarATile>());
@@ -245,6 +298,7 @@ namespace ofDarkandBelow.WorldGeneration
 
             WorldGen.PlaceObject(origin.X + 282, origin.Y + 73, (ushort)ModContent.TileType<DragonPillarBBrokenTile>());
             NetMessage.SendObjectPlacment(-1, origin.X + 282, origin.Y + 73, (ushort)ModContent.TileType<DragonPillarBBrokenTile>(), 0, 0, -1, -1);
+           
             // Large Pillars
             WorldGen.PlaceObject(origin.X + 185, origin.Y + 185, (ushort)ModContent.TileType<DragonPillarCTile>());
             NetMessage.SendObjectPlacment(-1, origin.X + 185, origin.Y + 185, (ushort)ModContent.TileType<DragonPillarCTile>(), 0, 0, -1, -1);
@@ -289,8 +343,17 @@ namespace ofDarkandBelow.WorldGeneration
             WorldGen.PlaceObject(origin.X + 112, origin.Y + 88, (ushort)ModContent.TileType<DragonCupTile>());
             NetMessage.SendObjectPlacment(-1, origin.X + 112, origin.Y + 88, (ushort)ModContent.TileType<DragonCupTile>(), 0, 0, -1, -1);
 
+            // Cups - New
+
+            WorldGen.PlaceObject(origin.X + 164, origin.Y + 124, (ushort)ModContent.TileType<DragonCupTile>());
+            NetMessage.SendObjectPlacment(-1, origin.X + 164, origin.Y + 124, (ushort)ModContent.TileType<DragonCupTile>(), 0, 0, -1, -1);
+
             //chests top
-            DragonChest(origin.X + 52, origin.Y + 70);
+            DragonChest(origin.X + 52, origin.Y + 70); 
+            DragonChest(origin.X + 170, origin.Y + 60);
+            DragonChest(origin.X + 272, origin.Y + 52);
+            DragonChest(origin.X + 234, origin.Y + 18);
+            /*
             DragonChest(origin.X + 97, origin.Y + 52);
             DragonChest(origin.X + 180, origin.Y + 71);
             DragonChest(origin.X + 210, origin.Y + 73);
@@ -299,59 +362,389 @@ namespace ofDarkandBelow.WorldGeneration
             DragonChest(origin.X + 313, origin.Y + 75);
 
             DragonChest(origin.X + 247, origin.Y + 18);
+            */
 
             //chests middle
-            DragonChest(origin.X + 52, origin.Y + 70);
+            DragonChest(origin.X + 60, origin.Y + 111);
+            DragonChest(origin.X + 97, origin.Y + 94);
+            DragonChest(origin.X + 130, origin.Y + 126);
+            DragonChest(origin.X + 158, origin.Y + 106);
+            DragonChest(origin.X + 164, origin.Y + 80);
+            DragonChest(origin.X + 258, origin.Y + 105);
+            DragonChest(origin.X + 260, origin.Y + 75);
+            DragonChest(origin.X + 286, origin.Y + 70);
+            DragonChest(origin.X + 288, origin.Y + 99);
+            /*
             DragonChest(origin.X + 117, origin.Y + 108);
             DragonChest(origin.X + 174, origin.Y + 107);
             DragonChest(origin.X + 184, origin.Y + 107);
             DragonChest(origin.X + 174, origin.Y + 107);
+            */
 
             //chests bottom
             DragonChest(origin.X + 44, origin.Y + 162);
+            DragonChest(origin.X + 138, origin.Y + 170);
+            DragonChest(origin.X + 250, origin.Y + 168);
+            /*
             DragonChest(origin.X + 52, origin.Y + 164);
             DragonChest(origin.X + 142, origin.Y + 170);
             DragonChest(origin.X + 151, origin.Y + 170);
             DragonChest(origin.X + 141, origin.Y + 170);
             DragonChest(origin.X + 201, origin.Y + 191);
             DragonChest(origin.X + 251, origin.Y + 168);
+            */
 
+            // Hidepiercer Chest
+            BiomeDragonChest(origin.X + 275, origin.Y + 81);
             return true;
         }
-        public void DragonChest(int x, int y)
+        public void BiomeDragonChest(int x, int y)
         {
             Mod mod = ofDarkandBelow.inst;
-            int PlacementSuccess = WorldGen.PlaceChest(x, y, (ushort)ModContent.TileType<DragonChestTile>(), false);
-
-            int[] DragonChestLoot = new int[]
-            {
-                ModContent.ItemType<DracarniumIngot>(),
-                ModContent.ItemType<DracianIrePotion>()
+            int PlacementSuccess = WorldGen.PlaceChest(x, y, (ushort)ModContent.TileType<DragonShrineBiomeChestTile>(), false);
+            // Random Rare Dragon Chest Loot
+            int[] DragonChestLoot =
+       {
+                ModContent.ItemType<AncientAle>(),
+                ModContent.ItemType<DragonScale>(),
+                ModContent.ItemType<ShrineGuardShield>(),
+                ModContent.ItemType<ArchaicMusket>(),
+                ModContent.ItemType<AncientGreatSword>(),
             };
-            int[] DragonChestLoot2 = new int[]
+            // Random Uncommon Dragon Chest Loot
+            int[] DragonChestLoot2 =
             {
                 ModContent.ItemType<DracarniumIngot>(),
-                ModContent.ItemType<DracianSpikeFish>()
+                ModContent.ItemType<DracianIrePotion>(),
+                ModContent.ItemType<DracianSpikeFish>(),
+                ModContent.ItemType<DragonShrineCrate>()
             };
-            int[] DragonChestLoot3 = new int[]
+            // High-Tier Common Loot
+            int[] DragonChestLootTier3 =
             {
-                ModContent.ItemType<DracarniumIngot>(),
-                ModContent.ItemType<DracianSpikeFish>()
+                ItemID.AdamantiteBar,
+                ItemID.TitaniumBar,
+                ModContent.ItemType<HeroesAlloy>()
             };
-            int[] DragonChestLoot4 = new int[]
+            // Mid-Tier Common Loot
+            int[] DragonChestLootTier2 =
             {
-                ModContent.ItemType<DracarniumIngot>(),
-                ModContent.ItemType<DracianSpikeFish>()
+                ItemID.IchorArrow,
+                ItemID.GoldCoin,
+                ItemID.MythrilBar,
+                ItemID.OrichalcumBar
             };
-            int[] DragonChestLoot5 = new int[]
+            // Low-Tier Common Loot
+            int[] DragonChestLootTier1 =
             {
-                ModContent.ItemType<DracarniumIngot>(),
-                ModContent.ItemType<DracianIrePotion>()
+                ItemID.SpelunkerGlowstick,
+                ModContent.ItemType<DracarniumSpikes>(),
+                ItemID.HolyArrow,
+                ItemID.CobaltBar,
+                ItemID.PalladiumBar
+            };
+            // Potions
+            int[] DragonChestPotions =
+            {
+                ItemID.GreaterManaPotion,
+                ItemID.GreaterHealingPotion,
+                ItemID.LifeforcePotion,
+                ItemID.EndurancePotion,
+                ItemID.WrathPotion,
+                ItemID.RagePotion
             };
             if (PlacementSuccess >= 0)
             {
                 Chest chest = Main.chest[PlacementSuccess];
 
+                // Hidepiercer First Slot
+                Item item0 = chest.item[0];
+                item0.SetDefaults(ModContent.ItemType<Hidepiercer>(), false);
+
+                // Second Chest Slot
+                chest.item[1].SetDefaults(Main.rand.Next(DragonChestLoot));
+
+                // Third Chest Slot
+                chest.item[2].SetDefaults(Main.rand.Next(DragonChestLoot2));
+                if (chest.item[2].type == ModContent.ItemType<DracarniumIngot>())
+                {
+                    chest.item[2].stack = WorldGen.genRand.Next(10, 22);
+                }
+                else if (chest.item[2].type == ModContent.ItemType<DracianIrePotion>())
+                {
+                    chest.item[2].stack = WorldGen.genRand.Next(2, 8);
+                }
+                else if (chest.item[2].type == ModContent.ItemType<DracianSpikeFish>())
+                {
+                    chest.item[2].stack = WorldGen.genRand.Next(4, 8);
+                }
+                else
+                {
+                    chest.item[2].stack = WorldGen.genRand.Next(2, 5);
+                }
+
+                // Potion Generation 100% 1
+                for (int inventoryIndex = 0; inventoryIndex < 40; inventoryIndex++)
+                {
+                    if (chest.item[inventoryIndex].type == ItemID.None)
+                    {
+                        chest.item[inventoryIndex].SetDefaults(Main.rand.Next(DragonChestPotions));
+                        if (chest.item[inventoryIndex].type == ItemID.GreaterHealingPotion || chest.item[inventoryIndex].type == ItemID.GreaterManaPotion)
+                        {
+                            chest.item[inventoryIndex].stack = WorldGen.genRand.Next(3, 6);
+                            break;
+                        }
+                        else
+                        {
+                            chest.item[inventoryIndex].stack = WorldGen.genRand.Next(1, 3);
+                            break;
+                        }
+                        break;
+                    }
+                }
+
+                // Potion Generation 100% 2
+                for (int inventoryIndex = 0; inventoryIndex < 40; inventoryIndex++)
+                {
+                    if (chest.item[inventoryIndex].type == ItemID.None)
+                    {
+                        chest.item[inventoryIndex].SetDefaults(Main.rand.Next(DragonChestPotions));
+                        if (chest.item[inventoryIndex].type == ItemID.GreaterHealingPotion || chest.item[inventoryIndex].type == ItemID.GreaterManaPotion)
+                        {
+                            chest.item[inventoryIndex].stack = WorldGen.genRand.Next(3, 6);
+                            break;
+                        }
+                        else
+                        {
+                            chest.item[inventoryIndex].stack = WorldGen.genRand.Next(1, 3);
+                            break;
+                        }
+                        break;
+                    }
+                }
+
+                // Potion Generation 100% 3
+                for (int inventoryIndex = 0; inventoryIndex < 40; inventoryIndex++)
+                {
+                    if (chest.item[inventoryIndex].type == ItemID.None)
+                    {
+                        chest.item[inventoryIndex].SetDefaults(Main.rand.Next(DragonChestPotions));
+                        if (chest.item[inventoryIndex].type == ItemID.GreaterHealingPotion || chest.item[inventoryIndex].type == ItemID.GreaterManaPotion)
+                        {
+                            chest.item[inventoryIndex].stack = WorldGen.genRand.Next(3, 6);
+                            break;
+                        }
+                        else
+                        {
+                            chest.item[inventoryIndex].stack = WorldGen.genRand.Next(1, 3);
+                            break;
+                        }
+                        break;
+                    }
+                }
+
+                // Tier 1 100%
+                for (int inventoryIndex = 0; inventoryIndex < 40; inventoryIndex++)
+                {
+                    if (chest.item[inventoryIndex].type == ItemID.None)
+                    {
+                        chest.item[inventoryIndex].SetDefaults(Main.rand.Next(DragonChestLootTier1));
+                        if (chest.item[inventoryIndex].type == ItemID.SpelunkerGlowstick || chest.item[inventoryIndex].type == ModContent.ItemType<DracarniumSpikes>() || chest.item[inventoryIndex].type == ItemID.HolyArrow)
+                        {
+                            chest.item[inventoryIndex].stack = WorldGen.genRand.Next(15, 31);
+                            break;
+                        }
+                        else
+                        {
+                            chest.item[inventoryIndex].stack = WorldGen.genRand.Next(5, 11);
+                            break;
+                        }
+                        break;
+                    }
+                }
+
+                // Tier 1 50%
+                for (int inventoryIndex = 0; inventoryIndex < 40; inventoryIndex++)
+                {
+                    if (chest.item[inventoryIndex].type == ItemID.None)
+                    {
+                        if (Main.rand.Next(3) == 2)
+                        {
+                            chest.item[inventoryIndex].SetDefaults(Main.rand.Next(DragonChestLootTier1));
+                            if (chest.item[inventoryIndex].type == ItemID.SpelunkerGlowstick || chest.item[inventoryIndex].type == ModContent.ItemType<DracarniumSpikes>() || chest.item[inventoryIndex].type == ItemID.HolyArrow)
+                            {
+                                chest.item[inventoryIndex].stack = WorldGen.genRand.Next(15, 31);
+                                break;
+                            }
+                            else
+                            {
+                                chest.item[inventoryIndex].stack = WorldGen.genRand.Next(5, 11);
+                                break;
+
+                            }
+                        }
+                        break;
+                    }
+                }
+
+                // Tier 1 33%
+                for (int inventoryIndex = 0; inventoryIndex < 40; inventoryIndex++)
+                {
+                    if (chest.item[inventoryIndex].type == ItemID.None)
+                    {
+                        if (Main.rand.Next(4) == 2)
+                        {
+                            chest.item[inventoryIndex].SetDefaults(Main.rand.Next(DragonChestLootTier1));
+                            if (chest.item[inventoryIndex].type == ItemID.SpelunkerGlowstick || chest.item[inventoryIndex].type == ItemID.PoisonedKnife || chest.item[inventoryIndex].type == ItemID.JestersArrow)
+                            {
+                                chest.item[inventoryIndex].stack = WorldGen.genRand.Next(15, 51);
+                                break;
+                            }
+                            else
+                            {
+                                chest.item[inventoryIndex].stack = WorldGen.genRand.Next(5, 11);
+                                break;
+                            }
+                        }
+                        break;
+                    }
+                }
+
+                // Tier 2 50%
+                for (int inventoryIndex = 0; inventoryIndex < 40; inventoryIndex++)
+                {
+                    if (chest.item[inventoryIndex].type == ItemID.None)
+                    {
+                        if (Main.rand.Next(3) == 2)
+                        {
+                            chest.item[inventoryIndex].SetDefaults(Main.rand.Next(DragonChestLootTier2));
+                            if (chest.item[inventoryIndex].type == ItemID.OrichalcumBar || chest.item[inventoryIndex].type == ItemID.MythrilBar)
+                            {
+                                chest.item[inventoryIndex].stack = WorldGen.genRand.Next(3, 11);
+                                break;
+                            }
+                            else if (chest.item[inventoryIndex].type == ItemID.IchorArrow)
+                            {
+                                chest.item[inventoryIndex].stack = WorldGen.genRand.Next(15, 51);
+                                break;
+                            }
+                            else
+                            {
+                                chest.item[inventoryIndex].stack = WorldGen.genRand.Next(3, 16);
+                                break;
+                            }
+                        }
+                        break;
+                    }
+                }
+
+                // Tier 2 33%
+                for (int inventoryIndex = 0; inventoryIndex < 40; inventoryIndex++)
+                {
+                    if (chest.item[inventoryIndex].type == ItemID.None)
+                    {
+                        if (Main.rand.Next(4) == 2)
+                        {
+                            chest.item[inventoryIndex].SetDefaults(Main.rand.Next(DragonChestLootTier2));
+                            if (chest.item[inventoryIndex].type == ItemID.OrichalcumBar || chest.item[inventoryIndex].type == ItemID.MythrilBar)
+                            {
+                                chest.item[inventoryIndex].stack = WorldGen.genRand.Next(3, 11);
+                                break;
+                            }
+                            else if (chest.item[inventoryIndex].type == ItemID.IchorArrow)
+                            {
+                                chest.item[inventoryIndex].stack = WorldGen.genRand.Next(15, 51);
+                                break;
+                            }
+                            else
+                            {
+                                chest.item[inventoryIndex].stack = WorldGen.genRand.Next(3, 16);
+                                break;
+                            }
+                        }
+                        break;
+                    }
+                }
+
+                // Tier 3 33%
+                for (int inventoryIndex = 0; inventoryIndex < 40; inventoryIndex++)
+                {
+                    if (chest.item[inventoryIndex].type == ItemID.None)
+                    {
+                        if (Main.rand.Next(4) == 2)
+                        {
+                            chest.item[inventoryIndex].SetDefaults(Main.rand.Next(DragonChestLootTier3));
+                            chest.item[inventoryIndex].stack = WorldGen.genRand.Next(3, 11);
+                            break;
+                        }
+                        break;
+                    }
+                }
+            }
+        }
+        public void DragonChest(int x, int y)
+        {
+            Mod mod = ofDarkandBelow.inst;
+            int PlacementSuccess = WorldGen.PlaceChest(x, y, (ushort)ModContent.TileType<DragonChestTile>(), false);
+            // Uncommon Loot 1 
+            int[] DragonChestLoot =
+            {
+                ModContent.ItemType<DracarniumIngot>(),
+                ModContent.ItemType<DracianIrePotion>(),
+                ModContent.ItemType<DracianSpikeFish>()
+            };
+            // Uncommon Loot 2
+            int[] DragonChestLoot2 =
+            {
+                ModContent.ItemType<DracarniumIngot>(),
+                ModContent.ItemType<DracianIrePotion>(),
+                ModContent.ItemType<DracianSpikeFish>()
+            };
+            // High-Tier Common Loot
+            int[] DragonChestLootTier3 =
+            {
+                ItemID.DemoniteBar,
+                ItemID.CrimtaneBar,
+            };
+            // Mid-Tier Common Loot
+            int[] DragonChestLootTier2 =
+            {
+                ItemID.HellfireArrow,
+                ItemID.Dynamite,
+                ItemID.GoldCoin,
+                ItemID.GoldBar,
+                ItemID.PlatinumBar
+            };
+            // Low-Tier Common Loot
+            int[] DragonChestLootTier1 =
+            {
+                ItemID.Torch,
+                ItemID.PoisonedKnife,
+                ItemID.JestersArrow,
+                ItemID.Bomb
+            };
+            int[] DragonChestPotions =
+            {
+                ItemID.SpelunkerPotion,
+                ItemID.FeatherfallPotion,
+                ItemID.NightOwlPotion,
+                ItemID.WaterWalkingPotion,
+                ItemID.ArcheryPotion,
+                ItemID.GravitationPotion,
+                ItemID.ThornsPotion,
+                ItemID.InvisibilityPotion,
+                ItemID.HunterPotion,
+                ItemID.TrapsightPotion,
+                ItemID.TeleportationPotion,
+                ItemID.RecallPotion,
+                ItemID.HealingPotion
+            };
+
+            if (PlacementSuccess >= 0)
+            {
+                Chest chest = Main.chest[PlacementSuccess];
+
+                // Rare Loot
                 Item item0 = chest.item[0];
                 UnifiedRandom genRand0 = WorldGen.genRand;
                 int[] array0 = new int[]
@@ -360,37 +753,240 @@ namespace ofDarkandBelow.WorldGeneration
                 };
                 item0.SetDefaults(Utils.Next(genRand0, array0), false);
 
-                // Dracarnium Bars
-                chest.item[1].SetDefaults(Utils.Next(WorldGen.genRand, DragonChestLoot));
-                chest.item[1].stack = WorldGen.genRand.Next(5, 10);
+                // Second Chest Slot
+                chest.item[1].SetDefaults(Main.rand.Next(DragonChestLoot));
+                if (chest.item[1].type == ModContent.ItemType<DracarniumIngot>())
+                {
+                    chest.item[1].stack = WorldGen.genRand.Next(5, 11);
+                }
+                else if (chest.item[1].type == ModContent.ItemType<DracianIrePotion>())
+                {
+                    chest.item[1].stack = WorldGen.genRand.Next(1, 4);
+                }
+                else if (chest.item[1].type == ModContent.ItemType<DracianSpikeFish>())
+                {
+                    chest.item[1].stack = WorldGen.genRand.Next(2, 4);
+                }
 
-                chest.item[1].SetDefaults(Utils.Next(WorldGen.genRand, DragonChestLoot2));
-                chest.item[1].stack = WorldGen.genRand.Next(5, 10);
+                // Third Chest Slot
+                chest.item[2].SetDefaults(Main.rand.Next(DragonChestLoot2));
+                if (chest.item[2].type == ModContent.ItemType<DracarniumIngot>())
+                {
+                    chest.item[2].stack = WorldGen.genRand.Next(5, 11);
+                }
+                else if (chest.item[2].type == ModContent.ItemType<DracianIrePotion>())
+                {
+                    chest.item[2].stack = WorldGen.genRand.Next(1, 4);
+                }
+                else if (chest.item[2].type == ModContent.ItemType<DracianSpikeFish>())
+                {
+                    chest.item[2].stack = WorldGen.genRand.Next(2, 4);
+                }
 
-                chest.item[1].SetDefaults(Utils.Next(WorldGen.genRand, DragonChestLoot3));
-                chest.item[1].stack = WorldGen.genRand.Next(5, 10);
+                // Potion Generation 100%
+                for (int inventoryIndex = 0; inventoryIndex < 40; inventoryIndex++)
+                {
+                    if (chest.item[inventoryIndex].type == ItemID.None)
+                    {
+                        chest.item[inventoryIndex].SetDefaults(Main.rand.Next(DragonChestPotions));
+                        if (chest.item[inventoryIndex].type == ItemID.HealingPotion)
+                        {
+                            chest.item[inventoryIndex].stack = WorldGen.genRand.Next(3, 6);
+                            break;
+                        }
+                        else
+                        {
+                            chest.item[inventoryIndex].stack = WorldGen.genRand.Next(1, 3);
+                            break;
+                        }
+                        break;
+                    }
+                }
 
-                chest.item[1].SetDefaults(Utils.Next(WorldGen.genRand, DragonChestLoot4));
-                chest.item[1].stack = WorldGen.genRand.Next(5, 10);
+                // Potion Generation 50%
+                for (int inventoryIndex = 0; inventoryIndex < 40; inventoryIndex++)
+                {
+                    if (chest.item[inventoryIndex].type == ItemID.None)
+                    {
+                        if (Main.rand.Next(3) == 2)
+                        {
+                            chest.item[inventoryIndex].SetDefaults(Main.rand.Next(DragonChestPotions));
+                            if (chest.item[inventoryIndex].type == ItemID.HealingPotion)
+                            {
+                                chest.item[inventoryIndex].stack = WorldGen.genRand.Next(3, 6);
+                                break;
+                            }
+                            else
+                            {
+                                chest.item[inventoryIndex].stack = WorldGen.genRand.Next(1, 3);
+                                break;
+                            }
+                        }
+                        break;
+                    }
+                }
 
-                chest.item[1].SetDefaults(Utils.Next(WorldGen.genRand, DragonChestLoot5));
-                chest.item[1].stack = WorldGen.genRand.Next(5, 10);
+                // Potion Generation 33%
+                for (int inventoryIndex = 0; inventoryIndex < 40; inventoryIndex++)
+                {
+                    if (chest.item[inventoryIndex].type == ItemID.None)
+                    {
+                        if (Main.rand.Next(4) == 2)
+                        {
+                            chest.item[inventoryIndex].SetDefaults(Main.rand.Next(DragonChestPotions));
+                            if (chest.item[inventoryIndex].type == ItemID.HealingPotion)
+                            {
+                                chest.item[inventoryIndex].stack = WorldGen.genRand.Next(3, 6);
+                                break;
+                            }
+                            else
+                            {
+                                chest.item[inventoryIndex].stack = WorldGen.genRand.Next(1, 3);
+                                break;
+                            }
+                        }
+                        break;
+                    }
+                }
 
-                //Fish and Ire Potions
-                chest.item[2].SetDefaults(Utils.Next(WorldGen.genRand, DragonChestLoot));
-                chest.item[2].stack = WorldGen.genRand.Next(1, 3);
+                // Tier 1 100%
+                for (int inventoryIndex = 0; inventoryIndex < 40; inventoryIndex++)
+                {
+                    if (chest.item[inventoryIndex].type == ItemID.None)
+                    {
+                        chest.item[inventoryIndex].SetDefaults(Main.rand.Next(DragonChestLootTier1));
+                        if (chest.item[inventoryIndex].type == ItemID.Torch || chest.item[inventoryIndex].type == ItemID.PoisonedKnife || chest.item[inventoryIndex].type == ItemID.JestersArrow)
+                        {
+                            chest.item[inventoryIndex].stack = WorldGen.genRand.Next(15, 31);
+                            break;
+                        }
+                        else
+                        {
+                            chest.item[inventoryIndex].stack = WorldGen.genRand.Next(3, 6);
+                            break;
+                        }
+                        break;
+                    }
+                }
 
-                chest.item[2].SetDefaults(Utils.Next(WorldGen.genRand, DragonChestLoot2));
-                chest.item[2].stack = WorldGen.genRand.Next(2, 6);
+                // Tier 1 50%
+                for (int inventoryIndex = 0; inventoryIndex < 40; inventoryIndex++)
+                {
+                    if (chest.item[inventoryIndex].type == ItemID.None)
+                    {
+                        if (Main.rand.Next(3) == 2)
+                        {
+                            chest.item[inventoryIndex].SetDefaults(Main.rand.Next(DragonChestLootTier1));
+                            if (chest.item[inventoryIndex].type == ItemID.Torch || chest.item[inventoryIndex].type == ItemID.PoisonedKnife || chest.item[inventoryIndex].type == ItemID.JestersArrow)
+                            {
+                                chest.item[inventoryIndex].stack = WorldGen.genRand.Next(15, 31);
+                                break;
+                            }
+                            else
+                            {
+                                chest.item[inventoryIndex].stack = WorldGen.genRand.Next(3, 6);
+                                break;
 
-                chest.item[2].SetDefaults(Utils.Next(WorldGen.genRand, DragonChestLoot3));
-                chest.item[2].stack = WorldGen.genRand.Next(2, 6);
+                            }
+                        }
+                        break;
+                    }
+                }
 
-                chest.item[2].SetDefaults(Utils.Next(WorldGen.genRand, DragonChestLoot4));
-                chest.item[2].stack = WorldGen.genRand.Next(2, 6);
+                // Tier 1 33%
+                for (int inventoryIndex = 0; inventoryIndex < 40; inventoryIndex++)
+                {
+                    if (chest.item[inventoryIndex].type == ItemID.None)
+                    {
+                        if (Main.rand.Next(4) == 2)
+                        {
+                            chest.item[inventoryIndex].SetDefaults(Main.rand.Next(DragonChestLootTier1));
+                            if (chest.item[inventoryIndex].type == ItemID.Torch || chest.item[inventoryIndex].type == ItemID.PoisonedKnife || chest.item[inventoryIndex].type == ItemID.JestersArrow)
+                            {
+                                chest.item[inventoryIndex].stack = WorldGen.genRand.Next(15, 31);
+                                break;
+                            }
+                            else
+                            {
+                                chest.item[inventoryIndex].stack = WorldGen.genRand.Next(3, 6);
+                                break;
 
-                chest.item[2].SetDefaults(Utils.Next(WorldGen.genRand, DragonChestLoot5));
-                chest.item[2].stack = WorldGen.genRand.Next(1, 3);
+                            }
+                        }
+                        break;
+                    }
+                }
+
+                // Tier 2 50%
+                for (int inventoryIndex = 0; inventoryIndex < 40; inventoryIndex++)
+                {
+                    if (chest.item[inventoryIndex].type == ItemID.None)
+                    {
+                        if (Main.rand.Next(3) == 2)
+                        {
+                            chest.item[inventoryIndex].SetDefaults(Main.rand.Next(DragonChestLootTier2));
+                            if (chest.item[inventoryIndex].type == ItemID.PlatinumBar || chest.item[inventoryIndex].type == ItemID.GoldBar)
+                            {
+                                chest.item[inventoryIndex].stack = WorldGen.genRand.Next(3, 11);
+                                break;
+                            }
+                            else if (chest.item[inventoryIndex].type == ItemID.HellfireArrow)
+                            {
+                                chest.item[inventoryIndex].stack = WorldGen.genRand.Next(15, 51);
+                                break;
+                            }
+                            else
+                            {
+                                chest.item[inventoryIndex].stack = WorldGen.genRand.Next(1, 3);
+                                break;
+                            }
+                        }
+                        break;
+                    }
+                }
+
+                // Tier 2 33%
+                for (int inventoryIndex = 0; inventoryIndex < 40; inventoryIndex++)
+                {
+                    if (chest.item[inventoryIndex].type == ItemID.None)
+                    {
+                        if (Main.rand.Next(4) == 2)
+                        {
+                            chest.item[inventoryIndex].SetDefaults(Main.rand.Next(DragonChestLootTier2));
+                            if (chest.item[inventoryIndex].type == ItemID.PlatinumBar || chest.item[inventoryIndex].type == ItemID.GoldBar)
+                            {
+                                chest.item[inventoryIndex].stack = WorldGen.genRand.Next(3, 11);
+                                break;
+                            }
+                            else if (chest.item[inventoryIndex].type == ItemID.HellfireArrow)
+                            {
+                                chest.item[inventoryIndex].stack = WorldGen.genRand.Next(15, 51);
+                                break;
+                            }
+                            else
+                            {
+                                chest.item[inventoryIndex].stack = WorldGen.genRand.Next(1, 3);
+                                break;
+                            }
+                        }
+                        break;
+                    }
+                }
+
+                // Tier 3 33%
+                for (int inventoryIndex = 0; inventoryIndex < 40; inventoryIndex++)
+                {
+                    if (chest.item[inventoryIndex].type == ItemID.None)
+                    {
+                        if (Main.rand.Next(4) == 2)
+                        {
+                            chest.item[inventoryIndex].SetDefaults(Main.rand.Next(DragonChestLootTier3));
+                            chest.item[inventoryIndex].stack = WorldGen.genRand.Next(3, 10);
+                            break;
+                        }
+                        break;
+                    }
+                }
             }
         }
     }

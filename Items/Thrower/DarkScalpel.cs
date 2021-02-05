@@ -28,20 +28,21 @@ namespace ofDarkandBelow.Items.Thrower
 			item.value = Item.sellPrice(silver: 22);
 			item.rare = 1;
 			item.UseSound = SoundID.Item1;
-			item.consumable = false;
+			item.consumable = true;
 			item.noUseGraphic = true;
 			item.noMelee = true;
 			item.autoReuse = true;
 			item.thrown = true;
 			item.shoot = mod.ProjectileType("DarkScalpelProj");
-			item.shootSpeed = 20f;
+            item.shootSpeed = 20f;
+			item.maxStack = 999;
 		}
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(57, 9);
+			recipe.AddIngredient(57, 1);
 			recipe.AddTile(TileID.Anvils);
-			recipe.SetResult(this);
+			recipe.SetResult(this, 111);
 			recipe.AddRecipe();
 		}
 	}

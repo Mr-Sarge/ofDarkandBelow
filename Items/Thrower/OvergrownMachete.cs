@@ -17,12 +17,12 @@ namespace ofDarkandBelow.Items.Thrower
 		}
 		public override void SetDefaults()
 		{
-			item.damage = 32;
+			item.damage = 29;
 			item.crit = 4;
 			item.width = 22;
 			item.height = 20;
-			item.useTime = 35;
-			item.useAnimation = 35;
+			item.useTime = 24;
+			item.useAnimation = 24;
 			item.useStyle = 1;
 			item.knockBack = 10;
 			item.value = Item.sellPrice(silver: 35);
@@ -31,7 +31,7 @@ namespace ofDarkandBelow.Items.Thrower
 			item.consumable = false;
 			item.noUseGraphic = true;
 			item.noMelee = true;
-			item.autoReuse = true;
+			item.autoReuse = false;
 			item.thrown = true;
 			item.shoot = mod.ProjectileType("OvergrownMacheteProj");
 			item.shootSpeed = 15f;

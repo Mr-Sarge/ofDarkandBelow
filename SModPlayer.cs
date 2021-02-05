@@ -13,7 +13,6 @@ using Terraria.Graphics.Shaders;
 using Terraria.Localization;
 using Terraria.UI;
 using Terraria.Utilities;
-using Terraria.GameInput;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
@@ -41,6 +40,9 @@ namespace ofDarkandBelow
         public bool powerOrbCooldown = false;
         public bool freakyCritActive = false;
         public bool freakyCritCoolDown = false;
+        public int immovableSetBonus = 0;
+        public bool immovableSetBonusReady = false;
+
         public override void ResetEffects()
         {
             cosmicRevival = false;
@@ -60,7 +62,8 @@ namespace ofDarkandBelow
             powerOrbCooldown = false;
             freakyCritActive = false;
             freakyCritCoolDown = false;
-        }
+            immovableSetBonusReady = false;
+    }
         public override void UpdateDead()
         {
             cosmicRevivalCooldown = false;
@@ -68,6 +71,7 @@ namespace ofDarkandBelow
             powerOrbCooldown = false;
             ancientAleBuffCoolDown = false;
             freakyCritCoolDown = false;
+            immovableSetBonusReady = false;
         }
         public override void OnHitNPC(Item item, NPC target, int damage, float knockback, bool crit) // Upon hitting...
         {
@@ -209,5 +213,4 @@ namespace ofDarkandBelow
             }
         }
     }
-
 }

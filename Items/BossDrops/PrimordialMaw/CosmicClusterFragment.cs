@@ -13,7 +13,7 @@ namespace ofDarkandBelow.Items.BossDrops.PrimordialMaw
 		}
 		public override void SetDefaults()
 		{
-			item.width = 34;
+			item.width = 24;
 			item.height = 34;
             item.value = Item.sellPrice(silver: 45);
             item.rare = 2;
