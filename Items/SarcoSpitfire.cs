@@ -12,7 +12,7 @@ namespace ofDarkandBelow.Items
     {
 	    public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Sarco-Spitfire");
+			DisplayName.SetDefault("Sarco Spitfire");
 			Tooltip.SetDefault("'Terror of the Lake'"
                 + "\nEvery third shot is a blast of terror bullets.");
 		}

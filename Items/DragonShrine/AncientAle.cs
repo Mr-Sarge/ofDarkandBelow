@@ -5,7 +5,10 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
- namespace ofDarkandBelow.Items.DragonShrine
+using ofDarkandBelow.Buffs;
+using Microsoft.Xna.Framework.Graphics;
+
+namespace ofDarkandBelow.Items.DragonShrine
 {
     public class AncientAle : ModItem
     {
@@ -34,9 +37,66 @@ using Terraria.ModLoader;
             item.autoReuse = true;
             item.thrown = true;
 
-            item.UseSound = SoundID.Item1;
             item.value = Item.sellPrice(gold: 5);
             item.shoot = mod.ProjectileType("AncientAleProj");
+        }
+        public override bool AltFunctionUse(Player player)
+        {
+            return true;
+        }
+
+
+        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+        {
+            if (!player.HasBuff(mod.BuffType("AncientAleBuff")) == true)
+            {
+                item.useAnimation = 26;
+                item.useTime = 26;
+            }
+            else
+            {
+                item.useAnimation = 16;
+                item.useTime = 16;
+            }
+            if (player.altFunctionUse == 2)     //2 is right click
+            {
+                if (!player.HasBuff(mod.BuffType("AncientAleBuffCoolDown")))
+                {
+                    item.noUseGraphic = false;
+                    player.AddBuff(mod.BuffType("AncientAleBuff"), 600);
+                    player.AddBuff(mod.BuffType("AncientAleBuffCoolDown"), 2400);
+                    Main.PlaySound(2, (int)player.position.X, (int)player.position.Y, 3);
+                    return false;
+                }
+                else
+                {
+                    CombatText.NewText(player.getRect(), Colors.CoinSilver, "NOT READY YET", true, false);
+                    return false;
+                }
+            }
+            else
+            {
+                item.noUseGraphic = true;
+                Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(10));
+                float scale = 1f;
+                if (player.HasBuff(mod.BuffType("AncientAleBuff")))
+                {
+                    scale = 3f;
+                    item.useAnimation = 16;
+                    item.useTime = 16;
+                }
+                else
+                {
+                    scale = 1f;
+                    item.useAnimation = 26;
+                    item.useTime = 26;
+                }
+                perturbedSpeed = perturbedSpeed * scale;
+                Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
+                Main.PlaySound(2, (int)player.position.X, (int)player.position.Y, 1);
+                return false;
+            }
+            return base.CanUseItem(player);
         }
     }
 }

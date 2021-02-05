@@ -11,7 +11,7 @@ namespace ofDarkandBelow.Items
     {
 	    public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Purussa-Punisher");
+			DisplayName.SetDefault("Purussa Punisher");
 			Tooltip.SetDefault("'God of the Lake.'"
                 + "\nEvery third shot fires out homing rockets.");
 		}

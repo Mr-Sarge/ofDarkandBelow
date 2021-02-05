@@ -33,7 +33,7 @@ namespace ofDarkandBelow.Projectiles.Dracarnium
             projectile.friendly = true;
             projectile.hostile = false;
             projectile.ignoreWater = true;
-            projectile.ranged = true;
+            projectile.thrown = true;
 			projectile.magic = false;
 			projectile.melee = false;
             projectile.alpha = 125;

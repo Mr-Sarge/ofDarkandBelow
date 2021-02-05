@@ -19,8 +19,8 @@ namespace ofDarkandBelow.Items.DragonShrine
 		{
 			item.damage = 42;
 			item.melee = true;
-			item.width = 70;
-			item.height = 70;
+			item.width = 72;
+			item.height = 118;
 			item.useTime = 45;
 			item.useAnimation = 45;
 			item.useStyle = 1;

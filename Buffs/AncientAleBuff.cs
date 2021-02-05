@@ -20,7 +20,7 @@ namespace ofDarkandBelow.Buffs
 
         public override void Update(Player player, ref int buffIndex)
 		{
-            player.rangedDamage -= 0.15f;
+            player.thrownDamage -= 0.15f;
             SModPlayer modPlayer = (SModPlayer)player.GetModPlayer(mod, "SModPlayer");
             player.GetModPlayer<SModPlayer>().ancientAleBuff = true;
         }

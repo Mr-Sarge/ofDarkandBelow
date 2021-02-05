@@ -11,7 +11,7 @@ namespace ofDarkandBelow.Items
     {
 	    public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Deino-Devastator");
+			DisplayName.SetDefault("Deino Devastator");
 			Tooltip.SetDefault("'Horror of the Lake.'"
                 + "\nEvery third shot fires homing mushroom shot.");
 		}

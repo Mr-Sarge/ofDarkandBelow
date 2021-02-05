@@ -10,9 +10,9 @@ namespace ofDarkandBelow.Items
 	{
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("cool swrd v11");
+            DisplayName.SetDefault("cool swrd v12");
             Tooltip.SetDefault("Dread it, run from it, col sworde arrives all the same."
-			   + "\n'Updated July 24th, 2016"
+			   + "\n'Updated February 4th, 2017"
                + "\nAnd it was so that sarge asked himself,"
                + "\n'why is this thing in the mod'"
                + "\nto which Fish replied"
