@@ -10,12 +10,12 @@ namespace ofDarkandBelow.NPCs.DragonShrineNPCs
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Dracarne Servant");
-            Main.npcFrameCount[npc.type] = 3;
+            Main.npcFrameCount[npc.type] = 7;
         }
         public override void SetDefaults()
         {
-            npc.width = 28;
-            npc.height = 54;
+            npc.width = 54;
+            npc.height = 62;
             npc.friendly = false;
             npc.damage = 30;
             npc.defense = 6;

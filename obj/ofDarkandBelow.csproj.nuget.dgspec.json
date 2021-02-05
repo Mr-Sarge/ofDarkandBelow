@@ -1,0 +1,45 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\there\\Documents\\My Games\\Terraria\\ModLoader\\Mod Sources\\ofDarkandBelow\\ofDarkandBelow.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\there\\Documents\\My Games\\Terraria\\ModLoader\\Mod Sources\\ofDarkandBelow\\ofDarkandBelow.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\there\\Documents\\My Games\\Terraria\\ModLoader\\Mod Sources\\ofDarkandBelow\\ofDarkandBelow.csproj",
+        "projectName": "ofDarkandBelow",
+        "projectPath": "C:\\Users\\there\\Documents\\My Games\\Terraria\\ModLoader\\Mod Sources\\ofDarkandBelow\\ofDarkandBelow.csproj",
+        "packagesPath": "C:\\Users\\there\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\there\\Documents\\My Games\\Terraria\\ModLoader\\Mod Sources\\ofDarkandBelow\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\there\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net45"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net45": {
+            "targetAlias": "net45",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net45": {
+          "targetAlias": "net45",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
