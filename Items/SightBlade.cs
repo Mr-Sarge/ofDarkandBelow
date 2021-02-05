@@ -46,14 +46,16 @@ namespace ofDarkandBelow.Items
 		{
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(ItemID.LightsBane, 1);
-			recipe.AddIngredient(ItemID.SoulofSight, 25);
+			recipe.AddIngredient(ItemID.HallowedBar, 10);
+			recipe.AddIngredient(ItemID.SoulofSight, 15);
 			recipe.AddTile(TileID.Anvils);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 
 			ModRecipe recipe2 = new ModRecipe(mod);
 			recipe2.AddIngredient(ItemID.BloodButcherer, 1);
-			recipe2.AddIngredient(ItemID.SoulofSight, 25);
+			recipe2.AddIngredient(ItemID.HallowedBar, 10);
+			recipe2.AddIngredient(ItemID.SoulofSight, 15);
 			recipe2.AddTile(TileID.Anvils);
 			recipe2.SetResult(this);
 			recipe2.AddRecipe();

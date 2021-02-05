@@ -27,6 +27,7 @@ namespace ofDarkandBelow.NPCs.EndlessMaw
             npc.netAlways = true;
             npc.noGravity = true;
             npc.dontCountMe = true;
+            npc.boss = true;
             npc.HitSound = SoundID.NPCHit4;
 			npc.buffImmune[mod.BuffType("CosmicFlame")] = true;
 			npc.buffImmune[mod.BuffType("BelowZero")] = true;

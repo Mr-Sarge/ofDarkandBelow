@@ -40,7 +40,7 @@ namespace ofDarkandBelow.Projectiles.Dracarnium
             projectile.hide = false;
             projectile.melee = true;
             projectile.light = 0.32f;
-            projectile.timeLeft = 32;
+            projectile.timeLeft = 24;
             projectile.glowMask = customGlowMask;
         }
 
@@ -57,7 +57,7 @@ namespace ofDarkandBelow.Projectiles.Dracarnium
                 projectile.ai[0] = 1;
             }
 
-            if (++projectile.frameCounter >= 4)
+            if (++projectile.frameCounter >= 8)
             {
                 projectile.frame++;
                 projectile.frameCounter = 0;

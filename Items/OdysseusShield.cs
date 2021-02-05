@@ -14,7 +14,7 @@ namespace ofDarkandBelow.Items     //We need this to basically indicate the fold
 			DisplayName.SetDefault("Odysseus' Shield");
 			Tooltip.SetDefault("4 defense"
             + "\n10% increased melee damage"
-            + "\n15% increased thrown damage"
+            + "\n10% increased thrown damage"
             + "\n'The shield that allows one to scare a cyclops.'");
         }
         public override void SetDefaults()
@@ -28,14 +28,16 @@ namespace ofDarkandBelow.Items     //We need this to basically indicate the fold
         }
 		public override void UpdateAccessory(Player player, bool hideVisual) {
 			player.meleeDamage += .10f;
-			player.thrownDamage += .15f;
+			player.thrownDamage += .10f;
             player.statDefense += 4;
         }
 		public override void AddRecipes() {
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(mod.ItemType("SpartanShield"), 1);
-            recipe.AddIngredient(mod.ItemType("OdyesseusBar"), 12);
-            recipe.AddTile(TileID.Anvils);
+            recipe.AddIngredient(mod.ItemType("HeroesAlloy"), 6);
+            recipe.AddIngredient(3380, 3);
+			recipe.AddIngredient(ItemID.Bone, 15);
+            recipe.AddTile(TileID.MythrilAnvil);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 	    }

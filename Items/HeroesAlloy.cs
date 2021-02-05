@@ -8,12 +8,12 @@ using Terraria.ModLoader;
 
 namespace ofDarkandBelow.Items
 {
-    public class OdyesseusBar : ModItem
+    public class HeroesAlloy : ModItem
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Odysseus' Bar");
-            Tooltip.SetDefault("'A bar of the Odyssey...'");
+            DisplayName.SetDefault("Heroes' Alloy");
+            Tooltip.SetDefault("'Pulsing with mythical energies and legendary power...'");
         }
         public override void SetDefaults()
         {
@@ -29,17 +29,17 @@ namespace ofDarkandBelow.Items
             ModRecipe recipe1 = new ModRecipe(mod);
             recipe1.AddIngredient(ItemID.SoulofNight, 1);
             recipe1.AddIngredient(ItemID.SoulofLight, 1);
-            recipe1.AddIngredient(ItemID.CobaltBar, 3);
-            recipe1.AddTile(TileID.Anvils);
-            recipe1.SetResult(this, 3);
+            recipe1.AddIngredient(ItemID.CobaltBar, 2);
+            recipe1.AddTile(TileID.Hellforge);
+            recipe1.SetResult(this, 2);
             recipe1.AddRecipe();
 
             ModRecipe recipe2 = new ModRecipe(mod);
             recipe2.AddIngredient(ItemID.SoulofNight, 1);
             recipe2.AddIngredient(ItemID.SoulofLight, 1);
-            recipe2.AddIngredient(ItemID.PalladiumBar, 3);
-            recipe2.AddTile(TileID.Anvils);
-            recipe2.SetResult(this, 3);
+            recipe2.AddIngredient(ItemID.PalladiumBar, 2);
+            recipe2.AddTile(TileID.Hellforge);
+            recipe2.SetResult(this, 2);
             recipe2.AddRecipe();
         }
     }

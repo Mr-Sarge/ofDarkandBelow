@@ -9,11 +9,13 @@ namespace ofDarkandBelow.Items
 {
     public class Aegisuchus : ModItem
     {
-	    public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Aegisuchus");
-			Tooltip.SetDefault("'Bully of the Pond.'");
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Molten Aegisuchus");
+            Tooltip.SetDefault("'Bully of the Lava Pond.'"
+                + "\nEvery third shot is a flaming Gator's Breath Blast.");
 		}
+        private int breathBlast;
         public override void SetDefaults()
         {
             item.damage = 15;
@@ -21,28 +23,52 @@ namespace ofDarkandBelow.Items
             item.ranged = true;
             item.width = 48;
             item.height = 28;
-            item.useTime = 30;
-            item.useAnimation = 30;
             item.useStyle = 5;
             item.shoot = 10;
             item.useAmmo = AmmoID.Bullet;
             item.knockBack = 6;
             item.value = Item.sellPrice(gold: 3);
             item.rare = 2;
-            item.UseSound = mod.GetLegacySoundSlot(SoundType.Item, "Sounds/Item/SarcoItem");
-            item.autoReuse = true;
-            item.shootSpeed = 20f;
+            item.UseSound = mod.GetLegacySoundSlot(SoundType.Item, "Sounds/Item/AegItem");
+            item.useTime = 30;
+            item.useAnimation = 30;
+            item.shootSpeed = 11f;
         }
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
-            int numberProjectiles = 2 + Main.rand.Next(2);
-			for (int i = 0; i < numberProjectiles; i++)
-			{
-				Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(20)); // 30 degree spread.
-				float scale = 1f - (Main.rand.NextFloat() * .3f);
-				perturbedSpeed = perturbedSpeed * scale; 
-				Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
-			}
+            breathBlast++;
+            if (breathBlast == 3)
+            {
+                type = mod.ProjectileType("GatorBreath");
+                breathBlast = 0;
+                item.autoReuse = false;
+            }
+            else
+            {
+                item.autoReuse = true;
+            }
+            if (breathBlast == 3)
+            {
+                int numberProjectiles = 3 + Main.rand.Next(4);
+                for (int i = 0; i < numberProjectiles; i++)
+                {
+                    Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(20)); // 30 degree spread.
+                    float scale = 1f - (Main.rand.NextFloat() * .3f);
+                    perturbedSpeed = perturbedSpeed * scale;
+                    Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
+                }
+            }
+            else
+            {
+                int numberProjectiles = 2 + Main.rand.Next(2);
+                for (int i = 0; i < numberProjectiles; i++)
+                {
+                    Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(20)); // 30 degree spread.
+                    float scale = 1f - (Main.rand.NextFloat() * .3f);
+                    perturbedSpeed = perturbedSpeed * scale;
+                    Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
+                }
+            }
 			return true;
 		}
 		public override Vector2? HoldoutOffset()

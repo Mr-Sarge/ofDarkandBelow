@@ -28,8 +28,8 @@ namespace ofDarkandBelow.Projectiles
 			projectile.ignoreWater = true;          //Does the projectile's speed be influenced by water?
 			projectile.tileCollide = true;          //Can the projectile collide with tiles?
 			projectile.extraUpdates = 1;            //Set to above 0 if you want the projectile to update multiple time in a frame
-			aiType = ProjectileID.Bullet;           //Act exactly like default Bullet
-		}
+            aiType = ProjectileID.Bullet;
+        }
 		public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor) {
 			//Redraw the projectile with the color not influenced by light
 			Vector2 drawOrigin = new Vector2(Main.projectileTexture[projectile.type].Width * 0.5f, projectile.height * 0.5f);

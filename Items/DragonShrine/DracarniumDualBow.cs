@@ -19,7 +19,7 @@ namespace ofDarkandBelow.Items.DragonShrine
         }
         public override void SetDefaults()
 		{
-			item.damage = 21;
+			item.damage = 27;
 			item.ranged = true;
 			item.width = 36;
 			item.height = 66;

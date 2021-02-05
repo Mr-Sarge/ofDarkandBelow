@@ -37,14 +37,11 @@ namespace ofDarkandBelow.Items.Freak
         private int critTimer;
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = "Periodically gain the 'Freaky Critical' buff."
-			+ "\nThis buff grants increased ranged crit chance and increased ranged damage.";
-            critTimer++;
-            if (critTimer >= 1200)
-            {
-                player.AddBuff(mod.BuffType("FreakyCrit"), 500);
-                critTimer = 0;
-            }
+            player.setBonus = "Tap your Armor Ability Key to activate."
+                + "\nWhen activated, you will gain the 'Freaky Critical' buff."
+                + "\nThis buff grants increased ranged damage and crit chance."
+                + "\nOne minute cooldown.";
+            player.GetModPlayer<SModPlayer>().freakyCritActive = true;
         }
 
         public override void AddRecipes()

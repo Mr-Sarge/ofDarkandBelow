@@ -23,7 +23,7 @@ namespace ofDarkandBelow.Tiles.DragonShrine
             ModTranslation name = CreateMapEntryName();
             name.SetDefault("Dragon Shrine Stone");
             AddMapEntry(new Color(86, 79, 71));
-            minPick = 320;
+            minPick = 205;
             mineResist = 1.1f;
         }
         public override bool CanExplode(int i, int j)

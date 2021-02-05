@@ -6,10 +6,11 @@ namespace ofDarkandBelow.Items
 {
     public class PrimordialFragment : ModItem
     {
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Primordial Fragment");
-			Tooltip.SetDefault("Summons the Primordial Maw."
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Primordial Fragment");
+            Tooltip.SetDefault("Summons the Primordial Maw."
+            + "\nNot Consumable"
 			+ "\n'A shard from the primordial heavens...'");
 		}
         public override void SetDefaults()
@@ -22,7 +23,7 @@ namespace ofDarkandBelow.Items
             item.useAnimation = 30;
             item.useTime = 30;
             item.useStyle = 4;
-            item.consumable = true;
+            item.consumable = false;
         }
         public override bool CanUseItem(Player player)
         {           
@@ -38,8 +39,9 @@ namespace ofDarkandBelow.Items
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.HellstoneBar, 3);
-            recipe.AddIngredient(ItemID.FallenStar, 4);
+            recipe.AddIngredient(ItemID.HellstoneBar, 6);
+            recipe.AddIngredient(ItemID.MeteoriteBar, 6);
+            recipe.AddIngredient(ItemID.FallenStar, 5);
             recipe.AddIngredient(ItemID.Amethyst, 2);
             recipe.AddIngredient(ItemID.Topaz, 2);
             recipe.AddTile(TileID.Anvils);

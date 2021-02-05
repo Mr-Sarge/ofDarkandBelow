@@ -12,8 +12,8 @@ namespace ofDarkandBelow.Items     //We need this to basically indicate the fold
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Spartan Shield");
-			Tooltip.SetDefault("2 Defense" 
-            + "\n10% increased melee damage"
+			Tooltip.SetDefault("2 defense" 
+            + "\n5% increased melee damage"
 			+ "\n5% increased thrown damage"
             + "\n'The shield often used by Theseus.'");
         }
@@ -27,7 +27,7 @@ namespace ofDarkandBelow.Items     //We need this to basically indicate the fold
  
         }
 		public override void UpdateAccessory(Player player, bool hideVisual) {
-			player.meleeDamage += .10f;
+			player.meleeDamage += .05f;
 			player.thrownDamage += .05f;
             player.statDefense += 2;
         }

@@ -9,9 +9,10 @@ namespace ofDarkandBelow.Items
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Grim-Harvester");
-			Tooltip.SetDefault("'Consume the soul...'");
-		}
+			DisplayName.SetDefault("Grim Harvester");
+			Tooltip.SetDefault("Throws a soul-shreding, homing flame scythe."
+                + "\n'Harvest the souls of your enemies.'");
+        }
 		public override void SetDefaults()
 		{
 			item.damage = 70;

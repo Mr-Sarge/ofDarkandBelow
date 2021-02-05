@@ -20,7 +20,7 @@ namespace ofDarkandBelow.Items.Armor
 			item.height = 18;
 			item.value = 10000;
 			item.rare = 5;
-			item.defense = 14;
+			item.defense = 13;
         }
         public override void UpdateEquip(Player player)
         {
@@ -28,8 +28,10 @@ namespace ofDarkandBelow.Items.Armor
         }
         public override void AddRecipes() {
 			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(mod.ItemType("OdyesseusBar"), 10);
-			recipe.AddTile(TileID.Anvils);
+			recipe.AddIngredient(mod.ItemType("HeroesAlloy"), 12);
+			recipe.AddIngredient(3380, 8);
+			recipe.AddIngredient(ItemID.Bone, 25);
+			recipe.AddTile(TileID.MythrilAnvil);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}

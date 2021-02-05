@@ -7,9 +7,8 @@ namespace ofDarkandBelow.Items.Placeable.DragonShrine
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Dragon Stone (A)");
-			Tooltip.SetDefault("'Made from the bones of fallen Dracarne...'"
-			+  "\nYou probably shouldn't have this... probably.");
+			DisplayName.SetDefault("Dragon Stone");
+			Tooltip.SetDefault("'Made from the bones of fallen Dracarne...'");
 		}
 		public override void SetDefaults()
 		{

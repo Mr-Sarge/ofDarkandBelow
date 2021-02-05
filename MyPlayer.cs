@@ -9,6 +9,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.GameInput;
 using ofDarkandBelow.Buffs;
+using ofDarkandBelow;
 
 namespace ofDarkandBelow
 {
@@ -27,7 +28,14 @@ namespace ofDarkandBelow
             riftspiritMinion = false;
             lilSunkMinion = false;
             babyNull = false;
-
+        }
+        public virtual void UpdateDead()
+        {
+            cosmicFlame = false;
+            tainted = false;
+            riftspiritMinion = false;
+            lilSunkMinion = false;
+            babyNull = false;
         }
         public override void DrawEffects(PlayerDrawInfo drawInfo, ref float r, ref float g, ref float b, ref float a, ref bool fullBright)
         {

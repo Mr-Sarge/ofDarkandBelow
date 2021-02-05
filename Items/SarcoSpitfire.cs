@@ -13,8 +13,10 @@ namespace ofDarkandBelow.Items
 	    public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Sarco-Spitfire");
-			Tooltip.SetDefault("Terror of the lake.");
+			Tooltip.SetDefault("'Terror of the Lake'"
+                + "\nEvery third shot is a blast of terror bullets.");
 		}
+        private int breathBlast;
         public override void SetDefaults()
         {
             item.damage = 26;
@@ -32,22 +34,39 @@ namespace ofDarkandBelow.Items
             item.rare = 5;
             item.UseSound = mod.GetLegacySoundSlot(SoundType.Item, "Sounds/Item/SarcoItem");
             item.autoReuse = true;
-            item.shootSpeed = 60f;
+            item.shootSpeed = 40f;
         }
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
-			int numberProjectiles = 8 + Main.rand.Next(2); // 4 or 5 shots
-			for (int i = 0; i < numberProjectiles; i++)
-			{
-				Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(9));
-                speedX = perturbedSpeed.X;
-                speedY = perturbedSpeed.Y;
-                // If you want to randomize the speed to stagger the projectiles
-                // float scale = 1f - (Main.rand.NextFloat() * .3f);
-                // perturbedSpeed = perturbedSpeed * scale; 
-                Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
-			}
-			return true;
+            breathBlast++;
+            if (breathBlast == 3)
+            {
+                type = mod.ProjectileType("TerrorBreath");
+                breathBlast = 0;
+            }
+            if (breathBlast == 3)
+            {
+                int numberProjectiles = 11 + Main.rand.Next(2);
+                for (int i = 0; i < numberProjectiles; i++)
+                {
+                    Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(15)); // 30 degree spread.
+                    float scale = 1f - (Main.rand.NextFloat() * .3f);
+                    perturbedSpeed = perturbedSpeed * scale;
+                    Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
+                }
+            }
+            else
+            {
+                int numberProjectiles = 8 + Main.rand.Next(2);
+                for (int i = 0; i < numberProjectiles; i++)
+                {
+                    Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(20)); // 30 degree spread.
+                    float scale = 1f - (Main.rand.NextFloat() * .3f);
+                    perturbedSpeed = perturbedSpeed * scale;
+                    Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
+                }
+            }
+            return true;
 		}
 		public override Vector2? HoldoutOffset()
 		{
@@ -55,9 +74,9 @@ namespace ofDarkandBelow.Items
 		}
 		public override void AddRecipes() {
 			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.Gatligator);
-			recipe.AddIngredient(ItemID.Shotgun);
-			recipe.AddIngredient(ItemID.SoulofFright, 15);
+            recipe.AddIngredient(mod.ItemType("Aegisuchus"));
+            recipe.AddIngredient(ItemID.Shotgun);
+			recipe.AddIngredient(ItemID.SoulofFright, 10);
 			recipe.AddTile(TileID.Anvils);
 			recipe.SetResult(this);
 			recipe.AddRecipe();

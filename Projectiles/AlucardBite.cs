@@ -49,16 +49,11 @@ namespace ofDarkandBelow.Projectiles
         }
         public override void Kill(int timeLeft)
         {
-            Vector2 usePos = projectile.position; // Position to use for dusts
-                                                  // Please note the usage of MathHelper, please use this! We subtract 90 degrees as radians to the rotation vector to offset the sprite as its default rotation in the sprite isn't aligned properly.
-            Vector2 rotVector =
-            (projectile.rotation - MathHelper.ToRadians(90f)).ToRotationVector2(); // rotation vector to use for dust velocity
+            Vector2 usePos = projectile.position;
+            Vector2 rotVector = (projectile.rotation - MathHelper.ToRadians(90f)).ToRotationVector2();
             usePos += rotVector * 16f;
-
-            // Spawn some dusts upon javelin death
             for (int i = 0; i < 20; i++)
             {
-                // Create a new dust
                 Dust dust = Dust.NewDustDirect(usePos, projectile.width, projectile.height, 60);
                 dust.position = (dust.position + projectile.Center) / 2f;
                 dust.velocity += rotVector * 2f;

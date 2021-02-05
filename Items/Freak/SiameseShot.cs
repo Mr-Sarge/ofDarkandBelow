@@ -42,6 +42,7 @@ namespace ofDarkandBelow.Items.Freak
                 float scale = 1f - (Main.rand.NextFloat() * .3f);
                 perturbedSpeed = perturbedSpeed * scale;
                 Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
+                Main.projectile[type].noDropItem = true;
             }
             return true;
         }

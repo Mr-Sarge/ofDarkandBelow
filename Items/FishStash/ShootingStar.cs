@@ -12,24 +12,25 @@ using System.Collections.Specialized;
 
 namespace ofDarkandBelow.Items.FishStash
 {
-    public class ShootingStar : ModItem
+    public class ShootingStar : ModItem //It's called two as I don't wanna change anything. Shut.
     {
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Shooting Star");
-            Tooltip.SetDefault("Converts Wooden Arrows into Holy Arrows."
+            Tooltip.SetDefault("Turns Wooden Arrows into Jester Arrows."
+            + "\nAlt-Fire: Fire off two Holy Arrows."
             + "\n'When she falls then I'll be waiting...'");
         }
         public override void SetDefaults()
         {
-            item.damage = 12;
+            item.damage = 28;
             item.crit = 5;
             item.noMelee = true;
             item.ranged = true;
             item.width = 20;
             item.height = 42;
-            item.useTime = 32;
-            item.useAnimation = 28;
+            item.useTime = 36;
+            item.useAnimation = 36;
             item.useStyle = 5;
             item.shoot = 10;
             item.useAmmo = AmmoID.Arrow;
@@ -37,29 +38,57 @@ namespace ofDarkandBelow.Items.FishStash
             item.value = Item.sellPrice(gold: 1);
             item.rare = 2;
             item.UseSound = SoundID.Item5;
-            item.autoReuse = false;
+            item.autoReuse = true;
+            item.useTurn = true;
             item.shootSpeed = 25f;
         }
         public override Vector2? HoldoutOffset()
         {
             return new Vector2(-2, 0);
         }
+
+        public override bool AltFunctionUse(Player player)
+        {
+            return true;
+        }
+
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-            if (type == ProjectileID.WoodenArrowFriendly)
-            {
-                type = ProjectileID.HolyArrow;
+                if (player.altFunctionUse == 2)     //2 is right click
+                {
+                    item.damage = 12;
+                    type = ProjectileID.HolyArrow;
+                    int numberProjectiles = 2;
+                    for (int i = 0; i < numberProjectiles; i++)
+                    {
+                        Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(10));
+                        float scale = 1f - (Main.rand.NextFloat() * .3f);
+                        perturbedSpeed = perturbedSpeed * scale;
+                        int num121 = Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
+                        Main.projectile[num121].noDropItem = true;
+                        item.damage = 12;
+                    }
+                    return false;
+                }
+                else
+                {
+                    item.damage = 28;
+                    if (type == ProjectileID.WoodenArrowFriendly)
+                    {
+                        type = ProjectileID.JestersArrow;
+                    }
+                    int numberProjectiles = 1;
+                    for (int i = 0; i < numberProjectiles; i++)
+                    {
+                        Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(10));
+                        float scale = 1f;
+                        perturbedSpeed = perturbedSpeed * scale;
+                        int num121 = Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
+                        item.damage = 28;
+                    }
+                    return false;
+                }
+                return base.CanUseItem(player);
             }
-            int numberProjectiles = 2;
-            for (int i = 0; i < numberProjectiles; i++)
-            {
-                Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(10));
-                float scale = 1f - (Main.rand.NextFloat() * .3f);
-                perturbedSpeed = perturbedSpeed * scale;
-                int num121 = Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
-                Main.projectile[num121].noDropItem = true;
-            }
-            return false;
         }
     }
-}

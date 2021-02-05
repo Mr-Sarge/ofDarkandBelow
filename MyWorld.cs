@@ -1,7 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+
 using System.Collections.Generic;
 using System.IO;
+
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.GameContent.Generation;
@@ -10,6 +12,11 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 using Terraria.World.Generation;
+using Terraria.Utilities;
+
+using ofDarkandBelow.Items;
+using ofDarkandBelow.Items.FishStash;
+using ofDarkandBelow.Items.Thrower;
 
 namespace ofDarkandBelow
 {
@@ -87,7 +94,45 @@ namespace ofDarkandBelow
         public override void TileCountsAvailable(int[] tileCounts)
         {
             shrineBiome = tileCounts[mod.TileType("DragonStoneATile")];
+
         }
+
+        public override void PostWorldGen() {
+
+			int[] itemsToPlaceInSkywareChests = {ModContent.ItemType<ShootingStar>(), ItemID.None};
+			int itemsToPlaceInSkywareChestsChoice = 0;
+			for (int chestIndex = 0; chestIndex < 1000; chestIndex++) {
+				Chest chest = Main.chest[chestIndex];
+				// If you look at the sprite for Chests by extracting Tiles_21.xnb, you'll see that the 12th chest is the Ice Chest. Since we are counting from 0, this is where 11 comes from. 36 comes from the width of each tile including padding. 
+				if (chest != null && Main.tile[chest.x, chest.y].type == TileID.Containers && Main.tile[chest.x, chest.y].frameX == 13 * 36) {
+					for (int inventoryIndex = 0; inventoryIndex < 40; inventoryIndex++) {
+						if (chest.item[inventoryIndex].type == ItemID.None) {
+							chest.item[inventoryIndex].SetDefaults(Main.rand.Next(itemsToPlaceInSkywareChests));
+							itemsToPlaceInSkywareChestsChoice = (itemsToPlaceInSkywareChestsChoice + 1) % itemsToPlaceInSkywareChests.Length;
+							// Alternate approach: Random instead of cyclical: chest.item[inventoryIndex].SetDefaults(Main.rand.Next(itemsToPlaceInSkywareChests));
+							break;
+						}
+					}
+				}
+			}
+            int[] itemsToPlaceInDungeonChests = {ModContent.ItemType<Tanto>(), ItemID.None, ItemID.None, ItemID.None, ItemID.None, ItemID.None};
+			int itemsToPlaceInDungeonChestsChoice = 0;
+			for (int chestIndex = 0; chestIndex < 1000; chestIndex++) {
+				Chest chest = Main.chest[chestIndex];
+				// If you look at the sprite for Chests by extracting Tiles_21.xnb, you'll see that the 12th chest is the Ice Chest. Since we are counting from 0, this is where 11 comes from. 36 comes from the width of each tile including padding. 
+				if (chest != null && Main.tile[chest.x, chest.y].type == TileID.Containers && Main.tile[chest.x, chest.y].frameX == 2 * 36) {
+					for (int inventoryIndex = 0; inventoryIndex < 40; inventoryIndex++) {
+						if (chest.item[inventoryIndex].type == ItemID.None) {
+							chest.item[inventoryIndex].SetDefaults(Main.rand.Next(itemsToPlaceInDungeonChests));
+							itemsToPlaceInDungeonChestsChoice = (itemsToPlaceInDungeonChestsChoice + 1) % itemsToPlaceInDungeonChests.Length;
+							// Alternate approach: Random instead of cyclical: chest.item[inventoryIndex].SetDefaults(Main.rand.Next(itemsToPlaceInDungeonChests));
+							break;
+						}
+					}
+				}
+            }
+		}
+
         public override void ResetNearbyTileEffects()
         {
             shrineBiome = 0;

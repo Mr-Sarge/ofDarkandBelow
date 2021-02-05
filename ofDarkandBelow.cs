@@ -8,7 +8,9 @@ using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Graphics;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.IO;
+using System.Reflection;
 using Terraria;
 using Terraria.GameContent.Dyes;
 using Terraria.GameContent.UI;
@@ -19,6 +21,7 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.UI;
 using ofDarkandBelow;
+using Terraria.Utilities;
 using static ofDarkandBelow.MyPlayer;
 using static ofDarkandBelow.MNet;
 
@@ -26,6 +29,7 @@ namespace ofDarkandBelow
 {
     class ofDarkandBelow : Mod
     {
+        public static ModHotKey ODABArmorHotKey;
         public static ofDarkandBelow instance = null;
         public static ofDarkandBelow inst = null;
         public ofDarkandBelow()
@@ -56,6 +60,7 @@ namespace ofDarkandBelow
         }
         public override void Load()
         {
+            ofDarkandBelow.ODABArmorHotKey = this.RegisterHotKey("Activate Set Bonus", "T");
             instance = this;
             inst = this;
 
@@ -97,10 +102,6 @@ namespace ofDarkandBelow
                    NPCType("SunkenKingPhase2"));
             }
         }
-        public override void Unload()
-        {
-            instance = null;
-        }
         public override void PostSetupContent()
         {
             Mod bossChecklist = ModLoader.GetMod("BossChecklist");
@@ -110,6 +111,11 @@ namespace ofDarkandBelow
                 bossChecklist.Call("AddBossWithInfo", "The Amalgamation", 5.1451f, (Func<bool>)(() => MyWorld.downedAmalgamation), "Use a [i:" + ItemType("NeiroplasmicCore") + "] at night or spawns randomly in the Dungeon. Prepare for horror.");
                 bossChecklist.Call("AddBossWithInfo", "The Primordial Maw", 5.7f, (Func<bool>)(() => MyWorld.downedAmalgamation), "Use a [i:" + ItemType("PrimordialFragment") + "] anywhere. Fear the Maw.");
             }
+        }
+        public override void Unload()
+        {
+            ofDarkandBelow.ODABArmorHotKey = (ModHotKey) null;
+            instance = null;
         }
     }
 }

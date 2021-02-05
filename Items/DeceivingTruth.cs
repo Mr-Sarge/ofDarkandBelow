@@ -28,7 +28,7 @@ using Terraria.ModLoader;
 			item.useStyle = 1;
 			item.noMelee = true;
 			item.knockBack = 2;
-            item.value = Item.sellPrice(gold: 25);
+            item.value = Item.sellPrice(gold: 500);
             item.rare = 12;
 			item.UseSound = SoundID.Item63;
 			item.autoReuse = true;

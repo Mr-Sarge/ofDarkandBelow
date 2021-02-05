@@ -37,7 +37,7 @@ namespace ofDarkandBelow.Items.BossDrops.SunkenKing
             SModPlayer modPlayer = (SModPlayer)player.GetModPlayer(mod, "SModPlayer");
             player.GetModPlayer<SModPlayer>().fallenRoyaltySetBonus = true;
         }
-        public override void AddRecipes()
+        public override void PostUpdate()
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(mod.ItemType("FallenFragment"), 9);

@@ -21,6 +21,7 @@ namespace ofDarkandBelow.NPCs.EndlessMaw
             npc.defense = 0;
             npc.lifeMax = 1;
             npc.friendly = false;
+            npc.boss = true;
             npc.knockBackResist = 0.0f;
             npc.behindTiles = true;
             npc.noTileCollide = true;

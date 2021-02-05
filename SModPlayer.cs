@@ -6,12 +6,19 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Terraria;
+using Terraria.GameInput;
 using Terraria.DataStructures;
+using Terraria.Graphics.Effects;
+using Terraria.Graphics.Shaders;
+using Terraria.Localization;
+using Terraria.UI;
+using Terraria.Utilities;
 using Terraria.GameInput;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 using static Terraria.ModLoader.ModContent;
+
 
 namespace ofDarkandBelow
 {
@@ -30,6 +37,10 @@ namespace ofDarkandBelow
         public bool ire = false;
         public bool ancientAleBuff = false;
         public bool ancientAleBuffCoolDown = false;
+        public bool powerOrbBuff = false;
+        public bool powerOrbCooldown = false;
+        public bool freakyCritActive = false;
+        public bool freakyCritCoolDown = false;
         public override void ResetEffects()
         {
             cosmicRevival = false;
@@ -45,14 +56,20 @@ namespace ofDarkandBelow
             ire = false;
             ancientAleBuff = false;
             ancientAleBuffCoolDown = false;
+            powerOrbBuff = false;
+            powerOrbCooldown = false;
+            freakyCritActive = false;
+            freakyCritCoolDown = false;
         }
         public override void UpdateDead()
         {
             cosmicRevivalCooldown = false;
             kingPowerCooldown = false;
+            powerOrbCooldown = false;
             ancientAleBuffCoolDown = false;
+            freakyCritCoolDown = false;
         }
-        public override void OnHitNPC(Item item, NPC target, int damage, float knockback, bool crit)
+        public override void OnHitNPC(Item item, NPC target, int damage, float knockback, bool crit) // Upon hitting...
         {
             if (behemothEffect)
             {
@@ -68,7 +85,7 @@ namespace ofDarkandBelow
                 target.AddBuff(mod.BuffType("DracarniumFlames"), 240);
             }
         }
-        public override bool PreKill(double damage, int hitDirection, bool pvp, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource)
+        public override bool PreKill(double damage, int hitDirection, bool pvp, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource) // Before dying...
         {
             if (cosmicRevival == true && cosmicRevivalCooldown == false)
             {
@@ -103,14 +120,14 @@ namespace ofDarkandBelow
             }
             return true;
         }
-        public override void ModifyHitByNPC(NPC npc, ref int damage, ref bool crit)
+        public override void ModifyHitByNPC(NPC npc, ref int damage, ref bool crit) // ???
         {
             if (ire)
             {
                 npc.AddBuff(mod.BuffType("DracarniumFlames"), 420);
             }
         }
-        public override bool PreHurt(bool pvp, bool quiet, ref int damage, ref int hitDirection, ref bool crit, ref bool customDamage, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource)
+        public override bool PreHurt(bool pvp, bool quiet, ref int damage, ref int hitDirection, ref bool crit, ref bool customDamage, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource) // On damage taken...
         {
             if (sunkenCrownEffect == true && player.statLife <= player.statLifeMax * 0.50f)
             {
@@ -134,7 +151,7 @@ namespace ofDarkandBelow
             }
             return true;
         }
-        public override void OnHitNPCWithProj(Projectile proj, NPC target, int damage, float knockback, bool crit)
+        public override void OnHitNPCWithProj(Projectile proj, NPC target, int damage, float knockback, bool crit) // On hit with projectile...
         {
             if (dracarniumInfusion)
             {
@@ -156,6 +173,40 @@ namespace ofDarkandBelow
                     player.statLife += 50;
                     player.HealEffect(50, true);
                 }
+        }
+        public override void PostUpdate()
+        {
+            if (ofDarkandBelow.ODABArmorHotKey.JustPressed)
+            {
+                if (powerOrbBuff == true && powerOrbCooldown == false)
+                {
+                  player.AddBuff(mod.BuffType("powerOrb"), 900);
+                  player.AddBuff(mod.BuffType("powerOrbCooldown"), 3600);
+                }
+                if (freakyCritActive == true && freakyCritCoolDown == false)
+                {
+                    int radius = 3;
+                    Main.PlaySound(SoundLoader.customSoundType, (int)player.position.X, (int)player.position.Y, mod.GetSoundSlot(SoundType.Custom, "Sounds/Custom/FreakActivate"));
+                    player.AddBuff(mod.BuffType("FreakyCrit"), 500);
+                    player.AddBuff(mod.BuffType("FreakyCritCoolDown"), 3600);
+                    Vector2 position = player.Center;
+                    for (int x = -radius; x <= radius; x++)
+                    {
+                        for (int y = -radius; y <= radius; y++)
+                        {
+                            int xPosition = (int)(x + position.X / 16.0f);
+                            int yPosition = (int)(y + position.Y / 16.0f);
+
+                            if (Math.Sqrt(x * x + y * y) <= radius + 0.5)
+                            {
+                                Dust.NewDust(player.position, player.width, player.height - 6, DustID.Blood, 0f, 5f, 150, default(Color), 1f);
+                                Dust.NewDust(player.position, player.width, player.height, DustID.Blood, 0f, 0f, 150, default(Color), 1.5f);
+                                Dust.NewDust(player.position, player.width, player.height + 6, DustID.Blood, 0f, 5f, 150, default(Color), 1f);
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 
