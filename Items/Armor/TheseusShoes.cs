@@ -10,7 +10,7 @@ namespace ofDarkandBelow.Items.Armor
 	public class TheseusShoes : ModItem
 	{
 		public override void SetStaticDefaults() {
-		    DisplayName.SetDefault("Theseus' Shoes");
+		    DisplayName.SetDefault("Bronze Shoes");
 			Tooltip.SetDefault("Movement speed increased by 25%"
 				+ "\n'Let the maze guide you.'");
 		}

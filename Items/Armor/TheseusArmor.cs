@@ -9,7 +9,7 @@ namespace ofDarkandBelow.Items.Armor
 	{
 		public override void SetStaticDefaults() {
 			base.SetStaticDefaults();
-			DisplayName.SetDefault("Theseus' Breastplate");
+			DisplayName.SetDefault("Bronze Breastplate");
 			Tooltip.SetDefault("'Repel the minotaur!'");
 		}
 

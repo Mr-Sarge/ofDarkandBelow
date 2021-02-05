@@ -8,7 +8,7 @@ namespace ofDarkandBelow.Items.Armor
 	public class TheseusHelmet : ModItem
 	{
 		public override void SetStaticDefaults() {
-		    DisplayName.SetDefault("Theseus' Helm");
+		    DisplayName.SetDefault("Bronze Helmet");
 			Tooltip.SetDefault("'You must decide what is false and what is true.'");
 		}
 

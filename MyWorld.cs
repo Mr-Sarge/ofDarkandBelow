@@ -316,7 +316,7 @@ namespace ofDarkandBelow
 							if (chest.item[inventoryIndex].type == ItemID.None)
 							{
 								chest.item[inventoryIndex].SetDefaults(Main.rand.Next(NullChestLootCommon));
-								if (chest.item[inventoryIndex].type == ItemID.Bomb)
+								if (chest.item[inventoryIndex].type == ItemID.Bomb || chest.item[inventoryIndex].type == ItemID.SilverBar || chest.item[inventoryIndex].type == ItemID.TungstenBar)
 								{
 									chest.item[inventoryIndex].stack = WorldGen.genRand.Next(3, 6);
 									break;
