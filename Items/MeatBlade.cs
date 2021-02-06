@@ -15,8 +15,8 @@ namespace ofDarkandBelow.Items
 		{
 			item.damage = 12;
 			item.melee = true;
-			item.width = 34;
-			item.height = 44;
+			item.width = 42;
+			item.height = 42;
 			item.useTime = 20;
 			item.useAnimation = 20;
 			item.useStyle = 1;
