@@ -12,7 +12,7 @@ using System.Collections.Specialized;
 
 namespace ofDarkandBelow.Items.FishStash
 {
-    public class ShootingStar : ModItem //It's called two as I don't wanna change anything. Shut.
+    public class ShootingStar : ModItem // aaaaaaaaaaaaaaaaa
     {
         public override void SetStaticDefaults()
         {
