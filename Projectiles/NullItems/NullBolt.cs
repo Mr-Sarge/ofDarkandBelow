@@ -78,7 +78,7 @@ namespace ofDarkandBelow.Projectiles.NullItems
 
 			// Spawn some dusts upon javelin death
 			for (int i = 0; i < 20; i++) {
-				Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType("NullFire"), projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.2f, 100, default(Color), 1.5f);
+				Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType("NullFire"), projectile.velocity.X * 0.2f, projectile.velocity.Y * 0f, 100, default(Color), 1f);
 			}
 	    }
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)

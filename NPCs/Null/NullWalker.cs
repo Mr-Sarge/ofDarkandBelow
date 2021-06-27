@@ -1,10 +1,15 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using Terraria;
 using Terraria.ID;
+using Terraria.DataStructures;
 using Terraria.ModLoader;
-
+using ofDarkandBelow.Projectiles;
 
 namespace ofDarkandBelow.NPCs.Null
 {
@@ -13,6 +18,7 @@ namespace ofDarkandBelow.NPCs.Null
         private bool jump;
         private int jumpFrame;
         private int jumpCounter;
+        public bool definitelyBalled;
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Null Walker");
@@ -20,8 +26,6 @@ namespace ofDarkandBelow.NPCs.Null
         }
         public override void SetDefaults()
         {
-            npc.width = 36;
-            npc.height = 68;
             npc.friendly = false;
             npc.damage = 40;
             npc.defense = 4;
@@ -32,6 +36,8 @@ namespace ofDarkandBelow.NPCs.Null
             npc.knockBackResist = -1f;
             npc.aiStyle = 3;
 			aiType = NPCID.GoblinScout;
+            npc.width = 36;
+            npc.height = 66;
         }
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
@@ -58,59 +64,104 @@ namespace ofDarkandBelow.NPCs.Null
 			return SpawnCondition.Underworld.Chance * 0.07f;
             }
         }
-        public override void NPCLoot()
+        public override void HitEffect(int hitDirection, double damage)
         {
-            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Neiroplasm"), 4);
-		}
-        public override void FindFrame(int frameHeight)
-        {
-            npc.frameCounter += 0.25;
-            npc.frameCounter %= 20;
-            int frame = (int)(npc.frameCounter / 2.0);
-            if (frame >= Main.npcFrameCount[npc.type]) frame = 0;
-            npc.frame.Y = frame * frameHeight;
+            if (npc.life <= 0 || npc.life == 0)
+            {
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/NullEnemies/NullWalker_BalledWringly"), 1f);
+            }
         }
+        public int intoBallFrame;
+        public int intoBallCounter;
 		public override bool PreAI()
         {
-            if (npc.velocity.X >= 0)
+            if (balledYet != true && intoBall != true)
             {
-                npc.spriteDirection = -1;
+                if (npc.velocity.X >= 0)
+                {
+                    npc.spriteDirection = -1;
+                }
+                else if (npc.velocity.X < 0)
+                {
+                    npc.spriteDirection = 1;
+                }
             }
-            else if (npc.velocity.X < 0)
+            if (intoBall == true)
             {
-                npc.spriteDirection = 1;
+                intoBallCounter++;
+                if (intoBallCounter > 3)
+                {
+                    intoBallFrame++;
+                    intoBallCounter = 0;
+                }
+            }
+            if (intoBallFrame >= 12)
+            {
+                balledYet = true;
+                intoBall = false;
             }
             return true;
         }
-        public override void AI()
+        public override void FindFrame(int frameHeight)
         {
-            if (npc.velocity.Y == 0)
-            {
-                jump = false;
-            }
-            else
-            {
-                jump = true;
-            }
-            return;
+            npc.frameCounter += 0.5;
+            npc.frameCounter %= 20;
+            int frame = (int)(npc.frameCounter) / 2;
+            if (frame >= Main.npcFrameCount[npc.type]) frame = 0;
+            npc.frame.Y = frame * frameHeight;
         }
+        public bool intoBall;
+        public bool balled;
         public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
         {
             Texture2D texture = Main.npcTexture[npc.type];
-            Texture2D jumpAni = mod.GetTexture("NPCs/Null/NullWalker_Jump");
+            Texture2D intoBallAni = mod.GetTexture("NPCs/Null/NullWalker_Ballin");
+            Texture2D balledAni = mod.GetTexture("NPCs/Null/NullWalker_Balled");
             var effects = npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
-            if (jump == false)
+
+            if (!intoBall && !balled)
             {
                 spriteBatch.Draw(texture, npc.Center - Main.screenPosition, npc.frame, drawColor, npc.rotation, npc.frame.Size() / 2, npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
             }
-            if (jump == true)
+            if (intoBall)
+            {
+                Vector2 drawCenter = new Vector2(npc.Center.X, npc.Center.Y - 20);
+                int num214 = intoBallAni.Height / 12; // 12 = # of Frames
+                int y6 = num214 * intoBallFrame;
+                Main.spriteBatch.Draw(intoBallAni, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Microsoft.Xna.Framework.Rectangle(0, y6, intoBallAni.Width, num214)), drawColor, npc.rotation, new Vector2((float)intoBallAni.Width / 2f, (float)num214 / 2f), npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
+            }
+            if (balled)
             {
                 Vector2 drawCenter = new Vector2(npc.Center.X, npc.Center.Y);
-                int num214 = jumpAni.Height / 1;
-                int y6 = num214 * jumpFrame;
-                Main.spriteBatch.Draw(jumpAni, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Microsoft.Xna.Framework.Rectangle(0, y6, jumpAni.Width, num214)), drawColor, npc.rotation, new Vector2((float)jumpAni.Width / 2f, (float)num214 / 2f), npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
+                int num214 = balledAni.Height / 2;
+                int y6 = num214 * 1;
+                Main.spriteBatch.Draw(balledAni, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Microsoft.Xna.Framework.Rectangle(0, y6, balledAni.Width, num214)), drawColor, npc.rotation, new Vector2((float)balledAni.Width / 2f, (float)num214 / 2f), npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
             }
             return false;
+        }
+        public bool balledYet;
+        public override void AI()
+        {
+            Player player = Main.player[npc.target];
+            if (npc.life < npc.lifeMax * 0.45 && balledYet == false)
+            {
+                intoBall = true;
+                aiType = 0;
+                npc.aiStyle = 0;
+                npc.width = 28;
+                npc.height = 26;
+            }
+            if (balledYet == true)
+            {
+                balled = true;
+                npc.width = 28;
+                npc.height = 26;
+                aiType = 26;
+                npc.aiStyle = 26;
+                npc.rotation += 0.02f * npc.velocity.X;
+                npc.knockBackResist = 0.4f;
+            }
+            return;
         }
     }
 }

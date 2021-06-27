@@ -41,7 +41,7 @@ namespace ofDarkandBelow.NPCs.Null
         {
             if (npc.life <= 0 || npc.life == 0)
             {
-                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/NullEaterGore"), 1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/NullEnemies/NullEaterGore"), 1f);
             }
         }
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
@@ -100,7 +100,7 @@ namespace ofDarkandBelow.NPCs.Null
             if (deathChargeTimer == 110)
             {
                 npc.life = 0;
-                Gore.NewGore(npc.position, npc.velocity * 0.85f, mod.GetGoreSlot("Gores/NullEaterGore"), 1f);
+                Gore.NewGore(npc.position, npc.velocity * 0.85f, mod.GetGoreSlot("Gores/NullEnemies/NullEaterGore"), 1f);
                 Vector2 position = npc.Center;
                 int radius = 3;
 
