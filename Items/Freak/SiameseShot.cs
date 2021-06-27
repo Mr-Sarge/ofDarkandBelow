@@ -12,17 +12,19 @@ namespace ofDarkandBelow.Items.Freak
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Siamese Shot");
-			Tooltip.SetDefault("'Conjoin your arrows.'");
-		}
+			Tooltip.SetDefault("Fires out a spread of 3-4 arrows."
+            + "\n'Conjoin your arrows.'");
+
+        }
         public override void SetDefaults()
         {
-            item.damage = 12;
+            item.damage = 16;
             item.noMelee = true;
             item.ranged = true;
             item.width = 56;
             item.height = 20;
-            item.useTime = 43;
-            item.useAnimation = 43;
+            item.useTime = 40;
+            item.useAnimation = 40;
             item.useStyle = 5;
             item.shoot = 10;
             item.useAmmo = AmmoID.Arrow;
@@ -35,16 +37,16 @@ namespace ofDarkandBelow.Items.Freak
         }
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-            int numberProjectiles = 2 + Main.rand.Next(3);
+            int numberProjectiles = 3 + Main.rand.Next(1);
             for (int i = 0; i < numberProjectiles; i++)
             {
                 Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(10));
                 float scale = 1f - (Main.rand.NextFloat() * .3f);
                 perturbedSpeed = perturbedSpeed * scale;
-                Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
-                Main.projectile[type].noDropItem = true;
+                int arrows = Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
+                Main.projectile[arrows].noDropItem = true;
             }
-            return true;
+            return false;
         }
         public override Vector2? HoldoutOffset()
         {

@@ -9,6 +9,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.DataStructures;
 using Terraria.ModLoader;
+using Terraria.ObjectData;
 using ofDarkandBelow.Projectiles;
 
 namespace ofDarkandBelow.NPCs.SunkenKing
@@ -54,7 +55,7 @@ namespace ofDarkandBelow.NPCs.SunkenKing
                 for (int y = -1; y <= 1; y++)
                 {
                     {
-                        if (Main.tile[point.X + x, point.Y + y].type != 0 && Main.tile[point.X + x, point.Y + y].active())
+                        if (Main.tile[point.X + x, point.Y + y].type != 0 && Main.tile[point.X + x, point.Y + y].active());
                         {
                             npc.life = 0;
                             npc.active = false;

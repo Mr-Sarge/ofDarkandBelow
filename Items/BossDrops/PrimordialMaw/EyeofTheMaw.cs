@@ -9,9 +9,8 @@ namespace ofDarkandBelow.Items.BossDrops.PrimordialMaw
 		public override void SetStaticDefaults() {
 		    DisplayName.SetDefault("Eye of The Maw");
 			Tooltip.SetDefault("Fires a cosmic-flaming spike ball.");
-			Item.staff[item.type] = true; //this makes the useStyle animate as a staff instead of as a gun
+			Item.staff[item.type] = true;
 		}
-
 		public override void SetDefaults() {
 			item.damage = 36;
 			item.magic = true;
@@ -21,7 +20,7 @@ namespace ofDarkandBelow.Items.BossDrops.PrimordialMaw
 			item.useTime = 25;
 			item.useAnimation = 25;
 			item.useStyle = 5;
-			item.noMelee = true; //so the item's animation doesn't do damage
+			item.noMelee = true;
 			item.knockBack = 5;
             item.value = Item.sellPrice(gold: 2);
             item.rare = 3;

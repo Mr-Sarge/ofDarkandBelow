@@ -3,18 +3,18 @@ using Terraria.ModLoader;
 
 namespace ofDarkandBelow.Items.Placeable.NullBlocks
 {
-	public class NullifiedBrickItem : ModItem
+	public class NullTorchGrowthItem : ModItem
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Nullified Bricks");
-			Tooltip.SetDefault("'These bricks scream for release.'"
-                  + "\nThese bricks make up the Null Sub-Biome.");
+			DisplayName.SetDefault("Null Torch Growth");
+			Tooltip.SetDefault("'Is this an actual torch?'"
+                  + "\nPart of the Null Sub-Biome.");
 		}
 		public override void SetDefaults()
 		{
-            item.width = 24;
-            item.height = 22;
+            item.width = 18;
+            item.height = 20;
             item.maxStack = 999;
             item.useTurn = true;
             item.autoReuse = true;
@@ -22,8 +22,8 @@ namespace ofDarkandBelow.Items.Placeable.NullBlocks
             item.useTime = 10;
             item.useStyle = 1;
             item.consumable = true;        
-            item.rare = 0;
-            item.createTile = mod.TileType("NullifiedBrick");
+            item.rare = 1;
+            item.createTile = mod.TileType("NullTorchGrowth");
             item.placeStyle = 0;
 		}
 	}

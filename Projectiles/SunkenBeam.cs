@@ -20,7 +20,7 @@ namespace ofDarkandBelow.Projectiles
 		}
 
 		public override void AI() {
-           Dust.NewDust(projectile.position, projectile.width, projectile.height, 12, 2f, 2f, 200, default(Color), 1.5f);
+           Dust.NewDust(projectile.position, projectile.width, projectile.height, 12, 2f, 2f, 200, default(Color), 0.8f);
            projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
         }
 		public override void Kill(int timeLeft) {

@@ -14,7 +14,7 @@ namespace ofDarkandBelow.Tiles.NullBlocks
 			Main.tileMerge[Type][33] = true;
 			Main.tileMerge[Type][1] = true;
 			Main.tileMerge[Type][189] = true;
-			Main.tileBlockLight[Type] = true;
+            Main.tileBlockLight[Type] = true;
 			Main.tileLighted[Type] = true;
 			drop = mod.ItemType("NullifiedBrickItem");
 			ModTranslation name = CreateMapEntryName();
@@ -25,13 +25,6 @@ namespace ofDarkandBelow.Tiles.NullBlocks
 			Main.tileMerge[Type][TileID.PinkDungeonBrick] = true;
 			minPick = 100;
 			mineResist = 1.5f;
-		}
-		public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
-		{
-			i = 1;
-			r = 0.26f;
-			g = 0.45f;
-			b = 0.41f;
 		}
 		public override bool CanExplode(int i, int j)
 		{
